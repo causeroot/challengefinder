@@ -27,8 +27,9 @@ urldata = dict()
 words = list()
 
 for url in urlfile:
-    print 'url is: ', url.strip()
-    site_text = commands.getoutput('lynx -dump ' + url.strip())
+	url = url.strip()
+    print 'url is: ', url
+    site_text = commands.getoutput('lynx -dump ' + url)
     # ***** ADD SOME [if this shit fails] CODE IN HERE !!! ********
     
     
@@ -37,13 +38,15 @@ for url in urlfile:
     for word in site_text.lower().split(' '):
         if word != '':
             word = word.strip('[]{}()0123456789~:;"?><,!%^&*')
-            word = word.replace('\n','')
+            word = word.replace('\n',' ')
             if word.find('-',1,len(word)-1) == -1:
                 word = word.replace('-','')
             if ('www' not in word) and ('http' not in word) and ('.com' not in word):
                 word = word.replace('.','')
                 if word.isalpha():
                     words.append(word)
+            else:
+            	words.append('httpaddr')
     
     # This determines the frequency of each word
     unique_words = set(words)
@@ -56,7 +59,7 @@ for url in urlfile:
     pair_frequency = dict([(pair,pairs.count(pair)) for pair in unique_pairs])
     
     # This adds all of the crunched data for the that particular url
-    urldata[url] = {'url':url, 'word_list':words, 'word_frequency':word_frequency,
+    urldata[url] = {'url':url, 'site_text':site_text, 'word_list':words, 'word_frequency':word_frequency,
         'pair_list':pairs,'pair_frequency':pair_frequency}
     outfile.write(str(urldata[url])+'\n')
     
