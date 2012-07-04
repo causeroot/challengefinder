@@ -9,7 +9,7 @@
 
 import commands
 
-master_filename = url_list_for_filter.txt
+master_filename = 'url_list.txt'
 url_data = list()
 all_words = list()
 all_pairs = list()
@@ -25,6 +25,8 @@ D = list()
 E = list()
 F = list()
 G = list()
+H = list()
+I = list()
 
 for url in master_filename:
 	
@@ -103,6 +105,7 @@ all_words.sort()
 all_pairs.sort()
 map = list()
 
+# This creates the Master list from a 
 for word in all_words:
 	if word != last_one:
 		master_words.append(word)
@@ -116,13 +119,13 @@ for word in all_pairs:
 for i in range(len(url)):
 	for word in B[i]:
 		map.append(master_words.index(word))
-	B.append([map])
+	D.append([map])
 	map = list()
 	
 for i in range(len(url)):
 	for pairs in E[i]:
 		map.append(master_pairs.index(pairs))
-	E.append([map])
+	G.append([map])
 	map = list()
 
 
