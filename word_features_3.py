@@ -22,12 +22,13 @@ corpus_pairs = list()
 corpus_unique_pairs = set()
 
 urlfile = open('url_list_for_filter.txt')
-outfile = open('output.csv','w')
-urldata = dict()
-words = list()
+outfile = open('site_data.txt','w')
+
 
 for url in urlfile:
-	url = url.strip()
+    urldata = dict()
+    words = list()
+    url = url.strip()
     print 'url is: ', url
     site_text = commands.getoutput('lynx -dump ' + url)
     # ***** ADD SOME [if this shit fails] CODE IN HERE !!! ********
@@ -61,7 +62,7 @@ for url in urlfile:
     # This adds all of the crunched data for the that particular url
     urldata[url] = {'url':url, 'site_text':site_text, 'word_list':words, 'word_frequency':word_frequency,
         'pair_list':pairs,'pair_frequency':pair_frequency}
-    outfile.write(str(urldata[url])+'\n')
+    outfile.write(url + " " + " ".join(words) + "\n")
     
     #url_data.append([url, word_list, word_frequency, key_mapping_words, pair_list, pair_frequency, key_mapping_pairs])
     
