@@ -23,10 +23,10 @@ corpus_unique_pairs = set()
 
 urlfile = open('url_list_for_filter.txt')
 outfile = open('site_data.txt','w')
+urldata = {}
 
 
 for url in urlfile:
-    urldata = dict()
     words = list()
     url = url.strip()
     print 'url is: ', url
@@ -47,7 +47,7 @@ for url in urlfile:
                 if word.isalpha():
                     words.append(word)
             else:
-            	words.append('httpaddr')
+                words.append('httpaddr')
     
     # This determines the frequency of each word
     unique_words = set(words)
@@ -62,7 +62,6 @@ for url in urlfile:
     # This adds all of the crunched data for the that particular url
     urldata[url] = {'url':url, 'site_text':site_text, 'word_list':words, 'word_frequency':word_frequency,
         'pair_list':pairs,'pair_frequency':pair_frequency}
-    outfile.write(url + " " + " ".join(words) + "\n")
     
     #url_data.append([url, word_list, word_frequency, key_mapping_words, pair_list, pair_frequency, key_mapping_pairs])
     
@@ -70,6 +69,9 @@ for url in urlfile:
     corpus_unique_words.update(unique_words)
     corpus_pairs.append(pairs)
     corpus_unique_pairs.update(unique_pairs)
+
+outfile.write(','.join([url for url in urldata]) + '\n')
+outfile.write(','.join([' '.join(urldata[url]['word_list']) for url in urldata]) + '\n')
 
 corpus_word_frequency = dict([(word, corpus_words.count(word)) for word in corpus_unique_words])
 corpus_pair_frequency = dict([(pair, corpus_pairs.count(pair)) for pair in corpus_unique_pairs])
