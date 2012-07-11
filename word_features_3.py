@@ -69,9 +69,9 @@ for url in urlfile:
     corpus_unique_words.update(unique_words)
     corpus_pairs.append(pairs)
     corpus_unique_pairs.update(unique_pairs)
-
-outfile.write(','.join([url for url in urldata]) + '\n')
-outfile.write(','.join([' '.join(urldata[url]['word_list']) for url in urldata]) + '\n')
+    
+    outfile.write(url + " ")
+    outfile.write(' '.join(urldata[url]['word_list']) + '\n')
 
 corpus_word_frequency = dict([(word, corpus_words.count(word)) for word in corpus_unique_words])
 corpus_pair_frequency = dict([(pair, corpus_pairs.count(pair)) for pair in corpus_unique_pairs])
