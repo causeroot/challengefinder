@@ -1,7 +1,7 @@
 function [urls, dataset_words, dataset_pairs, freq_words, freq_pairs] = extract_data(filename, dictionary_words, dictionary_pairs)
 
 %extract_data *** Need to describe what the file does here ***
-fprintf('\n\n============ Beginning Data Extraction for ')
+fprintf('\n============ Beginning Data Extraction for ')
 fprintf(filename)
 fprintf('===================\n');
 tic

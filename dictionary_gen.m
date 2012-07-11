@@ -1,7 +1,7 @@
 function [dictionary_words, dictionary_pairs] = dictionary_gen(filename1,filename2)
 
 % Dictionary_gen *** Need to describe what the function does here ***
-fprintf('\n\n====================== Begin Processing Dictionary ========================\n');
+fprintf('\n====================== Begin Processing Dictionary ========================\n');
     tic
     file_contents1 = readFile(filename1);
     file_contents2 = readFile(filename2);
