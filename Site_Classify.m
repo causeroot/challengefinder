@@ -1,4 +1,4 @@
-function Site_Classify(good_file,bad_file,eval_file,output_file,search_string_out_file)
+function Site_Classify(good_file,bad_file,eval_file,eval_output_file,search_string_out_file)
 
 %%%%%%%%%%%%%%%%%%%%%% Website Classification with SVMs %%%%%%%%%%%%%%%%
 %
@@ -23,18 +23,18 @@ function Site_Classify(good_file,bad_file,eval_file,output_file,search_string_ou
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% Initialization
-clear; close all; clc
-%done = ('Done!');
+%% clear; close all; clc
+%% done = ('Done!');
 
 fprintf('======================= Starting Site Classification ======================\n');
 fprintf('Program paused. Press enter to start the dictionary and feature extration.\n\n');
 pause;
 
-good_file = 'site_data.txt';
-bad_file = 'site_data.txt';
-eval_file = 'site_data.txt';
-eval_output_file = 'output_data.txt';
-search_string_out_file = 'search_string_out_file.txt';
+%good_file = 'site_data.txt';
+%bad_file = 'site_data.txt';
+%eval_file = 'site_data.txt';
+%eval_output_file = 'output_data.txt';
+%search_string_out_file = 'search_string_out_file.txt';
 
 fprintf('Extracting data and features from "POSITIVE" Urls in File: ');
 fprintf(good_file);
@@ -75,7 +75,7 @@ features = vertcat(dataset_words,dataset_pairs,freq_words,freq_pairs);
 
 % Print Stats
 fprintf('\nNumber of URLs in extracted dataset: ');
-fprintf("%i",char(size(urls,1)));
+fprintf("%i",size(urls,1));
 fprintf('\n\n');
 
 fprintf('Program paused. Press enter to continue actively training the SVM Model.\n');
@@ -154,27 +154,27 @@ for i = 1:15
         parm = dictionary_pairs{idx(i)-(size(dictionary_words,1)*2+size(dictionary_pairs,1))};
         fprintf('Pair Freq: %-15s (%f) \n', parm, weight(i));
     end
-    pos_word = strcat(pos_word,parm,' ');
+    pos_word = strcat(pos_word,{' '},parm);
 end
 
 fprintf('\n\nTop Negative predictors for applicable URLs: \n');
 parm = '';
 
-for i = (length(idx)-15):length(idx)
-     if idx(i) < size(dictionary_words,1)+1
-        parm = dictionary_words{idx(i)};
-        fprintf('Word: %-15s (%f) \n', parm, weight(i));
-    elseif idx(i) < (size(dictionary_words,1)+size(dictionary_pairs,1)+1)
-        parm = dictionary_pairs{idx(i)-size(dictionary_words,1)};
-        fprintf('Pair: %-15s (%f) \n', parm, weight(i));
-    elseif idx(i) < (size(dictionary_words,1)*2+size(dictionary_pairs,1)+1)
-        parm = dictionary_words{idx(i)-(size(dictionary_words,1)+size(dictionary_pairs,1))};
-        fprintf('Word Freq: %-15s (%f) \n',parm,weight(i));     
-    elseif idx(i) < (size(dictionary_words,1)*2+size(dictionary_pairs,1)*2+1)
-        parm = dictionary_pairs{idx(i)-(size(dictionary_words,1)*2+size(dictionary_pairs,1))};
-        fprintf('Pair Freq: %-15s (%f) \n', parm, weight(i));
+for i = 1:15
+     if idx(length(idx)-i+1) < size(dictionary_words,1)+1
+        parm = dictionary_words{idx(length(idx)-i+1)};
+        fprintf('Word: %-15s (%f) \n', parm, weight(length(idx)-i+1));
+    elseif idx(length(idx)-i+1) < (size(dictionary_words,1)+size(dictionary_pairs,1)+1)
+        parm = dictionary_pairs{idx(length(idx)-i+1)-size(dictionary_words,1)};
+        fprintf('Pair: %-15s (%f) \n', parm, weight(length(idx)-i+1));
+    elseif idx(length(idx)-i+1) < (size(dictionary_words,1)*2+size(dictionary_pairs,1)+1)
+        parm = dictionary_words{idx(length(idx)-i+1)-(size(dictionary_words,1)+size(dictionary_pairs,1))};
+        fprintf('Word Freq: %-15s (%f) \n',parm,weight(length(idx)-i+1));     
+    elseif idx(length(idx)-i+1) < (size(dictionary_words,1)*2+size(dictionary_pairs,1)*2+1)
+        parm = dictionary_pairs{idx(length(idx)-i+1)-(size(dictionary_words,1)*2+size(dictionary_pairs,1))};
+        fprintf('Pair Freq: %-15s (%f) \n', parm, weight(length(idx)-i+1));
     end
-    neg_word = strcat(pos_word,parm,' ');
+    neg_word = strcat(neg_word,{' '},parm);
 end
 
 fprintf('\n\nProgram paused. Press enter to continue and evaluate new URLS.\n');
@@ -199,7 +199,8 @@ pause;
 f = vertcat(eval_dataset_words,eval_dataset_pairs,eval_freq_words,eval_freq_pairs);
 
 fprintf('\n========================== Classifying New URLs ===========================\n');
-fprintf('(>0 indicates Good URL, <0 indicates Bad URL)\n');
+%fprintf('(>0 indicates Good URL, <0 indicates Bad URL)\n');
+
 % Read and predict
 %file_contents = readFile(filename);
 %word_indices  = processEmail(file_contents);
@@ -214,20 +215,21 @@ fprintf('Processed %s URL Classification to %s\n', char(eval_file),char(eval_out
 tic
 fileID = fopen(eval_output_file,'w');
 for i = 1:size(eval_urls,1)
-    fprintf(fileID,'%s',char(eval_urls(i)));
-    fprintf(fileID,' ');
-    fprintf(fileID,'%d',p(i));
-    fprintf(fileID,' \n');
+    fprintf(fileID,"%s",char(eval_urls(i)));
+    fprintf(fileID," ");
+    fprintf(fileID,"%6.4f  %d",p(i),pred(i));
+    fprintf(fileID," \n");
 end
+fclose(fileID);
 toc
 fprintf('=========================== New URL Data Written =========================\n');
 fprintf('Newly Search String Paramenters Written to: %s\n',char(search_string_out_file));
 tic
-fileID = fopen(search_string_out_file,'w');
-fprintf(fileID,'%s',char(pos_word));
-fprintf(fileID,'\n');
-fprintf(fileID,'%s',char(neg_word));
-fclose(fileID);
+fileID2 = fopen(search_string_out_file,'w');
+fprintf(fileID2,'%s',char(pos_word));
+fprintf(fileID2,"\n");
+fprintf(fileID2,'%s',char(neg_word));
+fclose(fileID2);
 toc
 fprintf('=============== Optimal Search String Parameter Data Written =============\n\n\n');
 fprintf('==========================================================================\n');
