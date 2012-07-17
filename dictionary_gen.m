@@ -3,16 +3,18 @@ function [dictionary_words, dictionary_pairs] = dictionary_gen(filename1,filenam
 % Dictionary_gen *** Need to describe what the function does here ***
 fprintf('\n====================== Begin Processing Dictionary ========================\n');
     tic
-    file_contents1 = readFile(filename1);
-    file_contents2 = readFile(filename2);
 
+    fileID1 = fopen(filename1,'r');
+    fileID2 = fopen(filename2,'r');
+    
     dictionary_words = [];
     dictionary_pairs = [];
     temp_words = [];
     u_num = 0;
     
-    while ~isempty(file_contents1)
+    while (!feof(fileID1))
     
+        file_contents1 = fgetl(fileID1);
         u_num = u_num+1;
         [url_dataset1, file_contents1] = strtok(file_contents1, "\n");
         wordlist1 = strsplit(url_dataset1,' ');
@@ -34,8 +36,9 @@ fprintf('\n====================== Begin Processing Dictionary ==================
     
     u_num =0;
     
-    while ~isempty(file_contents2)
-    
+    while (!feof(fileID1))
+        
+        file_contents2 = fgetl(fileID2);
         u_num = u_num+1;
         [url_dataset2, file_contents2] = strtok(file_contents2,"\n");
         wordlist2 = strsplit(url_dataset2,' ');
@@ -58,5 +61,8 @@ fprintf('\n====================== Begin Processing Dictionary ==================
 
     toc
 fprintf('========================== Dictionary Processed ===========================\n');
+
+fclose(fileID1);
+fclose(fileID2);
 
 end
