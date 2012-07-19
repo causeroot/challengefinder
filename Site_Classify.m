@@ -121,61 +121,76 @@ fprintf('\nTraining Accuracy: %f', mean(double(pred == class')) * 100);
 %fprintf('\nEvaluating the Trained Linear SVM on a the new set of URLs in:');
 %fprintf(eval_file);
 
-
 %% ================= Part 5: Top Predictors of Spam ====================
 %  Since the model we are training is a linear SVM, we can inspect the
 %  weights learned by the model to understand better how it is determining
 %  whether an email is spam or not. The following code finds the words with
 %  the highest weights in the classifier. Informally, the classifier
 %  'thinks' that these words are the most likely indicators of spam.
-%
 
 fprintf('\n\n');
 % Sort the weights and obtin the vocabulary list
-[weight, idx] = sort(model.w, 'descend');
+[weight, id] = sort(model.w, 'descend');
 
+thresh = 0.018;
 pos_word = '';
 neg_word = '';
 parm = '';
+insert = {''};
+
+neg = weight<0;
+
+new_strs = horzcat(id, neg, abs(weight));
+new_strings = sortrows(new_strs,3);
+
+idx = new_strings(:,1);
+negative_weights = new_strings(:,2);
+weightx = new_strings(:,3);
+num_distinctifiers = sum(weightx>thresh);
 
 fprintf('\nTop predictors for applicable URLs: \n');
 
-for i = 1:15
-    if idx(i) < size(dictionary_words,1)+1
-        parm = dictionary_words{idx(i)};
-        fprintf('Word: %-15s (%f) \n', parm, weight(i));
-    elseif idx(i) < (size(dictionary_words,1)+size(dictionary_pairs,1)+1)
-        parm = dictionary_pairs{idx(i)-size(dictionary_words,1)};
-        fprintf('Pair: %-15s (%f) \n', parm, weight(i));
-    elseif idx(i) < (size(dictionary_words,1)*2+size(dictionary_pairs,1)+1)
-        parm = dictionary_words{idx(i)-(size(dictionary_words,1)+size(dictionary_pairs,1))};
-        fprintf('Word Freq: %-15s (%f) \n',parm,weight(i));     
-    elseif idx(i) < (size(dictionary_words,1)*2+size(dictionary_pairs,1)*2+1)
-        parm = dictionary_pairs{idx(i)-(size(dictionary_words,1)*2+size(dictionary_pairs,1))};
-        fprintf('Pair Freq: %-15s (%f) \n', parm, weight(i));
+for i = 1:num_distinctifiers
+    if negative_weights(length(idx)-i+1)==1
+        insert = {'-'};
     end
-    pos_word = strcat(pos_word,{' '},parm);
-end
-
-fprintf('\n\nTop Negative predictors for applicable URLs: \n');
-parm = '';
-
-for i = 1:15
-     if idx(length(idx)-i+1) < size(dictionary_words,1)+1
+    if idx(length(idx)-i+1) < size(dictionary_words,1)+1
         parm = dictionary_words{idx(length(idx)-i+1)};
-        fprintf('Word: %-15s (%f) \n', parm, weight(length(idx)-i+1));
+        fprintf('Word: %-15s \t\t(%s%f) \n', parm, char(insert), weightx(length(idx)-i+1));
     elseif idx(length(idx)-i+1) < (size(dictionary_words,1)+size(dictionary_pairs,1)+1)
         parm = dictionary_pairs{idx(length(idx)-i+1)-size(dictionary_words,1)};
-        fprintf('Pair: %-15s (%f) \n', parm, weight(length(idx)-i+1));
+        fprintf('Pair: %-15s \t\t(%s%f) \n', parm, char(insert), weightx(length(idx)-i+1));
     elseif idx(length(idx)-i+1) < (size(dictionary_words,1)*2+size(dictionary_pairs,1)+1)
         parm = dictionary_words{idx(length(idx)-i+1)-(size(dictionary_words,1)+size(dictionary_pairs,1))};
-        fprintf('Word Freq: %-15s (%f) \n',parm,weight(length(idx)-i+1));     
+        fprintf('Word Freq: %-15s \t\t(%s%f) \n',parm, char(insert), weightx(length(idx)-i+1));    
     elseif idx(length(idx)-i+1) < (size(dictionary_words,1)*2+size(dictionary_pairs,1)*2+1)
         parm = dictionary_pairs{idx(length(idx)-i+1)-(size(dictionary_words,1)*2+size(dictionary_pairs,1))};
-        fprintf('Pair Freq: %-15s (%f) \n', parm, weight(length(idx)-i+1));
+        fprintf('Pair Freq: %-15s \t\t(%s%f) \n', parm, char(insert), weightx(length(idx)-i+1));
     end
-    neg_word = strcat(neg_word,{' '},parm);
+
+    pos_word = strcat(pos_word,{'+'},insert,{'"'},parm,{'"'});
+    insert = {''};
 end
+
+%fprintf('\n\nTop Negative predictors for applicable URLs: \n');
+%parm = '';
+%
+%for i = 1:15
+%     if idx(length(idx)-i+1) < size(dictionary_words,1)+1
+%        parm = dictionary_words{idx(length(idx)-i+1)};
+%        fprintf('Word: %-15s (%f) \n', parm, weight(length(idx)-i+1));
+%    elseif idx(length(idx)-i+1) < (size(dictionary_words,1)+size(dictionary_pairs,1)+1)
+%        parm = dictionary_pairs{idx(length(idx)-i+1)-size(dictionary_words,1)};
+%        fprintf('Pair: %-15s (%f) \n', parm, weight(length(idx)-i+1));
+%    elseif idx(length(idx)-i+1) < (size(dictionary_words,1)*2+size(dictionary_pairs,1)+1)
+%        parm = dictionary_words{idx(length(idx)-i+1)-(size(dictionary_words,1)+size(dictionary_pairs,1))};
+%        fprintf('Word Freq: %-15s (%f) \n',parm,weight(length(idx)-i+1));     
+%    elseif idx(length(idx)-i+1) < (size(dictionary_words,1)*2+size(dictionary_pairs,1)*2+1)
+%        parm = dictionary_pairs{idx(length(idx)-i+1)-(size(dictionary_words,1)*2+size(dictionary_pairs,1))};
+%        fprintf('Pair Freq: %-15s (%f) \n', parm, weight(length(idx)-i+1));
+%    end
+%    neg_word = strcat(neg_word,{' '},parm);
+%end
 
 fprintf('\n\nProgram paused. Press enter to continue and evaluate new URLS.\n');
 pause;
@@ -211,6 +226,7 @@ toc
 fprintf('======================== Classifying New URLs Complete ===================\n\n');
 fprintf('============================ Writing Output Files ========================\n');
 fprintf('Processed %s URL Classification to %s\n', char(eval_file),char(eval_output_file));
+fprintf('Number of (likely) new Challenges: %i\n', sum(pred));
 
 tic
 fileID = fopen(eval_output_file,'w');
@@ -225,10 +241,11 @@ toc
 fprintf('=========================== New URL Data Written =========================\n');
 fprintf('Newly Search String Paramenters Written to: %s\n',char(search_string_out_file));
 tic
+pos_word = regexprep(pos_word,'_','+');
 fileID2 = fopen(search_string_out_file,'w');
 fprintf(fileID2,'%s',char(pos_word));
-fprintf(fileID2,"\n");
-fprintf(fileID2,'%s',char(neg_word));
+%fprintf(fileID2,"\n");
+%fprintf(fileID2,'%s',char(neg_word));
 fclose(fileID2);
 toc
 fprintf('=============== Optimal Search String Parameter Data Written =============\n\n\n');
