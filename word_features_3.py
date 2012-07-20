@@ -73,6 +73,9 @@ for url in urlfile:
     outfile.write(url + " ")
     outfile.write(' '.join(urldata[url]['word_list']) + '\n')
 
+outfile.seek(outfile.tell() - 1)
+outfile.truncate()
+
 corpus_word_frequency = dict([(word, corpus_words.count(word)) for word in corpus_unique_words])
 corpus_pair_frequency = dict([(pair, corpus_pairs.count(pair)) for pair in corpus_unique_pairs])
 
