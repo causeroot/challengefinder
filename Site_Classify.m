@@ -8,7 +8,7 @@ function Site_Classify(good_file,bad_file,eval_file,eval_output_file,search_stri
 %  word frequencies.  The following files will be used by this file:
 %
 %     gaussianKernel.m
-%     dataset3Params.m  ?????
+%     dataset3Params.m
 %     dictionary_gen.m
 %     extract_data.m
 %     SVM_URL_Predict.m
@@ -95,15 +95,13 @@ tic
 
 C = 0.1;
 %model = svmTrain(X, y, C, @linearKernel);
-%model = svmTrain(features', class', C, @linearKernel);
-model = svmtrain(class', features');
+model = svmTrain(features', class', C, @linearKernel);
 
-%[pred, p] = SVM_URL_Predict(model, features');
-tlv = ones(size(features',1),1); 
-[pred, accuracy, p] = svmpredict(tlv, features', model);
+[pred, p] = SVM_URL_Predict(model, features');
 
 toc
 fprintf('\nTraining Accuracy: %f', mean(double(pred == class')) * 100);
+
 
 %% =================== Part 4: Test Spam Classification ================
 %  After training the classifier, we can evaluate it on a test set. We have
@@ -132,23 +130,7 @@ fprintf('\nTraining Accuracy: %f', mean(double(pred == class')) * 100);
 
 fprintf('\n\n');
 % Sort the weights and obtin the vocabulary list
-
-%fprintf('\nfeatures\n');
-%size(features) 72582,63
-%fprintf('\nclass\n');
-%size(class) 1, 63
-%fprintf('\sv_coef\n');
-%size(model.sv_coef) 54,1
-%fprintf('\SVs\n');
-%size(model.SVs) 54, 72582
-
-%model_w = ((model.sv_coef.*class')'*features')';
-model_w = ((model.sv_coef)'*(model.SVs))';
-%model_w = ((model.sv_coef)'*(model.SVs))'.*(features*class');
-
-
-
-[weight, id] = sort(model_w, 'descend');
+[weight, id] = sort(model.w, 'descend');
 
 thresh = 0.018;
 pos_word = '';
@@ -164,8 +146,8 @@ new_strings = sortrows(new_strs,3);
 idx = new_strings(:,1);
 negative_weights = new_strings(:,2);
 weightx = new_strings(:,3);
-%num_distinctifiers = sum(weightx>thresh);
-num_distinctifiers = 20;
+num_distinctifiers = sum(weightx>thresh);
+
 fprintf('\nTop predictors for applicable URLs: \n');
 
 for i = 1:num_distinctifiers
@@ -238,11 +220,7 @@ fprintf('\n========================== Classifying New URLs =====================
 %file_contents = readFile(filename);
 %word_indices  = processEmail(file_contents);
 %x             = emailFeatures(word_indices);
-%[pred, p] = SVM_URL_Predict(model, f');
-%[pred, p] = svmpredict(model, f');
-
-tlv = ones(size(f',1),1); 
-[pred, accuracy, p] = svmpredict(tlv, f', model);
+[pred, p] = SVM_URL_Predict(model, f');
 
 toc
 fprintf('======================== Classifying New URLs Complete ===================\n\n');
