@@ -1,5 +1,4 @@
 http://www.arimaa.com/arimaa/challenge/2012
-http://virgin.com/subsites/virginearth/
 http://prize.hutter1.net
 http://www.claymath.org/millennium/
 http://www.nasa.gov/offices/oct/early_stage_innovation/centennial_challenges/index.html
@@ -7,7 +6,6 @@ http://lightingprize.org/PAR38.stm
 http://sdi.co.uk/sectors/saltire-prize/challenge.aspx
 http://desire2learn.com/edgechallenge
 http://iadb.org/en/topics/energy/ideas/ideas.3808.html
-http://connect.innovateuk.org/web/digital-innocation-contest-culture/culture-process
 http://community.topcoder.com/ntl/?page_id=743
 http://challenge.gov/ONC/388-smart-indivo-challenge
 http://yourrecord.challenge.gov/
