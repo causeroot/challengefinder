@@ -2,7 +2,6 @@ function Site_Classify(good_file,bad_file,eval_file,eval_output_file,search_stri
 
 %%%%%%%%%%%%%%%%%%%%%% Website Classification with SVMs %%%%%%%%%%%%%%%%
 %
-% 
 %  This file contains code that will allow the user to classify URLs
 %  as belonging to a particular class based upon word, word pair, and
 %  word frequencies.  The following files will be used by this file:
@@ -20,7 +19,7 @@ function Site_Classify(good_file,bad_file,eval_file,eval_output_file,search_stri
 %  a file containing the URL names and the fitness criteria for that analysis,
 %  as well as the search string parameters output from the data evaluation.
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% Initialization
 %% clear; close all; clc
@@ -95,7 +94,7 @@ tic
 
 C = 0.1;
 %model = svmTrain(X, y, C, @linearKernel);
-model = svmTrain(features', class', C, @linearKernel);
+model = svm_Train(features', class', C, @linearKernel);
 
 [pred, p] = SVM_URL_Predict(model, features');
 
