@@ -36,7 +36,7 @@ fprintf('\n====================== Begin Processing Dictionary ==================
     
     u_num =0;
     
-    while (!feof(fileID1))
+    while (!feof(fileID2))
         
         file_contents2 = fgetl(fileID2);
         u_num = u_num+1;
