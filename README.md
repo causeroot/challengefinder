@@ -14,7 +14,7 @@ of Challenge Finder.
 ```bash
 python word_features.py good_urls
 octave site_classify.m good_urls.out xxx.out searchterms
-./websearch searchterms
+./webSearch searchterms
 ./json_strip searchterms.txt.res new_urls
 ./merger good_urls new_urls
 ```
