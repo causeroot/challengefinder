@@ -1,6 +1,7 @@
 function [dictionary_words, dictionary_pairs] = dictionary_gen(filename1,filename2)
 
-% Dictionary_gen *** Need to describe what the function does here ***
+% TODO: Dictionary_gen *** Need to describe what the function does here ***
+
 fprintf('\n====================== Begin Processing Dictionary ========================\n');
     tic
 
@@ -18,9 +19,12 @@ fprintf('\n====================== Begin Processing Dictionary ==================
         u_num = u_num+1;
         [url_dataset1, file_contents1] = strtok(file_contents1, "\n");
         wordlist1 = strsplit(url_dataset1,' ');
-  %%%%%%%%%%%%%%%%%%%%%%%%      
-        words1 = wordlist1; % This step will be modified to potentially include word processing
-  %%%%%%%%%%%%%%%%%%%%%%%%      
+        
+        %%%%%%%%%%%%%%%%%%%%%%%%      
+        % TODO: This step will be modified to potentially include word processing
+        words1 = wordlist1; 
+        %%%%%%%%%%%%%%%%%%%%%%%%      
+        
         words1(1) = [];
         temp_words = words1;
         temp_words(1) = [];
@@ -43,9 +47,10 @@ fprintf('\n====================== Begin Processing Dictionary ==================
         [url_dataset2, file_contents2] = strtok(file_contents2,"\n");
         wordlist2 = strsplit(url_dataset2,' ');
         
-   %%%%%%%%%%%%%%%%%%%%%%%%     
-        words2 = wordlist2; % This step will be modified to potentially include word processing
-   %%%%%%%%%%%%%%%%%%%%%%%%     
+        %%%%%%%%%%%%%%%%%%%%%%%%     
+        % TODO: This step will be modified to potentially include word processing
+        words2 = wordlist2; 
+        %%%%%%%%%%%%%%%%%%%%%%%%     
         words2(1) = [];
         temp_words = words2;
         temp_words(1) = [];
@@ -60,7 +65,7 @@ fprintf('\n====================== Begin Processing Dictionary ==================
     dictionary_pairs = unique(dictionary_pairs);
 
     toc
-fprintf('========================== Dictionary Processed ===========================\n');
+fprintf('===================== Dictionary Processed & Complete ======================\n');
 
 fclose(fileID1);
 fclose(fileID2);
