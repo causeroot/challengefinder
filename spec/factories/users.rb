@@ -2,10 +2,9 @@
 
 FactoryGirl.define do
   factory :user do
-    email Faker::Internet.email
-    password 'foobar'
-    password_confirmation 'foobar'
-    # required if the Devise Confirmable module is used
-    # confirmed_at Time.now
+	  sequence(:username) {|n| "testuser#{n}" }
+	  email { "#{username}@causeroot.org"	}
+	  password "secret"
+	  password_confirmation { "#{password}" }
   end
 end

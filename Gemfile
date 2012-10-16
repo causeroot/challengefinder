@@ -1,13 +1,13 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.3'
+gem 'rails', '~> 3.2.6'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
 
-gem 'devise'
+gem 'sorcery'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -24,7 +24,7 @@ end
 
 gem 'jquery-rails'
 
-gem "will_paginate", "~> 3.0.3"
+gem 'kaminari'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -43,7 +43,8 @@ gem "will_paginate", "~> 3.0.3"
 
 group :development do
   gem 'guard'
-	gem 'rb-fsevent', :require => false
+  gem 'guard-cucumber'
+	gem 'terminal-notifier-guard'	
 end
 
 group :test, :development do
@@ -59,4 +60,6 @@ group :test do
   # database_cleaner is not required, but highly recommended
   gem 'database_cleaner'
   gem 'email_spec'
+	gem 'simplecov', :require => false
+	gem 'simplecov-rcov', :require => false
 end
