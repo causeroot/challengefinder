@@ -20,3 +20,8 @@ Install
 * Seed the database: `rake db:seed`
 * Run the app: `rails server`
 * Go to http://127.0.0.1:3000
+
+Testing
+=======
+* Start solr test server: `rake sunspot:solr:start RAILS_ENV=test`
+* Test: `rake`
