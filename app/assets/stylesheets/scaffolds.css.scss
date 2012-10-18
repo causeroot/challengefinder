@@ -1,6 +1,5 @@
 body {
-  background-color: #fff;
-  color: #333;
+  background-image: -moz-radial-gradient(right top, ellipse farthest-corner, #004739 0%, #326941 100%);  color: #333;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
@@ -32,6 +31,7 @@ a {
 div {
   &.field, &.actions {
     margin-bottom: 10px;
+    margin-left: 10px;
   }
 }
 
