@@ -12,7 +12,10 @@ gem 'sunspot_solr'
 
 gem 'sorcery'
 
+# Deploy with Capistrano
+gem 'capistrano'
 gem 'rvm-capistrano'
+gem 'capistrano-ext'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -39,9 +42,6 @@ gem 'kaminari'
 
 # Use unicorn as the app server
 # gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
