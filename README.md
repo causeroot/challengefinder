@@ -7,7 +7,6 @@ Get Ready
 * Use ruby 1.9.3: `rvm use 1.9.3-p194 --default`
 * Update RubyGems: `gem update --system` 
 * Install bundler: `gem install bundler`
-* Configure the rake solr task with the test environment `rake sunspot:solr:run RAILS_ENV=test`
 
 Install
 ======
@@ -17,5 +16,12 @@ Install
 * If Nokogiri installation fails [please read this page](http://nokogiri.org/tutorials/installing_nokogiri.html) the solution is system dependent. Please be sure to install version 1.5.2
 * Configure your database setup: `cp config/database.yml.example config/database.yml`
 * Initialize the database: `rake db:create; rake db:migrate`
+* Start the rake solr task `rake sunspot:solr:start`
+* Seed the database: `rake db:seed`
 * Run the app: `rails server`
 * Go to http://127.0.0.1:3000
+
+Testing
+=======
+* Start solr test server: `rake sunspot:solr:start RAILS_ENV=test`
+* Test: `rake`
