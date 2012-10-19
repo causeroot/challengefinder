@@ -1,28 +1,26 @@
 require 'bundler/capistrano'
+require "rvm/capistrano"
+require 'capistrano/ext/multistage'
 
-set :application, "idea-factory"
+set :rvm_type, :system  # Copy the exact line. I really mean :system here
 
-set :scm, :none
-set :repository, "."
-set :deploy_via, :copy
+set :stages, %w(production staging)
+set :default_stage, "staging"
 
-set :domain, "netacus.net"
-set :user, "netacusnet"
-set :deploy_to, "/home/#{user}/#{application}/"
+set :application, "challengefinder"
+
+set :keep_releases, 1
+
+set :scm, :git
+set :user, 'ubuntu'
 set :use_sudo, false
+ssh_options[:keys] = '~/.ssh/openplaya.pem'
+set :repository, "https://github.com/gardner/ChallengeFinder.git"
+set :deploy_to, "/home/ubuntu/#{application}"
+set :deploy_via, :remote_cache
+set :rails_env, 'production'
 
-role :web, domain
-role :app, domain
-role :db,  domain, :primary => true # This is where Rails migrations will run
-
-# if you want to clean up old releases on each deploy uncomment this:
-after "deploy:restart", "deploy:cleanup"
-
-# If you are using Passenger mod_rails uncomment this:
-namespace :deploy do
-  task :start do ; end
-  task :stop do ; end
-  task :restart, :roles => :app, :except => { :no_release => true } do
-    run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
-  end
+task :uname do
+  run "uname -a"
 end
+

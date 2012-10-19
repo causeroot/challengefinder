@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-IdeaFactory::Application.load_tasks
+ChallengeFinder::Application.load_tasks

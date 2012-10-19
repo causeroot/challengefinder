@@ -7,12 +7,20 @@ gem 'rails', '~> 3.2.6'
 
 gem 'sqlite3'
 
+gem 'sunspot_rails'
+gem 'sunspot_solr'
+
 gem 'sorcery'
+
+# Deploy with Capistrano
+gem 'capistrano'
+gem 'rvm-capistrano'
+gem 'capistrano-ext'
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
+  gem 'sass-rails',   '~> 3.2.5'
   gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
@@ -34,9 +42,6 @@ gem 'kaminari'
 
 # Use unicorn as the app server
 # gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
@@ -62,4 +67,8 @@ group :test do
   gem 'email_spec'
 	gem 'simplecov', :require => false
 	gem 'simplecov-rcov', :require => false
+end
+
+group :production do
+	gem 'pg'
 end

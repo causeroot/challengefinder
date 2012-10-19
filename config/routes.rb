@@ -1,27 +1,24 @@
-IdeaFactory::Application.routes.draw do
+ChallengeFinder::Application.routes.draw do
 
 #  root :to => "demo#index"
-  root :to => "users#new"
+  root :to => "challenges#index"
 
   match '/about', :to => 'about#index'
   match '/demo', :to => 'demo#index'
 
   get "logout" => "sessions#destroy", :as => "logout"
+  get "signout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
+  get "signin" => "sessions#new", :as => "login"
   get "signup" => "users#new", :as => "signup"
 
   resources :users
   resources :sessions
-  resources :challenges
-
-  match '/signup', :to => 'users#new'
-  
-#  TODO
-#  match '/signin', :to => 'session#new'
-#  match '/login', :to => 'session#new'
-# match '/signout', :to => 'session#destroy'
-# match '/logout', :to => 'session#destroy'
-
+  resources :challenges do
+    collection do
+      get :search
+    end
+  end
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
