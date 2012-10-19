@@ -1,5 +1,5 @@
 body {
-  background-color: #fff;
+  background: -moz-linear-gradient(-45deg, #326941 0%, #004739 20%, #326941 100%);
   color: #333;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
@@ -32,6 +32,7 @@ a {
 div {
   &.field, &.actions {
     margin-bottom: 10px;
+    margin-left: 10px;
   }
 }
 

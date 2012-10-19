@@ -20,3 +20,10 @@
   clear:both;
   padding-top:20px;
 } 
+
+.span9 {
+  background-color: white;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  margin-left: 10px;
+}
