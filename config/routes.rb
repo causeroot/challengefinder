@@ -1,4 +1,4 @@
-CauseRoot::Application.routes.draw do
+ChallengeFinder::Application.routes.draw do
 
 #  root :to => "demo#index"
   root :to => "challenges#index"
