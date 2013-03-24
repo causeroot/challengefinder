@@ -15,8 +15,9 @@ freq_pairs = zeros(size(dictionary_pairs,1),1);
 
 u_num = 0;
 
-while (!feof(fileID))
 
+while (!feof(fileID))
+    tic
     file_contents = fgetl(fileID);
     u_num = u_num+1;
     [url_dataset, file_contents] = strtok(file_contents, "\n");
@@ -46,7 +47,16 @@ while (!feof(fileID))
         freq_words = horzcat(freq_words,countmember(dictionary_words,words));
         freq_pairs = horzcat(freq_pairs,countmember(dictionary_pairs,pairs));       
     end
-
+    
+    
+    fprintf('\n');      
+    fprintf('%i', u_num);
+    fprintf('\n');
+    fprintf('%i', size(words,2));
+    fprintf('\n');
+    toc
+    fprintf('\n\n');
+    %pause
 end
 
 freq_words = freq_words./max(max(freq_words));

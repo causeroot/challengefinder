@@ -21,7 +21,7 @@ function C = countmember(A,B)
 
 % History:
 % 1.0 (2005) created
-% 1.1 (??): removed dum variable from [AU,dum,j] = unique(A(:)) to reduce
+% 1.1 (????): removed dum variable from [AU,dum,j] = unique(A(:)) to reduce
 %    overhead
 % 1.2 (dec 2008) - added comments, fixed some spelling and grammar
 %    mistakes, after being selected as Pick of the Week (dec 2008)

@@ -52,7 +52,7 @@ prmpt = yes_or_no('Do you want to generate a whole new Dicitonary?: ');
 tic
 if prmpt == 0
     tic
-    fprintf('\nDictionary Files Successfully Loaded: ');
+    fprintf('\nDictionary Files Loaded: ');
     load -v7 dictionary_features_file.binsev features;
     fprintf('\n     Successful Load from dictionary_features_file.binsev');
     load -v7 dictionary_classes_file.binsev class;
@@ -263,7 +263,7 @@ weightx = new_strings(:,3);
 % OLD CODE:
 %num_distinctifiers = sum(weightx>thresh);
 
-num_distinctifiers = 20;
+num_distinctifiers = 30;
 fprintf('\nTop predictors for applicable URLs: \n');
 
 for i = 1:num_distinctifiers
@@ -273,17 +273,22 @@ for i = 1:num_distinctifiers
     if idx(length(idx)-i+1) < size(dictionary_words,1)+1
         parm = dictionary_words{idx(length(idx)-i+1)};
         fprintf('Word: %-15s \t\t(%s%f) \n', parm, char(insert), weightx(length(idx)-i+1));
+        % Delete the above 2 lines to go back to add the Freq into the algorithm qualifiers
     elseif idx(length(idx)-i+1) < (size(dictionary_words,1)+size(dictionary_pairs,1)+1)
         parm = dictionary_pairs{idx(length(idx)-i+1)-size(dictionary_words,1)};
         fprintf('Pair: %-15s \t\t(%s%f) \n', parm, char(insert), weightx(length(idx)-i+1));
+        % Delete the above 2 lines to go back to add the Freq into the algorithm qualifiers
     elseif idx(length(idx)-i+1) < (size(dictionary_words,1)*2+size(dictionary_pairs,1)+1)
-        parm = dictionary_words{idx(length(idx)-i+1)-(size(dictionary_words,1)+size(dictionary_pairs,1))};
-        fprintf('Word Freq: %-15s \t\t(%s%f) \n',parm, char(insert), weightx(length(idx)-i+1));    
+        % parm = dictionary_words{idx(length(idx)-i+1)-(size(dictionary_words,1)+size(dictionary_pairs,1))};
+        % fprintf('Word Freq: %-15s \t\t(%s%f) \n',parm, char(insert), weightx(length(idx)-i+1));
+        % Add back in the above two lines to go back to add the Freq into the algorithm qualifiers  
+        num_distinctifiers = num_distinctifiers +1;
     elseif idx(length(idx)-i+1) < (size(dictionary_words,1)*2+size(dictionary_pairs,1)*2+1)
-        parm = dictionary_pairs{idx(length(idx)-i+1)-(size(dictionary_words,1)*2+size(dictionary_pairs,1))};
-        fprintf('Pair Freq: %-15s \t\t(%s%f) \n', parm, char(insert), weightx(length(idx)-i+1));
+        % parm = dictionary_pairs{idx(length(idx)-i+1)-(size(dictionary_words,1)*2+size(dictionary_pairs,1))};
+        % fprintf('Pair Freq: %-15s \t\t(%s%f) \n', parm, char(insert), weightx(length(idx)-i+1));
+        % Add back in the above two lines to go back to add the Freq into the algorithm qualifiers   
+        num_distinctifiers = num_distinctifiers+1;
     end
-
     pos_word = strcat(pos_word,{'+'},insert,{'"'},parm,{'"'});
     insert = {''};
 end
