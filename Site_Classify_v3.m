@@ -44,10 +44,14 @@ prmpt = yes_or_no('Do you want to generate a new Dicitonary, or use the previous
 tic
 if prmpt == 0
 
-    load -text dictionary_features_file features;
-    load -text dictionary_classes_file class;
-    load -text dictionary_words_file dictionary_words;
-    load -text dictionary_pairs_file dictionary_pairs;
+    load -hdf5 dictionary_features_file.hdf5 features;
+    load -hdf5 dictionary_classes_file.hdf5 class;
+    load -hdf5 dictionary_words_file.hdf5 dictionary_words;
+    load -hdf5 dictionary_pairs_file.hdf5 dictionary_pairs;
+%    load -text dictionary_features_file.mat features;
+%    load -text dictionary_classes_file.mat class;
+%    load -text dictionary_words_file.mat dictionary_words;
+%    load -text dictionary_pairs_file.mat dictionary_pairs;
     
     fprintf('\nDictionary Loaded from ');
     fprintf(dictionary_features_file);
@@ -59,10 +63,8 @@ if prmpt == 0
 elseif prmpt == 1
     
     %%%%%%% ERROR HANDLING %%%%%%%%%
-    good_file = input("Input Good Challenge File: \n", "s");
-    
-    bad_file = input("Input Bad Challenge File: \n", "s");
-
+    good_file = input("Input Good Challenge File: ", "s");
+    bad_file = input("Input Bad Challenge File: ", "s");
     %%%%%%% remove " or ' %%%%%%%
 
     fprintf('\nProgram paused. Press enter to start the dictionary and feature extration.\n\n');
@@ -85,11 +87,18 @@ elseif prmpt == 1
     %  that is used in the analysis.
 
     [dictionary_words, dictionary_pairs] = dictionary_gen(good_file,bad_file);
+    fprintf('\nDictionary Complete.\n\n');
+
+    fprintf('Program paused. Press enter to continue actively extracting data.\n');
+    pause;
 
     %% ==================== Part 2: Feature Extraction ====================
     %  The following is used to extract feature set 
 
     [u,dw,dp,fw,fp] = extract_data(good_file, dictionary_words, dictionary_pairs);
+
+    fprintf('Program paused. Press enter to continue actively extracting data.\n');
+    pause;
 
     urls = u;
     dataset_words = dw;
@@ -101,6 +110,9 @@ elseif prmpt == 1
 
     [u,dw,dp,fw,fp] = extract_data(bad_file, dictionary_words, dictionary_pairs);
 
+    fprintf('Program paused. Press enter to continue saving the extracted data.\n');
+    pause;
+    
     class = horzcat(class, zeros(1, size(u,1)));
 
     urls = vertcat(urls,u);
@@ -111,10 +123,26 @@ elseif prmpt == 1
 
     features = vertcat(dataset_words,dataset_pairs,freq_words,freq_pairs);
     
-    save -text dictionary_features_file features
-    save -text dictionary_classes_file class
-    save -text dictionary_words_file dictionary_words
-    save -text dictionary_pairs_file dictionary_pairs
+    tic
+    save -hdf5 dictionary_classes_file.hdf5 class
+    toc
+    fprintf('\nClass file saved.\Program paused. Press enter to continue saving the extracted data.\n');
+    pause;
+    tic
+    save -hdf5 dictionary_words_file.hdf5 dictionary_words
+    toc
+    fprintf('\nDictionary Words file saved.\Program paused. Press enter to continue saving the extracted data.\n');
+    pause;
+    tic
+    save -hdf5 dictionary_pairs_file.hdf5 dictionary_pairs
+    toc
+    fprintf('\nDictionary Pairs file saved.\Program paused. Press enter to continue saving the extracted data.\n');
+    pause;  
+    tic
+    save -hdf5 dictionary_features_file.hdf5 features
+    toc
+    fprintf('\nFeature file saved.\Program paused. Press enter to continue saving the extracted data.\n');
+    pause;  
     
     % Print Stats
     fprintf('\nNumber of URLs in extracted dataset: ');

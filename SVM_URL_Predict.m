@@ -20,15 +20,6 @@ p = zeros(m, 1);
 pred = zeros(m, 1);
 
 
-
-idx = alphas > 0;
-model.X= X(idx,:);
-model.y= Y(idx);
-model.kernelFunction = kernelFunction;
-model.b= b;
-model.alphas= alphas(idx);
-model.w = ((alphas.*Y)'*X)';
-
 if strcmp(func2str(model.kernelFunction), 'linearKernel')
     % We can use the weights and bias directly if working with the 
     % linear kernel
