@@ -29,13 +29,13 @@ addpath(strrep(pwd, "/src/siteClassification", "/src/termExtraction"));
 addpath(strrep(pwd, "/src/siteClassification", "/src/siteRetrieval"));
 addpath(strcat(pwd, "/svm"));
 
-pathFeatures = strrep(pwd, "/src/siteClassification", "/doc/features");
-pathUrlTerms = strrep(pwd, "/src/siteClassification", "/doc/urlTerms");
-pathRawSiteData = strrep(pwd, "/src/siteClassification", "/doc/rawSiteData");
+pathFeatures = strrep(pwd, "/src/siteClassification", "/data/features");
+pathUrlTerms = strrep(pwd, "/src/siteClassification", "/data/urlTerms");
+pathRawSiteData = strrep(pwd, "/src/siteClassification", "/data/rawSiteData");
 
-eval_file = strrep(pwd, "/src/siteClassification", "/doc/rawSiteData/toEvaluate/URLs_4.url.out");
-eval_output_file = strrep(pwd, "/src/siteClassification", "/doc/rawSiteData/fitness/evalout.txt");
-search_string_out_file = strrep(pwd, "/src/siteClassification", "/doc/searchTerms/new_sstrings.txt");
+eval_file = strrep(pwd, "/src/siteClassification", "/data/rawSiteData/toEvaluate/URLs_4.url.out");
+eval_output_file = strrep(pwd, "/src/siteClassification", "/data/fitness/evalout.txt");
+search_string_out_file = strrep(pwd, "/src/siteClassification", "/data/searchTerms/new_sstrings.txt");
 
 % TODO: Fix all the code comment subheadings to remove all the SPAM whatnots
 
@@ -68,13 +68,13 @@ tic
 if prmpt == 0
     tic
     fprintf('\nDictionary Files Loaded: ');
-    load("-v7",strcat(pathFeatures,dictionary_features_file.binsev),"features");
+    load("-v7",strrep(pwd, "/src/siteClassification", "/data/features/dictionary_features_file.binsev"), "features")
     fprintf('\n     Successful Load from dictionary_features_file.binsev');
-    load("-v7",strcat(pathFeatures,dictionary_classes_file.binsev),"class");
+    load("-v7",strrep(pwd, "/src/siteClassification", "/data/features/dictionary_classes_file.binsev"), "class")
     fprintf('\n     Successful Load from dictionary_classes_file.binsev');
-    load("-v7",strcat(pathUrlTerms,dictionary_words_file.binsev),"dictionary_words");
+    load("-v7",strrep(pwd, "/src/siteClassification", "/data/urlTerms/dictionary_words_file.binsev"), "dictionary_words")
     fprintf('\n     Successful Load from dictionary_words_file.binsev');
-    load("-v7",strcat(pathUrlTerms,dictionary_pairs_file.binsev),"dictionary_pairs");
+    load("-v7",strrep(pwd, "/src/siteClassification", "/data/urlTerms/dictionary_pairs_file.binsev"), "dictionary_pairs")
     fprintf('\n     Successful Load from dictionary_pairs_file.binsev\n');
     
 % OLD CODE: Not accurate display of file we are loading from    
@@ -94,9 +94,12 @@ elseif prmpt == 1
     fprintf('\n');
     % TODO: %%%% ERROR HANDLING %%%%%%%%%
     %good_file = input("Input Good Challenge File: ", "s");
-    good_file = strcat(pathRawSiteData,'/Good_Challenges_List.out')
     %bad_file = input("Input Bad Challenge File: ", "s");
-    bad_file = strcat(pathRawSiteData,'/random_url_word_list.txt')
+
+    good_file = strcat(pathRawSiteData,'/goodBucket/Good_Challenges_List.out')
+    bad_file = strcat(pathRawSiteData,'/goodBucket/Good_Challenges_List.out')
+    %bad_file = strcat(pathRawSiteData,'/badBucket/random_url_word_list.txt')
+
     % TODO: %%%%%%% remove " or ' %%%%%%%
 
     % TEST POINT: Uncomment to Pause Here
@@ -167,13 +170,13 @@ elseif prmpt == 1
     
     tic
     fprintf('\n\nSaving Dictionary Files: \n')
-    save -mat7-binary dictionary_classes_file.binsev class
+    save("-mat7-binary", strrep(pwd, "/src/siteClassification", "/data/features/dictionary_classes_file.binsev"), "class")
     fprintf('\n     Successful Save to dictionary_classes_file.binsev');
-    save -mat7-binary dictionary_words_file.binsev dictionary_words
+    save("-mat7-binary", strrep(pwd, "/src/siteClassification", "/data/urlTerms/dictionary_words_file.binsev"), "dictionary_words")
     fprintf('\n     Successful Save to dictionary_words_file.binsev');
-    save -mat7-binary dictionary_pairs_file.binsev dictionary_pairs
+    save("-mat7-binary", strrep(pwd, "/src/siteClassification", "/data/urlTerms/dictionary_pairs_file.binsev"), "dictionary_pairs")
     fprintf('\n     Successful Save to dictionary_pairs_file.binsev');
-    save -mat7-binary dictionary_features_file.binsev features
+    save("-mat7-binary", strrep(pwd, "/src/siteClassification", "/data/features/dictionary_features_file.binsev"), "features")
     fprintf('\n     Successful Save to dictionary_features_file.binsev\n');
     toc
     pause;  
