@@ -12,11 +12,6 @@ gem 'sunspot_solr'
 
 gem 'sorcery'
 
-# Deploy with Capistrano
-gem 'capistrano'
-gem 'rvm-capistrano'
-gem 'capistrano-ext'
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
