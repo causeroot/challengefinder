@@ -1,0 +1,62 @@
+function [model, pred, accuracy, p] = trainSVM(regenModel = 0)
+
+%%%%%%%%% Add the required paths for the file functions and files in question %%%%%%%%%%%
+
+addpath(strrep(pwd, "/src/siteClassification", "/src/featureGeneration"));
+addpath(strrep(pwd, "/src/siteClassification", "/src/termExtraction"));
+addpath(strrep(pwd, "/src/siteClassification", "/src/siteRetrieval"));
+addpath(strcat(pwd, "/svm"));
+
+pathFeatures = strrep(pwd, "/src/siteClassification", "/data/features");
+pathUrlTerms = strrep(pwd, "/src/siteClassification", "/data/urlTerms");
+pathRawSiteData = strrep(pwd, "/src/siteClassification", "/data/rawSiteData");
+pathModel = strrep(pwd, "/src/siteClassification", "/data/svmModel");
+
+modelFile = strrep(pwd, "/src/siteClassification", "/data/svmModel/model.binsev");
+predFile = strrep(pwd, "/src/siteClassification", "/data/svmModel/pred.binsev");
+accuracyFile = strrep(pwd, "/src/siteClassification", "/data/svmModel/accuracy.binsev");
+pFile = strrep(pwd, "/src/siteClassification", "/data/svmModel/p.binsev");
+
+if regenModel == 1;
+    fprintf('\n===================Training Linear SVM for Site Classification===================\n')
+    fprintf('(this may take a bit)\n')
+
+    [urls, dataset_words, dataset_pairs, freq_words, freq_pairs] = extraction(regenModel)
+
+    tic
+
+    C = 0.1;
+
+    model = svmtrain(class', features');
+
+    tlv = rand(size(features',1),1);
+    [pred, accuracy, p] = svmpredict(tlv, features', model);
+
+    fprintf('\nTraining Accuracy: %f', mean(double(pred == class')) * 100);
+
+    fprintf('\n');
+    toc
+
+    tic
+    fprintf('\n\nSaving Dictionary Files: \n')
+    save("-mat7-binary", modelFile, "model")
+    fprintf('\n     Successful Save to model.binsev');
+    save("-mat7-binary", predFile, "pred")
+    fprintf('\n     Successful Save to pred.binsev');
+    save("-mat7-binary", accuracyFile, "accuracy")
+    fprintf('\n     Successful Save to accuracy.binsev');
+    save("-mat7-binary", pFile, "p")
+    fprintf('\n     Successful Save to p.binsev\n');
+    toc
+
+ elseif regenModel == 0
+    fprintf('\nModel Files Loaded: ');
+     load("-v7",modelFile,"model")
+     fprintf('\n     Successful Load from model.binsev');
+     load("-v7",predFile, "pred")
+     fprintf('\n     Successful Load from pred.binsev');
+     load("-v7",accuracyFile, "accuracy")
+     fprintf('\n     Successful Load from accuracy.binsev');
+     load("-v7",pFile, "p")
+     fprintf('\n     Successful Load from p.binsev\n');
+ end
