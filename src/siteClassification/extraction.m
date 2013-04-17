@@ -1,4 +1,8 @@
-function [urls, dataset_words, dataset_pairs, freq_words, freq_pairs] = extraction(regen = 0)
+
+function [class, dictionary_words, dictionary_pairs, features, urls] = extraction(regen = 0)
+
+% function [urls, dataset_words, dataset_pairs, freq_words, freq_pairs] = extraction(regen = 0)
+%function extraction(regen = 0)
 
 %%%%%%%%%%%%%%%%%%%%%% Website Classification with SVMs %%%%%%%%%%%%%%%%
 %
@@ -56,7 +60,7 @@ if regen == 0
     load("-v7",dictionaryWordsFile, "dictionary_words")
     fprintf('\n     Successful Load from dictionary_words_file.binsev');
     load("-v7",dictionaryPairsFile, "dictionary_pairs")
-    fprintf('\n     Successful Load from dictionary_pairs_file.binsev\n');
+    fprintf('\n     Successful Load from dictionary_pairs_file.binsev');
     load("-v7",urlsFile, "urls")
     fprintf('\n     Successful Load from urls_file.binsev\n');
     toc
@@ -66,10 +70,10 @@ elseif regen == 1
     fprintf('\n');
     %TODO: %%%% ERROR HANDLING %%%%%%%%%
 
-    good_file = strcat(pathRawSiteData,'/goodBucket/Good_Challenges_List.out')
+    good_file = strcat(pathRawSiteData,'/goodBucket/Good_Challenges_List.out');
     %Change this to the bad file, to speed up the run
-    %bad_file = strcat(pathRawSiteData,'/goodBucket/Good_Challenges_List.out')
-    bad_file = strcat(pathRawSiteData,'/badBucket/random_url_word_list.txt')
+    %bad_file = strcat(pathRawSiteData,'/goodBucket/Good_Challenges_List.out');
+    bad_file = strcat(pathRawSiteData,'/badBucket/random_url_word_list.txt');
 
     % TODO: %%%%%%% remove " or ' %%%%%%%
 
@@ -126,12 +130,12 @@ elseif regen == 1
     fprintf('\n     Successful Save to dictionary_pairs_file.binsev');
     save("-mat7-binary", featuresFile, "features")
     fprintf('\n     Successful Save to dictionary_features_file.binsev\n');
-    save("-mat7-binary", urlsFile, "features")
+    save("-mat7-binary", urlsFile, "urls")
     fprintf('\n     Successful Save to urls_file.binsev\n');
     toc
     pause;
 
-end
+end;
 
 fprintf('\n====================== Dictionary Complete and Loaded ===========================\n\n');
 
