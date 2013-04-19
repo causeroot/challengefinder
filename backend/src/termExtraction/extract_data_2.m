@@ -2,6 +2,9 @@ function [urls, dataset_words, dataset_pairs, freq_words, freq_pairs] = extract_
 
 % TODO: *** Need to describe what the file does here!!! ***
 
+addpath(regexprep(pwd,'/src/\w*','/data/rawSiteData/goodBucket'));
+addpath(regexprep(pwd,'/src/\w*','/data/rawSiteData/badBucket'));
+
 fprintf('\n============ Beginning Data Extraction for ')
 fprintf(filename)
 fprintf('==================\n');
