@@ -22,20 +22,21 @@ function [model, pred, accuracy, p] = trainSVM(regenModel = 0)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-addpath(strrep(pwd, "/src/svm", "/src/featureGeneration"));
-addpath(strrep(pwd, "/src/svm", "/src/termExtraction"));
-addpath(strrep(pwd, "/src/svm", "/src/siteRetrieval"));
-addpath(strcat(pwd, "/svm"));
+addpath(regexprep(pwd,'/src/\w*','/src/featureGeneration'));
+addpath(regexprep(pwd,'/src/\w*','/src/termExtraction'));
+addpath(regexprep(pwd,'/src/\w*','/src/siteRetrieval'));
+addpath(regexprep(pwd,'/src/\w*','/src/svm'));
+addpath(regexprep(pwd,'/src/\w*','/src/svm/svm'));
 
-pathFeatures = strrep(pwd, "/src/svm", "/data/features");
-pathUrlTerms = strrep(pwd, "/src/svm", "/data/urlTerms");
-pathRawSiteData = strrep(pwd, "/src/svm", "/data/rawSiteData");
-pathModel = strrep(pwd, "/src/svm", "/data/svmModel");
+pathFeatures = regexprep(pwd,'/src/\w*','/data/features');
+pathUrlTerms = regexprep(pwd,'/src/\w*','/data/urlTerms');
+pathRawSiteData = regexprep(pwd,'/src/\w*','/data/rawSiteData');
+pathModel = regexprep(pwd,'/src/\w*','/data/svmModel');
 
-modelFile = strrep(pwd, "/src/svm", "/data/svmModel/model.binsev");
-predFile = strrep(pwd, "/src/svm", "/data/svmModel/pred.binsev");
-accuracyFile = strrep(pwd, "/src/svm", "/data/svmModel/accuracy.binsev");
-pFile = strrep(pwd, "/src/svm", "/data/svmModel/p.binsev");
+modelFile = regexprep(pwd,'/src/\w*','/data/svmModel/model.binsev');
+predFile = regexprep(pwd,'/src/\w*','/data/svmModel/pred.binsev');
+accuracyFile = regexprep(pwd,'/src/\w*','/data/svmModel/accuracy.binsev');
+pFile = regexprep(pwd,'/src/\w*','/data/svmModel/p.binsev');
 
 if regenModel == 1;
     fprintf('\n===================Training Linear SVM for Site Classification===================\n')

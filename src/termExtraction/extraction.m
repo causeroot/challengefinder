@@ -22,24 +22,24 @@ function [class, dictionary_words, dictionary_pairs, features, urls] = extractio
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-addpath(strrep(pwd, "/src/termExtraction", "/src/featureGeneration"));
-addpath(strrep(pwd, "/src/termExtraction", "/src/termExtraction"));
-addpath(strrep(pwd, "/src/termExtraction", "/src/siteRetrieval"));
-addpath(strrep(pwd, "/src/termExtraction", "/src/svm"));
+addpath(regexprep(pwd,'/src/\w*','/src/featureGeneration'));
+addpath(regexprep(pwd,'/src/\w*','/src/termExtraction'));
+addpath(regexprep(pwd,'/src/\w*','/src/siteRetrieval'));
+addpath(regexprep(pwd,'/src/\w*','/src/svm'));
 
-pathFeatures = strrep(pwd, "/src/termExtraction", "/data/features");
-pathUrlTerms = strrep(pwd, "/src/termExtraction", "/data/urlTerms");
-pathRawSiteData = strrep(strrep(pwd, "/src/termExtraction", "/data/rawSiteData"), "/src/svm", "/data/rawSiteData");
+pathFeatures = regexprep(pwd,'/src/\w*','/data/features');
+pathUrlTerms = regexprep(pwd,'/src/\w*','/data/urlTerms');
+pathRawSiteData = regexprep(pwd,'/src/\w*','/data/rawSiteData');
 
-eval_file = strrep(pwd, "/src/termExtraction", "/data/rawSiteData/toEvaluate/URLs_4.url.out");
-eval_output_file = strrep(pwd, "/src/termExtraction", "/data/fitness/evalout.txt");
-search_string_out_file = strrep(pwd, "/src/termExtraction", "/data/searchTerms/new_sstrings.txt");
+eval_file = regexprep(pwd,'/src/\w*','/data/rawSiteData/toEvaluate/URLs_4.url.out');
+eval_output_file = regexprep(pwd,'/src/\w*','/data/fitness/evalout.txt');
+search_string_out_file = regexprep(pwd,'/src/\w*','/data/searchTerms/new_sstrings.txt');
 
-featuresFile = strrep(pwd, "/src/termExtraction", "/data/features/dictionary_features_file.binsev");
-classFile = strrep(pwd, "/src/termExtraction", "/data/features/dictionary_classes_file.binsev");
-dictionaryWordsFile = strrep(pwd, "/src/termExtraction", "/data/urlTerms/dictionary_words_file.binsev");
-dictionaryPairsFile = strrep(pwd, "/src/termExtraction", "/data/urlTerms/dictionary_pairs_file.binsev");
-urlsFile = strrep(pwd, "/src/termExtraction", "/data/urlTerms/urls_file.binsev");
+featuresFile = regexprep(pwd,'/src/\w*','/data/features/dictionary_features_file.binsev');
+classFile = regexprep(pwd,'/src/\w*','/data/features/dictionary_classes_file.binsev');
+dictionaryWordsFile = regexprep(pwd,'/src/\w*','/data/urlTerms/dictionary_words_file.binsev');
+dictionaryPairsFile = regexprep(pwd,'/src/\w*','/data/urlTerms/dictionary_pairs_file.binsev');
+urlsFile = regexprep(pwd,'/src/\w*','/data/urlTerms/urls_file.binsev');
 
 %TODO: %%%% ERROR HANDLING %%%%%%%%%
 good_file = strcat(pathRawSiteData,'/goodBucket/Good_Challenges_List.out');
@@ -86,12 +86,15 @@ elseif regen == 1
     %  The following is used to generate the dictionary of words and word pairs
     %  that is used in the analysis.
 
-    [dictionary_words, dictionary_pairs] = dictionary_gen(good_file,bad_file);
+    %[dictionary_words, dictionary_pairs] = dictionary_gen(good_file,bad_file);
+
+     [dictionary_words, dictionary_pairs] = dictionary_gen('/Users/Eilmarith/Desktop/ChallengeFinder/data/rawSiteData/goodBucket/Good_Challenges_List.out','/Users/Eilmarith/Desktop/ChallengeFinder/data/rawSiteData//badBucket/random_url_word_list.txt');
+
 
     %% ==================== Part 2: Feature Extraction ====================
     %  The following is used to extract feature set
 
-    [u,dw,dp,fw,fp] = extract_data_2(good_file, dictionary_words, dictionary_pairs);
+    [u,dw,dp,fw,fp] = extract_data_2('/Users/Eilmarith/Desktop/ChallengeFinder/data/rawSiteData/goodBucket/Good_Challenges_List.out', dictionary_words, dictionary_pairs);
 
     urls = u;
     dataset_words = dw;
