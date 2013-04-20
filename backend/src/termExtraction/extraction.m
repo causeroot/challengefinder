@@ -58,9 +58,6 @@ bad_file =  strcat(pathRawSiteData,'/',badFileName);
 fprintf('\n\n======================= Starting Site Classification ======================\n');
 fprintf('\n')
 
-good_file = '';
-bad_file = '';
-
 %tic
 %if regen == 0
 %    tic
