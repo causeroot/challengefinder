@@ -93,13 +93,13 @@ bad_file = '';
 
     %[dictionary_words, dictionary_pairs] = dictionary_gen(good_file,bad_file);
 
-     [dictionary_words, dictionary_pairs] = dictionary_gen('/Users/Eilmarith/Desktop/challengefinder/backend/data/rawSiteData/goodBucket/Good_Challenges_List.out','/Users/Eilmarith/Desktop/challengefinder/backend/data/rawSiteData/badBucket/random_url_word_list.txt');
+     [dictionary_words, dictionary_pairs] = dictionary_gen(good_file,bad_file);
 
 
     %% ==================== Part 2: Feature Extraction ====================
     %  The following is used to extract feature set
 
-    [u,dw,dp,fw,fp] = extract_data_2('/Users/Eilmarith/Desktop/challengefinder/backend/data/rawSiteData/goodBucket/Good_Challenges_List.out', dictionary_words, dictionary_pairs);
+    [u,dw,dp,fw,fp] = extract_data_2(good_file, dictionary_words, dictionary_pairs);
 
     urls = u;
     dataset_words = dw;
@@ -109,7 +109,7 @@ bad_file = '';
 
     class = ones(1,size(u,1));
 
-    [u,dw,dp,fw,fp] = extract_data_2('/Users/Eilmarith/Desktop/challengefinder/backend/data/rawSiteData/badBucket/random_url_word_list.txt', dictionary_words, dictionary_pairs);
+    [u,dw,dp,fw,fp] = extract_data_2(bad_file, dictionary_words, dictionary_pairs);
 
 
     class = horzcat(class, zeros(1, size(u,1)));
