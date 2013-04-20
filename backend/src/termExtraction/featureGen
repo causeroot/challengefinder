@@ -1,4 +1,7 @@
-#!/usr/local/bin/octave -qf
+#!/usr/local/bin/octave -q
 
-[class, dictionary_words, dictionary_pairs, features, urls] = extraction(classFolder,goodFileName,badFileName);
+args = argv();
+
+# Calling extraction with class, goodFile and badFile
+extraction(args{1}, args{2}, args{3});
 
