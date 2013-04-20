@@ -1,5 +1,5 @@
 #!/usr/local/bin/octave -qf
 
-function classify();
+classify();
 
 
