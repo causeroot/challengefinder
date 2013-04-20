@@ -1,4 +1,4 @@
-function [model, pred, accuracy, p] = trainSVM(regenModel = 0)
+function [model, pred, accuracy, p] = trainSVM(class, features)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%% SVM Training %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -41,11 +41,11 @@ pFile = regexprep(pwd,'/src/\w*','/data/svmModel/p.binsev');
 % TODO: Write in a clause here where svmTrain
 
 
-if regenModel == 1;
+%if regenModel == 1;
     fprintf('\n===================Training Linear SVM for Site Classification===================\n')
     fprintf('(this may take a bit)\n')
 
-    [class, dictionary_words, dictionary_pairs, features, urls] = extraction(regenModel);
+    %[class, dictionary_words, dictionary_pairs, features, urls] = extraction(regenModel);
     tic
 
     C = 0.1;
@@ -72,14 +72,14 @@ if regenModel == 1;
     fprintf('\n     Successful Save to p.binsev\n');
     toc
 
- elseif regenModel == 0
-    fprintf('\nModel Files Loaded: ');
-     load("-v7",modelFile,"model")
-     fprintf('\n     Successful Load from model.binsev');
-     load("-v7",predFile, "pred")
-     fprintf('\n     Successful Load from pred.binsev');
-     load("-v7",accuracyFile, "accuracy")
-     fprintf('\n     Successful Load from accuracy.binsev');
-     load("-v7",pFile, "p")
-     fprintf('\n     Successful Load from p.binsev\n');
- end
+% elseif regenModel == 0
+%    fprintf('\nModel Files Loaded: ');
+%     load("-v7",modelFile,"model")
+%     fprintf('\n     Successful Load from model.binsev');
+%     load("-v7",predFile, "pred")
+%     fprintf('\n     Successful Load from pred.binsev');
+%     load("-v7",accuracyFile, "accuracy")
+%     fprintf('\n     Successful Load from accuracy.binsev');
+%     load("-v7",pFile, "p")
+%     fprintf('\n     Successful Load from p.binsev\n');
+% end
