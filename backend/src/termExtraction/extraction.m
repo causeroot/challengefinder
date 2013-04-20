@@ -1,5 +1,4 @@
-
-function [class, dictionary_words, dictionary_pairs, features, urls] = extraction(regen = 0)
+function [class, dictionary_words, dictionary_pairs, features, urls] = extraction(classFolder,goodFileName,badFileName)
 
 % function [urls, dataset_words, dataset_pairs, freq_words, freq_pairs] = extraction(regen = 0)
 % function extraction(regen = 0)
@@ -22,6 +21,8 @@ function [class, dictionary_words, dictionary_pairs, features, urls] = extractio
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+BasePath = regexprep(pwd,'/src/[\w/]*','');
+
 addpath(regexprep(pwd,'/src/\w*','/src/featureGeneration'));
 addpath(regexprep(pwd,'/src/\w*','/src/termExtraction'));
 addpath(regexprep(pwd,'/src/\w*','/src/siteRetrieval'));
@@ -29,7 +30,7 @@ addpath(regexprep(pwd,'/src/\w*','/src/svm'));
 
 pathFeatures = regexprep(pwd,'/src/\w*','/data/features');
 pathUrlTerms = regexprep(pwd,'/src/\w*','/data/urlTerms');
-pathRawSiteData = regexprep(pwd,'/src/\w*','/data/rawSiteData');
+pathRawSiteData = strcat(BasePath,'/data/rawSiteData/',classFolder);
 
 eval_file = regexprep(pwd,'/src/\w*','/data/rawSiteData/toEvaluate/URLs_4.url.out');
 eval_output_file = regexprep(pwd,'/src/\w*','/data/fitness/evalout.txt');
@@ -39,13 +40,17 @@ featuresFile = regexprep(pwd,'/src/\w*','/data/features/dictionary_features_file
 classFile = regexprep(pwd,'/src/\w*','/data/features/dictionary_classes_file.binsev');
 dictionaryWordsFile = regexprep(pwd,'/src/\w*','/data/urlTerms/dictionary_words_file.binsev');
 dictionaryPairsFile = regexprep(pwd,'/src/\w*','/data/urlTerms/dictionary_pairs_file.binsev');
-urlsFile = regexprep(pwd,'/src/\w*','/data/urlTerms/urls_file.binsev');
+urlsFile = regexprep(pwd,'/src/\w*','/data/urlTerms/urls_file.binsev'); % Delete
+good_file = strcat(pathRawSiteData,'/',goodFileName);
+bad_file =  strcat(pathRawSiteData,'/',badFileName);
 
 %TODO: %%%% ERROR HANDLING %%%%%%%%%
-good_file = strcat(pathRawSiteData,'/goodBucket/Good_Challenges_List.out');
+%TODO: %%%% Make the good & bad files passable Vars %%%%%%%%%
+% good_file = strcat(pathRawSiteData,'/goodBucket/Good_Challenges_List.out');
+% good_file = strcat(pathRawSiteData,'/simpleChallenge/goodChallengesList.siteWords');
 % Change this to the bad file, to speed up the run
-% bad_file = strcat(pathRawSiteData,'/goodBucket/Good_Challenges_List.out');
-bad_file = strcat(pathRawSiteData,'/badBucket/random_url_word_list.txt');
+% bad_file = strcat(pathRawSiteData,'/simpleChallenge/Good_Challenges_List.out');
+% bad_file = strcat(pathRawSiteData,'/simpleChallenge/badChallengesList.siteWords');
 % TODO: %%%%%%% remove " or ' %%%%%%%
 
 % TODO: Fix all the code comment subheadings to remove all the SPAM whatnots
@@ -56,23 +61,23 @@ fprintf('\n')
 good_file = '';
 bad_file = '';
 
-tic
-if regen == 0
-    tic
-    fprintf('\nDictionary Files Loaded: ');
-    load("-v7",featuresFile,"features")
-    fprintf('\n     Successful Load from dictionary_features_file.binsev');
-    load("-v7",classFile, "class")
-    fprintf('\n     Successful Load from dictionary_classes_file.binsev');
-    load("-v7",dictionaryWordsFile, "dictionary_words")
-    fprintf('\n     Successful Load from dictionary_words_file.binsev');
-    load("-v7",dictionaryPairsFile, "dictionary_pairs")
-    fprintf('\n     Successful Load from dictionary_pairs_file.binsev');
-    load("-v7",urlsFile, "urls")
-    fprintf('\n     Successful Load from urls_file.binsev\n');
-    toc
-
-elseif regen == 1
+%tic
+%if regen == 0
+%    tic
+%    fprintf('\nDictionary Files Loaded: ');
+%    load("-v7",featuresFile,"features")
+%    fprintf('\n     Successful Load from dictionary_features_file.binsev');
+%    load("-v7",classFile, "class")
+%    fprintf('\n     Successful Load from dictionary_classes_file.binsev');
+%    load("-v7",dictionaryWordsFile, "dictionary_words")
+%    fprintf('\n     Successful Load from dictionary_words_file.binsev');
+%    load("-v7",dictionaryPairsFile, "dictionary_pairs")
+%    fprintf('\n     Successful Load from dictionary_pairs_file.binsev');
+%    load("-v7",urlsFile, "urls")
+%    fprintf('\n     Successful Load from urls_file.binsev\n');
+%    toc
+%
+%elseif regen == 1
 
     fprintf('\n');
 
@@ -137,7 +142,7 @@ elseif regen == 1
     toc
     pause;
 
-end;
+%end;
 
 fprintf('\n====================== Dictionary Complete and Loaded ===========================\n\n');
 
