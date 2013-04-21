@@ -11,9 +11,12 @@ Lifecycle of a URL list:
 Taking 'good_urls' as an example, here is what happens during a full cycle
 of Challenge Finder.
 
-./generateWordList.sh modelName/classPlusDescriptiveWords
-./generateFeatures.sh modelName class1PlusDescriptiveWords.siteWords class2PlusDescriptiveWords.siteWords
+#TODO(roux): make tab completion work for model names and class files.
+./generateWordList modelName/classPlusDescriptiveWords
+./generateFeatures modelName class1PlusDescriptiveWords.siteWords class2PlusDescriptiveWords.siteWords
 createFeatureSets
+./trainSVM
+
 
 trainSvm
 

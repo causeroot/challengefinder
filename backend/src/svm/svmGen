@@ -1,3 +1,9 @@
-#!/usr/local/bin/octave -qf
+#!/usr/local/bin/octave -q
 
-[model, pred, accuracy, p] = trainSVM(class, features);
+BASE_PATH = pwd;
+featuresFile = strcat(pwd,'/data/features/dictionary_features_file.binsev');
+classFile = strcat(pwd,'/data/features/dictionary_classes_file.binsev');
+load("-v7",featuresFile,"features")
+load("-v7",classFile, "class")
+
+trainSVM(class, features);
