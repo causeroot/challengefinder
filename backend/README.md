@@ -16,6 +16,10 @@ of Challenge Finder.
 ./generateFeatures modelName class1PlusDescriptiveWords.siteWords class2PlusDescriptiveWords.siteWords
 createFeatureSets
 ./trainSVM
+./generateSearchStrings
+#TODO(luis): remove duplicates from the search string
+./webSearch
+
 
 
 trainSvm
@@ -50,3 +54,13 @@ data/urls/modelName contains a file for each class used by the classifier model
 data/rawSiteData contains input for generateFeatures in same per-model structure
 
 (we're going to move to data containing file structure per model)
+
+Build instructions:
+===================
+
+To build webSearch go to `backend/src/siteRetrieval/webSearch` and run:
+`gcc -g webSearch.c -lssl -lcrypto -o webSearch`
+
+To build the octave bindings for svm start octave in `backend/libsvm-3.17/matlab`
+then from the octave command line run `make`
+
