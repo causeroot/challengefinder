@@ -1,0 +1,3 @@
+#!/bin/bash
+
+./src/siteRetrieval/webSearch/webSearch ./data/searchTerms/new_sstrings.txt
