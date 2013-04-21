@@ -1,4 +1,5 @@
 #!/usr/local/bin/octave -q
+#WTF? FIXME
 
 BASE_PATH = pwd;
 modelFile = strcat(BASE_PATH, "/data/svmModel/model.binsev");
@@ -10,7 +11,7 @@ load("-v7",modelFile,"model")
 load("-v7",dictionaryWordsFile, "dictionary_words")
 load("-v7",dictionaryPairsFile, "dictionary_pairs")
 
-function genSearchStrings();
+genSearchStrings();
 
 tic
 pos_word = regexprep(pos_word,'_','+');

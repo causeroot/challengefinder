@@ -23,7 +23,9 @@ createFeatureSets
 # Note fileName is assumed to have .res extension which should NOT be included 
 # when calling jsonStrip.
 
+# Insert classification step here
 # Insert Human here (they look at urls from data/searchTerms/fileName.url).
+
 ./merger data/urls/modelName/good_urls data/searchTerms/new_urls
 
 
