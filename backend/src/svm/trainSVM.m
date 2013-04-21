@@ -60,17 +60,17 @@ pFile = regexprep(pwd,'/src/\w*','/data/svmModel/p.binsev');
     fprintf('\n');
     toc
 
-    tic
-    fprintf('\n\nSaving Dictionary Files: \n')
-    save("-mat7-binary", modelFile, "model")
-    fprintf('\n     Successful Save to model.binsev');
-    save("-mat7-binary", predFile, "pred")
-    fprintf('\n     Successful Save to pred.binsev');
-    save("-mat7-binary", accuracyFile, "accuracy")
-    fprintf('\n     Successful Save to accuracy.binsev');
-    save("-mat7-binary", pFile, "p")
-    fprintf('\n     Successful Save to p.binsev\n');
-    toc
+%    tic
+%    fprintf('\n\nSaving Dictionary Files: \n')
+%    save("-mat7-binary", modelFile, "model")
+%    fprintf('\n     Successful Save to model.binsev');
+%    save("-mat7-binary", predFile, "pred")
+%    fprintf('\n     Successful Save to pred.binsev');
+%    save("-mat7-binary", accuracyFile, "accuracy")
+%    fprintf('\n     Successful Save to accuracy.binsev');
+%    save("-mat7-binary", pFile, "p")
+%    fprintf('\n     Successful Save to p.binsev\n');
+%    toc
 
 % elseif regenModel == 0
 %    fprintf('\nModel Files Loaded: ');
