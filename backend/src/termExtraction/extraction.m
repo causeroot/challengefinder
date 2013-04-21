@@ -137,7 +137,6 @@ fprintf('\n')
     save("-mat7-binary", urlsFile, "urls")
     fprintf('\n     Successful Save to urls_file.binsev\n');
     toc
-    pause;
 
 %end;
 
