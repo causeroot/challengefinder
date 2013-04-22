@@ -14,16 +14,16 @@ function  [eval_urls,p,pred] = classify(eval_file,eval_output_file,model,diction
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-addpath(regexprep(pwd,'/src/\w*','/src/featureGeneration'));
-addpath(regexprep(pwd,'/src/\w*','/src/termExtraction'));
-addpath(regexprep(pwd,'/src/\w*','/src/siteRetrieval'));
-addpath(regexprep(pwd,'/src/\w*','/src/svm'));
-addpath(regexprep(pwd,'/src/\w*','/libsvm-3.17/matlab'));
+%addpath(regexprep(pwd,'/src/\w*','/src/featureGeneration'));
+%addpath(regexprep(pwd,'/src/\w*','/src/termExtraction'));
+%addpath(regexprep(pwd,'/src/\w*','/src/siteRetrieval'));
+%addpath(regexprep(pwd,'/src/\w*','/src/svm'));
+%addpath(regexprep(pwd,'/src/\w*','/libsvm-3.17/matlab'));
 
-pathFeatures = regexprep(pwd,'/src/\w*','/data/features');
-pathUrlTerms = regexprep(pwd,'/src/\w*','/data/urlTerms');
-pathRawSiteData = regexprep(pwd,'/src/\w*','/data/rawSiteData');
-pathModel = regexprep(pwd,'/src/\w*','/data/svmModel');
+%pathFeatures = regexprep(pwd,'/src/\w*','/data/features');
+%pathUrlTerms = regexprep(pwd,'/src/\w*','/data/urlTerms');
+%pathRawSiteData = regexprep(pwd,'/src/\w*','/data/rawSiteData');
+%pathModel = regexprep(pwd,'/src/\w*','/data/svmModel');
 
 %modelFile = regexprep(pwd,'/src/\w*','/data/svmModel/model.binsev');
 %predFile = regexprep(pwd,'/src/\w*','/data/svmModel/pred.binsev');

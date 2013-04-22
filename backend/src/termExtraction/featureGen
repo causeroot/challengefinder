@@ -2,6 +2,30 @@
 
 args = argv();
 
+BASE_PATH = strcat(pwd,"/data/",args{1});
+
 # Calling extraction with class, goodFile and badFile
-extraction(args{1}, args{2}, args{3});
+
+pathRawSiteData = strcat(BasePath,'/rawSiteData/');
+good_file = strcat(BasePath,'/rawSiteData/goodBucket/',goodFileName);
+bad_file =  strcat(BasePath,'/rawSiteData/badBucket/',badFileName);
+
+[class, dictionary_words, dictionary_pairs, features, urls] = extraction(good_file,bad_file);
+
+tic
+fprintf('\n\nSaving Dictionary Files: \n')
+save("-mat7-binary", classFile, "class")
+fprintf('\n     Successful Save to dictionary_classes_file.binsev');
+save("-mat7-binary", dictionaryWordsFile, "dictionary_words")
+fprintf('\n     Successful Save to dictionary_words_file.binsev');
+save("-mat7-binary", dictionaryPairsFile, "dictionary_pairs")
+fprintf('\n     Successful Save to dictionary_pairs_file.binsev');
+save("-mat7-binary", featuresFile, "features")
+fprintf('\n     Successful Save to dictionary_features_file.binsev\n');
+save("-mat7-binary", urlsFile, "urls")
+fprintf('\n     Successful Save to urls_file.binsev\n');
+toc
+
+
+
 
