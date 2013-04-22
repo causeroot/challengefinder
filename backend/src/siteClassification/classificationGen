@@ -5,7 +5,18 @@ modelFile = strcat(BASE_PATH, "/data/svmModel/model.binsev");
 dictionaryWordsFile = strcat(BASE_PATH, "/data/urlTerms/dictionary_words_file.binsev");
 dictionaryPairsFile = strcat(BASE_PATH, "/data/urlTerms/dictionary_pairs_file.binsev");
 search_string_out_file = strcat(BASE_PATH, "/data/searchTerms/new_sstrings.txt");
+eval_output_file = strcat(BASE_PATH, "/data/fitness/evalout.txt");
+eval_file = regexprep(pwd,'/src/\w*','/data/rawSiteData/toEvaluate/URLs_4.url.out');
 
-classify();
+[eval_urls,p,pred] = classify(eval_file,model,dictionary_words, dictionary_pairs);
+
+fileID = fopen(eval_output_file,'w');
+for i = 1:size(eval_urls,1)
+    fprintf(fileID,"%s",char(eval_urls(i)));
+    fprintf(fileID," ");
+    fprintf(fileID,"%6.4f  %d",p(i),pred(i));
+    fprintf(fileID," \n");
+end
+fclose(fileID);
 
 
