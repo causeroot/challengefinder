@@ -1,2 +1,2 @@
 #!/bin/bash
-./src/siteClassification/classificationGen
+./src/siteClassification/classificationGen $1

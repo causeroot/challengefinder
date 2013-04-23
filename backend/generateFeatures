@@ -1,4 +1,3 @@
 #!/bin/bash
-cd src/termExtraction
-./featureGen $1 $2 $3
-cd -
+./featureGen $1
+
