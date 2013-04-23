@@ -88,8 +88,8 @@ for i = 1:num_distinctifiers
     insert = {''};
 end
 
-fprintf('Newly Search String Paramenters Written to: %s\n',char(search_string_out_file));
-tic
+%fprintf('Newly Search String Paramenters Written to: %s\n',char(search_string_out_file));
+%tic
 pos_word = regexprep(pos_word,'_','+');
 %fileID2 = fopen(search_string_out_file,'w');
 %fprintf(fileID2,'%s',char(pos_word));

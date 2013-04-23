@@ -1,4 +1,4 @@
-function  [eval_urls,p,pred] = classify(eval_file,eval_output_file,model,dictionary_words, dictionary_pairs)
+function  [eval_urls,p,pred] = classify(eval_file,model,dictionary_words, dictionary_pairs)
 
 %%%%%%%%%%%%%%%%%%%%%% Website Classification with SVMs %%%%%%%%%%%%%%%%
 %
@@ -54,10 +54,10 @@ tlv = ones(size(f',1),1);
 [pred, accuracy, p] = svmpredict(tlv, f', model);
 
 toc
-fprintf('======================== Classifying New URLs Complete ===================\n\n');
-fprintf('============================ Writing Output Files ========================\n');
-fprintf('Processed %s URL Classification to %s\n', char(eval_file),char(eval_output_file));
-fprintf('Number of (likely) new Challenges: %i\n', sum(pred));
+%fprintf('======================== Classifying New URLs Complete ===================\n\n');
+%fprintf('============================ Writing Output Files ========================\n');
+%fprintf('Processed %s URL Classification to %s\n', char(eval_file),char(eval_output_file));
+%fprintf('Number of (likely) new Challenges: %i\n', sum(pred));
 
 % TODO: Remove Code Soon
 %
@@ -72,6 +72,6 @@ fprintf('Number of (likely) new Challenges: %i\n', sum(pred));
 %fclose(fileID);
 %toc
 
-fprintf('==========================================================================\n');
-fprintf('=================================== DONE!!! ==============================\n');
-fprintf('==========================================================================\n\n');
+%fprintf('==========================================================================\n');
+%fprintf('=================================== DONE!!! ==============================\n');
+%fprintf('==========================================================================\n\n');

@@ -12,27 +12,27 @@ Taking 'good_urls' as an example, here is what happens during a full cycle
 of Challenge Finder.
 
 #TODO(roux): make tab completion work for model names and class files.
-./generateWordList modelName/classPlusDescriptiveWords
-./generateFeatures modelName class1PlusDescriptiveWords.siteWords class2PlusDescriptiveWords.siteWords
+./generateWordList className
+./generateFeatures className
+# I'm not sure what's going on with createFeatureSets ...
 createFeatureSets
-./trainSVM
-./generateSearchStrings
-#TODO(luis): remove duplicates from the search string
-./webSearch
+./generateSVM className
+./generateSearchStrings className
+#TODO(luis): Clean-up code & remove commented old code
+./webSearch className
 ./jsonStrip data/searchTerms/fileName
 # Note fileName is assumed to have .res extension which should NOT be included 
 # when calling jsonStrip.
-
+./generateWordList modelName/classPlusDescriptiveWords4
 # Insert classification step here
+./generateClassification className
 # Insert Human here (they look at urls from data/searchTerms/fileName.url).
-
 ./merger data/urls/modelName/good_urls data/searchTerms/new_urls
 
 
 
-trainSvm
 
-siteClassify
+# TODO: Write in exception handling if the helper referenced files don't exist
 
 webSearchFromCurrentModel
 # generateSearchString
