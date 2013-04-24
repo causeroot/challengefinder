@@ -1,0 +1,3 @@
+#!/bin/bash
+
+./src/siteClassification/classificationGen $1
