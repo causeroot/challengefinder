@@ -12,10 +12,8 @@ Taking 'good_urls' as an example, here is what happens during a full cycle
 of Challenge Finder.
 
 #TODO(roux): make tab completion work for model names and class files.
-./generateWordList className
+./generateWordList className fileName
 ./generateFeatures className
-# I'm not sure what's going on with createFeatureSets ...
-createFeatureSets
 ./generateSVM className
 ./generateSearchStrings className
 #TODO(luis): Clean-up code & remove commented old code

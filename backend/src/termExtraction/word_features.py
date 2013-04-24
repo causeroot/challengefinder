@@ -12,15 +12,16 @@ from itertools import izip, tee
 import sys, os
 
 # TODO: Fix these paths below:
+if len(sys.argv) < 2:
+  sys.stderr.write('Usage: %s filename filename\n' %sys.argv[0] )
+  sys.exit(1)
 
-INPUT_PATH = strcat('data/',sys.argv[0],'/urls/')
-OUPUT_PATH = strcat('data/',sys.argv[0],'/siteData/')
+INPUT_PATH = 'data/' + sys.argv[1] + '/urls/'
+OUPUT_PATH = 'data/' + sys.argv[1] + '/rawSiteData/'
 
-goodUrlFile =
-badUrlFile =
-
-goodOutputFileName = 'goodChallengesList.sitewords'
-badOutputFileName = 'badChallengesList.sitewords'
+if not os.path.exists(INPUT_PATH + sys.argv[2]):
+  sys.stderr.write('ERROR: URL list %s was not found!\n' % sys.argv[2])
+  sys.exit(1)
 
 def pairwise(iterable):
     "s -> (s0,s1), (s1,s2), (s2, s3), ..."
@@ -33,16 +34,8 @@ corpus_unique_words = set()
 corpus_pairs = list()
 corpus_unique_pairs = set()
 
-if len(sys.argv) < 2:
-    sys.stderr.write('Usage: %s filename' %sys.argv[0] )
-    sys.exit(1)
-
-# if not os.path.exists(INPUT_PATH + sys.argv[1]):
-#    sys.stderr.write('ERROR: Database %s was not found!',sys.argv[1])
-#    sys.exit(1)
-
-urlfile = open(INPUT_PATH + sys.argv[1])
-outfile = open(OUPUT_PATH + sys.argv[1]+'.siteWords','w')
+urlfile = open(INPUT_PATH + sys.argv[2])
+outfile = open(OUPUT_PATH + sys.argv[2]+'.siteWords','w')
 urldata = {}
 #svmfile = open('svminputfile.tmp','w')
 
