@@ -26,7 +26,8 @@ createFeatureSets
 ./generateWordList modelName/classPlusDescriptiveWords4
 # Insert classification step here
 ./generateClassification className
-# Insert Human here (they look at urls from data/searchTerms/fileName.url).
+# Insert Human here (they look at urls from data/searchTerms/fileName.url)
+
 ./merger data/urls/modelName/good_urls data/searchTerms/new_urls
 
 
