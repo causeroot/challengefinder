@@ -14,8 +14,6 @@ of Challenge Finder.
 #TODO(roux): make tab completion work for model names and class files.
 ./generateWordList className fileName
 ./generateFeatures className
-# I'm not sure what's going on with createFeatureSets ...
-createFeatureSets
 ./generateSVM className
 ./generateSearchStrings className
 #TODO(luis): Clean-up code & remove commented old code
