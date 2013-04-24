@@ -11,8 +11,13 @@ import commands
 from itertools import izip, tee
 import sys, os
 
+# TODO: Fix these paths below:
+
 INPUT_PATH = "data/urls/"
 OUPUT_PATH = "data/rawSiteData/"
+
+#INPUT_PATH = "data/urls/"
+#OUPUT_PATH = "data/rawSiteData/"
 
 def pairwise(iterable):
     "s -> (s0,s1), (s1,s2), (s2, s3), ..."

@@ -22,6 +22,5 @@ fprintf(fileID2,'%s',char(pos_word));
 fclose(fileID2);
 toc
 fprintf('Newly Search String Paramenters Written to:\n %s\n',char(search_string_out_file));
-
 fprintf('=============== Optimal Search String Parameter Data Written =============\n\n\n');
 
