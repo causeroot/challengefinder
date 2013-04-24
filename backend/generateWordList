@@ -1,2 +1,2 @@
 #!/bin/bash
-python src/termExtraction/word_features.py $1
+python src/termExtraction/word_features.py $1 $2
