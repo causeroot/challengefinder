@@ -1,6 +1,21 @@
-<h1>Listing challenges</h1>
+<div>
+	<h1 class="page-header">// CHALLENGES</h1>
 
+	<div class="page-header" id="login">
+		<% if current_user %>
+     		<%= link_to "Edit Profile", edit_user_path(current_user.id) %>
+     		<%= link_to "LOGOUT", :logout %>
+			<% else %>
+				<%= link_to "REGISTER", new_user_path %> &nbsp; or
+				<%= link_to "LOGIN", :login %>
+			<% end %>  
+	</div>
+</div>
+
+<div class="row">
 <%= paginate @challenges %>
+</div>
+
 <% @challenges.each do |challenge| %>
 	<div class="row">
 		<div class="span2">
@@ -9,8 +24,10 @@
 		</div>
 		<div class="span4">
 			<h5><%= challenge.name %></h5>
-			<p><%= challenge.description %></p>
+			<p><%=h truncate(challenge.description, :length => 220) %></p>
 			<%= link_to 'Learn More', challenge %>
+			
+	
 		</div>
 		<div class="span3">
 			<p><strong>Award:</strong> <%= challenge.award %></p>

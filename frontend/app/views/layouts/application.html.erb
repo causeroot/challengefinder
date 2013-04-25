@@ -14,6 +14,7 @@
   <%= render :partial => "layouts/navbar" %>
     
   <div class="container">
+  <div class="page-border">
   	<div class="row">
   		<div class="span12">
   			<p class="notice"><%= notice %></p>
@@ -29,7 +30,34 @@
       </div>
     </div>
   </div>
-	<div class="footer"> Copyright 2012 ChallengeFinder </div>
+  </div>
+
+<!-- Start of Footer -->
+	
+	<footer>
+	
+     <ul class="footer">
+       <li><%= link_to 'Challenges', challenges_path %></li>
+       <li><%= link_to 'About Us', about_path %></li>				
+			<% if current_user %>
+     		<li><%= link_to "Edit Profile", edit_user_path(current_user.id) %></li>
+     		<li><%= link_to "Logout", :logout %></li>
+			<% else %>
+				<li><%= link_to "Register", new_user_path %></li>
+				<li><%= link_to "Login", :login %></li>
+			<% end %>     
+     </ul>
+		<%= form_tag search_challenges_path, :method => :get, :class => "navbar-search pull-right" do %>
+		<p>
+			<%= text_field_tag :q, params[:q], :class => "search-query", :placeholder => "Search" %>
+		</p>
+		<% end %>     
+  	
+  	<div class="footer"> Copyright 2012 ChallengeFinder </div>
+  	</footer>
+
+<!-- End of Footer -->
+  	
 </body>
 </html>
 
