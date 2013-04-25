@@ -17,7 +17,7 @@ if len(sys.argv) < 2:
   sys.exit(1)
 
 INPUT_PATH = 'data/' + sys.argv[1] + '/urls/'
-OUPUT_PATH = 'data/' + sys.argv[1] + '/rawSiteData/'
+OUPUT_PATH = 'data/' + sys.argv[1] + '/rawSiteData/toEvaluate/'
 
 if not os.path.exists(INPUT_PATH + sys.argv[2]):
   sys.stderr.write('ERROR: URL list %s was not found!\n' % sys.argv[2])
@@ -35,9 +35,11 @@ corpus_pairs = list()
 corpus_unique_pairs = set()
 
 urlfile = open(INPUT_PATH + sys.argv[2])
-outfile = open(OUPUT_PATH + sys.argv[2]+'.siteWords','w')
+outfile = open(OUPUT_PATH + sys.argv[2][:-4]+'.siteWords','w')
 urldata = {}
 #svmfile = open('svminputfile.tmp','w')
+
+
 
 
 for url in urlfile:

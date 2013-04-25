@@ -33,19 +33,19 @@ full cycle of Challenge Finder.
 # TODO(roux): make tab completion work for model names and class files.
 # TODO: Write in exception handling if the helper referenced files don't exist
 
-./generateWordList className goodUrlsFile
-./generateWordList className badUrlsFile
+./generateWordList className goodList.url
+./generateWordList className badList.url
 ./generateFeatures className
 ./generateSVM className
 ./generateSearchStrings className
 ./webSearch className
-./jsonStrip filePath.res filePath.url
-# Note: This should include the data/* full path to the filename that has
-# the indicated extension when calling jsonStrip.
-./generateWordList className newUrlFile
+./jsonStrip data/className/urls/newUrlList.res data/className/urls/newUrlList.url
+./generateWordList className newlySearchedOutput.url
 ./generateClassification className
 ########### Insert Human here!!! ###########
 
+
+# TODO: Figure exactly how we should be using this script most effectively
 ./merger data/urls/modelName/good_urls data/searchTerms/new_urls
 
 
