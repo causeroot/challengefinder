@@ -1,22 +1,22 @@
-function genSearchStrings()
+function pos_word = genSearchStrings(model,dictionary_words,dictionary_pairs)
 
-addpath(strrep(pwd, "/src/searchTermGeneration", "/src/featureGeneration"));
-addpath(strrep(pwd, "/src/searchTermGeneration", "/src/termExtraction"));
-addpath(strrep(pwd, "/src/searchTermGeneration", "/src/siteRetrieval"));
+%addpath(strrep(pwd, "/src/searchTermGeneration", "/src/featureGeneration"));
+%addpath(strrep(pwd, "/src/searchTermGeneration", "/src/termExtraction"));
+%addpath(strrep(pwd, "/src/searchTermGeneration", "/src/siteRetrieval"));
 
-pathFeatures = strrep(pwd, "/src/searchTermGeneration", "/data/features");
-pathUrlTerms = strrep(pwd, "/src/searchTermGeneration", "/data/urlTerms");
-pathRawSiteData = strrep(pwd, "/src/searchTermGeneration", "/data/rawSiteData");
-pathModel = strrep(pwd, "/src/searchTermGeneration", "/data/svmModel");
+%pathFeatures = strrep(pwd, "/src/searchTermGeneration", "/data/features");
+%pathUrlTerms = strrep(pwd, "/src/searchTermGeneration", "/data/urlTerms");
+%pathRawSiteData = strrep(pwd, "/src/searchTermGeneration", "/data/rawSiteData");
+%pathModel = strrep(pwd, "/src/searchTermGeneration", "/data/svmModel");
 
-modelFile = strrep(pwd, "/src/searchTermGeneration", "/data/svmModel/model.binsev");
-predFile = strrep(pwd, "/src/searchTermGeneration", "/data/svmModel/pred.binsev");
-accuracyFile = strrep(pwd, "/src/searchTermGeneration", "/data/svmModel/accuracy.binsev");
-pFile = strrep(pwd, "/src/searchTermGeneration", "/data/svmModel/p.binsev");
-search_string_out_file = strrep(pwd, "/src/searchTermGeneration", "/data/searchTerms/new_sstrings.txt");
+%modelFile = strrep(pwd, "/src/searchTermGeneration", "/data/svmModel/model.binsev");
+%predFile = strrep(pwd, "/src/searchTermGeneration", "/data/svmModel/pred.binsev");
+%accuracyFile = strrep(pwd, "/src/searchTermGeneration", "/data/svmModel/accuracy.binsev");
+%pFile = strrep(pwd, "/src/searchTermGeneration", "/data/svmModel/p.binsev");
+%search_string_out_file = strrep(pwd, "/src/searchTermGeneration", "/data/searchTerms/new_sstrings.txt");
 
-dictionaryWordsFile = strrep(pwd, "/src/searchTermGeneration", "/data/urlTerms/dictionary_words_file.binsev");
-dictionaryPairsFile = strrep(pwd, "/src/searchTermGeneration", "/data/urlTerms/dictionary_pairs_file.binsev");
+%dictionaryWordsFile = strrep(pwd, "/src/searchTermGeneration", "/data/urlTerms/dictionary_words_file.binsev");
+%dictionaryPairsFile = strrep(pwd, "/src/searchTermGeneration", "/data/urlTerms/dictionary_pairs_file.binsev");
 
 
 %% ================= Part 5: Top Predictors of a Good Challenge URL ====================
@@ -28,13 +28,13 @@ dictionaryPairsFile = strrep(pwd, "/src/searchTermGeneration", "/data/urlTerms/d
 
 %%%%%%%%% Load the dictionary model, words, and pairs %%%%%%%%%%%%%%%%%
 
-fprintf('\nFiles Loaded: ');
-load("-v7",modelFile,"model")
-fprintf('\n     Successful Load from model.binsev');
-load("-v7",dictionaryWordsFile, "dictionary_words")
-fprintf('\n     Successful Load from dictionary_classes_file.binsev');
-load("-v7",dictionaryPairsFile, "dictionary_pairs")
-fprintf('\n     Successful Load from dictionary_words_file.binsev');
+%fprintf('\nFiles Loaded: ');
+%load("-v7",modelFile,"model")
+%fprintf('\n     Successful Load from model.binsev');
+%load("-v7",dictionaryWordsFile, "dictionary_words")
+%fprintf('\n     Successful Load from dictionary_classes_file.binsev');
+%load("-v7",dictionaryPairsFile, "dictionary_pairs")
+%fprintf('\n     Successful Load from dictionary_words_file.binsev');
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -88,12 +88,12 @@ for i = 1:num_distinctifiers
     insert = {''};
 end
 
-fprintf('Newly Search String Paramenters Written to: %s\n',char(search_string_out_file));
-tic
+%fprintf('Newly Search String Paramenters Written to: %s\n',char(search_string_out_file));
+%tic
 pos_word = regexprep(pos_word,'_','+');
-fileID2 = fopen(search_string_out_file,'w');
-fprintf(fileID2,'%s',char(pos_word));
-fclose(fileID2);
-toc
-fprintf('=============== Optimal Search String Parameter Data Written =============\n\n\n');
+%fileID2 = fopen(search_string_out_file,'w');
+%fprintf(fileID2,'%s',char(pos_word));
+%fclose(fileID2);
+%toc
+%fprintf('=============== Optimal Search String Parameter Data Written =============\n\n\n');
 

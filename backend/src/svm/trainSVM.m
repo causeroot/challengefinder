@@ -22,21 +22,21 @@ function [model, pred, accuracy, p] = trainSVM(class, features)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-addpath(regexprep(pwd,'/src/\w*','/src/featureGeneration'));
-addpath(regexprep(pwd,'/src/\w*','/src/termExtraction'));
-addpath(regexprep(pwd,'/src/\w*','/src/siteRetrieval'));
-addpath(regexprep(pwd,'/src/\w*','/src/svm'));
-addpath(regexprep(pwd,'/src/\w*','/libsvm-3.17/matlab'));
+%addpath(regexprep(pwd,'/src/\w*','/src/featureGeneration'));
+%addpath(regexprep(pwd,'/src/\w*','/src/termExtraction'));
+%addpath(regexprep(pwd,'/src/\w*','/src/siteRetrieval'));
+%addpath(regexprep(pwd,'/src/\w*','/src/svm'));
+%addpath(regexprep(pwd,'/src/\w*','/libsvm-3.17/matlab'));
 
-pathFeatures = regexprep(pwd,'/src/\w*','/data/features');
-pathUrlTerms = regexprep(pwd,'/src/\w*','/data/urlTerms');
-pathRawSiteData = regexprep(pwd,'/src/\w*','/data/rawSiteData');
-pathModel = regexprep(pwd,'/src/\w*','/data/svmModel');
+%pathFeatures = regexprep(pwd,'/src/\w*','/data/features');
+%pathUrlTerms = regexprep(pwd,'/src/\w*','/data/urlTerms');
+%pathRawSiteData = regexprep(pwd,'/src/\w*','/data/rawSiteData');
+%pathModel = regexprep(pwd,'/src/\w*','/data/svmModel');
 
-modelFile = regexprep(pwd,'/src/\w*','/data/svmModel/model.binsev');
-predFile = regexprep(pwd,'/src/\w*','/data/svmModel/pred.binsev');
-accuracyFile = regexprep(pwd,'/src/\w*','/data/svmModel/accuracy.binsev');
-pFile = regexprep(pwd,'/src/\w*','/data/svmModel/p.binsev');
+%modelFile = regexprep(pwd,'/src/\w*','/data/svmModel/model.binsev');
+%%predFile = regexprep(pwd,'/src/\w*','/data/svmModel/pred.binsev');
+%accuracyFile = regexprep(pwd,'/src/\w*','/data/svmModel/accuracy.binsev');
+%pFile = regexprep(pwd,'/src/\w*','/data/svmModel/p.binsev');
 
 % TODO: Write in a clause here where svmTrain
 

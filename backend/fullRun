@@ -1,0 +1,14 @@
+#!/bin/bash
+
+python src/termExtraction/word_features.py $1 goodChallengesList.sitewords
+python src/termExtraction/word_features.py $1 badChallengesList.sitewords
+
+./runOctaveSet
+
+./webSearch $1
+
+./src/siteRetrieval/json_strip.sh $1 $2
+
+python src/termExtraction/word_features.py $1 newUrlList.sitewords
+
+./generateClassification $1

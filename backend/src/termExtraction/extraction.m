@@ -1,4 +1,4 @@
-function [class, dictionary_words, dictionary_pairs, features, urls] = extraction(classFolder,goodFileName,badFileName)
+function [class, dictionary_words, dictionary_pairs, features, urls] = extraction(good_file,bad_file)
 
 % function [urls, dataset_words, dataset_pairs, freq_words, freq_pairs] = extraction(regen = 0)
 % function extraction(regen = 0)
@@ -21,28 +21,28 @@ function [class, dictionary_words, dictionary_pairs, features, urls] = extractio
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-BasePath = regexprep(pwd,'/src/[\w/]*','');
+%BasePath = regexprep(pwd,'/src/[\w/]*','');
 
-addpath(regexprep(pwd,'/src/\w*','/src/featureGeneration'));
-addpath(regexprep(pwd,'/src/\w*','/src/termExtraction'));
-addpath(regexprep(pwd,'/src/\w*','/src/siteRetrieval'));
-addpath(regexprep(pwd,'/src/\w*','/src/svm'));
+%addpath(regexprep(pwd,'/src/\w*','/src/featureGeneration'));
+%addpath(regexprep(pwd,'/src/\w*','/src/termExtraction'));
+%addpath(regexprep(pwd,'/src/\w*','/src/siteRetrieval'));
+%addpath(regexprep(pwd,'/src/\w*','/src/svm'));
 
-pathFeatures = regexprep(pwd,'/src/\w*','/data/features');
-pathUrlTerms = regexprep(pwd,'/src/\w*','/data/urlTerms');
-pathRawSiteData = strcat(BasePath,'/data/rawSiteData/',classFolder);
+%pathFeatures = regexprep(pwd,'/src/\w*','/data/features');
+%pathUrlTerms = regexprep(pwd,'/src/\w*','/data/urlTerms');
+%pathRawSiteData = strcat(BasePath,'/data/rawSiteData/',classFolder);
 
-eval_file = regexprep(pwd,'/src/\w*','/data/rawSiteData/toEvaluate/URLs_4.url.out');
-eval_output_file = regexprep(pwd,'/src/\w*','/data/fitness/evalout.txt');
-search_string_out_file = regexprep(pwd,'/src/\w*','/data/searchTerms/new_sstrings.txt');
+%eval_file = regexprep(pwd,'/src/\w*','/data/rawSiteData/toEvaluate/URLs_4.url.out');
+%eval_output_file = regexprep(pwd,'/src/\w*','/data/fitness/evalout.txt');
+%search_string_out_file = regexprep(pwd,'/src/\w*','/data/searchTerms/new_sstrings.txt');
 
-featuresFile = regexprep(pwd,'/src/\w*','/data/features/dictionary_features_file.binsev');
-classFile = regexprep(pwd,'/src/\w*','/data/features/dictionary_classes_file.binsev');
-dictionaryWordsFile = regexprep(pwd,'/src/\w*','/data/urlTerms/dictionary_words_file.binsev');
-dictionaryPairsFile = regexprep(pwd,'/src/\w*','/data/urlTerms/dictionary_pairs_file.binsev');
-urlsFile = regexprep(pwd,'/src/\w*','/data/urlTerms/urls_file.binsev'); % Delete
-good_file = strcat(pathRawSiteData,'/',goodFileName);
-bad_file =  strcat(pathRawSiteData,'/',badFileName);
+%featuresFile = regexprep(pwd,'/src/\w*','/data/features/dictionary_features_file.binsev');
+%classFile = regexprep(pwd,'/src/\w*','/data/features/dictionary_classes_file.binsev');
+%dictionaryWordsFile = regexprep(pwd,'/src/\w*','/data/urlTerms/dictionary_words_file.binsev');
+%dictionaryPairsFile = regexprep(pwd,'/src/\w*','/data/urlTerms/dictionary_pairs_file.binsev');
+%urlsFile = regexprep(pwd,'/src/\w*','/data/urlTerms/urls_file.binsev'); % Delete
+%good_file = strcat(pathRawSiteData,'/',goodFileName);
+%bad_file =  strcat(pathRawSiteData,'/',badFileName);
 
 %TODO: %%%% ERROR HANDLING %%%%%%%%%
 %TODO: %%%% Make the good & bad files passable Vars %%%%%%%%%
@@ -98,6 +98,8 @@ fprintf('\n')
 
     [u,dw,dp,fw,fp] = extract_data_2(good_file, dictionary_words, dictionary_pairs);
 
+
+% TODO: Make this code less ... ugly ...
     urls = u;
     dataset_words = dw;
     dataset_pairs = dp;
@@ -107,7 +109,6 @@ fprintf('\n')
     class = ones(1,size(u,1));
 
     [u,dw,dp,fw,fp] = extract_data_2(bad_file, dictionary_words, dictionary_pairs);
-
 
     class = horzcat(class, zeros(1, size(u,1)));
 
@@ -124,19 +125,19 @@ fprintf('\n')
     fprintf("%i",size(urls,1));
     fprintf('\n');
 
-    tic
-    fprintf('\n\nSaving Dictionary Files: \n')
-    save("-mat7-binary", classFile, "class")
-    fprintf('\n     Successful Save to dictionary_classes_file.binsev');
-    save("-mat7-binary", dictionaryWordsFile, "dictionary_words")
-    fprintf('\n     Successful Save to dictionary_words_file.binsev');
-    save("-mat7-binary", dictionaryPairsFile, "dictionary_pairs")
-    fprintf('\n     Successful Save to dictionary_pairs_file.binsev');
-    save("-mat7-binary", featuresFile, "features")
-    fprintf('\n     Successful Save to dictionary_features_file.binsev\n');
-    save("-mat7-binary", urlsFile, "urls")
-    fprintf('\n     Successful Save to urls_file.binsev\n');
-    toc
+%    tic
+%    fprintf('\n\nSaving Dictionary Files: \n')
+%    save("-mat7-binary", classFile, "class")
+%    fprintf('\n     Successful Save to dictionary_classes_file.binsev');
+%    save("-mat7-binary", dictionaryWordsFile, "dictionary_words")
+%    fprintf('\n     Successful Save to dictionary_words_file.binsev');
+%    save("-mat7-binary", dictionaryPairsFile, "dictionary_pairs")
+%    fprintf('\n     Successful Save to dictionary_pairs_file.binsev');
+%    save("-mat7-binary", featuresFile, "features")
+%    fprintf('\n     Successful Save to dictionary_features_file.binsev\n');
+%    save("-mat7-binary", urlsFile, "urls")
+%    fprintf('\n     Successful Save to urls_file.binsev\n');
+%    toc
 
 %end;
 
