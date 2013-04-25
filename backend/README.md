@@ -1,73 +1,86 @@
 Challenge_Finder
-================
+========================================
 
 Challenge Finder's purpose is to machine learning techniques to find
 technical challenges based on an example set. For the purposes of this
 document the list of known good URLs will be called 'good_urls'.
 
-Lifecycle of a URL list:
-========================
 
-Taking 'good_urls' as an example, here is what happens during a full cycle
-of Challenge Finder.
 
-#TODO(roux): make tab completion work for model names and class files.
-./generateWordList className fileName
+Lifecycle of a generating a new URL list:
+=========================================
+
+HIGH LEVEL COMMAND:
+This is the command that you would run to receive a new list of URLs that
+you are looking for.  Also, those URLs are assessed for their fitness, and
+new search strings are generated.
+
+./fullRun className
+
+# Insert Human here - they put new URLs into either a "good" bucket (ie, meets
+# the criteria for the type of URLs you want to find) or the "bad" bucket (not
+# the URLs that you're looking for).  These files are
+# 'rawSiteData/goodBucket/goodChallengesList.sitewords' and
+# 'rawSiteData/badBucket/badChallengesList.sitewords' respectively - relative
+# the to "Class Folder" (folder within 'data/').
+
+
+INDIVIDUAL STEP-BY-STEP:
+Here are the individual step walkthrough/breakdown for what happens during a
+full cycle of Challenge Finder.
+
+# TODO(luis): Clean-up code & remove commented old code for octave
+# TODO(roux): make tab completion work for model names and class files.
+# TODO: Write in exception handling if the helper referenced files don't exist
+
+./generateWordList className goodUrlsFile
+./generateWordList className badUrlsFile
 ./generateFeatures className
 ./generateSVM className
 ./generateSearchStrings className
-#TODO(luis): Clean-up code & remove commented old code
 ./webSearch className
-./jsonStrip data/searchTerms/fileName
-# Note fileName is assumed to have .res extension which should NOT be included 
-# when calling jsonStrip.
-./generateWordList modelName/classPlusDescriptiveWords4
-# Insert classification step here
+./jsonStrip filePath.res filePath.url
+# Note: This should include the data/* full path to the filename that has
+# the indicated extension when calling jsonStrip.
+./generateWordList className newUrlFile
 ./generateClassification className
-# Insert Human here (they look at urls from data/searchTerms/fileName.url)
+########### Insert Human here!!! ###########
 
 ./merger data/urls/modelName/good_urls data/searchTerms/new_urls
 
 
 
-
-# TODO: Write in exception handling if the helper referenced files don't exist
-
-webSearchFromCurrentModel
-# generateSearchString
-# webSearch
-
-updateUrls
-
-```bash
-python word_features.py good_urls
-octave site_classify.m good_urls.out xxx.out searchterms
-./webSearch searchterms
-./json_strip searchterms.txt.res new_urls
-./merger good_urls new_urls
-```
-
-TODO: modify site_classify to take standard input arguments
-
-
-Structure of data (and life in general):
+Structure of Data:
 ========================================
 
-data/urls is input for word_features
+- All of the "classes" (types of searches) are housed in the 'data/' directory
+- All of the functions are housed in the 'src/' directory
+#TODO: Elaborate on this section:
+
+#Previous Words:
+'data/urls is input for word_features
 data/urls contains a folder per model type used by siteClassify
 data/urls/modelName contains a file for each class used by the classifier model
-  and an extra file for unclassified input
-  
-data/rawSiteData contains input for generateFeatures in same per-model structure
+and an extra file for unclassified input
+data/rawSiteData contains input for generateFeatures in same per-model structure'
 
-(we're going to move to data containing file structure per model)
+
+
 
 Build instructions:
 ===================
 
-To build webSearch go to `backend/src/siteRetrieval/webSearch` and run:
+1. To build webSearch go to `backend/src/siteRetrieval/webSearch` and run:
 `gcc -g webSearch.c -lssl -lcrypto -o webSearch`
 
-To build the octave bindings for svm start octave in `backend/libsvm-3.17/matlab`
+2. To build the octave bindings for svm start octave in `backend/libsvm-3.17/matlab`
 then from the octave command line run `make`
 
+3. To create a new class, copy one of the existing "classFolders", rename it, and
+modify the contents of 'rawSiteData/goodBucket/goodChallengesList.sitewords' and
+'rawSiteData/badBucket/badChallengesList.sitewords' to characterize the type of URLs
+that you are interested in finding.
+
+4. Run the command (or command sequence) indicated above
+
+5. Iterate to improve your results!!!
