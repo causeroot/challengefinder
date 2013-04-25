@@ -7,7 +7,7 @@ BASE_PATH = strcat(pwd,"/data/",args{1});
 modelFile = strcat(BASE_PATH, "/svmModel/model.binsev");
 dictionaryWordsFile = strcat(BASE_PATH, "/urlTerms/dictionary_words_file.binsev");
 dictionaryPairsFile = strcat(BASE_PATH, "/urlTerms/dictionary_pairs_file.binsev");
-search_string_out_file = strcat(BASE_PATH, "/searchTerms/new_sstrings.txt");
+search_string_out_file = strcat(BASE_PATH, "/searchTerms/newSearchStrings.txt");
 
 load("-v7",modelFile,"model")
 load("-v7",dictionaryWordsFile, "dictionary_words")
