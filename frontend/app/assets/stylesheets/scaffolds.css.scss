@@ -18,6 +18,10 @@ font-weight: normal;
 color: #006838;
 }
 
+h5 {
+margin-top: 0;
+}
+
 pre {
   background-color: #eee;
   padding: 10px;
@@ -41,6 +45,15 @@ div {
     margin-bottom: 10px;
     margin-left: 10px;
   }
+}
+
+.row {
+	margin-bottom: 40px;
+	
+}
+
+.notice-row {
+	margin-bottom: 8px;
 }
 	
 .container {
@@ -67,9 +80,22 @@ div {
     text-shadow: 0 1px 0 black;
 }
 
+.span2 {
+
+}
+
+.span3 {
+
+}
+
+.span4 {
+
+}
+
 .span9 {
   background-color: white;
   width: 94%;
+
 }	
 
 #notice {
@@ -109,7 +135,8 @@ div {
 
 .pagination {
 	float: right;
-
+	height: 20px;
+	margin: 0;
 }
 
 .field_with_errors {
