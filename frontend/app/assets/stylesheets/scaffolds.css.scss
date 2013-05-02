@@ -52,6 +52,11 @@ div {
 	
 }
 
+.row-2 {
+	margin-bottom: 40px;
+	display: inline-block;
+	}
+
 .notice-row {
 	margin-bottom: 8px;
 }
@@ -78,29 +83,54 @@ div {
     margin-top: 10px;
     padding: 10px 20px;
     text-shadow: 0 1px 0 black;
-}
+	}
 
 .span2 {
-
-}
+	width: 130px;
+	margin-left: 0;
+	}
 
 .span3 {
 
-}
+	}
 
 .span4 {
 
-}
+	}
 
+.span4 a {
+	margin-left: 0;
+	color: #FF9900;
+	}
+
+.span4 a:hover {
+	margin-left: 0;
+	color: #707070;
+	background: none;
+	} 	
+	
 .span9 {
   background-color: white;
   width: 94%;
+  display: inline-block;
+	}	
 
-}	
-
+.content2 {
+	display: inline-block;
+	}
+	
+	
+#test-area {
+	border: 2px solid blue;
+	display: inline-block;
+	width: 130px;
+	height: 160px;
+	margin-top: 0;
+	}
+	
 #notice {
   color: green;
-}
+	}
 
 .page-border {
 	margin-left: 30px;

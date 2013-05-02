@@ -12,31 +12,33 @@
 	</div>
 </div>
 
-<div class="row">
-<%= paginate @challenges %>
-</div>
-
-<% @challenges.each do |challenge| %>
 	<div class="row">
-		<div class="span2">
-			<img src="<%=asset_path "challenge.png"%>" />
-			<!-- <img src="<%= challenge.image_url %>" /> -->
-		</div>
-		<div class="span4">
-			<h5><%= challenge.name %></h5>
-			<p><%=h truncate(challenge.description, :length => 220) %></p>
-			<%= link_to 'Learn More', challenge %>
-			
-	
-		</div>
-		<div class="span3">
-			<p><strong>Award:</strong> <%= challenge.award %></p>
-			<p><strong>Deadline:</strong> <%= challenge.deadline %></p>
-			<p><strong>Posted:</strong> <%= challenge.post_date %></p>
-		</div>
-  </div>
-<% end %>
+	<%= paginate @challenges %>
+	</div>
 
+	<% @challenges.each do |challenge| %>
+
+	<div class="row-2">
+			<div class="span2">
+				<img src="<%=asset_path "challenge.png"%>" />
+				<!-- <img src="<%= challenge.image_url %>" /> -->
+			</div>
+			<div class="span4">
+				<h5><%= challenge.name %></h5>
+				<p><%=h truncate(challenge.description, :length => 220) %></p>
+				<%= link_to 'Learn More', challenge %>			
+	
+			</div>
+			<div class="span3">
+				<p><strong>Award:</strong> <%= challenge.award %></p>
+				<p><strong>Deadline:</strong> <%= challenge.deadline %></p>
+				<p><strong>Posted:</strong> <%= challenge.post_date %></p>
+			</div>
+	</div>
+	<% end %>
+
+	<div class="row-2" id="test-area">
+	</div>
 		<div class="span3">
 				<a class="twitter-timeline" data-dnt=true href="https://twitter.com/ChallengeFinder" data-widget-id="258039376301408258">Tweets by @ChallengeFinder</a>
 				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
