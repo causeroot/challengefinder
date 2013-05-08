@@ -33,6 +33,10 @@
 				<p><strong>Award:</strong> <%= challenge.award %></p>
 				<p><strong>Deadline:</strong> <%= challenge.deadline %></p>
 				<p><strong>Posted:</strong> <%= challenge.post_date %></p>
+				<div class="fb-like" data-send="false" data-layout="button_count" data-width="50" data-show-faces="false" data-font="arial"></div>
+				<a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+				<!--<p id="sm-icons"><img src="<%=asset_path "facebook.jpg"%>" /><img src="<%=asset_path "twitter.jpg"%>" /><img src="<%=asset_path "linkedin.jpg"%>" /><img src="<%=asset_path "email.jpg"%>" /></p>-->
 			</div>
 	</div>
 	<% end %>
@@ -43,3 +47,4 @@
 				<a class="twitter-timeline" data-dnt=true href="https://twitter.com/ChallengeFinder" data-widget-id="258039376301408258">Tweets by @ChallengeFinder</a>
 				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
       	</div>
+
