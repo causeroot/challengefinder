@@ -11,7 +11,6 @@ search_string_out_file = strcat(BASE_PATH, "/searchTerms/new_sstrings.txt");
 eval_output_file = strcat(BASE_PATH, "/fitness/evalout.txt");
 
 %TODO: RENAME URLs_2.url.out to a meaningful name!!!!
-%eval_file = strcat(BASE_PATH, "/urls/URLs_4.url");
 eval_file = strcat(BASE_PATH, "/rawSiteData/newSitesList.sitewords");
 
 predNewFile = strcat(BASE_PATH,'/svmModel/predNew.binsev');
@@ -23,6 +22,7 @@ load("-v7",dictionaryPairsFile, "dictionary_pairs")
 
 [eval_urls,pNew,predNew] = classify(eval_file,model,dictionary_words, dictionary_pairs);
 
+fprintf('============================ Writing Output Files ========================\n');
 save("-mat7-binary", predNewFile, "predNew")
 fprintf('\n     Successful Save to predNew.binsev');
 save("-mat7-binary", pNewFile, "pNew")
@@ -37,18 +37,10 @@ for i = 1:size(eval_urls,1)
 end
 fclose(fileID);
 
-fprintf('======================== Classifying New URLs Complete ===================\n\n');
-fprintf('============================ Writing Output Files ========================\n');
-fprintf('Processed %s URL Classification to %s\n', char(eval_file),char(eval_output_file));
+
+fprintf('\nProcessed %s URL Classification to %s\n', char(eval_file),char(eval_output_file));
 fprintf('Number of (likely) new Challenges: %i\n', sum(predNew));
-
 fprintf('\n\n');
-fprintf('==========================================================================\n');
-fprintf('=================================== DONE!!! ==============================\n');
-fprintf('==========================================================================\n\n');
-
-
-
 fprintf('==========================================================================\n');
 fprintf('=================================== DONE!!! ==============================\n');
 fprintf('==========================================================================\n\n');

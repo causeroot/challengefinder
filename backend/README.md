@@ -53,13 +53,11 @@ Structure of Data:
 
 - All of the "classes" (types of searches) are housed in the 'data/' directory
 - All of the functions are housed in the 'src/' directory
-#TODO: Elaborate on this section:
 
-#Previous Words:
-'data/urls is input for word_features
-data/urls contains a folder per model type used by siteClassify
-data/urls/modelName contains a file for each class used by the classifier model
-and an extra file for unclassified input
+# TODO: Elaborate on this section:
+# Previous Words: 'data/urls is input for word_features data/urls contains a folder
+per model type used by siteClassify data/urls/modelName contains a file for each
+class used by the classifier model and an extra file  for unclassified input
 data/rawSiteData contains input for generateFeatures in same per-model structure'
 
 
