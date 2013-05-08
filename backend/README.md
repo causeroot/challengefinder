@@ -20,13 +20,12 @@ new search strings are generated.
 # Insert Human here - they put new URLs into either a "good" bucket (ie, meets
 # the criteria for the type of URLs you want to find) or the "bad" bucket (not
 # the URLs that you're looking for).  These files are
-# 'rawSiteData/goodBucket/goodChallengesList.sitewords' and
-# 'rawSiteData/badBucket/badChallengesList.sitewords' respectively - relative
-# the to "Class Folder" (folder within 'data/').
+# 'rawSiteData/goodList.sitewords' and 'rawSiteData/badList.sitewords'
+# respectively - relative the to "Class Folder" (folder within 'data/').
 
 
 INDIVIDUAL STEP-BY-STEP:
-Here are the individual step walkthrough/breakdown for what happens during a
+Here are the individual step walk-through/breakdown for what happens during a
 full cycle of Challenge Finder.
 
 # TODO(luis): Clean-up code & remove commented old code for octave
@@ -49,7 +48,6 @@ full cycle of Challenge Finder.
 ./merger data/urls/modelName/good_urls data/searchTerms/new_urls
 
 
-
 Structure of Data:
 ========================================
 
@@ -66,7 +64,6 @@ data/rawSiteData contains input for generateFeatures in same per-model structure
 
 
 
-
 Build instructions:
 ===================
 
@@ -77,9 +74,8 @@ Build instructions:
 then from the octave command line run `make`
 
 3. To create a new class, copy one of the existing "classFolders", rename it, and
-modify the contents of 'rawSiteData/goodBucket/goodChallengesList.sitewords' and
-'rawSiteData/badBucket/badChallengesList.sitewords' to characterize the type of URLs
-that you are interested in finding.
+modify the contents of 'rawSiteData/goodList.sitewords' & 'rawSiteData/badList.sitewords'
+to characterize the type of URLs that you are interested in finding.
 
 4. Run the command (or command sequence) indicated above
 
