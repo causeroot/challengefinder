@@ -8,12 +8,12 @@ BASE_PATH = strcat(pwd,"/data/",args{1});
 
 goodFileName = 'Good_Challenges_List.sitewords'
 #goodFileName = 'goodChallengesList.sitewords'
-#badFileName = 'goodChallengesList.sitewords'
+#badFileName = 'badList.sitewords'
 badFileName = 'random_url_word_list.sitewords'
 
 pathRawSiteData = strcat(BASE_PATH,'/rawSiteData/');
-good_file = strcat(BASE_PATH,'/rawSiteData/goodBucket/',goodFileName);
-bad_file =  strcat(BASE_PATH,'/rawSiteData/badBucket/',badFileName);
+good_file = strcat(BASE_PATH,'/rawSiteData/',goodFileName);
+bad_file =  strcat(BASE_PATH,'/rawSiteData/',badFileName);
 
 featuresFile = strcat(BASE_PATH,'/features/dictionary_features_file.binsev');
 classFile = strcat(BASE_PATH,'/features/dictionary_classes_file.binsev');
@@ -28,7 +28,8 @@ pFile = strcat(BASE_PATH,'/svmModel/p.binsev');
 pNewFile = strcat(BASE_PATH,'/svmModel/pNew.binsev');
 search_string_out_file = strcat(BASE_PATH, "/searchTerms/new_sstrings.txt");
 eval_output_file = strcat(BASE_PATH, "/fitness/evalout.txt");
-eval_file = strcat(BASE_PATH, "/rawSiteData/toEvaluate/URLs_4.url.out");
+% TODO: RENAME the eval_file to the Test CAL verification file
+% eval_file = strcat(BASE_PATH, "/urls/URLs_4.url");
 
 [class, dictionary_words, dictionary_pairs, features, urls] = extraction(good_file,bad_file);
 
@@ -40,7 +41,7 @@ pos_word = genSearchStrings(model, dictionary_words, dictionary_pairs);
 % TODO: Add ./webSearch className
 % TODO: Add ./jsonStrip data/searchTerms/fileName
 
-[eval_urls,pNew,predNew] = classify(eval_file,model,dictionary_words, dictionary_pairs);
+%[eval_urls,pNew,predNew] = classify(eval_file,model,dictionary_words, dictionary_pairs);
 
 tic
 fileID2 = fopen(search_string_out_file,'w');
@@ -51,19 +52,19 @@ fprintf('Newly Search String Paramenters Written to:\n %s\n',char(search_string_
 fprintf('=============== Optimal Search String Parameter Data Written =============\n\n\n');
 
 
-fprintf('======================== Classifying New URLs Complete ===================\n\n');
-fprintf('Processed %s URL Classification to %s\n', char(eval_file),char(eval_output_file));
-fprintf('Number of (likely) new Challenges: %i\n', sum(pred));
+%fprintf('======================== Classifying New URLs Complete ===================\n\n');
+%fprintf('Processed %s URL Classification to %s\n', char(eval_file),char(eval_output_file));
+%fprintf('Number of (likely) new Challenges: %i\n', sum(pred));
 
-fileID = fopen(eval_output_file,'w');
-for i = 1:size(eval_urls,1)
-    fprintf(fileID,"%s",char(eval_urls(i)));
-    fprintf(fileID," ");
-    fprintf(fileID,"%6.4f  %d",p(i),pred(i));
-    fprintf(fileID," \n");
-end
-fclose(fileID);
-fprintf('============================ Output Files Written ========================\n');
+%fileID = fopen(eval_output_file,'w');
+%for i = 1:size(eval_urls,1)
+%    fprintf(fileID,"%s",char(eval_urls(i)));
+%    fprintf(fileID," ");
+%    fprintf(fileID,"%6.4f  %d",p(i),pred(i));
+%    fprintf(fileID," \n");
+%end
+%fclose(fileID);
+%fprintf('============================ Output Files Written ========================\n');
 
 tic
 fprintf('\n\nSaving Dictionary Files: \n')

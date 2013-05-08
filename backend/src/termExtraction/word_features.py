@@ -17,7 +17,7 @@ if len(sys.argv) < 2:
   sys.exit(1)
 
 INPUT_PATH = 'data/' + sys.argv[1] + '/urls/'
-OUPUT_PATH = 'data/' + sys.argv[1] + '/rawSiteData/toEvaluate/'
+OUPUT_PATH = 'data/' + sys.argv[1] + '/rawSiteData/'
 
 if not os.path.exists(INPUT_PATH + sys.argv[2]):
   sys.stderr.write('ERROR: URL list %s was not found!\n' % sys.argv[2])

@@ -32,7 +32,7 @@ function [class, dictionary_words, dictionary_pairs, features, urls] = extractio
 %pathUrlTerms = regexprep(pwd,'/src/\w*','/data/urlTerms');
 %pathRawSiteData = strcat(BasePath,'/data/rawSiteData/',classFolder);
 
-%eval_file = regexprep(pwd,'/src/\w*','/data/rawSiteData/toEvaluate/URLs_4.url.out');
+%eval_file = regexprep(pwd,'/src/\w*','/data/rawSiteData/URLs_4.url.out');
 %eval_output_file = regexprep(pwd,'/src/\w*','/data/fitness/evalout.txt');
 %search_string_out_file = regexprep(pwd,'/src/\w*','/data/searchTerms/new_sstrings.txt');
 
@@ -46,7 +46,7 @@ function [class, dictionary_words, dictionary_pairs, features, urls] = extractio
 
 %TODO: %%%% ERROR HANDLING %%%%%%%%%
 %TODO: %%%% Make the good & bad files passable Vars %%%%%%%%%
-% good_file = strcat(pathRawSiteData,'/goodBucket/Good_Challenges_List.out');
+% good_file = strcat(pathRawSiteData,'/Good_Challenges_List.out');
 % good_file = strcat(pathRawSiteData,'/simpleChallenge/goodChallengesList.siteWords');
 % Change this to the bad file, to speed up the run
 % bad_file = strcat(pathRawSiteData,'/simpleChallenge/Good_Challenges_List.out');
