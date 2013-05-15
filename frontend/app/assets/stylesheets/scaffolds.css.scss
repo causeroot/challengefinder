@@ -126,7 +126,7 @@ div {
 #test-area {
 	border: 2px solid blue;
 	display: inline-block;
-	width: 130px;
+	min-width: 175px;
 	height: 160px;
 	align: top;
 	}
@@ -135,13 +135,10 @@ div {
   color: green;
 	}
 
-#sm-icons img {
-	margin-right: 20px;
-	}
-
 .fb-like {
 	padding-right: 12px;
 	padding-left: 20px;
+	padding-top: 12px;
 	}
 		
 .page-border {
