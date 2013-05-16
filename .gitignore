@@ -18,3 +18,4 @@ pickle-email-*.html
 .DS_Store
 *.swp
 config/database.yml
+/.idea/*
