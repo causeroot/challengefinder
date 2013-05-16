@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<div class="row-3">
 <p>
   <b>Name:</b>
   <%= @challenge.name %>
@@ -39,7 +39,7 @@
   <b>Rules:</b>
   <%= @challenge.rules %>
 </p>
-
+</div>
 
 <%= link_to 'Edit', edit_challenge_path(@challenge) %> |
 <%= link_to 'Back', challenges_path %>

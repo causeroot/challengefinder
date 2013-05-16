@@ -20,19 +20,19 @@
 
 	<div class="row-2">
 			<div class="span2">
-				<img src="<%=asset_path "challenge.png"%>" />
+				<img src="<%=asset_path "challenge.png"%>" width="100px" height="100px"/>
 				<!-- <img src="<%= challenge.image_url %>" /> -->
 			</div>
 			<div class="span4">
 				<h5><%= challenge.name %></h5>
-				<p><%=h truncate(challenge.description, :length => 180, :separator => ' ') %></p>
+				<p><%=h truncate(challenge.description, :length => 152, :separator => ' ') %></p>
 				<%= link_to 'Learn More', challenge %>			
 	
 			</div>
 			<div class="span3">
-				<p><strong>Award:</strong> <%= challenge.award %></p>
-				<p><strong>Deadline:</strong> <%= challenge.deadline %></p>
-				<p><strong>Posted:</strong> <%= challenge.post_date %></p>
+				<p><strong>AWARD &nbsp;</strong> <%= challenge.award %></p>
+				<p>DEADLINE &nbsp; <%= challenge.deadline %></p>
+				<p>POSTED &nbsp; <%= challenge.post_date %></p>
 				<div class="sm-icons">
 					<div class="fb-like" data-send="false" data-layout="button_count" data-width="50" data-show-faces="false" data-font="arial">
 					</div>
@@ -41,6 +41,7 @@
 					<!--<p id="sm-icons"><img src="<%=asset_path "facebook.jpg"%>" /><img src="<%=asset_path "twitter.jpg"%>" /><img src="<%=asset_path "linkedin.jpg"%>" /><img src="<%=asset_path "email.jpg"%>" /></p>-->
 				</div>
 			</div>
+			<p class="dot-divider">....................................................<p>
 	</div>
 	<% end %>
 
