@@ -11,7 +11,7 @@ search_string_out_file = strcat(BASE_PATH, "/searchTerms/new_sstrings.txt");
 eval_output_file = strcat(BASE_PATH, "/fitness/evalout.txt");
 
 %TODO: RENAME URLs_2.url.out to a meaningful name!!!!
-eval_file = strcat(BASE_PATH, "/rawSiteData/newSitesList.sitewords");
+eval_file = strcat(BASE_PATH, "/rawSiteData/newUrlList.sitewords");
 
 predNewFile = strcat(BASE_PATH,'/svmModel/predNew.binsev');
 pNewFile = strcat(BASE_PATH,'/svmModel/pNew.binsev');
