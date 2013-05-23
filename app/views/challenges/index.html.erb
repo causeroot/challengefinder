@@ -1,0 +1,59 @@
+<div>
+	<h1 class="page-header">// CHALLENGES</h1>
+
+	<div class="page-header" id="login">
+		<% if current_user %>
+     		<%= link_to "Edit Profile", edit_user_path(current_user.id) %>
+     		<%= link_to "LOGOUT", :logout %>
+			<% else %>
+				<%= link_to "REGISTER", new_user_path %> &nbsp; or
+				<%= link_to "LOGIN", :login %>
+			<% end %>  
+	</div>
+</div>
+
+	<div class="row">
+	<div class="span9"><%= paginate @challenges %></div>
+	</div>
+
+	<% @challenges.each do |challenge| %>
+
+	<div class="row-2">
+			<div class="span2">
+				<img src="<%=asset_path "challenge.png"%>" width="100px" height="100px"/>
+				<!-- <img src="<%= challenge.image_url %>" /> -->
+			</div>
+			<div class="span4">
+				<h5><%= challenge.name %></h5>
+				<p><%=h truncate(challenge.description, :length => 152, :separator => ' ') %></p>
+				<%= link_to 'Learn More', challenge %>			
+	
+			</div>
+			<div class="span3">
+				<p><strong>AWARD &nbsp;</strong> <%= challenge.award %></p>
+				<p><span class="dividing-line">———————————————</span></p>
+				<p>DEADLINE &nbsp; <%= challenge.deadline %></p>
+				<p><span class="dividing-line">———————————————</span></p>
+				<p>POSTED &nbsp; <%= challenge.post_date %></p>
+				<p><span class="dividing-line">———————————————</span></p>
+				<div class="sm-icons">
+					<div class="fb-like" data-send="false" data-layout="button_count" data-width="50" data-show-faces="false" data-font="arial">
+					</div>
+					<a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+					<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+					<!--<p id="sm-icons"><img src="<%=asset_path "facebook.jpg"%>" /><img src="<%=asset_path "twitter.jpg"%>" /><img src="<%=asset_path "linkedin.jpg"%>" /><img src="<%=asset_path "email.jpg"%>" /></p>-->
+				</div>
+			</div>
+			<!-- <div class="span3">boooooooooooooooo</div> -->
+			<p class="dot-divider">......................................................<p>
+	</div>
+	<% end %>
+
+	<div class="row-2">
+	<div class="span3" id="test-area">&nbsp;</div>
+	</div>
+		<div class="span3">
+				<a class="twitter-timeline" data-dnt=true href="https://twitter.com/ChallengeFinder" data-widget-id="258039376301408258">Tweets by @ChallengeFinder</a>
+				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+      	</div>
+
