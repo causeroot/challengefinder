@@ -5,7 +5,6 @@ gem 'rails', '~> 3.2.6'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
 
 gem 'sunspot_rails'
 gem 'sunspot_solr'
@@ -41,17 +40,22 @@ gem 'kaminari'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
+group :production do
+  gem 'mysql2'
+end
+
 group :development do
   gem 'guard'
   gem 'guard-cucumber'
-	gem 'terminal-notifier-guard'	
+  gem 'terminal-notifier-guard'	
 end
 
 group :test, :development do
-	gem "brakeman"
-  	gem "rspec-rails", "~> 2.0"
-	gem "factory_girl_rails", "~> 4.0"
-	gem "faker"
+  gem 'sqlite3'
+  gem "brakeman"
+  gem "rspec-rails", "~> 2.0"
+  gem "factory_girl_rails", "~> 4.0"
+  gem "faker"
 end
 
 group :test do
