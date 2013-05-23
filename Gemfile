@@ -41,6 +41,7 @@ gem 'kaminari'
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
 group :production do
+  gem 'activerecord-mysql-adapter'
   gem 'mysql2'
 end
 
