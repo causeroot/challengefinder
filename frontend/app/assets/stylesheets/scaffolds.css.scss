@@ -101,9 +101,8 @@ div {
 .span3 p {
 	color: #000000;
 	padding-left: 20px;
-	padding-bottom: 6px;
+	margin-bottom: 0;
 	font-size: 12px;
-	border-bottom: solid 1px #D1D3D4;
 	}
 
 .span4 {
@@ -130,6 +129,12 @@ div {
 	display: inline-block;
 	}
 	
+.dividing-line {
+	color: #D1D3D4;
+	height: 1px;
+	padding: 0;
+	}	
+	
 .dot-divider {
 	color: #A7A9AC;
 	letter-spacing: .7em;
@@ -142,10 +147,6 @@ div {
 	background: -moz-linear-gradient(top, #A7A9AC, #D1D3D4); /* Firefox 3.6+ */  
 	background: -ms-linear-gradient(top, #A7A9AC, #D1D3D4); /* IE 10 */
 	background: -o-linear-gradient(top, #A7A9AC, #D1D3D4); /* Opera 11.10+ */ 
-	display: inline-block;
-	min-width: 175px;
-	height: 260px;
-	align: top;
 	}
 	
 #notice {
@@ -166,6 +167,7 @@ div {
 .page-header {
 	display: inline;
 	border-bottom: none;
+	padding-right: 60px;
 }
 
 #login {
@@ -194,6 +196,7 @@ div {
 	float: right;
 	height: 20px;
 	margin: 0;
+	padding-right: 20px;
 }
 
 .field_with_errors {
