@@ -149,15 +149,25 @@ div {
 	background: -o-linear-gradient(top, #A7A9AC, #D1D3D4); /* Opera 11.10+ */ 
 	margin-bottom: 40px;
 	}
-	
-.left-column {
-	
-}
 
-.right-column {
+#test-area p {
+	font-size: 14px;
+	color: #FFFFFF;
+	}
 	
-}
+.form-field {
+	background-color: white;
+	height: 20px;
+	margin: 8px 21px;
+	}
 
+.search-link {
+	font-size: 14px;
+	font-weight: normal;
+	color: #006838;
+	float: right;
+	margin-right:21px;
+	}
 	
 #notice {
   color: green;
@@ -168,6 +178,7 @@ div {
 	padding-left: 20px;
 	padding-top: 10px;
 	padding-bottom: 10px;
+
 	}
 		
 .page-border {
@@ -179,7 +190,7 @@ div {
 	border-bottom: none;
 	padding-right: 60px;
 	padding-bottom: 0px;
-}
+	}
 
 #page-numbers {
 	margin-bottom: 40px;
@@ -191,7 +202,7 @@ div {
 	float: right;
 	color: #808285;
 	margin-top: 11px;
-}
+	}
 
 .pagination a, .pagination span {
     -moz-border-bottom-colors: none;
@@ -207,20 +218,20 @@ div {
     line-height: 18px;
     padding: 0 4px;
     text-decoration: none;
-}
+	}
 
 .pagination {
 	float: right;
 	height: 20px;
 	margin: 0;
 	padding-right: 20px;
-}
+	}
 
 .field_with_errors {
   padding: 2px;
   background-color: red;
   display: table;
-}
+	}
 
 #error_explanation {
   width: 450px;

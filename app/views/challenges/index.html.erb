@@ -38,24 +38,37 @@
 					<p>POSTED &nbsp; <%= challenge.post_date %></p>
 					<p><span class="dividing-line">———————————————</span></p>
 					<div class="sm-icons">
-						<div class="fb-like" data-send="false" data-layout="button_count" data-width="50" data-show-faces="false" data-font="arial">
+						<div class="fb-like" data-send="false" data-layout="button_count" data-width="30" data-show-faces="true">
 						</div>
-						<a href="https://twitter.com/share" class="twitter-share-button"></a>
+						<a href="https://twitter.com/share" class="twitter-share-button" data-count="none">Tweet</a>
 						<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
 						<!--<p id="sm-icons"><img src="<%=asset_path "facebook.jpg"%>" /><img src="<%=asset_path "twitter.jpg"%>" /><img src="<%=asset_path "linkedin.jpg"%>" /><img src="<%=asset_path "email.jpg"%>" /></p>-->
 					</div>
 				</div>
-				<!-- <div class="span3">boooooooooooooooo</div> -->
+
 				<p class="dot-divider">......................................................<p>
 		</div>
 		<% end %>
 	</div>
 	
 	<div class="right-column">
-		<div class="span3" id="test-area">&nbsp;</div>
+		<div class="span3" id="test-area">&nbsp;
+			<p>ADVANCED SEARCH</p>
+			&nbsp
+			<p>KEYWORD</p>
+			<div class="form-field"></div>
+			&nbsp
+			<p>CATEGORY</p>
+			<div class="form-field"></div>
+			&nbsp
+			<p>POST DATE</p>
+			<div class="form-field"></div>
+			&nbsp
+			<p><div class="search-link">SEARCH</div></p>
+		</div>
 	</div>
 		<div class="span3">
 				<a class="twitter-timeline" data-dnt=true href="https://twitter.com/ChallengeFinder" data-widget-id="258039376301408258">Tweets by @ChallengeFinder</a>
 				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
       	</div>
-
