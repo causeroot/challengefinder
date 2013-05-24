@@ -121,7 +121,7 @@ div {
 	} 	
 	
 .span9 {
-  width: 95%;
+
   display: inline-block;
 	}	
 
@@ -141,13 +141,23 @@ div {
 	}
 		
 #test-area {
- 
+	height: 400px; 
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#A7A9AC), to(#D1D3D4));   /* Safari 4-5, Chrome 1-9 */
 	background: -webkit-linear-gradient(top, #A7A9AC, #D1D3D4); /* Safari 5.1, Chrome 10+ */
 	background: -moz-linear-gradient(top, #A7A9AC, #D1D3D4); /* Firefox 3.6+ */  
 	background: -ms-linear-gradient(top, #A7A9AC, #D1D3D4); /* IE 10 */
 	background: -o-linear-gradient(top, #A7A9AC, #D1D3D4); /* Opera 11.10+ */ 
+	margin-bottom: 40px;
 	}
+	
+.left-column {
+	
+}
+
+.right-column {
+	
+}
+
 	
 #notice {
   color: green;
@@ -168,8 +178,15 @@ div {
 	display: inline;
 	border-bottom: none;
 	padding-right: 60px;
+	padding-bottom: 0px;
 }
 
+#page-numbers {
+	margin-bottom: 40px;
+	padding-right: 32px;
+	float: right;
+	}
+		
 #login {
 	float: right;
 	color: #808285;
