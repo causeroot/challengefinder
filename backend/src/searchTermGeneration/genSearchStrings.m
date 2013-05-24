@@ -38,22 +38,26 @@ for i = 1:num_distinctifiers
     if idx(length(idx)-i+1) < size(dictionary_words,1)+1
         parm = dictionary_words{idx(length(idx)-i+1)};
         fprintf('Word: %-15s \t\t(%s%f) \n', parm, char(insert), weightx(length(idx)-i+1));
+        pos_word = strcat(pos_word,{'+'},insert,{'"'},parm,{'"'});
+        insert = {''};
         % Delete the above 2 lines to go back to add the Freq into the algorithm qualifiers
-    elseif idx(length(idx)-i+1) < (size(dictionary_words,1)+size(dictionary_pairs,1)+1)
+     elseif idx(length(idx)-i+1) < (size(dictionary_words,1)+size(dictionary_pairs,1)+1)
         parm = dictionary_pairs{idx(length(idx)-i+1)-size(dictionary_words,1)};
         fprintf('Pair: %-15s \t\t(%s%f) \n', parm, char(insert), weightx(length(idx)-i+1));
+        pos_word = strcat(pos_word,{'+'},insert,{'"'},parm,{'"'});
+        insert = {''};
         % Delete the above 2 lines to go back to add the Freq into the algorithm qualifiers
-    elseif idx(length(idx)-i+1) < (size(dictionary_words,1)*2+size(dictionary_pairs,1)+1)
+    % elseif idx(length(idx)-i+1) < (size(dictionary_words,1)*2+size(dictionary_pairs,1)+1)
         % parm = dictionary_words{idx(length(idx)-i+1)-(size(dictionary_words,1)+size(dictionary_pairs,1))};
         % fprintf('Word Freq: %-15s \t\t(%s%f) \n',parm, char(insert), weightx(length(idx)-i+1));
         % Add back in the above two lines to go back to add the Freq into the algorithm qualifiers
-        num_distinctifiers = num_distinctifiers +1;
-    elseif idx(length(idx)-i+1) < (size(dictionary_words,1)*2+size(dictionary_pairs,1)*2+1)
+        % i = i+1;
+        %num_distinctifiers = num_distinctifiers +1;
+    % elseif idx(length(idx)-i+1) < (size(dictionary_words,1)*2+size(dictionary_pairs,1)*2+1)
         % parm = dictionary_pairs{idx(length(idx)-i+1)-(size(dictionary_words,1)*2+size(dictionary_pairs,1))};
         % fprintf('Pair Freq: %-15s \t\t(%s%f) \n', parm, char(insert), weightx(length(idx)-i+1));
         % Add back in the above two lines to go back to add the Freq into the algorithm qualifiers
-        num_distinctifiers = num_distinctifiers+1;
+        % i = i+1;
+        % num_distinctifiers = num_distinctifiers+1;
     end
-    pos_word = strcat(pos_word,{'+'},insert,{'"'},parm,{'"'});
-    insert = {''};
 end
