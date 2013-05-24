@@ -93,7 +93,7 @@ Structure of Data:
     - ../svmModel/pred.binsev : This file contains a numerical/analog fitness value that indicates
       of how well the good and bad URLs in the training buckets fit the SVM model criteria.  This is a
       binary file produced by trainSVM, and must be open in Octave to view/use.
-    - ../searchTerms/new_sstrings.txt : This file contains the words and word pairs that should be
+    - ../searchTerms/newSearchStrings.txt : This file contains the words and word pairs that should be
       submitted into the Google API, which should be the best indicators for predicting a good URL.
 TODO: <Roux> Write a short blurb about the location & function of the passcode file
     - ../urls/newUrlList.res : This file is the direct output of webSearch.  It is a list of urls, in
