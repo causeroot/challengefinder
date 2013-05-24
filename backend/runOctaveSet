@@ -24,7 +24,7 @@ predNewFile = strcat(BASE_PATH,'/svmModel/predNew.binsev');
 accuracyFile = strcat(BASE_PATH,'/svmModel/accuracy.binsev');
 pFile = strcat(BASE_PATH,'/svmModel/p.binsev');
 pNewFile = strcat(BASE_PATH,'/svmModel/pNew.binsev');
-search_string_out_file = strcat(BASE_PATH, "/searchTerms/new_sstrings.txt");
+search_string_out_file = strcat(BASE_PATH, "/searchTerms/newSearchStrings.txt");
 eval_output_file = strcat(BASE_PATH, "/fitness/evalout.txt");
 
 [class, dictionary_words, dictionary_pairs, features, urls] = extraction(good_file,bad_file);
