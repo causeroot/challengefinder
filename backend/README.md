@@ -1,9 +1,11 @@
-Challenge_Finder
+
+CHALLENGEFINDER
 ========================================
 
-Challenge Finder's purpose is to machine learning techniques to find
-technical challenges based on an example set. For the purposes of this
-document the list of known good URLs will be called 'good_urls'.
+ChallengeFinder's purpose is to use Machine Learning techniques to find
+certain types of URLs based on an example set of "good" URLs (the types
+of sites that you are looking for) and a set of "bad" URLs (the types of
+URLs that you are not what you are looking for.
 
 
 
