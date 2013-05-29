@@ -1,45 +1,62 @@
 <p id="notice"><%= notice %></p>
-<div class="row-3">
-<p>
-  <b>Name:</b>
-  <%= @challenge.name %>
-</p>
 
-<p>
-  <b>Url:</b>
-  <%= @challenge.url %>
-</p>
 
-<p>
-  <b>Description:</b>
-  <%= @challenge.description %>
-</p>
+<div class="span8">
+	
+	<div class="row-2">
+		<div class="span2">
+			<img src="<%=asset_path "challenge.png"%>" width="100px" height="100px"/>
+		</div>
+		<div class="span6">
+			<div class="detail-highlights">
+				<p id="challenge-name">
+			  		<h5><%= @challenge.name %></h5>
+				</p><br>
 
-<p>
-  <b>Award:</b>
-  <%= @challenge.award %>
-</p>
+				<p>
+			  		<strong>AWARD &nbsp;</strong>
+			  		<%= @challenge.award %>
+				</p>
 
-<p>
-  <b>Deadline:</b>
-  <%= @challenge.deadline %>
-</p>
+				<p>
+			  		DEADLINE &nbsp;
+			  		<%= @challenge.deadline %>
+				</p>
 
-<p>
-  <b>Post date:</b>
-  <%= @challenge.post_date %>
-</p>
+				<p>
+			  		POSTED &nbsp;
+			  		<%= @challenge.post_date %>
+				</p>
 
-<p>
-  <b>Image url:</b>
-  <%= @challenge.image_url %>
-</p>
+				<p id="challenge-url">
+			  		WEBSITE &nbsp;
+			  		<%= @challenge.url %>
+				</p>
+			</div><br>
+			
+			<p>
+			  <%= @challenge.description %>
+			</p>
+			<br>
+	   <!--	<p>
+			  <b>Image url:</b>
+			  <%= @challenge.image_url %>
+			</p> -->
+			<div class="detail-highlights"><p>RULES</p></div>
+			<p><%= @challenge.rules %>
+			</p><br>
+			
+			<div class="detail-highlights"><p>SHARE</p>	
+				<div class="fb-like" data-send="false" data-layout="button_count" data-width="30" data-show-faces="true">
+				</div>
+				<a href="https://twitter.com/share" class="twitter-share-button" data-count="none">Tweet</a>
+				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
-<p>
-  <b>Rules:</b>
-  <%= @challenge.rules %>
-</p>
+			</div>
+		</div>
+
+			<%= link_to 'Edit', edit_challenge_path(@challenge) %> |
+			<%= link_to 'Back', challenges_path %>
+	</div>
+		
 </div>
-
-<%= link_to 'Edit', edit_challenge_path(@challenge) %> |
-<%= link_to 'Back', challenges_path %>
