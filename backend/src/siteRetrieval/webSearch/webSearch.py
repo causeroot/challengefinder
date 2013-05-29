@@ -1,10 +1,14 @@
 # Copyright 2013 CauseRoot
 
+import json
 import requests
-from sys import exit
+from sys import argv, exit
 from os.path import exists
 
 URL = "https://www.googleapis.com/customsearch/v1"
+BASE_PATH = "data"
+INPUT_FN = "searchTerms/newSearchStrings.txt"
+OUTPUT_FN = "urls/newUrlList.res"
 
 
 def readLine(fname):
@@ -32,21 +36,30 @@ def searchGen(url, secret, terms):
 
 def main():
     """Make requests to Google Search API using search API"""
-    API_SECRET = readLine("google.apikey")
+    API_SECRET = readLine("src/siteRetrieval/webSearch/google.apikey")
     try:
         API_SECRET
     except NameError:
-        print "You absolutely must have a Google API key in 'google.apikey'"
+        print "You absolutely must have a Google API key in 'src/siteRetrieval/webSearch/google.apikey'"
         exit()
     
-    if len(argv) < 2 or not exists(argv[1]):
-        print "Please pass in the filename containing the search parameters"
+    if len(argv) < 2:
+        print "Please pass in the class Name"
         exit()
     
-    terms = readLine(argv[1])
+    inFile = '/'.join([BASE_PATH, argv[1], INPUT_FN])
+    outFile = '/'.join([BASE_PATH, argv[1], OUTPUT_FN])
     
-    searchGenerator = searchGen(URL, secret, terms)
-    print searchGenerator.next().json()
+    if not exists(inFile):
+        print "Class does not exist, try again"
+        exit()
+    
+    terms = readLine(inFile)
+    
+    searchGenerator = searchGen(URL, API_SECRET, terms)
+    with open(outFile, 'w') as f:
+        result = searchGenerator.next()
+        f.write(json.dumps(result.json(), sort_keys=True, indent=2))
 
 
 if __name__ == "__main__":
