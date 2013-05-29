@@ -57,15 +57,30 @@
 			<p>ADVANCED SEARCH</p>
 			&nbsp
 			<p>KEYWORD</p>
-			<div class="form-field"></div>
-			&nbsp
+			<form>
+			<input type="text" name="keyword" class="form-field"><br>
+			</form>
 			<p>CATEGORY</p>
-			<div class="form-field"></div>
-			&nbsp
-			<p>POST DATE</p>
-			<div class="form-field"></div>
-			&nbsp
-			<p><div class="search-link">SEARCH</div></p>
+			<form action="" class="dropdown-field">
+				<select name="categories">
+					<option value="unselected">Show All</option>
+					<option value="category1">Category 1</option>
+					<option value="category2">Category 2</option>
+					<option value="category3">Category 3</option>
+					<option value="category4">Category 4</option>
+				</select>
+			</form>
+			<p>POSTED DATE</p>
+			<form action="" class="dropdown-field">
+				<select name="post-dates">
+					<option value="unselected">Show All</option>
+					<option value="30days">Last 30 Days</option>
+					<option value="60days">Last 60 Days</option>
+					<option value="100days">Last 100 Days</option>
+					<option value="year">Within the Last Year</option>
+				</select>
+			</form>
+			<input class="search-button" type="submit" value="SEARCH">
 		</div>
 	</div>
 		<div class="span3">

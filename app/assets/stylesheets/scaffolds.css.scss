@@ -157,16 +157,27 @@ div {
 	
 .form-field {
 	background-color: white;
-	height: 20px;
+	height: 16px;
 	margin: 8px 21px;
+	font-size: 11px;
 	}
+	
+.dropdown-field {
+	margin: 8px 21px;
+	}	
 
-.search-link {
+.dropdown-field option {
+	font-size: 12px;
+	}
+	
+.search-button {
 	font-size: 14px;
 	font-weight: normal;
 	color: #006838;
 	float: right;
 	margin-right:21px;
+	border: none;
+	background: none;
 	}
 	
 #notice {
