@@ -16,8 +16,8 @@ gem 'sorcery'
 group :assets do
   gem 'less'
   gem 'less-rails'
-#  gem 'sass-rails',   '~> 3.2.5'
-#  gem 'sass', '~> 3.2.9'
+  gem 'sass-rails',   '~> 3.2.5'
+  gem 'sass', '~> 3.2.9'
   gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
