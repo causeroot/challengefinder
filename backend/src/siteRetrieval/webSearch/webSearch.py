@@ -57,9 +57,11 @@ def main():
     terms = readLine(inFile)
     
     searchGenerator = searchGen(URL, API_SECRET, terms)
-    with open(outFile, 'w') as f:
-        result = searchGenerator.next()
-        f.write(json.dumps(result.json(), sort_keys=True, indent=2))
+
+    results = searchGenerator.next().json()
+    results[u'items'].extend(searchGenerator.next().json()[u'items'])
+    with open(outFile, 'a') as f:
+        f.write(json.dumps(results, sort_keys=True, indent=2))
 
 
 if __name__ == "__main__":
