@@ -34,15 +34,15 @@ TODO(luis): Clean-up code & remove commented old code for octave
 TODO(roux): make tab completion work for model names and class files.
 TODO: Write in exception handling if the helper referenced files don't exist
 
-    `./generateWordList className goodList.url`
-    `./generateWordList className badList.url`
-    `./generateFeatures className`
-    `./generateSVM className`
-    `./generateSearchStrings className`
-    `./webSearch className`
-    `./jsonStrip data/className/urls/newUrlList.res data/className/urls/newUrlList.url`
-    `./generateWordList className newlySearchedOutput.url`
-    `./generateClassification className`
+    ./generateWordList className goodList.url
+    ./generateWordList className badList.url
+    ./generateFeatures className
+    ./generateSVM className
+    ./generateSearchStrings className
+    ./webSearch className
+    ./jsonStrip data/className/urls/newUrlList.res data/className/urls/newUrlList.url
+    ./generateWordList className newlySearchedOutput.url
+    ./generateClassification className
 * Insert Human here!!! (see the note in "High Level Command")
 
 TODO: Figure exactly how we should be using the following script most effectively
