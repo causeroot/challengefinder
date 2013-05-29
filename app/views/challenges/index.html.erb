@@ -25,7 +25,7 @@
 					<!-- <img src="<%= challenge.image_url %>" /> -->
 				</div>
 				<div class="span4">
-					<h5><%= challenge.name %></h5>
+					<h5><%= link_to challenge.name, challenge %></h5>
 					<p><%=h truncate(challenge.description, :length => 152, :separator => ' ') %></p>
 					<%= link_to 'Learn More', challenge %>			
 	
@@ -58,16 +58,16 @@
 			&nbsp
 			<p>KEYWORD</p>
 			<form>
-			<input type="text" name="keyword" class="form-field"><br>
+			<input type="text" name="keyword" class="form-field">
 			</form>
 			<p>CATEGORY</p>
 			<form action="" class="dropdown-field">
 				<select name="categories">
 					<option value="unselected">Show All</option>
-					<option value="category1">Category 1</option>
-					<option value="category2">Category 2</option>
-					<option value="category3">Category 3</option>
-					<option value="category4">Category 4</option>
+					<option value="category1">Things that are Yellow</option>
+					<option value="category2">Places in Africa</option>
+					<option value="category3">Words that Start with P</option>
+					<option value="category4">Daily Double!!</option>
 				</select>
 			</form>
 			<p>POSTED DATE</p>
@@ -79,7 +79,7 @@
 					<option value="100days">Last 100 Days</option>
 					<option value="year">Within the Last Year</option>
 				</select>
-			</form>
+			</form><br>
 			<input class="search-button" type="submit" value="SEARCH">
 		</div>
 	</div>
