@@ -11,7 +11,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-  <%= render :partial => "layouts/navbar" %>
+  
     	<!-- begin FB script -->
     	<div id="fb-root"></div>
 		<script>(function(d, s, id) {
@@ -23,6 +23,7 @@
 			}(document, 'script', 'facebook-jssdk'));</script>
 		<!-- end FB script -->	
   <div class="container">
+  	<%= render :partial => "layouts/navbar" %>
   	<div class="page-border">
   		<div class="notice-row">
   			<div class="span12">
@@ -40,32 +41,34 @@
       		</div>-->
     	</div>
   	</div>
-  </div>
+
 
 <!-- Start of Footer -->
 	
-	<footer>
+	  <footer>
 	
-     <ul class="footer">
-       <li><%= link_to 'Challenges', challenges_path %></li>
-       <li><%= link_to 'About Us', about_path %></li>				
-			<% if current_user %>
-     		<li><%= link_to "Edit Profile", edit_user_path(current_user.id) %></li>
-     		<li><%= link_to "Logout", :logout %></li>
-			<% else %>
-				<li><%= link_to "Register", new_user_path %></li>
-				<li><%= link_to "Login", :login %></li>
+		 <div class="footer">
+		   <p><%= link_to 'Challenges', challenges_path %></p>
+		   <p><%= link_to 'About Us', about_path %></p>				
+				<% if current_user %>
+				<p><%= link_to "Edit Profile", edit_user_path(current_user.id) %></p>
+				<p><%= link_to "Logout", :logout %></p>
+				<% else %>
+					<p><%= link_to "Register", new_user_path %></p>
+					<p><%= link_to "Login", :login %></p>
+				<% end %>     
+		 </div>
+		 <div class="footer-search-bar">
+			<%= form_tag search_challenges_path, :method => :get, :class => "navbar-search pull-right" do %>
+			<p>
+				<%= text_field_tag :q, params[:q], :class => "search-query", :placeholder => "Search" %>
+			</p>
+		 </div>
 			<% end %>     
-     </ul>
-		<%= form_tag search_challenges_path, :method => :get, :class => "navbar-search pull-right" do %>
-		<p>
-			<%= text_field_tag :q, params[:q], :class => "search-query", :placeholder => "Search" %>
-		</p>
-		<% end %>     
-  	
-  	<div class="footer"> Copyright 2012 ChallengeFinder </div>
-  	</footer>
-
+	
+		<div class="footer"> Copyright 2012 ChallengeFinder </div>
+	  </footer>
+  </div>
 <!-- End of Footer -->
   	
 </body>

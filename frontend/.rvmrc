@@ -1,2 +1,0 @@
-rvm gemset use challengefinder --create
-ruby_string="ruby-1.9.3-p194"
