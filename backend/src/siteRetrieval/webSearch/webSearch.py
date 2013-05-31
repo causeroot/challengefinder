@@ -60,7 +60,7 @@ def main():
 
     results = searchGenerator.next().json()
     results[u'items'].extend(searchGenerator.next().json()[u'items'])
-    with open(outFile, 'a') as f:
+    with open(outFile, 'w') as f:
         f.write(json.dumps(results, sort_keys=True, indent=2))
 
 
