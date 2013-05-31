@@ -20,12 +20,12 @@
 
 				<p>
 			  		DEADLINE &nbsp;
-			  		<%= @challenge.deadline %>
+			  		<%= @challenge.deadline.strftime('%b %e, %Y') if @challenge.deadline %>
 				</p>
 
 				<p>
 			  		POSTED &nbsp;
-			  		<%= @challenge.post_date %>
+			  		<%= @challenge.post_date.strftime('%b %e, %Y') if @challenge.post_date %>
 				</p>
 
 				<p id="challenge-url">

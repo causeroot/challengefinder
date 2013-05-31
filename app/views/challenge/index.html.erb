@@ -26,8 +26,8 @@
         <td><%= challenge.url %></td>
         <td><%= challenge.description %></td>
         <td><%= challenge.award %></td>
-        <td><%= challenge.deadline %></td>
-        <td><%= challenge.post_date %></td>
+        <td><%= challenge.deadline.strftime('%b %e, %Y') if challenge.deadline %></td>
+        <td><%= challenge.post_date.strftime('%b %e, %Y') if challenge.psot_date %></td>
         <td><%= challenge.image_url %></td>
         <td><%= challenge.rules %></td>
         <td><%=l challenge.created_at %></td>

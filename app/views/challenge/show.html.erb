@@ -13,9 +13,9 @@
   <dt><strong><%= model_class.human_attribute_name(:award) %>:</strong></dt>
   <dd><%= @challenge.award %></dd>
   <dt><strong><%= model_class.human_attribute_name(:deadline) %>:</strong></dt>
-  <dd><%= @challenge.deadline %></dd>
+  <dd><%= @challenge.deadline.strftime('%b %e, %Y') if @challenge.deadline %></dd>
   <dt><strong><%= model_class.human_attribute_name(:post_date) %>:</strong></dt>
-  <dd><%= @challenge.post_date %></dd>
+  <dd><%= @challenge.post_date.strftime('%b %e, %Y') if @challenge.post_date %></dd>
   <dt><strong><%= model_class.human_attribute_name(:image_url) %>:</strong></dt>
   <dd><%= @challenge.image_url %></dd>
   <dt><strong><%= model_class.human_attribute_name(:rules) %>:</strong></dt>
