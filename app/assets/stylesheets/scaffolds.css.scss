@@ -38,7 +38,7 @@ a {
     color: #666;
   }
   &:hover {
-    color: #fff;
+    color: #669900;
     text-decoration: none;
   }
 }
@@ -112,16 +112,20 @@ div {
 .span4 a {
 	margin-left: 0;
 	color: #FF9900;
-	}
-
-.span4 a:hover {
+	&:hover {
 	margin-left: 0;
-	color: #707070;
+	color: #669900;
 	background: none;
-	} 	
+  } 
+	}
+	
 
 .span4 h5 a {
 	color: #000000;
+	&:hover {
+    color: #707070;
+  }
+  
 	}
 		
 .span9 {
@@ -191,11 +195,21 @@ div {
 	}
 
 .fb-like {
-	padding-right: 12px;
+	padding-right: 12px;	
+	}
+
+.sm-icons {
 	padding-left: 20px;
 	padding-top: 10px;
 	padding-bottom: 10px;
+	}
 
+#challenge-url a {
+	color: #FF9900;
+	&:hover {
+    color: #669900;
+  }
+  
 	}
 		
 .page-border {
