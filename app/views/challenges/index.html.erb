@@ -33,9 +33,9 @@
 				<div class="span3">
 					<p><strong>AWARD &nbsp;</strong> <%= challenge.award %></p>
 					<p><span class="dividing-line">———————————————</span></p>
-					<p>DEADLINE &nbsp; <%= challenge.deadline %></p>
+					<p>DEADLINE &nbsp; <%= challenge.deadline.strftime('%b %e, %Y') if challenge.deadline %></p>
 					<p><span class="dividing-line">———————————————</span></p>
-					<p>POSTED &nbsp; <%= challenge.post_date %></p>
+					<p>POSTED &nbsp; <%= challenge.post_date.strftime('%b %e, %Y') if challenge.post_date %></p>
 					<p><span class="dividing-line">———————————————</span></p>
 					<div class="sm-icons">
 						<div class="fb-like" data-send="false" data-layout="button_count" data-width="30" data-show-faces="true">
