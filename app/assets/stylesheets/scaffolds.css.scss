@@ -205,6 +205,7 @@ div {
 	padding-right: 12px;	
 	}
 
+
 .sm-icons {
 	padding-left: 20px;
 	padding-top: 10px;
@@ -265,7 +266,15 @@ div {
 	padding-right: 20px;
 	}
 
+.back-link a{
+	margin-left: 0px;
+	color: #6D6E71;
+	}
 
+.back-link {
+	margin-bottom: 40px;
+	}
+	
 .copyright {
 	color: #FFFFFF;
 	font-size: 10px;
@@ -274,7 +283,7 @@ div {
 
 footer a {
 	margin-left: 0px;
-	margin-right: 40px;
+	margin-right: 36px;
 	font-size: 12px;
 	color: #FFFFFF;
 	  &:visited {
@@ -286,10 +295,25 @@ footer a {
 
 	}
 	
-.footer-search-bar {
-
+footer {
+	color: #FFFFFF;
+	font-size: 12px;
+	margin-right: 10px;
+	margin-bottom: 12px;
 	}
-	
+
+.footer-icon {
+	margin-right: 0px;
+	margin-left: 10px;
+	}
+		
+input.search-query {
+	float: right;
+	width: 160px;
+	margin-bottom: 12px;
+	margin-right: 0px;
+
+	}	
 	
 .field_with_errors {
   padding: 2px;
