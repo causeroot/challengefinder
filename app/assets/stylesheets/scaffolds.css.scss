@@ -266,9 +266,12 @@ div {
 	padding-right: 20px;
 	}
 
-.back-link a{
+.back-link a {
 	margin-left: 0px;
 	color: #6D6E71;
+	&:hover {
+	color: #669900;
+	}
 	}
 
 .back-link {
