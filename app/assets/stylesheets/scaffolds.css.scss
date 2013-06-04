@@ -37,9 +37,9 @@ pre {
 }
 
 a {
-  color: #000;
+  color: #000000;
   &:visited {
-    color: #666;
+    color: #000000;
   }
   &:hover {
     color: #669900;
@@ -266,13 +266,28 @@ div {
 	}
 
 
-footer {
+.copyright {
 	color: #FFFFFF;
+	font-size: 10px;
+	margin-top: 10px;
+	}
 
-}
+footer a {
+	margin-left: 0px;
+	margin-right: 40px;
+	font-size: 12px;
+	color: #FFFFFF;
+	  &:visited {
+    color: #FFFFFF;
+  }
+  &:hover {
+    color: #669900;
+  }
 
-.footer-search-bar{
+	}
 	
+.footer-search-bar {
+
 	}
 	
 	

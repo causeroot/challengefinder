@@ -46,18 +46,24 @@
 <!-- Start of Footer -->
 	
 	  <footer>
-	
-		 <div class="footer">
-		   <p><%= link_to 'Challenges', challenges_path %></p>
-		   <p><%= link_to 'About Us', about_path %></p>				
-				<% if current_user %>
-				<p><%= link_to "Edit Profile", edit_user_path(current_user.id) %></p>
-				<p><%= link_to "Logout", :logout %></p>
-				<% else %>
-					<p><%= link_to "Register", new_user_path %></p>
-					<p><%= link_to "Login", :login %></p>
-				<% end %>     
-		 </div>
+		 
+			 <table class="footer-nav">
+			   <tbody>
+					<tr><%= link_to 'CHALLENGES', challenges_path %>
+						<%= link_to 'ABOUT US', about_path %>
+						<%= link_to 'PRIVACY POLICY', about_path %>				
+						<% if current_user %>
+						<%= link_to "EDIT PROFILE", edit_user_path(current_user.id) %>
+						<%= link_to "LOGOUT", :logout %>
+						<% else %>
+						<%= link_to "REGISTER", new_user_path %>
+						<%= link_to "LOGIN", :login %>
+						FOLLOW ON <a href="https://twitter.com/CauseRoot" target="_blank"><img src="<%=asset_path "twitter-icon-wht.png"%>"/></a> <a href="http://www.facebook.com/pages/CauseRoot/219709724825671" target="_blank"><img src="<%=asset_path "facebook-icon-wht.png"%>"/></a>
+					 </tr>
+						<% end %>     
+				</tbody>
+			 </table>
+		 
 		 <div class="footer-search-bar">
 			<%= form_tag search_challenges_path, :method => :get, :class => "navbar-search pull-right" do %>
 			<p>
@@ -66,7 +72,7 @@
 		 </div>
 			<% end %>     
 	
-		<div class="footer"> Copyright 2012 ChallengeFinder </div>
+		<div class="copyright"> Copyright 2013 ChallengeFinder </div>
 	  </footer>
   </div>
 <!-- End of Footer -->
