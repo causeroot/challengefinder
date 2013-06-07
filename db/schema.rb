@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121015013402) do
+ActiveRecord::Schema.define(:version => 20130607061640) do
 
   create_table "challenges", :force => true do |t|
     t.string   "name"
@@ -21,10 +21,12 @@ ActiveRecord::Schema.define(:version => 20121015013402) do
     t.datetime "deadline"
     t.datetime "post_date"
     t.string   "image_url"
-    t.text     "rules"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.string   "xpath"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.string   "sponsor"
+    t.string   "tag_line"
+    t.text     "summary"
+    t.string   "contact_info"
   end
 
   create_table "users", :force => true do |t|
