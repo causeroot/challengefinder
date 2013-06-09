@@ -3,7 +3,7 @@ class Challenge < ActiveRecord::Base
   validates :name, :presence => true
   
   searchable do
-	  string :name, :stored => true
+	  text :name, :stored => true
     text :description, :stored => true
   end  
 end
