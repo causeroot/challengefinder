@@ -1,0 +1,223 @@
+
+*Challenge Number*
+1
+*URL*
+http://arimaa.com/arimaa/challenge/
+*Title*
+The Arimaa Challenge
+*TagLine*
+The first person, company or organization that develops a program which can defeat the top human Arimaa players in an official Arimaa challenge match before the year 2020 will win the Arimaa challenge prize.
+*Summary*
+In fact we are offering a prize of at least $10,000 USD (current prize may be more) until 2020 to the first person, company or organization who develops a program that can defeat three selected human players in an official Arimaa match. The match will consist of at least 3 games against each of the three players. The program must be able to run on a general-purpose, off-the-shelf computer and not require any specialized hardware.
+
+We invite participants from Universities, Corporations and also individuals around the world to see if they can develop the best Arimaa playing program. Each January a tournament will be held to determine the best Arimaa playing program. The winner of that tournament will receive a prize and a chance to try for the $10,000 grand challenge of defeating human players. We especially would like to encourage teams from Universities around the world to participate. The contest will be fun and interesting.
+
+Arimaa demonstrates that when it comes to serious game playing, humans still dominate. By offering this challenge we hope to increase the awareness that the difficult problem of teaching computers to play strategy games has not yet been tackled. There is much work that needs to be done in understanding how humans play strategy games and producing similar capability in software. We hope this challenge will spur some new and radically different ways of replicating this astonishing human capability in software. The breakthroughs that will come from such research can have significant applications in a wide variety of fields.
+*Rules*
+Object of the Game
+
+Be the first to get one of your rabbits to the other side of the board.
+
+Material
+
+Arimaa is designed so that it can easily be played using a standard chess set. To make the game easier to learn for someone who is not familiar with chess, the chess pieces are substituted with well known animals. The substitution is as follows: elephant for king, camel for queen, horse for rook, dog for bishop, cat for knight and rabbit for pawn. The elephant is the strongest followed by camel, horse, dog, cat and rabbit. Coins need to placed on squares c3, f3, c6 and f6 of the chess board to mark these as special trap squares (explained later).
+
+Setup
+
+The game starts with an empty board. The player with the gold pieces sets them on the first two rows closest to that player. There is no fixed starting position so the pieces may be placed in any arrangement. But it is suggested that most of the stronger pieces be placed in front of the weaker rabbits. Once the gold player has finished the silver player sets the pieces on the two closest rows. Again the pieces may be placed in any arrangement within the first two rows.
+
+Play
+
+The players take turns moving their pieces with the gold player going first. All pieces move the same way: in orthogonal directions (like rooks in chess) forward, backward, left and right. But the rabbits cannot move backward (like pawns in chess). On each turn a player can move the pieces a total of four steps. Moving one piece from its current square to the next adjacent square counts as one step. A piece can take multiple steps and also change directions after each step. The steps may be distributed among multiple pieces so that up to four pieces can be moved. A player may pass some of the steps, but may not pass the whole turn or make a move equivalent to passing the whole turn.
+
+The stronger pieces can move opponent's weaker pieces. For example your dog can move the opponent's cat or rabbit, but not the opponent's dog or any other piece that is stronger than it. The opponent's piece must be orthogonally adjacent to your piece and can be moved by either pushing or pulling it. To push an opponent's piece with your stronger piece, first move the opponent's piece to one of the empty orthogonally adjacent squares and then move your piece into its place. To pull an opponent's piece with your stronger piece, first move your piece to one of the unoccupied adjacent squares and then move the opponent's piece into the square that was just vacated. Although rabbits cannot move backwards on their own, they may be pushed or pulled back. A push or pull requires two consecutive steps and must be completed within the same turn. Any combination of pushing and pulling can be done in the same turn. However when your stronger piece is completing a push it cannot pull an opponent's weaker piece along with it.
+
+A stronger piece can also freeze any opponent's piece that is weaker than it. A piece which is next to an opponent's stronger piece is considered to be frozen and cannot move on its own; though it can be pushed or pulled by opponents stronger pieces. However if there is a friendly piece next to it the piece is unfrozen and is free to move.
+
+There are four distinctly marked traps squares on the board (c3, f3, c6 and f6 in standard notation). Any piece that is on a trap square is immediately removed from the game unless there is a friendly piece next to the trap square to keep it safe. Be careful not to lose your own pieces in the traps.
+
+Special Situations
+
+A push or pull is considered atomic as if the two pieces are moved simultaneously. Thus it is possible for the pulling piece to step into a trap and be removed from the game while completing the pull.
+
+A player may push or pull the opponent's rabbit into the goal row it is trying to reach. If at the end of the turn the rabbit remains there, the player loses. However if the opponent's rabbit is moved back out of the goal row before the end of the turn, the player does not lose.
+
+If a player is unable to make a move because all the pieces are frozen or have no place to move, then that player has lost the game.
+
+If after a turn the same board position and side to move would occur for the third time, then that move is illegal and the player must select a different move. If in the rare case the only moves a player has are not allowed then the player loses due to being unable to make a move.
+
+If a player loses all the rabbits then that player loses the game. If in the rare case both players lose all rabbits on the same move then the player making the move wins the game.
+
+Notes
+
+The order of checking for win/lose conditions is as follows assuming player A just made the move and player B now needs to move:
+
+Check if a rabbit of player A reached goal. If so player A wins.
+Check if a rabbit of player B reached goal. If so player B wins.
+Check if player B lost all rabbits. If so player A wins.
+Check if player A lost all rabbits. If so player B wins.
+Check if player B has no possible move (all pieces are frozen or have no place to move). If so player A wins.
+Check if the only moves player B has are 3rd time repetitions. If so player A wins.
+
+Reference URLs:
+http://arimaa.com/arimaa/learn/matchRules.html
+http://arimaa.com/arimaa/learn/
+
+*Eligibility*
+
+*Fee*
+
+*Award Value1*
+$17,000
+*Award Description1*
+Note: Award value varies per year.
+*Deadline Date1*
+January, 2014
+*Deadline Description1*
+Note: The 2013 competition has ended without a winner. See website for upcoming 2014 Competition.
+*Post Date*
+January, 1,2004
+*Image URL*
+http://arimaa.com/arimaa/graphics/animals/WE.gif
+*Sponsor*
+Omar Syed
+*Contact Info*
+http://arimaa.com/arimaa/contact/
+*Topic*
+Artificital Intelligence
+Computer Science
+Games
+*Structure*
+Tournament
+Annual
+Until Prize is Claimed
+*Resultant*
+Winner
+Open Source?
+*Xpath Check*
+http://arimaa.com/arimaa/challenge/html/body/table/tbody/tr/td[2]/blockquote/table/tbody/tr/td/p[3]
+
+*Challenge Number*
+2
+*URL*
+http://www.claymath.org/millennium/Birch_and_Swinnerton-Dyer_Conjecture/
+*Title*
+Birch and Swinnerton-Dyer Conjecture
+*TagLine*
+A Millennium Prize Problem
+*Summary*
+Overview:
+In order to celebrate mathematics in the new millennium, The Clay Mathematics Institute of Cambridge, Massachusetts (CMI) established seven Prize Problems. The Prizes were conceived to record some of the most difficult problems with which mathematicians were grappling at the turn of the second millennium; to elevate in the consciousness of the general public the fact that in mathematics, the frontier is still open and abounds in important unsolved problems; to emphasize the importance of working towards a solution of the deepest, most difficult problems; and to recognize achievement in mathematics of historical magnitude.
+
+The prizes were announced at a meeting in Paris, held on May 24, 2000 at the Collège de France. Three lectures were presented: Timothy Gowers spoke on The Importance of Mathematics; Michael Atiyah and John Tate spoke on the problems themselves.
+
+The seven Millennium Prize Problems were chosen by the founding Scientific Advisory Board of CMI, which conferred with leading experts worldwide. The focus of the board was on important classic questions that have resisted solution for many years.
+
+Follwing the decision of the Scientific Advisory Board, the Board of Directors of CMI designated a $7 million prize fund for the solution to these problems, with $1 million allocated to the solution of each problem.
+
+It is of note that one of the seven Millennium Prize Problems, the Riemann hypothesis, formulated in 1859, also appears in the list of twenty-three problem discuss in the address given in Paris by David Hilbert on August 9, 1900.
+
+The Birch and Swinnerton-Dyer Conjecture:
+Mathematicians have always been fascinated by the problem of describing all solutions in whole numbers x,y,z to algebraic equations like x^2 + y^2 = z^2. Euclid gave the complete solution for that equation, but for more complicated equations this becomes extremely difficult. Indeed, in 1970 Yu. V. Matiyasevich showed that Hilbert's tenth problem is unsolvable, i.e., there is no general method for determining when such equations have a solution in whole numbers. But in special cases one can hope to say something. When the solutions are the points of an abelian variety, the Birch and Swinnerton-Dyer conjecture asserts that the size of the group of rational points is related to the behavior of an associated zeta function ζ(s) near the point s=1. In particular this amazing conjecture asserts that if ζ(1) is equal to 0, then there are an infinite number of rational points (solutions), and conversely, if ζ(1) is not equal to 0, then there is only a finite number of such points.
+*Rules*
+The SAB of CMI will consider a proposed solution to a Millennium Prize Problem if it is a complete mathematical solution to one of the problems. (In the case that someone discovers a mathematical counterexample, rather than a proof, the question will be considered separately as described below.) A proposed solution to one of the Millennium Prize Problems may not be submitted directly to CMI for consideration.
+
+Before consideration, a proposed solution must be published in a refereed mathematics publication of worldwide repute (or such other form as the SAB shall determine qualifies), and it must also have general acceptance in the mathematics community two years after. Following this two-year waiting period, the SAB will decide whether a solution merits detailed consideration. In the affirmative case, the SAB will constitute a special advisory committee, which will include (a) at least one SAB member and (b) at least two non-SAB members who are experts in the area of the problem. The SAB will seek advice to determine potential non-SAB members who are internationally-recognized mathematical experts in the area of the problem. As part of this procedure, each component of a proposed solution under consideration shall be verified by one or more members of this special advisory committee.
+
+The special advisory committee will report within a reasonable time to the SAB. Based on this report and possible further investigation, the SAB will make a recommendation to the Directors. The SAB may recommend the award of a prize to one person. The SAB may recommend that a particular prize be divided among multiple solvers of a problem or their heirs. The SAB will pay special attention to the question of whether a prize solution depends crucially on insights published prior to the solution under consideration. The SAB may (but need not) recommend recognition of such prior work in the prize citation, and it may (but need not) recommend the inclusion of the author of prior work in the award.
+
+If the SAB cannot come to a clear decision about the correctness of a solution to a problem, its attribution, or the appropriateness of an award, the SAB may recommend that no prize be awarded for a particular problem. If new information comes to light, the SAB may (but will not necessarily) reconsider a negative decision to recommend a prize for a proposed solution, but only after an additional two-year waiting period following the time that the new information comes to light. The SAB has the sole authority to make recommendations to the Directors of the CMI concerning the appropriateness of any award and the validity of any claim to the CMI Millennium Prize.
+
+In the case of the P versus NP problem and the Navier-Stokes problem, the SAB will consider the award of the Millennium Prize for deciding the question in either direction. In the case of the other problems if a counterexample is proposed, the SAB will consider this counterexample after publication and the same two-year waiting period as for a proposed solution will apply. If, in the opinion of the SAB, the counterexample effectively resolves the problem then the SAB may recommend the award of the Prize. If the counterexample shows that the original problem survives after reformulation or elimination of some special case, then the SAB may recommend that a small prize be awarded to the author. The money for this prize will not be taken from the Millennium Prize Problem fund, but from other CMI funds.
+
+Any person who is not a disqualified person (as that term is defined in section 4946 of the Internal Revenue Code) in connection with the Institute, or a then serving member of the SAB, may receive the Millennium Prize.
+
+All decision-making procedures concerning the CMI Millennium Prize Problems are private. This includes the deliberations or recommendations of any person or persons CMI has used to obtain advice on this question. No records of these deliberations or related correspondence may be made public without the prior approval of the Directors, the SAB, and all other living persons involved, unless fifty years time have elapsed after the event in question.
+
+Notwithstanding the wording of the problem descriptions, the SAB will not consider recommending the award of a prize to any individual who has not, in the judgement of SAB, made a major personal contribution to the understanding of the field of the problem in their published solution; nor will it investigate in detail solutions that do not represent a major advance in the field. Conversely, the SAB may consider recommending the award of the prize to an individual who has published work that, in the judgement of the SAB, fully resolves the questions raised by one of the Millennium Prize Problems even if it does not exactly meet the wording in the official problem description.
+
+Please send inquiries regarding the Millennium Prize Problems to admin@claymath.org.
+
+Reference URLs:
+http://www.claymath.org/millennium/Birch_and_Swinnerton-Dyer_Conjecture/birchswin.pdf
+
+*Eligibility*
+
+*Fee*
+
+*Award Value1*
+$1,000,000
+*Award Description1*
+
+*Deadline Date1*
+None
+*Deadline Description1*
+
+*Post Date*
+May, 24th 2000
+*Image URL*
+http://www.claymath.org/images/sculpture.gif
+*Sponsor*
+Clay Mathematics Institute
+*Contact Info*
+Corporate Address
+Clay Mathematics Institute
+10 Memorial Blvd.
+Suite 902
+Providence, RI 02903
+USA
+
+Email: admin@claymath.org
+
+Telephone: +44 (0)1865 615155
+Fax: +44 (0)1865 615101
+*Topic*
+Math
+*Structure*
+Until Prize is Claimed
+Publication
+*Resultant*
+Open Source
+*Xpath Check*
+http://www.claymath.org/millennium/Birch_and_Swinnerton-Dyer_Conjecture/html/body/div[4]/div/p[3]
+http://www.claymath.org/millennium/Rules_etc/html/body/div[4]/div/p[11]/em
+
+*Challenge Number*
+3
+*URL*
+
+*Title*
+
+*TagLine*
+
+*Summary*
+
+*Rules*
+
+*Eligibility*
+
+*Fee*
+
+*Award Value1*
+
+*Award Description1*
+
+*Deadline Date1*
+
+*Deadline Description1*
+
+*Post Date*
+
+*Image URL*
+
+*Sponsor*
+
+*Contact Info*
+
+*Topic*
+
+*Structure*
+
+*Resultant*
+
+*Xpath Check*
