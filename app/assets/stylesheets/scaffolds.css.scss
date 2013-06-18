@@ -109,7 +109,8 @@ div {
 	}
 
 .span4 {
-	width: 324px;
+	max-width: 324px;
+	min-width: 224px;
 	}
 
 .span4 a {
@@ -155,7 +156,7 @@ div {
 	letter-spacing: .7em;
 	}
 		
-#test-area {
+#search-area {
 	height: 360px; 
 	margin-bottom: 60px;
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#A7A9AC), to(#D1D3D4));   /* Safari 4-5, Chrome 1-9 */
@@ -166,17 +167,21 @@ div {
 		
 	}
 
-#test-area p {
+#search-area p {
 	font-size: 14px;
 	color: #FFFFFF;
 	}
 	
-.form-field {
-	margin: 6px 21px;
-	width: 75%;
-
+.navbar-search .search-query {
+	margin: 4px 24px 32px;
+	border-radius: 4px;
+	width: 70%;
 	}
+
+input.search-query {
 	
+	}
+
 .dropdown-field {
 	margin: 8px 20px;
 
