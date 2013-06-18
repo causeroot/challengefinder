@@ -66,11 +66,7 @@
 						<%= link_to "REGISTER", new_user_path %>
 						<%= link_to "LOGIN", :login %>
 						FOLLOW US ON <a class="footer-icon" href="https://twitter.com/CauseRoot" target="_blank"><img src="<%=asset_path "twitter-icon-wht.png"%>"/></a> <a class="footer-icon" href="http://www.facebook.com/pages/CauseRoot/219709724825671" target="_blank"><img src="<%=asset_path "facebook-icon-wht.png"%>"/></a>
-					 
-					<%= form_tag search_challenges_path, :method => :get, :class => "navbar-search pull-right" do %>	
-					<%= text_field_tag :q, params[:q], :class => "search-query", :placeholder => "Search" %>
-			
-					<% end %>   
+				  
 					 
 					 </tr>
 						<% end %>     

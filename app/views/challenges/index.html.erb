@@ -32,11 +32,11 @@
 				</div>
 				<div class="span3">
 					<p><strong>AWARD &nbsp;</strong> <%= challenge.award %></p>
-					<p><span class="dividing-line">———————————————</span></p>
+					<p><span class="dividing-line">—————————————</span></p>
 					<p>DEADLINE &nbsp; <%= challenge.deadline.strftime('%b %e, %Y') if challenge.deadline %></p>
-					<p><span class="dividing-line">———————————————</span></p>
+					<p><span class="dividing-line">—————————————</span></p>
 					<p>POSTED &nbsp; <%= challenge.post_date.strftime('%b %e, %Y') if challenge.post_date %></p>
-					<p><span class="dividing-line">———————————————</span></p>
+					<p><span class="dividing-line">—————————————</span></p>
 					<div class="sm-icons">
 						<div class="fb-like" data-href="<%= url_for challenge %>" data-send="false" data-layout="button_count" data-width="30" data-show-faces="true">
 						</div>
@@ -47,7 +47,7 @@
 					</div>
 				</div>
 
-				<p class="dot-divider">......................................................<p>
+				<p class="dot-divider">.....................................................<p>
 		</div>
 		<% end %>
 	</div>
@@ -56,14 +56,18 @@
 		
 		<!-- Start of Filter Area -->
 		
-		<div class="span3" id="test-area">&nbsp;
-			<p>CHALLENGE FILTER</p>
+		<div class="span3" id="search-area">&nbsp;
+			<p>SEARCH</p>
 			&nbsp
-			<p>KEYWORD</p>
-			<form>
-			<input type="text" name="keyword" class="form-field">
-			</form>
-			<p>CATEGORY</p>
+			<p>Keyword</p>
+			<%= form_tag search_challenges_path, :method => :get, :class => "navbar-search pull-right" do %>	
+			<%= text_field_tag :q, params[:q], :class => "search-query", :placeholder => "Search" %>
+			
+			<% end %> 
+			
+			<p>FILTER RESULTS</p>
+			&nbsp
+			<p>Category</p>
 			<form action="" class="dropdown-field">
 				<select name="categories">
 					<option value="unselected">Show All</option>
@@ -73,7 +77,7 @@
 					<option value="category4">Daily Double!!</option>
 				</select>
 			</form>
-			<p>POSTED DATE</p>
+			<p>Posted Date</p>
 			<form action="" class="dropdown-field">
 				<select name="post-dates">
 					<option value="unselected">Show All</option>
@@ -83,7 +87,7 @@
 					<option value="year">Within the Last Year</option>
 				</select>
 			</form><br>
-			<input class="search-button" type="submit" value="SEARCH">
+			<!-- <input class="search-button" type="submit" value="SEARCH"> -->
 		</div>
 		
 		<!-- End Filter Area -->
