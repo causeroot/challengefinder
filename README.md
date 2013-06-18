@@ -10,8 +10,8 @@ Get Ready
 
 Install
 ======
-* Check out the source: `git clone git://github.com/gardner/ChallengeFinder.git`
-* Change into src dir: `cd ChallengeFinder`
+* Check out the source: `git clone git://github.com/CauseRoot/challengefinder.git`
+* Change into src dir: `cd challengefinder`
 * Install required gems: `bundle install` [read this if you receive errors](http://stackoverflow.com/questions/9345622/error-running-bundle-install-using-ruby-1-9-3 "Troubleshoot")
 * If Nokogiri installation fails [please read this page](http://nokogiri.org/tutorials/installing_nokogiri.html) the solution is system dependent. Please be sure to install version 1.5.2
 * Initialize the database: `rake db:create; rake db:migrate`
