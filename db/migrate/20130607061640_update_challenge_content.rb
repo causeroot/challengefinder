@@ -37,8 +37,3 @@ class UpdateChallengeContent < ActiveRecord::Migration
     remove_column :challenges, :xpath_check
   end
 end
-
-*Award Value1*
-*Award Description1*
-*Deadline Date1*
-*Deadline Description1*
