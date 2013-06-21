@@ -65,6 +65,7 @@ ChallengeFinder::Application.routes.draw do
     # Directs /admin/challenges/* to Admin::ChallengesController
     # (app/controllers/admin/challenges_controller.rb)
     resources :challenges
+    root to: "challenges#index"
   end
 
   # You can have the root of your site routed with "root"
