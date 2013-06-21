@@ -6,7 +6,7 @@ class UpdateChallengeContent < ActiveRecord::Migration
     add_column :challenges, :eligibility, :text
     add_column :challenges, :fee, :text
     add_column :challenges, :sponsor, :string
-    add_column :challenges, :contact_info, :string
+    add_column :challenges, :contact_info, :text
     add_column :challenges, :topic, :string
     add_column :challenges, :structure, :string
     add_column :challenges, :resultant, :string
@@ -37,8 +37,3 @@ class UpdateChallengeContent < ActiveRecord::Migration
     remove_column :challenges, :xpath_check
   end
 end
-
-*Award Value1*
-*Award Description1*
-*Deadline Date1*
-*Deadline Description1*
