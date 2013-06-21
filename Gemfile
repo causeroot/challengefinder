@@ -10,6 +10,8 @@ gem 'sunspot_rails'
 gem 'sunspot_solr'
 
 gem 'sorcery'
+gem 'nokogiri'
+gem 'mechanize'
 
 # Gems used only for assets and not required
 # in production environments by default.
