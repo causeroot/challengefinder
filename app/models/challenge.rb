@@ -3,6 +3,8 @@ class Challenge < ActiveRecord::Base
   validates :name, :presence => true
   has_many :award
   has_many :deadline
+  accepts_nested_attributes_for :award
+  accepts_nested_attributes_for :deadline
   
   searchable do
 	  text :name, :stored => true
