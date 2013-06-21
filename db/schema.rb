@@ -46,8 +46,10 @@ ActiveRecord::Schema.define(:version => 20130607061640) do
     t.datetime "reset_password_email_sent_at"
   end
 
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["last_logout_at", "last_activity_at"], :name => "index_users_on_last_logout_at_and_last_activity_at"
   add_index "users", ["remember_me_token"], :name => "index_users_on_remember_me_token"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token"
+  add_index "users", ["username"], :name => "index_users_on_username", :unique => true
 
 end
