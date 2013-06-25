@@ -14,17 +14,15 @@
 		<div class="span6">
 			<div class="detail-highlights">
 				<p id="challenge-name">
-			  		<h5><%= @challenge.name %></h5>
+			  		<h5><%= @challenge.title %></h5>
 				</p><br>
 
 				<p>
-			  		<strong>AWARD &nbsp;</strong>
-			  		<%= @challenge.award %>
+                    <%= render :partial => "challenges/awards", :object => @challenge.awards %>
 				</p>
 
 				<p>
-			  		DEADLINE &nbsp;
-			  		<%= @challenge.deadline.strftime('%b %e, %Y') if @challenge.deadline %>
+                    <%= render :partial => "challenges/deadlines", :object => @challenge.deadlines %>
 				</p>
 
 				<p>
@@ -39,7 +37,7 @@
 			</div><br>
 			
 			<p>
-			  <%= @challenge.description %>
+			  <%= @challenge.summary %>
 			</p>
 			<br>
 	   <!--	<p>
@@ -53,7 +51,7 @@
 			<div class="detail-highlights"><p>SHARE</p>	
 				<div class="fb-like" data-send="false" data-layout="button_count" data-width="30" data-show-faces="true">
 				</div>
-				<a href="https://twitter.com/share" class="twitter-share-button" data-url="<%= @challenge %>" data-text="<%= @challenge.name %>" data-count="none">Tweet</a>
+				<a href="https://twitter.com/share" class="twitter-share-button" data-url="<%= @challenge %>" data-text="<%= @challenge.title %>" data-count="none">Tweet</a>
 						<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
 

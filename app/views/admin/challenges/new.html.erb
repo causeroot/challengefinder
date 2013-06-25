@@ -1,7 +1,10 @@
 <h1>New admin_challenge</h1>
 
-<iframe id="iframe_id1" src="/challenge.html"></iframe>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', admin_challenges_path %>
+    <div style="float: left" >
+        <iframe id="iframe_id1" width="800" height="2048" src=" http://localhost:3000/admin/proxy/?url=http://google.com"></iframe>
+    </div>
+    <div style="width: 300px; float: right">
+        <%= render 'form' %>
+    </dvi>
+    <div style="clear: both"></div>
+    <%= link_to 'Back', admin_challenges_path %>

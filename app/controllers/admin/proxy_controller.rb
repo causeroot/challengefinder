@@ -9,6 +9,7 @@ class Admin::ProxyController < Admin::AdminController
   def show
     agent = Mechanize.new
     page = agent.get params[:url]
-    send_data page.content
+    @html = page.content 
+    render :layout => false, :text => @html
   end
 end
