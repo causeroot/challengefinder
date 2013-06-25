@@ -14,19 +14,19 @@ We invite participants from Universities, Corporations and also individuals arou
 
 Arimaa demonstrates that when it comes to serious game playing, humans still dominate. By offering this challenge we hope to increase the awareness that the difficult problem of teaching computers to play strategy games has not yet been tackled. There is much work that needs to be done in understanding how humans play strategy games and producing similar capability in software. We hope this challenge will spur some new and radically different ways of replicating this astonishing human capability in software. The breakthroughs that will come from such research can have significant applications in a wide variety of fields.
 *Rules*
-Object of the Game
+Object of the Game:
 
 Be the first to get one of your rabbits to the other side of the board.
 
-Material
+Material:
 
 Arimaa is designed so that it can easily be played using a standard chess set. To make the game easier to learn for someone who is not familiar with chess, the chess pieces are substituted with well known animals. The substitution is as follows: elephant for king, camel for queen, horse for rook, dog for bishop, cat for knight and rabbit for pawn. The elephant is the strongest followed by camel, horse, dog, cat and rabbit. Coins need to placed on squares c3, f3, c6 and f6 of the chess board to mark these as special trap squares (explained later).
 
-Setup
+Setup:
 
 The game starts with an empty board. The player with the gold pieces sets them on the first two rows closest to that player. There is no fixed starting position so the pieces may be placed in any arrangement. But it is suggested that most of the stronger pieces be placed in front of the weaker rabbits. Once the gold player has finished the silver player sets the pieces on the two closest rows. Again the pieces may be placed in any arrangement within the first two rows.
 
-Play
+Play:
 
 The players take turns moving their pieces with the gold player going first. All pieces move the same way: in orthogonal directions (like rooks in chess) forward, backward, left and right. But the rabbits cannot move backward (like pawns in chess). On each turn a player can move the pieces a total of four steps. Moving one piece from its current square to the next adjacent square counts as one step. A piece can take multiple steps and also change directions after each step. The steps may be distributed among multiple pieces so that up to four pieces can be moved. A player may pass some of the steps, but may not pass the whole turn or make a move equivalent to passing the whole turn.
 
@@ -183,41 +183,22 @@ http://www.claymath.org/millennium/Birch_and_Swinnerton-Dyer_Conjecture/html/bod
 http://www.claymath.org/millennium/Rules_etc/html/body/div[4]/div/p[11]/em
 
 *Challenge Number*
-3
 *URL*
-
 *Title*
-
 *TagLine*
-
 *Summary*
-
 *Rules*
-
 *Eligibility*
-
 *Fee*
-
 *Award Value1*
-
 *Award Description1*
-
 *Deadline Date1*
-
 *Deadline Description1*
-
 *Post Date*
-
 *Image URL*
-
 *Sponsor*
-
 *Contact Info*
-
 *Topic*
-
 *Structure*
-
 *Resultant*
-
 *Xpath Check*
