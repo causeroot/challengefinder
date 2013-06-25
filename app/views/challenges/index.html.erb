@@ -10,6 +10,7 @@
 				<%= link_to "LOGIN", :login %>
 			<% end %>  
 	</div>
+	<div class="sorting-links">Deadline &nbsp;|&nbsp; Date Posted</div>
 </div>
 
 	
@@ -58,18 +59,24 @@
 		
 		<div class="span3" id="search-area">&nbsp;
 			<p>SEARCH</p>
-			&nbsp
-			<p>Keyword</p>
+			
+			<div class="navbar-searchbox">
 			<%= form_tag search_challenges_path, :method => :get, :class => "navbar-search pull-right" do %>	
-			<%= text_field_tag :q, params[:q], :class => "search-query", :placeholder => "Search" %>
-			
+			<%= text_field_tag :q, params[:q], :class => "search-query", :placeholder => "Search" %>			
+			</div>
+			<div class="search-submit-clear">
+			<%= submit_tag "SUBMIT", :class => "submit-button", :name => nil %>
+			<%= link_to_function "Clear Search", "$('search-query').clear()", :class => "clear-button" %>
+			</div>
 			<% end %> 
-			
-			<p>FILTER RESULTS</p>
+		
+		<!--
+			&nbsp;
+			<p>FILTER</p>
 			&nbsp
 			<p>Category</p>
 			<form action="" class="dropdown-field">
-				<select name="categories">
+				<select name="category">
 					<option value="unselected">Show All</option>
 					<option value="category1">Things that are Yellow</option>
 					<option value="category2">Places in Africa</option>
@@ -87,7 +94,7 @@
 					<option value="year">Within the Last Year</option>
 				</select>
 			</form><br>
-			<!-- <input class="search-button" type="submit" value="SEARCH"> -->
+			 <input class="search-button" type="submit" value="SEARCH"> -->
 		</div>
 		
 		<!-- End Filter Area -->

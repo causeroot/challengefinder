@@ -57,7 +57,9 @@ div {
 .row {
 	margin-bottom: 40px;
 	background-color: #FFFFFF;
-}
+	min-height: 550px;
+	padding-top: 20px;
+	}
 
 .row-2 {
 	margin-bottom: 40px;
@@ -70,7 +72,13 @@ div {
 	}
 
 .notice-row {
-	margin-bottom: 8px;
+	margin-bottom: 18px;
+}
+		
+.notice {
+	color: #669900;
+	float: right;
+	padding-right: 30px;
 }
 	
 .container {
@@ -157,8 +165,8 @@ div {
 	}
 		
 #search-area {
-	height: 360px; 
-	margin-bottom: 60px;
+	height: 160px; 
+	margin-bottom: 50px;
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#A7A9AC), to(#D1D3D4));   /* Safari 4-5, Chrome 1-9 */
 	background: -webkit-linear-gradient(top, #A7A9AC, #D1D3D4); /* Safari 5.1, Chrome 10+ */
 	background: -moz-linear-gradient(top, #A7A9AC, #D1D3D4); /* Firefox 3.6+ */  
@@ -170,40 +178,39 @@ div {
 #search-area p {
 	font-size: 14px;
 	color: #FFFFFF;
+	
 	}
 	
+.navbar-searchbox {
+	margin: 20px;
+	float: left;	
+		}
+	
 .navbar-search .search-query {
-	margin: 4px 24px 32px;
 	border-radius: 4px;
-	width: 70%;
+	
 	}
 
 input.search-query {
 	
 	}
 
-.dropdown-field {
-	margin: 8px 20px;
-
+.search-submit-clear {
+	margin: 8px 20px;	
 	}	
 
-.dropdown-field select {
-	font-size: 13px;
-	width: 95%;
+.clear-button {
+	font-size: 12px;
+	color: #6D6E71;
 	}
 	
-.search-button {
+.submit-button {
 	font-size: 14px;
 	font-weight: normal;
 	color: #006838;
-	float: right;
 	margin-right:21px;
 	border: none;
 	background: none;
-	}
-	
-#notice {
-  color: green;
 	}
 
 .fb-like {
@@ -282,7 +289,16 @@ input.search-query {
 .back-link {
 	margin-bottom: 40px;
 	}
-	
+
+.user-submit-button {
+	font-size: 13px;
+	font-weight: normal;
+	color: #FFFFFF;	
+	border: none;
+	background: #006838;
+	padding: 6px 20px;
+	}
+		
 .copyright {
 	color: #FFFFFF;
 	font-size: 10px;
