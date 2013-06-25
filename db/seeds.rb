@@ -6,5 +6,13 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-challenges = YAML::load_file('db/challenge.yml')
-challenges.each {|key, value| Challenge.create(value) }
+#challenges = YAML::load_file('db/challenge_star.yml')
+#challenges.each {|key, value| Challenge.create(value) }
+
+json = ActiveSupport::JSON.decode(File.read('db/challenges.json'))
+
+json.each do |a|
+  puts a.inspect
+  Challenge.create!(a['challenge'], without_protection: true)
+end
+
