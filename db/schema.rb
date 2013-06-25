@@ -22,17 +22,23 @@ ActiveRecord::Schema.define(:version => 20130621040847) do
   end
 
   create_table "challenges", :force => true do |t|
-    t.string   "name"
     t.string   "url"
-    t.text     "description"
-    t.text     "award"
-    t.datetime "deadline"
     t.datetime "post_date"
     t.string   "image_url"
     t.text     "rules"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.string   "xpath"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.string   "title"
+    t.string   "tag_line"
+    t.text     "summary"
+    t.text     "eligibility"
+    t.text     "fee"
+    t.string   "sponsor"
+    t.text     "contact_info"
+    t.string   "topic"
+    t.string   "structure"
+    t.string   "resultant"
+    t.string   "xpath_check"
   end
 
   create_table "deadlines", :force => true do |t|
