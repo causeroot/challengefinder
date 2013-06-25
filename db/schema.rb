@@ -16,8 +16,9 @@ ActiveRecord::Schema.define(:version => 20130621040847) do
   create_table "awards", :force => true do |t|
     t.string   "value"
     t.text     "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.integer  "challenge_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "challenges", :force => true do |t|
@@ -37,8 +38,9 @@ ActiveRecord::Schema.define(:version => 20130621040847) do
   create_table "deadlines", :force => true do |t|
     t.datetime "date"
     t.text     "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.integer  "challenge_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "users", :force => true do |t|

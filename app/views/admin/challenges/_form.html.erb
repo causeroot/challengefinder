@@ -12,24 +12,30 @@
   <% end %>
   
   <div class="field">
-  <%= f.label :name %><br />
-  <%= f.text_field :name %>
+  <%= f.label :title %><br />
+  <%= f.text_field :title %><button onMouseDown="challenge_title.value = getSelectedText();" value="t">
 	</div>
 	<div class="field">
 	  <%= f.label :url %><br />
 	  <%= f.text_field :url %>
 	</div>
 	<div class="field">
-	  <%= f.label :description %><br />
-	  <%= f.text_area :description %>
+	  <%= f.label :summary %><br />
+	  <%= f.text_area :summary %>
 	</div>
 	<div class="field">
-	  <%= f.label :award %><br />
-	  <%= f.text_field :award %>
-	</div>
+        <strong>Awards</strong>
+      <%= f.fields_for :awards do |award_fields| %>
+      	  <%= award_fields.label :value %><%= award_fields.text_field :value %>
+      	  <%= award_fields.label :description %><%= award_fields.text_field :description %>
+      <% end %>
+    </div>
 	<div class="field">
-	  <%= f.label :deadline %><br />
-	  <%= f.datetime_select :deadline %>
+        <strong>Deadlines</strong>
+        <%= f.fields_for :deadlines do |deadline_fields| %>
+    	  <%= deadline_fields.label :date %><%= deadline_fields.text_field :date %>
+    	  <%= deadline_fields.label :description %><%= deadline_fields.text_field :description %>
+        <% end %>
 	</div>
 	<div class="field">
 	  <%= f.label :post_date %><br />

@@ -25,6 +25,8 @@ class Admin::ChallengesController < Admin::AdminController
   # GET /admin/challenges/new.json
   def new
     @admin_challenge = ::Challenge.new
+    3.times { @admin_challenge.awards.build }
+    3.times { @admin_challenge.deadlines.build }
 
     respond_to do |format|
       format.html # new.html.erb

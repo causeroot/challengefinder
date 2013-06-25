@@ -1,7 +1,41 @@
+<script language="javascript">
+function getSelectedText(destId) { 
+    // In ExtJS use: 
+    // var frame = Ext.getDom(frameId); 
+    var frame = document.getElementById(iframe_id1);
+    var d = document.getElementById(destId);
+
+    var frameWindow = frame && frame.contentWindow; 
+    var frameDocument = frameWindow && frameWindow.document; 
+
+    if (frameDocument) { 
+        if (frameDocument.getSelection) { 
+            // Most browsers 
+            d.value = String(frameDocument.getSelection()); 
+        } 
+        else if (frameDocument.selection) { 
+            // Internet Explorer 8 and below 
+            d.value = frameDocument.selection.createRange().text; 
+        } 
+        else if (frameWindow.getSelection) { 
+            // Safari 3 
+            d.value = String(frameWindow.getSelection()); 
+        } 
+    } 
+
+    /* Fall-through. This could happen if this function is called 
+       on a frame that doesn't exist or that isn't ready yet. */ 
+    return d.value; 
+}
+</script>
+
 <h1>New admin_challenge</h1>
 
-<iframe id="iframe_id1" src="/challenge.html"></iframe>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', admin_challenges_path %>
+    <div style="float: left" >
+        <iframe id="iframe_id1" width="800" height="2048" src=" http://localhost:3000/admin/proxy/?url=http://google.com"></iframe>
+    </div>
+    <div style="width: 300px; float: right">
+        <%= render 'form' %>
+    </dvi>
+    <div style="clear: both"></div>
+    <%= link_to 'Back', admin_challenges_path %>

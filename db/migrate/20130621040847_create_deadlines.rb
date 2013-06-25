@@ -3,6 +3,7 @@ class CreateDeadlines < ActiveRecord::Migration
     create_table :deadlines do |t|
       t.datetime :date
       t.text :description
+      t.references :challenge
 
       t.timestamps
     end

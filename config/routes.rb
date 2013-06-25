@@ -64,7 +64,7 @@ ChallengeFinder::Application.routes.draw do
   namespace :admin do
     # Directs /admin/challenges/* to Admin::ChallengesController
     # (app/controllers/admin/challenges_controller.rb)
-    post 'proxy/' => 'proxy#show'
+    get 'proxy/' => 'proxy#show'
     resources :challenges
     root to: "challenges#index"
   end
