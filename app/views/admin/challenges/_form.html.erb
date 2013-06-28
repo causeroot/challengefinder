@@ -1,3 +1,40 @@
+<script language="javascript">
+
+$("#urltextbox").keyup(function(ev) {
+   // 13 is ENTER
+   if (ev.which === 13) {
+      document.getElementById("iframe_id1").src = "http://localhost:3000/admin/proxy/?url=" + $("#urltextbox").val();
+      challenge_url.value = $("#urltextbox").val();
+   }
+}); 
+
+function getSelectedText(btn) { 
+    // In ExtJS use: 
+    // var frame = Ext.getDom(frameId); 
+    var frame = document.getElementById("iframe_id1");
+    var frameWindow = frame && frame.contentWindow; 
+    var frameDocument = frameWindow && frameWindow.document; 
+
+    if (frameDocument) { 
+        if (frameDocument.getSelection) { 
+            // Most browsers 
+            return String(frameDocument.getSelection()); 
+        } 
+        else if (frameDocument.selection) { 
+            // Internet Explorer 8 and below 
+            return frameDocument.selection.createRange().text; 
+        } 
+        else if (frameWindow.getSelection) { 
+            // Safari 3 
+            return String(frameWindow.getSelection()); 
+        } 
+    } 
+    /* Fall-through. This could happen if this function is called 
+       on a frame that doesn't exist or that isn't ready yet. */ 
+    return "fail"; 
+}
+</script>
+
 <%= form_for(@admin_challenge) do |f| %>
   <% if @admin_challenge.errors.any? %>
     <div id="error_explanation">
@@ -12,16 +49,18 @@
   <% end %>
   
   <div class="field">
-  <%= f.label :title %><br />
-  <%= f.text_field :title %><button onMouseDown="challenge_title.value = getSelectedText();" value="t">
+      <%= f.label :title %>
+  <%= f.text_field :title %><button type="button" onMouseDown="challenge_title.value = getSelectedText(this);"/>copy</button>
+      <br />
+      
 	</div>
 	<div class="field">
 	  <%= f.label :url %><br />
-	  <%= f.text_field :url %>
+	  <%= f.text_field :url %><button type="button" onMouseDown="challenge_url.value = getSelectedText(this);"/>copy</button>
 	</div>
 	<div class="field">
 	  <%= f.label :summary %><br />
-	  <%= f.text_area :summary %>
+	  <%= f.text_area :summary %><button type="button" onMouseDown="challenge_summary.value = getSelectedText(this);"/>copy</button>
 	</div>
 	<div class="field">
         <strong>Awards</strong>
@@ -47,7 +86,7 @@
 	</div>
 	<div class="field">
 	  <%= f.label :rules %><br />
-	  <%= f.text_area :rules %>
+	  <%= f.text_area :rules %><button type="button" onMouseDown="challenge_rules.value = getSelectedText(this);"/>copy</button>
 	</div>
   
 
