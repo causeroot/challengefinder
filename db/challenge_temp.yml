@@ -868,3 +868,125 @@ Challenge8: |
         xpath_check: |
             http://www.nokiasensingxchallenge.org/competition-details/faqs/html/body/div[3]/section/div/div/div/div/div/div/div/article/div/div/div/div/ul[2]
 
+
+    Challenge10: |
+
+        url: |
+            http://www.nightrover.org/
+        title: |
+            The Night Rover Challenge
+        tag_line: |
+            An innovative energy storage competition with $1.5 Million in prizes from NASA.
+        summary: |
+            The Night Rover Challenge is the latest in a successful series of Centennial Challenge competitions
+            from NASA's Office of the Chief Technologist. Learn more about the Centennial Challenges program
+            at www.nasa.gov/challenges
+
+            The Challenge:
+            Create an energy storage system that can allow a simulated rover to remain operational throughout
+            the 14-day-long lunar night.
+        rules: |
+            Restrictions
+             – 100kg maximum
+             – 2m x 1m x 1m maximum dimensions
+             – Must not use any materials or systems that won't be available or function in a space.
+            Requirements
+             – Store and deliver enough energy to provide an average of 85W continuously throughout
+             two lunar cycles (starting from the first lunar noon).
+             – Provide a minimum of 30.09 kWh over each lunar night cycle.
+             – Maximize Watt-Hours / Kilogram, Watt-Hours / Liter, and total energy storage capacity.
+
+            Trials
+            Systems will be tested through 2 lunar cycles (~2 months) at ambient temperature and pressure
+            conditions. NASA's Plumbrook Station in Sandusky, Ohio will host the trials.
+
+            Judging
+            To be eligible systems MUST meet the power load requirements averaging 85W throughout the lunar
+            night (354 hours). Systems will be scored on a combination of three weighted criteria: mass (60%),
+            volume (20%), total capacity (20%). Mass is scored on how many kg less than the 100kg restriction,
+            volume is scored on how many liters less than the 2 cubic meter restriction, and capacity is scored on
+            how the total number of Watt-hours provided before the system is exhausted.
+
+            Technical Summary: http://www.nightrover.org/sites/all/themes/theme621/pdf/Technical-Summary.pdf
+            Rule Specifics: http://www.nightrover.org/sites/all/themes/theme621/pdf/2014_NightRover_Rules-FINAL.pdf
+
+        eligibility: |
+             Team eligibility requirements are described in the Team Agreement. If teams meet the eligibility
+             requirements in the Team Agreement, they must also complete these milestones to participate in
+             the competition trials:
+                1. Receive a favorable review on the registration packet.
+                2. Receive a favorable review on the compliance review prior to the trial.
+        fee: |
+            $3,000 for Early registration, $5,000 for Regular Registration
+        award_value1: |
+            $500,000
+        award_description1: |
+            First Place - Level 1: Greater than 300 Watt-hr/kg
+        award_value2: |
+            $100,000
+        award_description2: |
+            Second Place - Level 1: Greater than 300 Watt-hr/kg
+        award_value3: |
+            $50,000
+        award_description3: |
+            Third Place - Level 1: Greater than 300 Watt-hr/kg
+        award_value4: |
+            $750,000
+        award_description4: |
+            First Place - Level 2: Greater than 400 Watt-hr/kg
+        award_value5: |
+            $200,000
+        award_description5: |
+            Second Place - Level 2: Greater than 400 Watt-hr/kg
+        award_value6: |
+            $100,000
+        award_description6: |
+            Third Place - Level 2: Greater than 400 Watt-hr/kg
+        award_value7: |
+            $1,000,000
+        award_description7: |
+            First Place - Level 3: Greater than 500 Watt-hr/kg
+        award_value8: |
+            $300,000
+        award_description8: |
+            Second Place - Level 3: Greater than 500 Watt-hr/kg
+        award_value9: |
+            $200,000
+        award_description9: |
+            Third Place - Level 3: Greater than 500 Watt-hr/kg
+        deadline_date1: |
+             July, 26th 2013 Midnight PST
+        deadline_description1: |
+             Early Registration Closes
+        deadline_date2: |
+             October 25, 2013 Midnight PST
+        deadline_description2: |
+             Regular Registration Closes
+        deadline_date3: |
+             January 20, 2014
+        deadline_description3: |
+             Energy Systems Delivered to Phase 1 Trials (see site for additional dates)
+        post_date: |
+             February, 2013
+        image_url: |
+             http://www.nightrover.org/sites/default/files/logo.png
+        sponsor: |
+             NASA
+        contact_info: |
+             http://www.nightrover.org/contactus
+
+             88 King Street #406
+             San Francisco, CA 94107
+
+             josh@nightrover.org
+        topic: |
+             Science
+             Technology
+             Space
+        structure: |
+             Tiered
+        resultant: |
+             Further Technology
+        xpath_check: |
+             http://www.nightrover.org/sites/all/themes/theme621/pdf/2014_NightRover_Rules-FINAL.pdf
+             http://www.nightrover.org/sites/all/themes/theme621/pdf/Technical-Summary.pdf

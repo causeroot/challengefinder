@@ -1,1 +1,1 @@
-+""+"challenge"+"challenge"+"prize"+"prize"+"competition"+"competition"+"this_challenge"+"this_challenge"+"team"+"team"+"challenge_is"+"challenge_is"+"teams"+"teams"+"the_challenge"+"the_challenge"+"winning"+"winning"+"million"+"million"+"submissions"+"submissions"+"innovation"+"innovation"+"submission"+"submission"+"terms"+-"terms"+-"site"
++"challenge"+"prize"+"competition"+"this_challenge"+"team"+"challenge_is"+"teams"+"the_challenge"+"winning"+"million"+"submissions"+"innovation"+"submission"+"terms"+-"site"
