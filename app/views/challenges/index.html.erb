@@ -27,7 +27,8 @@
 				</div>
 				<div class="span4">
 					<h5><%= link_to challenge.title, challenge %></h5>
-					<p><%=h truncate(challenge.summary, :length => 152, :separator => ' ') %></p>
+					<p><%=h truncate(challenge.tag_line, :length => 152, :separator => ' ') %></p>
+                    <p>SPONSOR: &nbsp;<%=h truncate(challenge.sponsor, :length => 100, :separator => ' ') %></p>
 					<%= link_to 'Learn More', challenge %>			
 	
 				</div>
