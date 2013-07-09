@@ -25,17 +25,13 @@
                     <%= render :partial => "challenges/deadlines", :object => @challenge.deadlines %>
 				</p>
 
-				<p>
-			  		POSTED &nbsp;
-			  		<%= @challenge.post_date.strftime('%b %e, %Y') if @challenge.post_date %>
-				</p>
-
 				<p id="challenge-url">
 			  		WEBSITE 
 			  		<%= link_to 'Challenge Website', @challenge.url, :target => "_blank" %>
 				</p>
 			</div><br>
 			
+			<div class="detail-highlights"><p>SUMMARY</p></div>
 			<p>
 			  <%= @challenge.summary %>
 			</p>
@@ -48,6 +44,35 @@
 			<p><%= @challenge.rules %>
 			</p><br>
 			
+			<div class="detail-highlights"><p>ELIGIBILITY</p></div>
+			<p><%= @challenge.post_date.strftime('%b %e, %Y') if @challenge.post_date %>
+			</p><br>
+			
+			<div class="detail-highlights"><p>FEE</p></div>
+			<p><%= @challenge.post_date.strftime('%b %e, %Y') if @challenge.post_date %>
+			</p><br>
+			
+			<div class="detail-highlights"><p>AWARD</p></div>
+			<p><%= @challenge.post_date.strftime('%b %e, %Y') if @challenge.post_date %>
+			</p><br>
+			
+			<div class="detail-highlights"><p>DEADLINE</p></div>
+			<p><%= @challenge.post_date.strftime('%b %e, %Y') if @challenge.post_date %>
+			</p><br>
+			
+			<div class="detail-highlights"><p>POST DATE</p></div>
+			<p><%= @challenge.post_date.strftime('%b %e, %Y') if @challenge.post_date %>
+			</p><br>
+			
+			<div class="detail-highlights"><p>SPONSOR</p></div>
+			<p><%= @challenge.sponsor %>
+			</p><br>
+			
+			<div class="detail-highlights"><p>CONTACT INFORMATION</p></div>
+			<p><%= link_to @challenge.contact_info, :target => "_blank" %>
+			</p><br>
+			
+
 			<div class="detail-highlights"><p>SHARE</p>	
 				<div class="fb-like" data-send="false" data-layout="button_count" data-width="30" data-show-faces="true">
 				</div>
