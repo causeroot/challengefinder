@@ -17,6 +17,11 @@ def readLine(fname):
         return f.readline().strip()
 
 
+def readLines(fname):
+    with open(fname) as f:
+        return f.read().split("\n")
+
+
 def getBasePayload(secret):
     return {
             "key":secret,
@@ -37,7 +42,7 @@ def searchGen(url, secret, terms):
             })
         yield requests.get(url, params=payload)
 
-EXCLUSION_URLS = set(readLine(EXCLUSION_FN))
+EXCLUSION_URLS = set(readLines(EXCLUSION_FN))
 
 def excludeUrls(urls):
     return [url for url in urls if url not in EXCLUSION_URLS]
