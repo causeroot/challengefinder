@@ -43,7 +43,7 @@ def searchGen(url, secret, terms):
         yield requests.get(url, params=payload)
 
 def excludeUrls(urls, exlusionSet):
-    return [url for url in urls if url not in EXCLUSION_URLS]
+    return [url for url in urls if url not in exlusionSet]
 
 
 def main():
@@ -75,7 +75,7 @@ def main():
 
     results = searchGenerator.next().json()
     results[u'items'].extend(searchGenerator.next().json()[u'items'])
-    
+
     results = excludeUrls(results, excludedUrls)
     with open(outFile, 'w') as f:
         f.write(json.dumps(results, sort_keys=True, indent=2))
