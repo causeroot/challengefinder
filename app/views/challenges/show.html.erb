@@ -21,7 +21,9 @@
 			</p><br>
 
 			<div class="detail-highlights"><p>DEADLINE</p></div>
-			<p><%= @challenge.deadlines.map {|deadline| deadline.date}.min().strftime('%b %e, %Y') if @challenge.deadlines %>
+			<p><%= dt = @challenge.deadlines.map {|deadline| deadline.date}.min() if @challenge.deadlines;
+          dt.strftime('%b %e, %Y') if dt
+      %>
 			</p><br>
 
 
