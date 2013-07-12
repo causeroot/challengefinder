@@ -37,6 +37,8 @@ class Admin::ChallengesController < Admin::AdminController
   # GET /admin/challenges/1/edit
   def edit
     @admin_challenge = ::Challenge.find(params[:id])
+    3.times { @admin_challenge.awards.build }
+    3.times { @admin_challenge.deadlines.build }
   end
 
   # POST /admin/challenges
