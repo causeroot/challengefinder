@@ -28,3 +28,4 @@ Testing
 Reference
 =========
 * Admin page to enter Challenges: http://localhost:3000/admin/challenges/new
+
