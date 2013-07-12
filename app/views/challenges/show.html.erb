@@ -17,7 +17,7 @@
 			  		<h5><%= @challenge.title %></h5>
 				</p><br>
 							<div class="detail-highlights"><p>AWARD</p></div>
-			<p><%= @challenge.awards.map { |award| award.value}.max if @challenge.awards %>
+			<p><%= @challenge.awards.max { |a, b| a.value.length == b.value.length ? a.value <=> b.value : a.value.length <=> b.value.length }.value if @challenge.awards %>
 			</p><br>
 
 			<div class="detail-highlights"><p>DEADLINE</p></div>
