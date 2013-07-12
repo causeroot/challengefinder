@@ -42,9 +42,7 @@ def searchGen(url, secret, terms):
             })
         yield requests.get(url, params=payload)
 
-EXCLUSION_URLS = set(readLines(EXCLUSION_FN))
-
-def excludeUrls(urls):
+def excludeUrls(urls, exlusionSet):
     return [url for url in urls if url not in EXCLUSION_URLS]
 
 
@@ -63,6 +61,9 @@ def main():
     
     inFile = '/'.join([BASE_PATH, argv[1], INPUT_FN])
     outFile = '/'.join([BASE_PATH, argv[1], OUTPUT_FN])
+    exclusionFile = '/'.join([BASE_PATH, argv[1], EXCLUSION_FN])
+
+    excludedUrls = readLines(exclusionFile)
     
     if not exists(inFile):
         print "Class does not exist, try again"
@@ -74,7 +75,8 @@ def main():
 
     results = searchGenerator.next().json()
     results[u'items'].extend(searchGenerator.next().json()[u'items'])
-    results = excludeUrls(results)
+    
+    results = excludeUrls(results, excludedUrls)
     with open(outFile, 'w') as f:
         f.write(json.dumps(results, sort_keys=True, indent=2))
 
