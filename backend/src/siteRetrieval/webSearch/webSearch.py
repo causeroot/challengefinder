@@ -9,6 +9,7 @@ URL = "https://www.googleapis.com/customsearch/v1"
 BASE_PATH = "data"
 INPUT_FN = "searchTerms/newSearchStrings.txt"
 OUTPUT_FN = "urls/newUrlList.res"
+EXCLUSION_FN = "urls/exludedUrlList.url"
 
 
 def readLine(fname):
@@ -25,6 +26,9 @@ def getBasePayload(secret):
 
 
 def searchGen(url, secret, terms):
+    """
+    Generate multiple objects each representing a Google search page. API v1
+    """
     for i in xrange(10):
         payload = getBasePayload(secret)
         payload.update({
@@ -32,6 +36,11 @@ def searchGen(url, secret, terms):
             "q":terms,
             })
         yield requests.get(url, params=payload)
+
+EXCLUSION_URLS = set(readLine(EXCLUSION_FN))
+
+def excludeUrls(urls):
+    return [url for url in urls if url not in EXCLUSION_URLS]
 
 
 def main():
@@ -60,6 +69,7 @@ def main():
 
     results = searchGenerator.next().json()
     results[u'items'].extend(searchGenerator.next().json()[u'items'])
+    results = excludeUrls(results)
     with open(outFile, 'w') as f:
         f.write(json.dumps(results, sort_keys=True, indent=2))
 

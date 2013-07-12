@@ -62,7 +62,7 @@ Structure of Data:
     - `../urls/badList.url` : This file is a list of all the URLs that are Negative representations of
       classification that is being implemented. This is the input to the python word list scripts, and
       its contents are maintained by the user, and is human read-able text file.                                             -
-    - `../urls/exludedUrlList.url` : This file lists all the URLs which should be removed from the results
+    - `../urls/excludedUrlList.url` : This file lists all the URLs which should be removed from the results
       of our custum search engine. URLs may be on the exclusion list for low quality, known good challenges
       that are past their end date, or simply sites that have been seen before. This file is periodically
       used to refresh Google's annotations list for the Custom Search Engine.
