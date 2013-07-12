@@ -9,7 +9,7 @@ URL = "https://www.googleapis.com/customsearch/v1"
 BASE_PATH = "data"
 INPUT_FN = "searchTerms/newSearchStrings.txt"
 OUTPUT_FN = "urls/newUrlList.res"
-EXCLUSION_FN = "urls/exludedUrlList.url"
+EXCLUSION_FN = "urls/exlcudedUrlList.url"
 
 
 def readLine(fname):
