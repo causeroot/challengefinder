@@ -8,7 +8,6 @@ of sites that you are looking for) and a set of "bad" URLs (the types of
 URLs that you are not what you are looking for.
 
 
-
 Lifecycle of a Generating a New URL List:
 =========================================
 
@@ -23,7 +22,6 @@ new search strings are generated.
 meets the criteria for the type of URLs you want to find) or the "bad" bucket
 (not the URLs that you're looking for). See "Structure of Data" for more
 details on the specific filenames that you will be interacting with.
-
 
 
 INDIVIDUAL STEP-BY-STEP:

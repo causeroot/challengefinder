@@ -24,3 +24,7 @@ Testing
 =======
 * Start solr test server: `rake sunspot:solr:start RAILS_ENV=test`
 * Test: `rake`
+
+Reference
+=========
+* Admin page to enter Challenges: http://localhost:3000/admin/challenges/new
