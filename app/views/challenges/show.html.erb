@@ -17,11 +17,11 @@
 			  		<h5><%= @challenge.title %></h5>
 				</p><br>
 							<div class="detail-highlights"><p>AWARD</p></div>
-			<p><%= @challenge.post_date.strftime('%b %e, %Y') if @challenge.post_date %>
+			<p><%= @challenge.awards.map { |award| award.value}.max if @challenge.awards %>
 			</p><br>
 
 			<div class="detail-highlights"><p>DEADLINE</p></div>
-			<p><%= @challenge.post_date.strftime('%b %e, %Y') if @challenge.post_date %>
+			<p><%= @challenge.deadlines.map {|deadline| deadline.date}.min().strftime('%b %e, %Y') if @challenge.deadlines %>
 			</p><br>
 
 
