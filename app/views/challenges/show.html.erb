@@ -16,14 +16,14 @@
 				<p id="challenge-name">
 			  		<h5><%= @challenge.title %></h5>
 				</p><br>
+							<div class="detail-highlights"><p>AWARD</p></div>
+			<p><%= @challenge.post_date.strftime('%b %e, %Y') if @challenge.post_date %>
+			</p><br>
 
-				<p>
-                    <%= render :partial => "challenges/awards", :object => @challenge.awards %>
-				</p>
+			<div class="detail-highlights"><p>DEADLINE</p></div>
+			<p><%= @challenge.post_date.strftime('%b %e, %Y') if @challenge.post_date %>
+			</p><br>
 
-				<p>
-                    <%= render :partial => "challenges/deadlines", :object => @challenge.deadlines %>
-				</p>
 
 				<p id="challenge-url">
 			  		WEBSITE 
@@ -51,15 +51,15 @@
 			<div class="detail-highlights"><p>FEE</p></div>
 			<p><%= @challenge.post_date.strftime('%b %e, %Y') if @challenge.post_date %>
 			</p><br>
-			
-			<div class="detail-highlights"><p>AWARD</p></div>
-			<p><%= @challenge.post_date.strftime('%b %e, %Y') if @challenge.post_date %>
-			</p><br>
-			
-			<div class="detail-highlights"><p>DEADLINE</p></div>
-			<p><%= @challenge.post_date.strftime('%b %e, %Y') if @challenge.post_date %>
-			</p><br>
-			
+
+							<p>
+                    <%= render :partial => "challenges/awards", :object => @challenge.awards %>
+				</p>
+
+				<p>
+                    <%= render :partial => "challenges/deadlines", :object => @challenge.deadlines %>
+				</p>
+
 			<div class="detail-highlights"><p>POST DATE</p></div>
 			<p><%= @challenge.post_date.strftime('%b %e, %Y') if @challenge.post_date %>
 			</p><br>
