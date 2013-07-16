@@ -28,23 +28,23 @@
 				<div class="span4">
 					<h5><%= link_to challenge.title, challenge %></h5>
 					<p><%=h truncate(challenge.tag_line, :length => 152, :separator => ' ') %></p>
-                    <p>SPONSOR: &nbsp;<%=h truncate(challenge.sponsor, :length => 100, :separator => ' ') %></p>
+                    <p>Sponsor: &nbsp;<%=h truncate(challenge.sponsor, :length => 100, :separator => ' ') %></p>
 					<%= link_to 'Learn More', challenge %>			
 	
 				</div>
 				<div class="span3">
-                    <p><strong>AWARD: &nbsp; </strong>
+                    <p><strong>AWARD &nbsp; </strong>
                     <%= "Up to" if challenge.awards.count > 1 %>
                     <%= challenge.awards.max { |a, b| a.value.length == b.value.length ? a.value <=> b.value : a.value.length <=> b.value.length }.value if challenge.awards %>
                     </p>
                     <p><span class="dividing-line">—————————————</span></p>
-                    <p><strong>DEADLINE: &nbsp; </strong>
+                    <p><strong>DEADLINE &nbsp; </strong>
                     <%= "None" if challenge.deadlines.count == 0 || challenge.deadlines[0].date == nil %>
                     <%= dt = challenge.deadlines.map {|deadline| deadline.date}.min() if challenge.deadlines;
                           dt.strftime('%b %e, %Y') if dt
                     %>
                     <p><span class="dividing-line">—————————————</span></p>
-					<p><strong>POSTED: &nbsp; </strong>
+					<p><strong>POSTED &nbsp; </strong>
                     <%= challenge.post_date.strftime('%b %e, %Y') if challenge.post_date %></p>
 					<p><span class="dividing-line">—————————————</span></p>
 					<div class="sm-icons">
