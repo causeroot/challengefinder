@@ -56,12 +56,12 @@
 			<p><%=raw @challenge.rules.gsub(/\n/, '<br>').html_safe %>
 			</p><br>
 			
-			<div class="detail-highlights"><p>ELIGIBILITY</p></div>
-			<p><%= @challenge.post_date.strftime('%b %e, %Y') if @challenge.post_date %>
+			<div class="detail-highlights"><p></p></div>
+			<p><%=raw @challenge.eligibility.gsub(/\n/, '<br>').html_safe %>
 			</p><br>
 			
-			<div class="detail-highlights"><p>FEE</p></div>
-			<p><%= @challenge.post_date.strftime('%b %e, %Y') if @challenge.post_date %>
+			<div class="detail-highlights"><p></p></div>
+			<p><%=raw @challenge.fee.gsub(/\n/, '<br>').html_safe %>
 			</p><br>
 
 			<div class="detail-highlights"><p>AWARD</p></div>
