@@ -15,18 +15,27 @@
 			<div class="detail-highlights">
 				<p id="challenge-name">
 			  		<h5><%= @challenge.title %></h5>
-				</p><br>
-				<div class="detail-highlights"><p>AWARD</p></div>
-			<p><%= @challenge.awards.max { |a, b| a.value.length == b.value.length ? a.value <=> b.value : a.value.length <=> b.value.length }.value if @challenge.awards %>
+				</p>
+
+              <div class="detail-highlights"><p><%= @challenge.tag_line %>
+              </p>
+
+              <div class="detail-highlights">SPONSOR  <%= @challenge.sponsor %>
+              </p><br>
+
+              <div class="detail-highlights"><p>AWARD:
+            <%= " Up to" if @challenge.awards.count > 1 %>
+			<%= @challenge.awards.max { |a, b| a.value.length == b.value.length ? a.value <=> b.value : a.value.length <=> b.value.length }.value if @challenge.awards %>
 			</p><br>
-
-			<div class="detail-highlights"><p>DEADLINE</p></div>
-			<p><%= dt = @challenge.deadlines.map {|deadline| deadline.date}.min() if @challenge.deadlines;
-          dt.strftime('%b %e, %Y') if dt
-      %>
-			</p><br>
-
-
+                </div>
+			<div class="detail-highlights"><p>DEADLINE:
+            <%= " None" if @challenge.deadlines.count == 0 || @challenge.deadlines[0].date == nil %>
+			<%= dt = @challenge.deadlines.map {|deadline| deadline.date}.min() if @challenge.deadlines;
+               dt.strftime('%b %e, %Y') if dt
+               %>
+			<br>
+            </div>
+            <br>
 				<p id="challenge-url">
 			  		WEBSITE 
 			  		<%= link_to 'Challenge Website', @challenge.url, :target => "_blank" %>
@@ -66,10 +75,7 @@
 			<p><%= @challenge.post_date.strftime('%b %e, %Y') if @challenge.post_date %>
 			</p><br>
 			
-			<div class="detail-highlights"><p>SPONSOR</p></div>
-			<p><%= @challenge.sponsor %>
-			</p><br>
-			
+
 			<div class="detail-highlights"><p>CONTACT INFORMATION</p></div>
 			<p><%= @challenge.contact_info %>
 			</p><br>
