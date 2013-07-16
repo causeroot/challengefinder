@@ -33,11 +33,19 @@
 	
 				</div>
 				<div class="span3">
-                    <p><strong>AWARD &nbsp; </strong> <%= render :partial => "challenges/awards", :object => challenge.awards %></p>
+                    <p><strong>AWARD: &nbsp; </strong>
+                    <%= "Up to" if challenge.awards.count > 1 %>
+                    <%= challenge.awards.max { |a, b| a.value.length == b.value.length ? a.value <=> b.value : a.value.length <=> b.value.length }.value if challenge.awards %>
+                    </p>
                     <p><span class="dividing-line">—————————————</span></p>
-                    <p>DEADLINE &nbsp; <%= render :partial => "challenges/deadlines", :object => challenge.deadlines %></p>
+                    <p><strong>DEADLINE: &nbsp; </strong>
+                    <%= "None" if challenge.deadlines.count == 0 || challenge.deadlines[0].date == nil %>
+                    <%= dt = challenge.deadlines.map {|deadline| deadline.date}.min() if challenge.deadlines;
+                          dt.strftime('%b %e, %Y') if dt
+                    %>
                     <p><span class="dividing-line">—————————————</span></p>
-					<p>POSTED &nbsp; <%= challenge.post_date.strftime('%b %e, %Y') if challenge.post_date %></p>
+					<p><strong>POSTED: &nbsp; </strong>
+                    <%= challenge.post_date.strftime('%b %e, %Y') if challenge.post_date %></p>
 					<p><span class="dividing-line">—————————————</span></p>
 					<div class="sm-icons">
 						<div class="fb-like" data-href="<%= url_for challenge %>" data-send="false" data-layout="button_count" data-width="30" data-show-faces="true">
