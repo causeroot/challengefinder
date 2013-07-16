@@ -33,8 +33,10 @@
 	
 				</div>
 				<div class="span3">
-                    <%= render :partial => "challenges/awards", :object => challenge.awards %>
-                    <%= render :partial => "challenges/deadlines", :object => challenge.deadlines %>
+                    <p><strong>AWARD &nbsp; </strong> <%= render :partial => "challenges/awards", :object => challenge.awards %></p>
+                    <p><span class="dividing-line">—————————————</span></p>
+                    <p>DEADLINE &nbsp; <%= render :partial => "challenges/deadlines", :object => challenge.deadlines %></p>
+                    <p><span class="dividing-line">—————————————</span></p>
 					<p>POSTED &nbsp; <%= challenge.post_date.strftime('%b %e, %Y') if challenge.post_date %></p>
 					<p><span class="dividing-line">—————————————</span></p>
 					<div class="sm-icons">

@@ -16,7 +16,7 @@
 				<p id="challenge-name">
 			  		<h5><%= @challenge.title %></h5>
 				</p><br>
-							<div class="detail-highlights"><p>AWARD</p></div>
+				<div class="detail-highlights"><p>AWARD</p></div>
 			<p><%= @challenge.awards.max { |a, b| a.value.length == b.value.length ? a.value <=> b.value : a.value.length <=> b.value.length }.value if @challenge.awards %>
 			</p><br>
 
@@ -54,13 +54,13 @@
 			<p><%= @challenge.post_date.strftime('%b %e, %Y') if @challenge.post_date %>
 			</p><br>
 
-							<p>
-                    <%= render :partial => "challenges/awards", :object => @challenge.awards %>
-				</p>
+			<div class="detail-highlights"><p>AWARD</p></div>
+			<p><%= render :partial => "challenges/awards", :object => @challenge.awards %>
+			</p><br>
 
-				<p>
-                    <%= render :partial => "challenges/deadlines", :object => @challenge.deadlines %>
-				</p>
+			<div class="detail-highlights"><p>DEADLINE</p></div>
+			<p><%= render :partial => "challenges/deadlines", :object => @challenge.deadlines %>
+			</p><br>
 
 			<div class="detail-highlights"><p>POST DATE</p></div>
 			<p><%= @challenge.post_date.strftime('%b %e, %Y') if @challenge.post_date %>
@@ -71,7 +71,7 @@
 			</p><br>
 			
 			<div class="detail-highlights"><p>CONTACT INFORMATION</p></div>
-			<p><%= link_to @challenge.contact_info, :target => "_blank" %>
+			<p><%= @challenge.contact_info %>
 			</p><br>
 			
 
