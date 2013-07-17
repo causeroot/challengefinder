@@ -14,3 +14,10 @@ json = ActiveSupport::JSON.decode(File.read('db/challenges.json'))
 json.each do |a|
   Challenge.create(a, :without_protection => true)
 end
+
+User.create! do |u|
+  u.username = 'admin'
+  u.email = 'info@causeroot.org'
+  u.password = 'password'
+  u.password_confirmation = 'password'
+end
