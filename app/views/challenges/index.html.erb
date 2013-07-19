@@ -5,10 +5,7 @@
 		<% if current_user %>
      		<%= link_to "Edit Profile", edit_user_path(current_user.id) %>
      		<%= link_to "LOGOUT", :logout %>
-			<% else %>
-				<%= link_to "REGISTER", new_user_path %> &nbsp; or
-				<%= link_to "LOGIN", :login %>
-			<% end %>  
+		<% end %>  
 	</div>
 	<div class="sorting-links">Deadline &nbsp;|&nbsp; Date Posted</div>
 </div>
