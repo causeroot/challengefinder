@@ -1,10 +1,11 @@
 <h1 class="page-header">// CHALLENGES</h1>
 	
-	<p id="notice"><%= notice %></p>
-	<!--<%= link_to 'Edit', edit_challenge_path(@challenge) %> |-->
-	<div class="back-link"><%= link_to 'Back to Challenges', challenges_path %>
-	 &nbsp;|&nbsp; <%= link_to 'Next Challenge', challenges_path %></div>
-	
+	<div class="top-subtext">
+		<!--<%= link_to 'Edit', edit_challenge_path(@challenge) %> |-->
+		<span class="back-link"><%= link_to 'Back to Challenges', challenges_path %>
+		 &nbsp;|&nbsp; <%= link_to 'Next Challenge', challenges_path %></span>
+		<span id="notice"><%= notice %></span>
+	</div>
 
 
 <div class="span8">
@@ -14,10 +15,8 @@
 			<img src="<%=asset_path "challenge.png"%>" width="100px" height="100px"/>
 		</div>
 		<div class="span6">
-			
-			<p id="challenge-name">
-			  		<h5><%= @challenge.title %></h5>
-			  </p>
+
+			<h5><%= @challenge.title %></h5>			  
 
             <p><%= @challenge.tag_line %>
               </p>
@@ -87,9 +86,8 @@
 				</div>
 				<a href="https://twitter.com/share" class="twitter-share-button" data-url="<%= @challenge %>" data-text="<%= @challenge.title %>" data-count="none">Tweet</a>
 						<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-
-
 			</div>
+			
 		</div>
 
 			
