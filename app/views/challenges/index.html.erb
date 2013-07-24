@@ -72,7 +72,7 @@
 			</div>
 			<div class="search-submit-clear">
 			<%= submit_tag "SUBMIT", :class => "submit-button", :name => nil %>
-			<%= link_to_function "Clear Search", "$('search-query').clear()", :class => "clear-button" %>
+			<%= submit_tag "Clear Search", :class => 'clear-button', :type => 'reset' %>
 			</div>
 			<% end %> 
 		
