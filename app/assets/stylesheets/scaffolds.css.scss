@@ -137,14 +137,24 @@ div {
 	color: #000000;
 	&:hover {
     color: #707070;
-  }
-  
+  }  
 	}
-		
+	
+.span6 {
+	padding-top: 0px;
+	}
+			
+.span8 {
+	margin-top: 40px;
+	}
+	
 .span9 {
-
-  display: inline-block;
+	display: inline-block;
 	}	
+
+.span11 {
+	margin-bottom: 20px;
+	}
 
 .detail-highlights p {
 	color: #000000;
@@ -252,11 +262,14 @@ input.search-query {
 	}
 
 #page-numbers {
-	margin-bottom: 40px;
-	padding-right: 32px;
+	padding-right: 20px;
 	float: right;
 	}
-		
+	
+.top-subtext {
+	margin-bottom: 40px;
+	}
+
 #login {
 	float: right;
 	color: #808285;
@@ -295,7 +308,7 @@ input.search-query {
 	}
 
 .back-link {
-	margin-bottom: 40px;
+
 	}
 
 
