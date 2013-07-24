@@ -62,7 +62,7 @@ div {
 	}
 
 .row-2 {
-	margin-bottom: 40px;
+	margin-bottom: 30px;
 	display: inline-block;
 	overflow: hidden;
 	}
@@ -119,6 +119,7 @@ div {
 .span4 {
 	max-width: 324px;
 	min-width: 224px;
+	margin-bottom: 16px;
 	}
 
 .span4 a {
@@ -162,6 +163,7 @@ div {
 .dot-divider {
 	color: #A7A9AC;
 	letter-spacing: .7em;
+	
 	}
 		
 #search-area {
@@ -202,6 +204,8 @@ input.search-query {
 .clear-button {
 	font-size: 12px;
 	color: #6D6E71;
+	border: none;
+	background: none;
 	}
 	
 .submit-button {
@@ -231,7 +235,11 @@ input.search-query {
   }
   
 	}
-		
+	
+#challenge-contact {
+	color: #006838;
+	}
+			
 .page-border {
 	margin-left: 30px;
 	}
@@ -289,6 +297,7 @@ input.search-query {
 .back-link {
 	margin-bottom: 40px;
 	}
+
 
 .user-submit-button {
 	font-size: 13px;
