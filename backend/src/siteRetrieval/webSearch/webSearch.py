@@ -73,9 +73,9 @@ def main():
     
     searchGenerator = searchGen(URL, API_SECRET, terms)
 
-    results = searchGenerator.next().json
+    results = searchGenerator.next().json()
     for result in searchGenerator:
-        results[u'items'].extend(result.json[u'items'])
+        results[u'items'].extend(result.json()[u'items'])
 
     cleanResults = [item[u'link'] for item in results[u'items']]
     dedupedResults = excludeUrls(cleanResults, excludedUrls)
