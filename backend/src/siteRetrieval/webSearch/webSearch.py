@@ -73,12 +73,14 @@ def main():
     
     searchGenerator = searchGen(URL, API_SECRET, terms)
 
-    results = searchGenerator.next().json()
-    results[u'items'].extend(searchGenerator.next().json()[u'items'])
+    results = searchGenerator.next().json
+    for result in searchGenerator:
+        results[u'items'].extend(result.json[u'items'])
 
-    results = excludeUrls(results, excludedUrls)
+    cleanResults = [item[u'link'] for item in results[u'items']]
+    dedupedResults = excludeUrls(cleanResults, excludedUrls)
     with open(outFile, 'w') as f:
-        f.write(json.dumps(results, sort_keys=True, indent=2))
+        f.write([item + '\n' for item in dedupedResults])
 
 
 if __name__ == "__main__":
