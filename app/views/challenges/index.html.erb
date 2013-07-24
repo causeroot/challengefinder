@@ -7,7 +7,11 @@
      		<%= link_to "LOGOUT", :logout %>
 		<% end %>  
 	</div>
-	<div class="sorting-links">Deadline &nbsp;|&nbsp; Date Posted &nbsp;|&nbsp; Award</div>
+	<div class="sorting-links">
+    <%= link_to "Deadline", :sort => "deadlines.date" %> &nbsp;|&nbsp;
+    <%= link_to "Date Posted", :sort => :post_date %> &nbsp;|&nbsp;
+    <%= link_to "Award", :sort => "awards.value" %>
+  </div>
 </div>
 
 	
