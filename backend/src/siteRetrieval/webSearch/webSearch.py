@@ -80,8 +80,8 @@ def main():
     cleanResults = [item[u'link'] for item in results[u'items']]
     dedupedResults = excludeUrls(cleanResults, excludedUrls)
     with open(outFile, 'w') as f:
-        f.write([item + '\n' for item in dedupedResults])
-
+        for item in dedupedResults:
+            f.write(item + '\n')
 
 if __name__ == "__main__":
     main()
