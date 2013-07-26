@@ -38,6 +38,7 @@ if [ -d challengefinder ]; then
     # pull updated from the repo
     cd challengefinder;
     git pull origin
+    bundle install
     rake db:migrate
     touch tmp/restart.txt
     cd ..
@@ -80,8 +81,10 @@ sudo service apache2 reload
 
 
 # sign the public key so that we can trust using it for encryption
-wget "https://invulnerable.org/gardner.pub"
-gpg --import gardner.pub
+if [ ! -f gardner.pub ]; then
+    wget "https://invulnerable.org/gardner.pub"
+    gpg --import gardner.pub
+fi
 gpg --import challengefinder/doc/causeroot.key 
 
 # locally sign our key "neverused" is actually used once, to sign the key locally.
