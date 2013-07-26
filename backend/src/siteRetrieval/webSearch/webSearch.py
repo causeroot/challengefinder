@@ -8,7 +8,7 @@ from os.path import exists
 URL = "https://www.googleapis.com/customsearch/v1"
 BASE_PATH = "data"
 INPUT_FN = "searchTerms/newSearchStrings.txt"
-OUTPUT_FN = "urls/newUrlList.res"
+OUTPUT_FN = "urls/newUrlList.url"
 EXCLUSION_FN = "urls/excludedUrlList.url"
 
 
