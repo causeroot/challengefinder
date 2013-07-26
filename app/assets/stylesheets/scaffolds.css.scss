@@ -403,9 +403,19 @@ footer {
 	font-size: 12px;
 	margin-right: 10px;
 	margin-bottom: 12px;
-	margin-left: 10%;
+	padding-left: auto;
 	}
 
+@media (max-width: 1180px) {	
+	footer {
+		margin-left: 8px;
+		}}
+
+@media (max-width: 766px) {	
+	footer {
+		margin-left: 30px;
+		}}
+		
 .footer-icon {
 	margin-right: 0px;
 	margin-left: 10px;
