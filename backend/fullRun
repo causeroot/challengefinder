@@ -7,8 +7,6 @@ python src/termExtraction/word_features.py $1 badList.url
 
 ./webSearch $1
 
-./jsonStrip data/$1/urls/newUrlList.res data/$1/urls/newUrlList.url
-
 python src/termExtraction/word_features.py $1 newUrlList.url
 
 ./generateClassification $1

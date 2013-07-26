@@ -38,8 +38,7 @@ TODO: Write in exception handling if the helper referenced files don't exist
     ./generateSVM className
     ./generateSearchStrings className
     ./webSearch className
-    ./jsonStrip data/className/urls/newUrlList.res data/className/urls/newUrlList.url
-    ./generateWordList className newlySearchedOutput.url
+    ./generateWordList className newUrlList.url
     ./generateClassification className
 * Insert Human here!!! (see the note in "High Level Command")
 
@@ -98,10 +97,8 @@ Structure of Data:
     - `../searchTerms/newSearchStrings.txt` : This file contains the words and word pairs that should be
       submitted into the Google API, which should be the best indicators for predicting a good URL.
 TODO: <Roux> Write a short blurb about the location & function of the passcode file
-    - `../urls/newUrlList.res` : This file is the direct output of webSearch.  It is a list of urls, in
+    - `../urls/newUrlList.url` : This file is the direct output of webSearch.  It is a list of urls, in
       json format, that have been found using the new search strings in new_sstrings.txt
-    - `../urls/newUrlList.url` : This file is the direct output of jsonStrip. It is a text file output
-      version of the newUrlList.res file.
     - `../svmModel/pNew.binsev` : This file contains the binary prediction of whether the newly searched
       URLs output from webSearch meet the criteria to be "good URL".  This is a binary file produced by
       trainSVM, and must be opened in Octave to view/use.
