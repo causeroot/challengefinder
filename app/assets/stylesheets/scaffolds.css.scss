@@ -325,7 +325,10 @@ input.search-query {
 .top-subtext {
 	margin-bottom: 40px;
 	}
-
+	
+.sorting-links a {
+	margin-left: 0;
+	}
 
 #login {
 	float: right;
@@ -358,7 +361,6 @@ input.search-query {
 
 .back-link a {
 	margin-left: 0px;
-	color: #6D6E71;
 	&:hover {
 	color: #669900;
 	}
