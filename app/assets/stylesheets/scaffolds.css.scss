@@ -61,12 +61,24 @@ div {
 	padding-top: 20px;
 	}
 
+@media (max-width: 520px) {
+	.row {
+		padding-left: 18px;
+		padding-right: 18px;
+		}}
+
 .row-2 {
 	margin-bottom: 30px;
 	display: inline-block;
-	overflow: hidden;
+	
 	}
 
+@media (max-width: 520px) {
+	.row-2 {
+		max-width: 300px;
+		width: 180px;
+	}}
+	
 .row-3 {
 	width: 75%;
 	}
@@ -191,6 +203,12 @@ div {
 		overflow: hidden;
 		}}	
 		
+@media (max-width: 520px) {	
+	.dot-divider {
+		width: 32%;
+		overflow: hidden;
+		}}	
+		
 #search-area {
 	height: 160px; 
 	margin-bottom: 50px;
@@ -205,7 +223,7 @@ div {
 #search-area p {
 	font-size: 14px;
 	color: #FFFFFF;
-	
+	padding-left: 20px;
 	}
 	
 .navbar-searchbox {
