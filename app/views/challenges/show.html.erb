@@ -73,20 +73,26 @@
 
 			<div class="detail-highlights"><p>POST DATE</p></div>
 			<p><%= @challenge.post_date.strftime('%b %e, %Y') if @challenge.post_date %>
-			</p><br>
-			
+			</p><br>			
 
 			<div class="detail-highlights"><p>CONTACT INFORMATION</p></div>
 			<p><%=raw @challenge.contact_info.gsub(/\n/, '<br>').html_safe %>
 			</p><br>
 			
 
-			<div class="detail-highlights"><p>SHARE</p>	
-				<div class="fb-like" data-send="false" data-layout="button_count" data-width="30" data-show-faces="true">
-				</div>
+			<div class="detail-highlights"><p>SHARE</p></div>
+				<span class="fb-share-button"><a href="#" 
+				  onclick="
+					window.open(
+					  'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 
+					  'facebook-share-dialog', 
+					  'width=626,height=436'); 
+					return false;">
+				  Facebook&nbsp;
+				</a></span>
 				<a href="https://twitter.com/share" class="twitter-share-button" data-url="<%= @challenge %>" data-text="<%= @challenge.title %>" data-count="none">Tweet</a>
 						<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-			</div>
+			
 			
 		</div>
 
