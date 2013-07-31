@@ -77,7 +77,7 @@
 			
 
 			<div class="detail-highlights"><p>CONTACT INFORMATION</p></div>
-			<p><%= @challenge.contact_info %>
+			<p><%=raw @challenge.contact_info.gsub(/\n/, '<br>').html_safe %>
 			</p><br>
 			
 
