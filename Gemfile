@@ -59,7 +59,7 @@ end
 group :test, :development do
   gem 'sqlite3'
   gem "brakeman"
-  gem "rspec-rails", "~> 2.0"
+  gem "rspec-rails", "~> 2.12"
   gem "factory_girl_rails", "~> 4.0"
   gem "faker"
 end
