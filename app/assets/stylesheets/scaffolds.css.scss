@@ -281,7 +281,6 @@ input.search-query {
 	border: 1px solid #D3D3D3;
 	border-radius: 3px;
 	margin-right: 12px;
-	margin-bottom: 0px;
 	padding: 2px;
 	font-size: 11px;
 	font-weight: bold;
@@ -290,6 +289,7 @@ input.search-query {
 
 .fb-share-button a {
 	color: #3B5998;
+	vertical-align: top;
 	}
 	
 .fb-like {
