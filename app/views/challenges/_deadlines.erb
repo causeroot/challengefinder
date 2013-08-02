@@ -1,6 +1,5 @@
 <% deadlines.each do |deadline| -%>
-    <%= deadline.date.strftime('%b %e, %Y') if deadline.date %>
-	<p><%= deadline.description %></p>
+    <p><%= deadline.date.strftime('%b %e, %Y') if deadline.date %> - <%= deadline.description %></p>
 <% end %>
 
 
