@@ -8,8 +8,74 @@
 # - The frequency that those word pairs are used
 
 import commands
+import threadpool
+from collections import defaultdict
 from itertools import izip, tee
 import sys, os
+
+def retrieveUrl(url):
+    print 'url is: ' + url
+    return commands.getoutput('lynx -dump ' + url)
+
+def parseSiteData(siteText):
+    """Return every word in a site's output after cleaning up"""
+    # This strips non-alphabet characters from the file, returns, and URLs
+    # as it throws every 'word' into an array
+    words = []
+    for word in siteText.lower().split(' '):
+        if word:
+            word = word.strip('[]{}()0123456789~:;"?><,!%^&*')
+            word = word.replace('\n',' ')
+            if word.find('-',1,len(word)-1) == -1:
+                word = word.replace('-','')
+            if ('www' not in word) and ('http' not in word) and ('.com' not in word):
+                word = word.replace('.','')
+                if word.isalpha():
+                    words.append(word)
+            else:
+                words.append('httpaddr')
+    return words
+
+def siteCb(request, siteText):
+    global first
+    global OUPUT_PATH
+    words = parseSiteData(siteText)
+    accessMode = 'a'
+    if first:
+        accessMode = 'w'
+        first = False
+    with open(OUPUT_PATH + sys.argv[2][:-4]+'.siteWords', accessMode) as outFile:
+        if accessMode == 'a':
+            outFile.write('\n')
+        outFile.write(url + " " + ' '.join(words))
+
+def pairwise(iterable):
+    "s -> (s0,s1), (s1,s2), (s2, s3), ..."
+    a, b = tee(iterable)
+    next(b, None)
+    return izip(a, b)
+
+def frequencyCount(items):
+    """Create dictionary of counts for an iterable item, optionally take a
+    list of unique items to speed up calculation"""
+    frequency = defaultdict(lambda: 0)
+    for item in items:
+        frequency[item] += 1
+    return frequency
+
+def processTasks(urlList, outFile):
+    pool = threadpool.ThreadPool(10)
+    
+    requests = threadpool.makeRequests(retrieveUrl, urlList, callback=siteCb)
+    
+    start = True
+    for req in requests:
+        req.start = start
+        req.outFile = outFile
+        pool.putRequest(req)
+        if start:
+            start = False
+    pool.wait()
 
 # TODO: Fix these paths below:
 if len(sys.argv) < 2:
@@ -23,78 +89,12 @@ if not os.path.exists(INPUT_PATH + sys.argv[2]):
   sys.stderr.write('ERROR: URL list %s was not found!\n' % sys.argv[2])
   sys.exit(1)
 
-def pairwise(iterable):
-    "s -> (s0,s1), (s1,s2), (s2, s3), ..."
-    a, b = tee(iterable)
-    next(b, None)
-    return izip(a, b)
+first = True
 
-corpus_words = list()
-corpus_unique_words = set()
-corpus_pairs = list()
-corpus_unique_pairs = set()
+urlList = []
+with open(INPUT_PATH + sys.argv[2]) as urlFile:
+    urlList = [url.strip() for url in urlFile]
 
-urlfile = open(INPUT_PATH + sys.argv[2])
-outfile = open(OUPUT_PATH + sys.argv[2][:-4]+'.siteWords','w')
-urldata = {}
-#svmfile = open('svminputfile.tmp','w')
-start = 1
+with open(OUPUT_PATH + sys.argv[2][:-4]+'.siteWords','w') as outFile:
+    processTasks(urlList, outFile)
 
-for url in urlfile:
-    words = list()
-    url = url.strip()
-    print 'url is: ', url
-    site_text = commands.getoutput('lynx -dump ' + url)
-    # ***** ADD SOME [if this shit fails] CODE IN HERE !!! ********
-    
-    
-    # This strips non-alphabet characters from the file, returns, and URLs
-    # as it throws every 'word' and 'word pair' into respective arrays
-    for word in site_text.lower().split(' '):
-        if word != '':
-            word = word.strip('[]{}()0123456789~:;"?><,!%^&*')
-            word = word.replace('\n',' ')
-            if word.find('-',1,len(word)-1) == -1:
-                word = word.replace('-','')
-            if ('www' not in word) and ('http' not in word) and ('.com' not in word):
-                word = word.replace('.','')
-                if word.isalpha():
-                    words.append(word)
-            else:
-                words.append('httpaddr')
-    
-    # This determines the frequency of each word
-    unique_words = set(words)
-    word_frequency = dict([(word, words.count(word)) for word in unique_words])
-    
-    # This creates the word-pairs list and obtains frequency information
-    
-    pairs = [pair for pair in pairwise(words)]
-    unique_pairs = set(pairs)
-    pair_frequency = dict([(pair,pairs.count(pair)) for pair in unique_pairs])
-    
-    # This adds all of the crunched data for the that particular url
-    urldata[url] = {'url':url, 'site_text':site_text, 'word_list':words, 'word_frequency':word_frequency,
-        'pair_list':pairs,'pair_frequency':pair_frequency}
-    
-    #url_data.append([url, word_list, word_frequency, key_mapping_words, pair_list, pair_frequency, key_mapping_pairs])
-    
-    corpus_words.append(words)
-    corpus_unique_words.update(unique_words)
-    corpus_pairs.append(pairs)
-    corpus_unique_pairs.update(unique_pairs)
-
-    if start == 0:
-       outfile.write('\n')
-    start = 0
-
-    outfile.write(url + " ")
-    outfile.write(' '.join(urldata[url]['word_list']))
-
-corpus_word_frequency = dict([(word, corpus_words.count(word)) for word in corpus_unique_words])
-corpus_pair_frequency = dict([(pair, corpus_pairs.count(pair)) for pair in corpus_unique_pairs])
-
-urlfile.close()
-outfile.close()
-
-# The End ... ?
