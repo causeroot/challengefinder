@@ -5,9 +5,15 @@ generateWordList
     - Refetches EVERYthing every time
         Run on server with fat pipe (WHat factor speedup?)
         Local cache of fetched list LRU/time expiration
+    - Smarter wordlisting to feed the feature-sets
+        Portstemming
+        don't write single letters (& non-dictionary words?)
 
 generateFeature
-    - Completely broken
+    - Completely broken -- FIXED!!!
+
+generateSearchStrings
+    - Searchterms detected have the wrong polarity
 
 generateClassification
     - Our SVM doesn't pick up any good challenges

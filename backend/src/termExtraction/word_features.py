@@ -38,9 +38,7 @@ urlfile = open(INPUT_PATH + sys.argv[2])
 outfile = open(OUPUT_PATH + sys.argv[2][:-4]+'.siteWords','w')
 urldata = {}
 #svmfile = open('svminputfile.tmp','w')
-
-
-
+start = 1
 
 for url in urlfile:
     words = list()
@@ -85,11 +83,13 @@ for url in urlfile:
     corpus_unique_words.update(unique_words)
     corpus_pairs.append(pairs)
     corpus_unique_pairs.update(unique_pairs)
-    
+
+    if start == 0:
+       outfile.write('\n')
+    start = 0
+
     outfile.write(url + " ")
-    outfile.write(' '.join(urldata[url]['word_list']) + '\n')
-
-
+    outfile.write(' '.join(urldata[url]['word_list']))
 
 corpus_word_frequency = dict([(word, corpus_words.count(word)) for word in corpus_unique_words])
 corpus_pair_frequency = dict([(pair, corpus_pairs.count(pair)) for pair in corpus_unique_pairs])
