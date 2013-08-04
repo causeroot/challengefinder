@@ -2,9 +2,11 @@ Better progress reporting/error reporting
     Things shouldn't break silently
 
 generateWordList
-    - Refetches EVERYthing every time
+    - Refetches EVERYthing every time -- FIXED!!! (2 min)
         Run on server with fat pipe (What factor speedup?)
+            Vanilla badList on amber takes 58min: `time ./generateWordList simpleChallenge badList.url`
         Concurrent downloads
+            With connection pooling (20 workers, 1 min timeout) 1min54sec for `time ./generateWordList simpleChallenge badList.url `
         Local cache of fetched list LRU/time expiration
     - Smarter wordlisting to feed the feature-sets
         Portstemming
