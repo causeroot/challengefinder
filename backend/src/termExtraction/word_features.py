@@ -15,7 +15,7 @@ import sys, os
 
 def retrieveUrl(url):
     print 'url is: ' + url
-    return commands.getoutput('lynx -dump ' + url)
+    return commands.getoutput('lynx -dump -connect_timeout=60 ' + url)
 
 def parseSiteData(siteText):
     """Return every word in a site's output after cleaning up"""
@@ -64,7 +64,7 @@ def frequencyCount(items):
     return frequency
 
 def processTasks(urlList, outFile):
-    pool = threadpool.ThreadPool(10)
+    pool = threadpool.ThreadPool(40)
     
     requests = threadpool.makeRequests(retrieveUrl, urlList, callback=siteCb)
     
