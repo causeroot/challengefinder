@@ -29,7 +29,11 @@ fprintf('(this may take a bit)\n')
 %[class, dictionary_words, dictionary_pairs, features, urls] = extraction(regenModel);
 tic
 
+%%%%%%%%%%%%
+% CONSTANT HERE !!!!
 C = 0.1;
+%%%%%%%%%%%
+
 
 model = svmtrain(class', features');
 

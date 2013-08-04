@@ -6,8 +6,8 @@ BASE_PATH = strcat(pwd,"/data/",args{1});
 
 # Calling extraction with class, goodFile and badFile
 
-goodFileName = 'badList.sitewords'
-badFileName = 'goodList.sitewords'
+goodFileName = 'goodList.sitewords'
+badFileName = 'badList.sitewords'
 #goodFileName = 'Good_Challenges_List.sitewords'
 #badFileName = 'random_url_word_list.sitewords'
 #goodFileName = 'goodChallengesList.sitewords'

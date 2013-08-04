@@ -1,6 +1,6 @@
 function pos_word = genSearchStrings(model,dictionary_words,dictionary_pairs)
 
-%% ================= Part 5: Top Predictors of a Good Challenge URL ====================
+%% ================= Part 5: Top Predictors of a Good URL ====================
 %  Since the model we are training is a linear SVM, we can inspect the
 %  weights learned by the model to understand better how it is determining
 %  whether an email is spam or not. The following code finds the words with
@@ -13,7 +13,12 @@ model_w = ((model.sv_coef)'*(model.SVs))';
 
 [weight, id] = sort(model_w, 'descend');
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% THESE ARE CONSTANTS WHICH ARE SUBJECT TO QUALITATIVE DECISION BY YONDER CODER   %
 thresh = 0.018;
+num_distinctifiers = 30;
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 pos_word = '';
 neg_word = '';
 parm = '';
@@ -28,7 +33,6 @@ idx = new_strings(:,1);
 negative_weights = new_strings(:,2);
 weightx = new_strings(:,3);
 
-num_distinctifiers = 30;
 fprintf('\nTop predictors for applicable URLs: \n');
 
 for i = 1:num_distinctifiers

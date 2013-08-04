@@ -1,4 +1,4 @@
-function  [eval_urls,p,pred] = classify(eval_file,model,dictionary_words, dictionary_pairs)
+function  [eval_urls,p,accuracy,pred] = classify(eval_file,model,dictionary_words, dictionary_pairs)
 
 %%%%%%%%%%%%%%%%%%%%%% Website Classification with SVMs %%%%%%%%%%%%%%%%
 %

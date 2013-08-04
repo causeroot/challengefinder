@@ -14,10 +14,12 @@ generateFeature
     - Completely broken -- FIXED!!!
 
 generateSearchStrings
-    - Searchterms detected have the wrong polarity
+    - Searchterms detected have the wrong polarity  -- FIXED!!!
 
 generateClassification
     - Our SVM doesn't pick up any good challenges
+    - Weird deal with word frequency being equivalent to the "predictibility" of any one word
+        Add frequency back in & see if it improves (or not)
 
 Future features
     - Automatic clustering of good/bad
