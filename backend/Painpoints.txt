@@ -3,7 +3,8 @@ Better progress reporting/error reporting
 
 generateWordList
     - Refetches EVERYthing every time
-        Run on server with fat pipe (WHat factor speedup?)
+        Run on server with fat pipe (What factor speedup?)
+        Concurrent downloads
         Local cache of fetched list LRU/time expiration
 
 generateFeature
