@@ -63,7 +63,7 @@ def frequencyCount(items):
         frequency[item] += 1
     return frequency
 
-def processTasks(urlList, outFile):
+def processTasks(urlList):
     pool = threadpool.ThreadPool(40)
     
     requests = threadpool.makeRequests(retrieveUrl, urlList, callback=siteCb)
@@ -71,7 +71,6 @@ def processTasks(urlList, outFile):
     start = True
     for req in requests:
         req.start = start
-        req.outFile = outFile
         pool.putRequest(req)
         if start:
             start = False
@@ -95,6 +94,5 @@ urlList = []
 with open(INPUT_PATH + sys.argv[2]) as urlFile:
     urlList = [url.strip() for url in urlFile]
 
-with open(OUPUT_PATH + sys.argv[2][:-4]+'.siteWords','w') as outFile:
-    processTasks(urlList, outFile)
+processTasks(urlList)
 
