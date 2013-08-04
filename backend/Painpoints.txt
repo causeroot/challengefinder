@@ -1,0 +1,17 @@
+Better progress reporting/error reporting
+    Things shouldn't break silently
+
+generateWordList
+    - Refetches EVERYthing every time
+        Run on server with fat pipe (WHat factor speedup?)
+        Local cache of fetched list LRU/time expiration
+
+generateFeature
+    - Completely broken
+
+generateClassification
+    - Our SVM doesn't pick up any good challenges
+
+Future features
+    - Automatic clustering of good/bad
+        k-means...
