@@ -32,7 +32,7 @@ tic
 %%%%%%%%%%%%
 % CONSTANT HERE !!!!
 C = 0.1;
-%%%%%%%%%%%
+%%%%%%%%%%%%
 
 
 model = svmtrain(class', features');
