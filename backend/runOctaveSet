@@ -4,10 +4,8 @@ args = argv();
 
 BASE_PATH = strcat(pwd,"/data/",args{1});
 
-goodFileName = 'Good_Challenges_List.sitewords'
-#goodFileName = 'goodChallengesList.sitewords'
-#badFileName = 'badList.sitewords'
-badFileName = 'random_url_word_list.sitewords'
+goodFileName = 'goodList.siteWords'
+badFileName = 'badList.siteWords'
 
 pathRawSiteData = strcat(BASE_PATH,'/rawSiteData/');
 good_file = strcat(BASE_PATH,'/rawSiteData/',goodFileName);
