@@ -47,7 +47,7 @@ def siteCb(request, siteText):
     with open(OUPUT_PATH + sys.argv[2][:-4]+'.siteWords', accessMode) as outFile:
         if accessMode == 'a':
             outFile.write('\n')
-        outFile.write(url + " " + ' '.join(words))
+        outFile.write(request.args[0] + " " + ' '.join(words))
 
 def pairwise(iterable):
     "s -> (s0,s1), (s1,s2), (s2, s3), ..."
