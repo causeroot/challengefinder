@@ -10,7 +10,7 @@ dictionaryPairsFile = strcat(BASE_PATH, "/urlTerms/dictionary_pairs_file.binsev"
 search_string_out_file = strcat(BASE_PATH, "/searchTerms/new_sstrings.txt");
 eval_output_file = strcat(BASE_PATH, "/fitness/evalout.txt");
 
-eval_file = strcat(BASE_PATH, "/rawSiteData/newUrlList.sitewords");
+eval_file = strcat(BASE_PATH, "/rawSiteData/newUrlList.siteWords");
 predNewFile = strcat(BASE_PATH,'/svmModel/predNew.binsev');
 accuracyNewFile = strcat(BASE_PATH,'/svmModel/accuracyNew.binsev');
 pNewFile = strcat(BASE_PATH,'/svmModel/pNew.binsev');
