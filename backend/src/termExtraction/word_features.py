@@ -15,7 +15,7 @@ import sys, os
 
 def retrieveUrl(url):
     print 'url is: ' + url
-    return commands.getoutput('lynx -dump -connect_timeout=60 ' + url)
+    return commands.getoutput('lynx -dump -connect_timeout=60 "' + url + '"')
 
 def parseSiteData(siteText):
     """Return every word in a site's output after cleaning up"""
