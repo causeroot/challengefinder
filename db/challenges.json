@@ -11,9 +11,9 @@
 "image_url": "http://arimaa.com/arimaa/graphics/animals/WE.gif",
 "sponsor": "Omar Syed",
 "contact_info": "http://arimaa.com/arimaa/contact/",
-"topic": "Artificial Intelligence\n    Computer Science\n    Games",
-"structure": "Tournament\n    Annual\n    Until Prize is Claimed",
-"resultant": "Winner\n    Open Source?",
+"topic": "Computer_Science Artificial_Intelligence Games",
+"structure": "Tournament Annual Until_Prize_is_Claimed",
+"resultant": "Winner Open_Source?",
 "xpath_check": "http://arimaa.com/arimaa/challenge/html/body/table/tbody/tr/td[2]/blockquote/table/tbody/tr/td/p[3]"
 },{"url": "http://www.claymath.org/millennium/Birch_and_Swinnerton-Dyer_Conjecture/",
 "title": "The Birch and Swinnerton-Dyer Conjecture",
@@ -29,8 +29,8 @@
 "sponsor": "Clay Mathematics Institute",
 "contact_info": "Corporate Address: \nClay Mathematics Institute \n10 Memorial Blvd.\nSuite 902\nProvidence, RI 02903\nUSA\n\nPlease send inquiries regarding the Millennium Prize Problems to admin@claymath.org \n\nTelephone: +44 (0)1865 615155\nFax: +44 (0)1865 615101",
 "topic": "Math",
-"structure": "Until Prize is Claimed \nPublication",
-"resultant": "Open Source",
+"structure": "Until_Prize_is_Claimed \nPublication",
+"resultant": "Open_Source",
 "xpath_check": "http://www.claymath.org/millennium/Birch_and_Swinnerton-Dyer_Conjecture/html/body/div[4]/div/p[3]\nhttp://www.claymath.org/millennium/Rules_etc/html/body/div[4]/div/p[11]/em"
 },{"url": "http://www.claymath.org/millennium/Hodge_Conjecture/",
 "title": "The Hodge Conjecture",
@@ -46,7 +46,7 @@
 "sponsor": "Clay Mathematics Institute",
 "contact_info": "Corporate Address: \nClay Mathematics Institute \n10 Memorial Blvd.\nSuite 902\nProvidence, RI 02903\nUSA\n\nPlease send inquiries regarding the Millennium Prize Problems to admin@claymath.org \n\nTelephone: +44 (0)1865 615155\nFax: +44 (0)1865 615101",
 "topic": "Math",
-"structure": "Until Prize is Claimed \nPublication",
+"structure": "Until_Prize_is_Claimed \nPublication",
 "resultant": "Open Source",
 "xpath_check": "http://www.claymath.org/millennium/Hodge_Conjecture/html/body/div[4]/div/p \nhttp://www.claymath.org/millennium/Rules_etc/html/body/div[4]/div/p[11]/em "
 },{"url": "http://www.claymath.org/millennium/Navier-Stokes_Equations/",
@@ -63,7 +63,7 @@
 "sponsor": "Clay Mathematics Institute",
 "contact_info": "Corporate Address: \nClay Mathematics Institute \n10 Memorial Blvd.\nSuite 902\nProvidence, RI 02903\nUSA\n\nPlease send inquiries regarding the Millennium Prize Problems to admin@claymath.org \n\nTelephone: +44 (0)1865 615155\nFax: +44 (0)1865 615101",
 "topic": "Math",
-"structure": "Until Prize is Claimed \nPublication",
+"structure": "Until_Prize_is_Claimed \nPublication",
 "resultant": "Open Source",
 "xpath_check": "http://www.claymath.org/millennium/Navier-Stokes_Equations/html/body/div[4]/div/p \nhttp://www.claymath.org/millennium/Rules_etc/html/body/div[4]/div/p[11]/em"
 },{"url": "url: http://www.claymath.org/millennium/P_vs_NP/",
@@ -80,7 +80,7 @@
 "sponsor": "Clay Mathematics Institute",
 "contact_info": "Corporate Address: \nClay Mathematics Institute \n10 Memorial Blvd.\nSuite 902\nProvidence, RI 02903\nUSA\n\nPlease send inquiries regarding the Millennium Prize Problems to admin@claymath.org \n\nTelephone: +44 (0)1865 615155\nFax: +44 (0)1865 615101",
 "topic": "Math",
-"structure": "Until Prize is Claimed \nPublication",
+"structure": "Until_Prize_is_Claimed \nPublication",
 "resultant": "Open Source",
 "xpath_check": "http://www.claymath.org/millennium/P_vs_NP/html/body/div[4]/div/p \nhttp://www.claymath.org/millennium/Rules_etc/html/body/div[4]/div/p[11]/em"
 },{"url": "http://www.claymath.org/millennium/Riemann_Hypothesis/",
@@ -97,7 +97,7 @@
 "sponsor": "Clay Mathematics Institute",
 "contact_info": "Corporate Address: \nClay Mathematics Institute \n10 Memorial Blvd.\nSuite 902\nProvidence, RI 02903\nUSA\n\nPlease send inquiries regarding the Millennium Prize Problems to admin@claymath.org \n\nTelephone: +44 (0)1865 615155\nFax: +44 (0)1865 615101",
 "topic": "Math",
-"structure": "Until Prize is Claimed \nPublication",
+"structure": "Until_Prize_is_Claimed \nPublication",
 "resultant": "Open Source",
 "xpath_check": "http://www.claymath.org/millennium/Riemann_Hypothesis/html/body/div[4]/div/p \nhttp://www.claymath.org/millennium/Rules_etc/html/body/div[4]/div/p[11]/em"
 },{"url": "http://www.claymath.org/millennium/Yang-Mills_Theory/",
@@ -114,7 +114,7 @@
 "sponsor": "Clay Mathematics Institute",
 "contact_info": "Corporate Address: \nClay Mathematics Institute \n10 Memorial Blvd.\nSuite 902\nProvidence, RI 02903\nUSA\n\nPlease send inquiries regarding the Millennium Prize Problems to admin@claymath.org \n\nTelephone: +44 (0)1865 615155\nFax: +44 (0)1865 615101",
 "topic": "Math",
-"structure": "Until Prize is Claimed \nPublication",
+"structure": "Until_Prize_is_Claimed \nPublication",
 "resultant": "Open Source",
 "xpath_check": "http://www.claymath.org/millennium/Yang-Mills_Theory/html/body/div[4]/div[2]/img \nhttp://www.claymath.org/millennium/Rules_etc/html/body/div[4]/div/p[11]/em"
 },{"url": "http://prize.hutter1.net/",
@@ -130,11 +130,10 @@
 "image_url": "http://prize.hutter1.net/hmedal.gif",
 "sponsor": "Marcus Hutter",
 "contact_info": "Matt Mahoney:  matmahoney@yahoo.com \n\nTo Post Questions: \nhttps://groups.google.com/group/Hutter-Prize/about/",
-"topic": "Math\nComputer Science\nArticfitial Intelligence",
-"structure": "Until Prize is Claimed \nContinuous Record Breaking ",
-"resultant": "Open Source",
+"topic": "Computer_Science Math Artificial_Intelligence",
+"structure": "Continuous_Record_Breaking ",
+"resultant": "Open_Source",
 "xpath_check": "http://en.wikipedia.org/wiki/Hutter_Prize/html/body/div[3]/div[3]/div[4]/p/b\nhttp://prize.hutter1.net/#task/html/body/center[4]/table/tbody/tr[2]/td[2]"
-
 },{"url": "http://www.qualcommtricorderxprize.org/",
 "title": "QUALCOMM Tricorder Xprize",
 "tag_line": "Healthcare in the palm of your hand",
@@ -148,9 +147,9 @@
 "image_url": "http://www.xprize.org/sites/xprize.org/files/logo.png",
 "sponsor": "The XPRIZE Foundation",
 "contact_info": "XPRIZE Foundation\n5510 Lincoln Blvd. Suite 100\nPlaya Vista, CA 90094-2034\nU.S.A\n\nTelephone: 310-741-4880\n\nQuestion Submission: http://www.qualcommtricorderxprize.org/about/contact-us\n\nPlease contact Vivan Cabral at 310-751-1434, with questions or comments regarding team registration.",
-"topic": "App\nSoftware",
+"topic": "Technology APP Software",
 "structure": "Rounds",
-"resultant": "Teams Retain IP\nFurthering Science",
+"resultant": "Teams_Retain_IP Furthering_Science",
 "xpath_check": "http://www.qualcommtricorderxprize.org/competition-details/faqs/html/body/div[3]/section/div/div/div/div/div/div/div/article/div/div/div/div/ul[2]"
 },{"url": "http://www.nokiasensingxchallenge.org/",
 "title": "The Nokia Sensing XCHALLENGE: Competition #2",
@@ -165,9 +164,9 @@
 "image_url": "http://www.xprize.org/sites/xprize.org/files/logo.png",
 "sponsor": "The XPRIZE Foundation",
 "contact_info": "XPRIZE Foundation\n5510 Lincoln Blvd. Suite 100\nPlaya Vista, CA 90094-2034\nU.S.A\n\nTelephone: 310-741-4880\n\nQuestion Submission: http://www.qualcommtricorderxprize.org/about/contact-us\n\nPlease contact Vivan Cabral at 310-751-1434, with questions or comments regarding team registration.",
-"topic": "App\nSoftware",
-"structure": "Rounds \nTiered",
-"resultant": "Teams Retain IP\nFurthering Science",
+"topic": "Technology APP Software",
+"structure": "Rounds Tiered",
+"resultant": "Teams_Retain_IP Furthering_Science",
 "xpath_check": "http://www.nokiasensingxchallenge.org/competition-details/faqs/html/body/div[3]/section/div/div/div/div/div/div/div/article/div/div/div/div/ul[2]"
 },{"url": "http://www.nightrover.org/",
 "title": "The Night Rover Challenge",
@@ -182,9 +181,9 @@
 "image_url": "http://www.nightrover.org/sites/default/files/logo.png",
 "sponsor": "NASA",
 "contact_info": "http://www.nightrover.org/contactus\n88 King Street #406\nSan Francisco, CA 94107\n\njosh@nightrover.org",
-"topic": "Science \nTechnology \nSpace",
+"topic": "Technology Science Space",
 "structure": "Tiered",
-"resultant": "Furthering Technology",
+"resultant": "Furthering_Technology",
 "xpath_check": "http://www.nightrover.org/sites/all/themes/theme621/pdf/2014_NightRover_Rules-FINAL.pdf \nhttp://www.nightrover.org/sites/all/themes/theme621/pdf/Technical-Summary.pdf"
 },{"url": "http://connectedcitydesign.com/",
 "title": "The Connected City: Open Design Challenge",
@@ -199,8 +198,8 @@
 "image_url": "http://connectedcitydesign.com/img/fork.png",
 "sponsor": "The City of Dallas, Dallas CityDesign Studio, The Trinity Trust Foundation, Downtown Dallas Inc., and The Real Estate Council Foundation.",
 "contact_info": "For questions, please contact: citydesign@connectedcitydesign.com",
-"topic": "Design \nArchitecture \nUrban Landscaping",
-"structure": "Public voting",
-"resultant": "Public Infrastructure",
+"topic": "Design Architecture Urban_Landscaping",
+"structure": "Public_Voting",
+"resultant": "Public_Infrastructure",
 "xpath_check": "http://www.connectedcitydesign.com/files/content/565958267937326.pdf"
 }]

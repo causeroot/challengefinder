@@ -9,7 +9,6 @@
 	</div>
 </div>
 
-	
 	<div class="top-subtext">
 	<span class="sorting-links">
     <%= link_to "Deadline", :sort => "deadlines.date" %> &nbsp;|&nbsp;
@@ -24,7 +23,7 @@
 	
 		<div class="row-2">
 				<div class="span2">
-					<img src="<%=asset_path "challenge.png"%>" width="100px" height="100px"/>
+					<img src="<%=asset_path challenge.topic.split[0...1].join(' ').concat('.png') %>" width="100px" height="100px"/>
 					<!-- <img src="<%= challenge.image_url %>" /> -->
 				</div>
 				<div class="span4">
