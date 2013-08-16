@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130621040847) do
+ActiveRecord::Schema.define(:version => 20130816031555) do
 
   create_table "awards", :force => true do |t|
     t.string   "value"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(:version => 20130621040847) do
     t.string   "structure"
     t.string   "resultant"
     t.string   "xpath_check"
+    t.string   "status"
   end
 
   create_table "deadlines", :force => true do |t|
