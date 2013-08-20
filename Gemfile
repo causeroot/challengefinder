@@ -9,6 +9,8 @@ gem 'rails', '~> 3.2.6'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
 
+gem 'capistrano'
+
 gem 'sorcery'
 gem 'nokogiri'
 gem 'mechanize'

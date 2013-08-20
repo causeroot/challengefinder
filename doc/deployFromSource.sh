@@ -10,28 +10,15 @@ sudo apt-get upgrade -y
 # install the first batch of supporting software
 sudo apt-get remove ruby -y
 
-sudo apt-get install ruby1.9.1 ruby1.9.1-dev rubygems1.9.1 irb1.9.1 \
-    ri1.9.1 rdoc1.9.1 build-essential libopenssl-ruby1.9.1 libssl-dev \
-    zlib1g-dev -y
-
-sudo apt-get install unattended-upgrades git apticron ruby1.9.1 ruby1.9.1-dev \
-    libxslt-dev libxml2-dev libnokogiri-ruby1.9.1 sqlite3 openjdk-6-jdk \
-    solr-tomcat vim debconf-utils apache2 apache2-dev libapache2-mod-passenger \
-    libmysql-ruby libmysqlclient-dev rake libsqlite3-dev ruby-sqlite3 \
-    apache2-threaded-dev libcurl4-openssl-dev libapr1-dev libaprutil1-dev -y
+sudo apt-get -y install build-essential zlib1g-dev libssl-dev libreadline-dev libyaml-dev libcurl4-openssl-dev curl git-core python-software-properties libxslt1-dev libxml2-dev libmysqlclient-dev libsqlite3-dev nodejs
 
 sudo dd if=/dev/zero of=/swap bs=1M count=1024
 sudo mkswap /swap
 sudo swapon /swap
 
-sudo update-alternatives --install /usr/bin/ruby ruby /usr/bin/ruby1.9.1 400 \
-         --slave   /usr/share/man/man1/ruby.1.gz ruby.1.gz \
-                        /usr/share/man/man1/ruby1.9.1.1.gz \
-        --slave   /usr/bin/ri ri /usr/bin/ri1.9.1 \
-        --slave   /usr/bin/irb irb /usr/bin/irb1.9.1 \
-        --slave   /usr/bin/rdoc rdoc /usr/bin/rdoc1.9.1
+ftp://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p448.tar.gz
 
-sudo update-alternatives --install /usr/bin/gem gem /usr/bin/gem1.9.1 400
+# a893cff26bcf351b8975ebf2a63b1023
 
 # set notifications for auto-update
 sudo sed --in-place 's/EMAIL="root"/EMAIL="info@causeroot.org"/g' /etc/apticron/apticron.conf
