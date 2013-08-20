@@ -302,7 +302,7 @@ DEPENDENCIES
   mysql2
   nokogiri
   rails (~> 3.2.6)
-  rspec-rails (~> 2.0)
+  rspec-rails (~> 2.12)
   sass (~> 3.2.9)
   sass-rails (~> 3.2.5)
   simplecov

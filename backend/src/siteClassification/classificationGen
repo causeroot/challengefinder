@@ -10,23 +10,25 @@ dictionaryPairsFile = strcat(BASE_PATH, "/urlTerms/dictionary_pairs_file.binsev"
 search_string_out_file = strcat(BASE_PATH, "/searchTerms/new_sstrings.txt");
 eval_output_file = strcat(BASE_PATH, "/fitness/evalout.txt");
 
-%TODO: RENAME URLs_2.url.out to a meaningful name!!!!
-eval_file = strcat(BASE_PATH, "/rawSiteData/newUrlList.sitewords");
-
+eval_file = strcat(BASE_PATH, "/rawSiteData/newUrlList.siteWords");
 predNewFile = strcat(BASE_PATH,'/svmModel/predNew.binsev');
+accuracyNewFile = strcat(BASE_PATH,'/svmModel/accuracyNew.binsev');
 pNewFile = strcat(BASE_PATH,'/svmModel/pNew.binsev');
 
 load("-v7",modelFile,"model")
 load("-v7",dictionaryWordsFile, "dictionary_words")
 load("-v7",dictionaryPairsFile, "dictionary_pairs")
 
-[eval_urls,pNew,predNew] = classify(eval_file,model,dictionary_words, dictionary_pairs);
+[eval_urls,pNew,accuracyNew,predNew] = classify(eval_file,model,dictionary_words, dictionary_pairs);
 
 fprintf('============================ Writing Output Files ========================\n');
 save("-mat7-binary", predNewFile, "predNew")
 fprintf('\n     Successful Save to predNew.binsev');
+save("-mat7-binary", accuracyNewFile, "accuracyNew")
+fprintf('\n     Successful Save to accuracyNew.binsev');
 save("-mat7-binary", pNewFile, "pNew")
 fprintf('\n     Successful Save to pNew.binsev\n');
+
 
 fileID = fopen(eval_output_file,'w');
 for i = 1:size(eval_urls,1)

@@ -123,6 +123,13 @@ then from the octave command line run `make`
 
 TODO: <Luis> Fix step #3 ...
 
+TODO: <ROUX> write in steps to install pip threadinstall
+*****
+easy_install pip
+pip install threadpool
+pip install requests
+*****
+
 3. To create a new class, copy one of the existing "classFolders", rename it, and
 modify the contents of 'rawSiteData/goodList.sitewords' & 'rawSiteData/badList.sitewords'
 to characterize the type of URLs that you are interested in finding.

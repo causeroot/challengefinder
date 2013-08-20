@@ -1,4 +1,4 @@
-function  [eval_urls,p,pred] = classify(eval_file,model,dictionary_words, dictionary_pairs)
+function  [eval_urls,p,accuracy,pred] = classify(eval_file,model,dictionary_words, dictionary_pairs)
 
 %%%%%%%%%%%%%%%%%%%%%% Website Classification with SVMs %%%%%%%%%%%%%%%%
 %
@@ -20,8 +20,10 @@ f = vertcat(eval_dataset_words,eval_dataset_pairs,eval_freq_words,eval_freq_pair
 
 fprintf('\n========================== Classifying New URLs ===========================\n');
 
-tlv = ones(size(f',1),1);
-[pred, accuracy, p] = svmpredict(tlv, f', model);
+tlv = rand(size(f',1),1);
+%tlv = ones(size(f',1),1);
+[pred, accuracy, p] = svmpredict(tlv, f', model)
+
 toc
 
 fprintf('\n========================== Classification Complete ===========================\n\n');

@@ -16,5 +16,7 @@ class Challenge < ActiveRecord::Base
     text :fee, :stored => true
     string :sponsor, :stored => true
     text :contact_info, :stored => true
-  end  
+  end
+
+  scope :awardOrdered, joins(:awards).uniq.order('LENGTH(awards.value), awards.value')
 end

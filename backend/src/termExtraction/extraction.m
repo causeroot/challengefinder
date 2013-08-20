@@ -53,7 +53,7 @@ class = ones(1,size(u,1));
 
 [u,dw,dp,fw,fp] = extract_data_2(bad_file, dictionary_words, dictionary_pairs);
 
-class = horzcat(class, zeros(1, size(u,1)));
+class = horzcat(class, -1*ones(1, size(u,1)));
 
 urls = vertcat(urls,u);
 dataset_words = horzcat(dataset_words,dw);

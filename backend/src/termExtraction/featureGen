@@ -6,14 +6,16 @@ BASE_PATH = strcat(pwd,"/data/",args{1});
 
 # Calling extraction with class, goodFile and badFile
 
-goodFileName = 'Good_Challenges_List.sitewords'
-badFileName = 'random_url_word_list.sitewords'
+goodFileName = 'goodList.sitewords'
+badFileName = 'badList.sitewords'
+#goodFileName = 'Good_Challenges_List.sitewords'
+#badFileName = 'random_url_word_list.sitewords'
 #goodFileName = 'goodChallengesList.sitewords'
 #badFileName = 'badChallengesList.sitewords'
 
 pathRawSiteData = strcat(BASE_PATH,'/rawSiteData/');
-good_file = strcat(BASE_PATH,'/rawSiteData/goodBucket/',goodFileName);
-bad_file =  strcat(BASE_PATH,'/rawSiteData/badBucket/',badFileName);
+good_file = strcat(BASE_PATH,'/rawSiteData/',goodFileName);
+bad_file =  strcat(BASE_PATH,'/rawSiteData/',badFileName);
 
 featuresFile = strcat(BASE_PATH,'/features/dictionary_features_file.binsev');
 classFile = strcat(BASE_PATH,'/features/dictionary_classes_file.binsev');
