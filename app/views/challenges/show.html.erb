@@ -31,8 +31,9 @@
             </div>
               
 			<div class="detail-highlights"><p>DEADLINE &nbsp;
-            	<%= " None" if @challenge.deadlines.count == 0 || @challenge.deadlines[0].date == nil %>
-				<%= dt = @challenge.deadlines.map {|deadline| deadline.date}.min() if @challenge.deadlines;
+              <%= "See Details Below" if @challenge.deadlines[0].description.length > 10 && @challenge.deadlines[0].date == nil %>
+              <%= "None" if @challenge.deadlines[0].description.length < 10 && @challenge.deadlines[0].date == nil || @challenge.deadlines.count == 0 %>
+              <%= dt = @challenge.deadlines.map {|deadline| deadline.date}.min() if @challenge.deadlines;
                dt.strftime('%b %e, %Y') if dt %>
 				</p>
             </div>
