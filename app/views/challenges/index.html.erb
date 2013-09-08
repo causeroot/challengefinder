@@ -40,7 +40,7 @@
                     </p>
                     <p><span class="dividing-line">—————————————</span></p>
                     <p><strong>DEADLINE &nbsp; </strong>
-                    <%= "See Details" if challenge.deadlines[0].description.length > 10 %>
+                    <%= "See Details" if challenge.deadlines[0].description.length > 10 && challenge.deadlines[0].date == nil %>
                     <%= "None" if challenge.deadlines[0].description.length < 10 && challenge.deadlines[0].date == nil || challenge.deadlines.count == 0 %>
                     <%= dt = challenge.deadlines.map {|deadline| deadline.date}.min() if challenge.deadlines;
                           dt.strftime('%b %e, %Y') if dt
