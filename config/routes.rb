@@ -5,6 +5,7 @@ ChallengeFinder::Application.routes.draw do
 
   match '/about', :to => 'about#index'
   match '/demo', :to => 'demo#index'
+  match '/privacy', :to => 'privacy#index'
 
   get "logout" => "sessions#destroy", :as => "logout"
   get "signout" => "sessions#destroy", :as => "logout"
