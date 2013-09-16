@@ -15,6 +15,8 @@ gem 'therubyracer', :platform => :ruby
 gem 'sorcery'
 gem 'nokogiri'
 gem 'mechanize'
+gem 'sqlite3'
+
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -59,7 +61,6 @@ group :development do
 end
 
 group :test, :development do
-  gem 'sqlite3'
   gem "brakeman"
   gem "rspec-rails", "~> 2.12"
   gem "factory_girl_rails", "~> 4.0"
