@@ -13,6 +13,7 @@ json = ActiveSupport::JSON.decode(File.read('db/challenges.json'))
 
 json.each do |a|
   Challenge.create(a, :without_protection => true)
+#  Challenge.where(a).first_or_create
 end
 
 User.create! do |u|
