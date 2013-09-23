@@ -59,6 +59,11 @@ function getSelectedText(btn) {
 	</div>
 
     <div class="field">
+      <%= f.label :status %>
+      <%= f.select(:status, ['active','pending','inactive'], {}) %>
+    </div>
+
+    <div class="field">
         <%= f.label :tag_line %>
     <%= f.text_field :tag_line %><button type="button" onMouseDown="challenge_tag_line.value = getSelectedText(this);"/>copy</button><br />
   	</div>
@@ -100,12 +105,12 @@ function getSelectedText(btn) {
     
 	<div class="field">
 	  <%= f.label :post_date %><br />
-	  <%= f.datetime_select :post_date %>
+	  <%= f.text_field :post_date %><button type="button" onMouseDown="challenge_sponsor.value = getSelectedText(this);"/>copy</button><br />
 	</div>
 
 	<div class="field">
 	  <%= f.label :image_url %><br />
-	  <%= f.text_field :image_url %>
+	  <%= f.text_field :image_url %><button type="button" onMouseDown="challenge_sponsor.value = getSelectedText(this);"/>copy</button><br />
 	</div>
 
     <div class="field">

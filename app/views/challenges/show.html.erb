@@ -22,7 +22,14 @@
               </p>
 
             <p>Sponsor: &nbsp;<%= @challenge.sponsor %>
-              </p><br>
+              </p>
+
+          <p>Status: &nbsp;<%= @challenge.status %>
+          </p>
+
+          <br>
+
+
 
             <div class="detail-highlights"><p>AWARD &nbsp;
 				<%= " Up to" if @challenge.awards.count > 1 %>
