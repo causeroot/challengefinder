@@ -25,6 +25,11 @@ Testing
 * Start solr test server: `rake sunspot:solr:start RAILS_ENV=test`
 * Test: `rake`
 
+Deployment
+=======
+ChallengeFinder is deployed using Amazon Elastic Beanstalk: https://aws.amazon.com/elasticbeanstalk/faqs/
+
+
 Reference
 =========
 * Admin page to enter Challenges: http://localhost:3000/admin/challenges/new
