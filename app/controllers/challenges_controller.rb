@@ -17,8 +17,16 @@ class ChallengesController < ApplicationController
   # GET /challenges
   # GET /challenges.json
   def index
-#    @challenges = Challenge.all
-    @challenges = Challenge.joins(:deadlines).uniq.joins(:awards).uniq.order(params[:sort]).page params[:page]
+    @sort = ''
+    case params[:sort]
+      when 'award'
+        @sort = 'awards.numeric_value DESC'
+      when 'posted'
+        @sort = 'post_date'
+      when 'deadline'
+        @sort = 'deadlines.date'
+    end
+    @challenges = Challenge.joins(:deadlines).joins(:awards).uniq.order(@sort).page params[:page]
 
     respond_to do |format|
       format.html # index.html.erb
