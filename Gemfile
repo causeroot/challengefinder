@@ -6,8 +6,8 @@ gem 'rails', '~> 3.2.6'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 
-gem 'sunspot_rails'
-gem 'sunspot_solr'
+gem 'sunspot_rails', '~> 2.0.0'
+gem 'sunspot_solr', '~> 2.0.0'
 
 gem 'capistrano'
 gem 'therubyracer', :platform => :ruby
