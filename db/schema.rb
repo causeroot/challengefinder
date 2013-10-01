@@ -17,9 +17,8 @@ ActiveRecord::Schema.define(:version => 20130816050935) do
     t.string   "value"
     t.text     "description"
     t.integer  "challenge_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-    t.integer  "numeric_value"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "challenges", :force => true do |t|
@@ -27,8 +26,8 @@ ActiveRecord::Schema.define(:version => 20130816050935) do
     t.datetime "post_date"
     t.string   "image_url"
     t.text     "rules"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
     t.string   "title"
     t.string   "tag_line"
     t.text     "summary"
@@ -41,6 +40,8 @@ ActiveRecord::Schema.define(:version => 20130816050935) do
     t.string   "resultant"
     t.string   "xpath_check"
     t.string   "status"
+    t.integer  "numeric_value"
+    t.text     "index_deadline"
   end
 
   create_table "deadlines", :force => true do |t|

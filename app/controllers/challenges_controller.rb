@@ -20,13 +20,14 @@ class ChallengesController < ApplicationController
     @sort = ''
     case params[:sort]
       when 'award'
-        @sort = 'numeric_value'
+        @challenges = Challenge.joins(:awards).uniq.order('numeric_value DESC').page params[:page]
       when 'posted'
-        @sort = 'post_date'
+        @challenges = Challenge.order('post_date DESC').page params[:page]
       when 'deadline'
-        @sort = 'deadlines.date'
+        @challenges = Challenge.joins(:deadlines).uniq.order('date DESC').page params[:page]
+      else
+        @challenges = Challenge.page params[:page]
     end
-    @challenges = Challenge.joins(:deadlines).joins(:awards).uniq.order(@sort).page params[:page]
 
     respond_to do |format|
       format.html # index.html.erb
