@@ -34,9 +34,6 @@
 	
 				</div>
 				<div class="span3">
-                  <p>NUM
-                    <%= challenge.numeric_value %>
-                        </p>
                     <p><strong>AWARD &nbsp; </strong>
                     <%= "Up to" if challenge.awards.count > 1 %>
                     <%= challenge.awards.max { |a, b| a.value.length == b.value.length ? a.value <=> b.value : a.value.length <=> b.value.length }.value if challenge.awards %>
