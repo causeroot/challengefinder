@@ -39,11 +39,10 @@
                     </p>
                     <p><span class="dividing-line">—————————————</span></p>
                     <p><strong>DEADLINE &nbsp; </strong>
-                    <%= "See Details" if challenge.deadlines[0].description.length > 10 && challenge.deadlines[0].date == nil %>
-                    <%= "None" if challenge.deadlines[0].description.length < 10 && challenge.deadlines[0].date == nil || challenge.deadlines.count == 0 %>
-                    <%= dt = challenge.deadlines.map {|deadline| deadline.date}.min() if challenge.deadlines;
-                          dt.strftime('%b %e, %Y') if dt
-                    %>
+
+                    <%= challenge.index_deadline %>
+
+
                     <p><span class="dividing-line">—————————————</span></p>
 					<p><strong>POSTED &nbsp; </strong>
                     <%= challenge.post_date.strftime('%b %e, %Y') if challenge.post_date %></p>
