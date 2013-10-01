@@ -1,4 +1,4 @@
-class AddNumericAward < ActiveRecord::Migration
+class AddIndexRelatedVariables < ActiveRecord::Migration
   # For now make the default assumption that all awards will be integers and denominated in USD.
   def up
     add_column :challenges, :numeric_value, :integer
