@@ -20,7 +20,7 @@ class ChallengesController < ApplicationController
     @sort = ''
     case params[:sort]
       when 'award'
-        @sort = 'awards.numeric_value DESC'
+        @sort = 'numeric_value'
       when 'posted'
         @sort = 'post_date'
       when 'deadline'
