@@ -9,14 +9,13 @@
 	</div>
 </div>
 
-	<div class="top-subtext">
+<div class="top-subtext">
 	<span class="sorting-links">
     <%= link_to "Deadline", :sort => 'deadline' %> &nbsp;|&nbsp;
     <%= link_to "Date Posted", :sort => 'posted' %> &nbsp;|&nbsp;
     <%= link_to "Award", :sort => 'award' %></span>
 	<span id="page-numbers"><%= paginate @challenges %></span>
-	</div>
-</div>	
+</div>
 	
 	<div class="span8">
 		<% @challenges.each do |challenge| %>
@@ -40,11 +39,10 @@
                     </p>
                     <p><span class="dividing-line">—————————————</span></p>
                     <p><strong>DEADLINE &nbsp; </strong>
-                    <%= "See Details" if challenge.deadlines[0].description.length > 10 && challenge.deadlines[0].date == nil %>
-                    <%= "None" if challenge.deadlines[0].description.length < 10 && challenge.deadlines[0].date == nil || challenge.deadlines.count == 0 %>
-                    <%= dt = challenge.deadlines.map {|deadline| deadline.date}.min() if challenge.deadlines;
-                          dt.strftime('%b %e, %Y') if dt
-                    %>
+
+                    <%= challenge.index_deadline %>
+
+
                     <p><span class="dividing-line">—————————————</span></p>
 					<p><strong>POSTED &nbsp; </strong>
                     <%= challenge.post_date.strftime('%b %e, %Y') if challenge.post_date %></p>
@@ -78,7 +76,7 @@
 			</div>
 			<div class="search-submit-clear">
 			<%= submit_tag "SUBMIT", :class => "submit-button", :name => nil %>
-			<%= submit_tag "Clear Search", :class => 'clear-button', :type => 'reset' %>
+			<%= link_to "Clear Search"%>
 			</div>
 			<% end %> 
 		
@@ -115,7 +113,7 @@
 		<div class="span3">
       <a class="twitter-timeline" href="https://twitter.com/ChallengeFinder" data-widget-id="368234616827572226">Tweets by @ChallengeFinder</a>
       <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-    </div>
+    	</div>
 
 <div class="span11">
 	<span id="page-numbers"><%= paginate @challenges %></span>
