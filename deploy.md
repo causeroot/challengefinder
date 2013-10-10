@@ -30,7 +30,7 @@ Our *ELASTICBEANSTALK_URL* is https://elasticbeanstalk.us-west-1.amazonaws.com
     SolutionStack=64bit Amazon Linux running Ruby 1.9.3
 
 ## Solr extra step
-Amazon offers their own indexing service that rivals Solr. Interestingly, Solr is not deployed correctly during the elastic beanstalk process. To enable Solr an additional step is required.
+Amazon offers their own indexing service that rivals Solr. Interestingly, Solr is not deployed correctly during the elastic beanstalk process. To enable Solr an additional step is required. We should figure out how to automate this but for now it is an additional manual step.
 
     ssh -i ~/Downloads/beanstalk.pem ec2-user@ec2-54-241-30-66.us-west-1.compute.amazonaws.com
     sudo killall java
