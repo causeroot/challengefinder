@@ -1,6 +1,7 @@
-*.rbc
+.rbc
 *.sassc
 .sass-cache
+.idea/*
 capybara-*.html
 .rspec
 /.bundle
@@ -18,4 +19,5 @@ pickle-email-*.html
 .DS_Store
 *.swp
 config/database.yml
-/.idea/*
+.idea/*
+.elasticbeanstalk/
