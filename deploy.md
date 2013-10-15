@@ -3,7 +3,7 @@ Amazon Beanstalk is a [PaaS](https://en.wikipedia.org/wiki/Cloud_computing#Platf
 
 ## Required Software
 Please refer to the next section when prompted for authentication information while following instructions to download software here: http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/usingCLI.html
-Specifically, unzip the linked file from (here)[https://aws.amazon.com/code/AWS-Elastic-Beanstalk/6752709412171743] and add this to your ~/.bash_profile
+Specifically, unzip the linked file from [here](https://aws.amazon.com/code/AWS-Elastic-Beanstalk/6752709412171743) and add this to your ~/.bash_profile
 
 ## Authentication
 Access to the (web interface)[https://console.aws.amazon.com/console/home] is guarded by a username-password combination that is stored in (passpack)[https://www.passpack.com/online/] under the case-sensitive username "CauseRoot" and a secret password. The passpack entry is named "Amazon Web Services".
