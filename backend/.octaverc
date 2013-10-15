@@ -1,0 +1,11 @@
+BASE_PATH = regexprep(pwd, 'backend[\w/]*', 'backend/');
+addpath(strcat(BASE_PATH, 'src/'));
+addpath(strcat(BASE_PATH, 'src/featureGeneration'));
+addpath(strcat(BASE_PATH, 'src/svm'));
+addpath(strcat(BASE_PATH, 'src/siteClassification'));
+addpath(strcat(BASE_PATH, 'src/searchTermGeneration'));
+addpath(strcat(BASE_PATH, 'src/siteRetrieval'));
+addpath(strcat(BASE_PATH, 'src/termExtraction'));
+addpath(strcat(BASE_PATH, 'src/downloader'));
+addpath(strcat(BASE_PATH, 'libsvm-3.17/matlab'));
+

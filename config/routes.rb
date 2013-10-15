@@ -5,6 +5,7 @@ ChallengeFinder::Application.routes.draw do
 
   match '/about', :to => 'about#index'
   match '/demo', :to => 'demo#index'
+  match '/privacy', :to => 'privacy#index'
 
   get "logout" => "sessions#destroy", :as => "logout"
   get "signout" => "sessions#destroy", :as => "logout"
@@ -61,11 +62,13 @@ ChallengeFinder::Application.routes.draw do
   #   end
 
   # Sample resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
+  namespace :admin do
+    # Directs /admin/challenges/* to Admin::ChallengesController
+    # (app/controllers/admin/challenges_controller.rb)
+    get 'proxy/' => 'proxy#show'
+    resources :challenges
+    root to: "challenges#index"
+  end
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.

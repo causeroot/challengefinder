@@ -1,0 +1,150 @@
+<script language="javascript">
+
+$("#urltextbox").keyup(function(ev) {
+   // 13 is ENTER
+   if (ev.which === 13) {
+      document.getElementById("iframe_id1").src = "http://localhost:3000/admin/proxy/?url=" + $("#urltextbox").val();
+      challenge_url.value = $("#urltextbox").val();
+   }
+}); 
+
+function getSelectedText(btn) { 
+    // In ExtJS use: 
+    // var frame = Ext.getDom(frameId); 
+    var frame = document.getElementById("iframe_id1");
+    var frameWindow = frame && frame.contentWindow; 
+    var frameDocument = frameWindow && frameWindow.document; 
+
+    if (frameDocument) { 
+        if (frameDocument.getSelection) { 
+            // Most browsers 
+            return String(frameDocument.getSelection()); 
+        } 
+        else if (frameDocument.selection) { 
+            // Internet Explorer 8 and below 
+            return frameDocument.selection.createRange().text; 
+        } 
+        else if (frameWindow.getSelection) { 
+            // Safari 3 
+            return String(frameWindow.getSelection()); 
+        } 
+    } 
+    /* Fall-through. This could happen if this function is called 
+       on a frame that doesn't exist or that isn't ready yet. */ 
+    return "fail"; 
+}
+</script>
+
+<%= form_for(@admin_challenge) do |f| %>
+  <% if @admin_challenge.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@admin_challenge.errors.count, "error") %> prohibited this admin_challenge from being saved:</h2>
+
+      <ul>
+      <% @admin_challenge.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="field">
+  <%= f.label :url %><br />
+  <%= f.text_field :url %><button type="button" onMouseDown="challenge_url.value = getSelectedText(this);"/>copy</button>
+</div>
+  
+  <div class="field">
+      <%= f.label :title %>
+  <%= f.text_field :title %><button type="button" onMouseDown="challenge_title.value = getSelectedText(this);"/>copy</button><br />
+	</div>
+
+    <div class="field">
+      <%= f.label :status %>
+      <%= f.select(:status, ['active','pending','inactive'], {}) %>
+    </div>
+
+    <div class="field">
+        <%= f.label :tag_line %>
+    <%= f.text_field :tag_line %><button type="button" onMouseDown="challenge_tag_line.value = getSelectedText(this);"/>copy</button><br />
+  	</div>
+
+	<div class="field">
+	  <%= f.label :summary %><br />
+	  <%= f.text_area :summary %><button type="button" onMouseDown="challenge_summary.value = getSelectedText(this);"/>copy</button>
+	</div>
+
+	<div class="field">
+	  <%= f.label :rules %><br />
+	  <%= f.text_area :rules %><button type="button" onMouseDown="challenge_rules.value = getSelectedText(this);"/>copy</button>
+	</div>
+    
+    <div class="field">
+        <%= f.label :fee %>
+    <%= f.text_field :fee %><button type="button" onMouseDown="challenge_fee.value = getSelectedText(this);"/>copy</button><br />
+  	</div>
+
+	<div class="field">
+	  <%= f.label :eligibility %><br />
+	  <%= f.text_area :eligibility %><button type="button" onMouseDown="challenge_eligibility.value = getSelectedText(this);"/>copy</button>
+	</div>
+
+	<div class="field">
+        <strong>Awards</strong>
+      <%= f.fields_for :awards do |award_fields| %>
+      	  <%= award_fields.label :value %><%= award_fields.text_field :value %>
+      	  <%= award_fields.label :description %><%= award_fields.text_field :description %>
+      <% end %>
+    </div>
+	<div class="field">
+        <strong>Deadlines</strong>
+        <%= f.fields_for :deadlines do |deadline_fields| %>
+    	  <%= deadline_fields.label :date %><%= deadline_fields.text_field :date %>
+    	  <%= deadline_fields.label :description %><%= deadline_fields.text_field :description %>
+        <% end %>
+	</div>
+    
+	<div class="field">
+	  <%= f.label :post_date %><br />
+	  <%= f.text_field :post_date %><button type="button" onMouseDown="challenge_sponsor.value = getSelectedText(this);"/>copy</button><br />
+	</div>
+
+	<div class="field">
+	  <%= f.label :image_url %><br />
+	  <%= f.text_field :image_url %><button type="button" onMouseDown="challenge_sponsor.value = getSelectedText(this);"/>copy</button><br />
+	</div>
+
+    <div class="field">
+        <%= f.label :sponsor %>
+    <%= f.text_field :sponsor %><button type="button" onMouseDown="challenge_sponsor.value = getSelectedText(this);"/>copy</button><br />
+  	</div>
+
+	<div class="field">
+	  <%= f.label :contact_info %><br />
+	  <%= f.text_area :contact_info %><button type="button" onMouseDown="challenge_contact_info.value = getSelectedText(this);"/>copy</button>
+	</div>
+
+    <div class="field">
+        <%= f.label :topic %>
+    <%= f.text_area :topic %><button type="button" onMouseDown="challenge_topic.value = getSelectedText(this);"/>copy</button><br />
+  	</div>
+    
+	<div class="field">
+	  <%= f.label :structure %><br />
+	  <%= f.text_area :structure %><button type="button" onMouseDown="challenge_structure.value = getSelectedText(this);"/>copy</button>
+	</div>
+
+	<div class="field">
+	  <%= f.label :resultant %><br />
+	  <%= f.text_area :resultant %><button type="button" onMouseDown="challenge_resultant.value = getSelectedText(this);"/>copy</button>
+	</div>
+
+    <div class="field">
+        <%= f.label :xpath_check %>
+    <%= f.text_area :xpath_check %><button type="button" onMouseDown="challenge_xpath_check.value = getSelectedText(this);"/>copy</button><br />
+  	</div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+

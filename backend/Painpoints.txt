@@ -1,0 +1,30 @@
+
+Better progress reporting/error reporting
+    Things shouldn't break silently
+
+generateWordList
+    - Refetches EVERYthing every time -- FIXED!!! (2 min)
+        Run on server with fat pipe (What factor speedup?)
+            Vanilla badList on amber takes 58min: `time ./generateWordList simpleChallenge badList.url`
+        Concurrent downloads
+            With connection pooling (20 workers, 1 min timeout) 1min54sec for `time ./generateWordList simpleChallenge badList.url `
+        Local cache of fetched list LRU/time expiration
+    - Smarter wordlisting to feed the feature-sets
+        Portstemming
+        don't write single letters (& non-dictionary words?)
+
+generateFeature
+    - Completely broken -- FIXED!!!
+    - This interface should be more modular, so that we can more useful feature sets to the mix
+
+generateSearchStrings
+    - Searchterms detected have the wrong polarity  -- FIXED!!!
+
+generateClassification
+    - Our SVM doesn't pick up any good challenges
+    - Weird deal with word frequency being equivalent to the "predictability" of any one word
+        Add frequency back in & see if it improves (or not)
+
+Future features
+    - Automatic clustering of good/bad
+        k-means...

@@ -1,0 +1,22 @@
+<h1>Listing admin_challenges</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @admin_challenges.each do |admin_challenge| %>
+  <tr>
+    <td><%= admin_challenge.title %></td>
+    <td><%= link_to 'Show', admin_challenge %></td>
+    <td><%= link_to 'Edit', edit_admin_challenge_path(admin_challenge) %></td>
+    <td><%= link_to 'Destroy', admin_challenge, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Challenge', new_admin_challenge_path %>

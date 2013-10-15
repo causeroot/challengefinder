@@ -1,0 +1,26 @@
+#!/usr/local/bin/octave -q
+
+args = argv();
+
+BASE_PATH = strcat(pwd,"/data/",args{1});
+
+modelFile = strcat(BASE_PATH, "/svmModel/model.binsev");
+dictionaryWordsFile = strcat(BASE_PATH, "/urlTerms/dictionary_words_file.binsev");
+dictionaryPairsFile = strcat(BASE_PATH, "/urlTerms/dictionary_pairs_file.binsev");
+search_string_out_file = strcat(BASE_PATH, "/searchTerms/newSearchStrings.txt");
+
+load("-v7",modelFile,"model")
+load("-v7",dictionaryWordsFile, "dictionary_words")
+load("-v7",dictionaryPairsFile, "dictionary_pairs")
+
+# Calling genSearchStrings with model, dictionary_words, and dictionary_pairs
+pos_word = genSearchStrings(model, dictionary_words, dictionary_pairs);
+
+tic
+fileID2 = fopen(search_string_out_file,'w');
+fprintf(fileID2,'%s',char(pos_word));
+fclose(fileID2);
+toc
+fprintf('Newly Search String Paramenters Written to:\n %s\n',char(search_string_out_file));
+fprintf('=============== Optimal Search String Parameter Data Written =============\n\n\n');
+

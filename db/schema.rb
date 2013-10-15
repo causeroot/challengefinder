@@ -11,20 +11,45 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121015013402) do
+ActiveRecord::Schema.define(:version => 20130816050935) do
+
+  create_table "awards", :force => true do |t|
+    t.string   "value"
+    t.text     "description"
+    t.integer  "challenge_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
 
   create_table "challenges", :force => true do |t|
-    t.string   "name"
     t.string   "url"
-    t.text     "description"
-    t.text     "award"
-    t.datetime "deadline"
     t.datetime "post_date"
     t.string   "image_url"
     t.text     "rules"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.string   "xpath"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.string   "title"
+    t.string   "tag_line"
+    t.text     "summary"
+    t.text     "eligibility"
+    t.text     "fee"
+    t.string   "sponsor"
+    t.text     "contact_info"
+    t.string   "topic"
+    t.string   "structure"
+    t.string   "resultant"
+    t.string   "xpath_check"
+    t.string   "status"
+    t.integer  "numeric_value"
+    t.text     "index_deadline"
+  end
+
+  create_table "deadlines", :force => true do |t|
+    t.datetime "date"
+    t.text     "description"
+    t.integer  "challenge_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "users", :force => true do |t|
@@ -44,8 +69,10 @@ ActiveRecord::Schema.define(:version => 20121015013402) do
     t.datetime "reset_password_email_sent_at"
   end
 
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["last_logout_at", "last_activity_at"], :name => "index_users_on_last_logout_at_and_last_activity_at"
   add_index "users", ["remember_me_token"], :name => "index_users_on_remember_me_token"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token"
+  add_index "users", ["username"], :name => "index_users_on_username", :unique => true
 
 end

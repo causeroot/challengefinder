@@ -89,7 +89,7 @@ Feature: Individual Challenge page definition
         And there is a link to the about us page
             
 # TEST NOTE: Make a step of the above
- 
+
 #############################################################################		
 #                        ABOUT US PAGE: DEFINITION                          #
 #############################################################################

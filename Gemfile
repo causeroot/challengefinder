@@ -5,26 +5,29 @@ gem 'rails', '~> 3.2.6'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
 
-gem 'sunspot_rails'
-gem 'sunspot_solr'
+gem 'sunspot_rails', '~> 2.0.0'
+gem 'sunspot_solr', '~> 2.0.0'
+
+gem 'capistrano'
+gem 'therubyracer', :platform => :ruby
 
 gem 'sorcery'
+gem 'nokogiri'
+gem 'mechanize'
+gem 'sqlite3'
 
-# Deploy with Capistrano
-gem 'capistrano'
-gem 'rvm-capistrano'
-gem 'capistrano-ext'
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
+  gem 'less'
+  gem 'less-rails'
   gem 'sass-rails',   '~> 3.2.5'
+  gem 'sass', '~> 3.2.9'
   gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  gem 'therubyracer', :platform => :ruby
 
   gem 'uglifier', '>= 1.0.3'
   gem 'twitter-bootstrap-rails'
@@ -46,17 +49,22 @@ gem 'kaminari'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
+group :production do
+  gem 'activerecord-mysql-adapter'
+  gem 'mysql2'
+end
+
 group :development do
   gem 'guard'
   gem 'guard-cucumber'
-	gem 'terminal-notifier-guard'	
+  gem 'terminal-notifier-guard'	
 end
 
 group :test, :development do
-	gem "brakeman"
-  gem "rspec-rails", "~> 2.0"
-	gem "factory_girl_rails", "~> 4.0"
-	gem "faker"
+  gem "brakeman"
+  gem "rspec-rails", "~> 2.12"
+  gem "factory_girl_rails", "~> 4.0"
+  gem "faker"
 end
 
 group :test do
@@ -69,6 +77,3 @@ group :test do
 	gem 'simplecov-rcov', :require => false
 end
 
-group :production do
-	gem 'pg'
-end

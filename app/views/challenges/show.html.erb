@@ -1,45 +1,112 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Name:</b>
-  <%= @challenge.name %>
-</p>
-
-<p>
-  <b>Url:</b>
-  <%= @challenge.url %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @challenge.description %>
-</p>
-
-<p>
-  <b>Award:</b>
-  <%= @challenge.award %>
-</p>
-
-<p>
-  <b>Deadline:</b>
-  <%= @challenge.deadline %>
-</p>
-
-<p>
-  <b>Post date:</b>
-  <%= @challenge.post_date %>
-</p>
-
-<p>
-  <b>Image url:</b>
-  <%= @challenge.image_url %>
-</p>
-
-<p>
-  <b>Rules:</b>
-  <%= @challenge.rules %>
-</p>
+<h1 class="page-header">// CHALLENGES</h1>
+	
+	<div class="top-subtext">
+		<!--<%= link_to 'Edit', edit_challenge_path(@challenge) %> |-->
+		<span class="back-link"><%= link_to 'Back to Challenges', challenges_path %>
+	<!-- &nbsp;|&nbsp; <%= link_to 'Next Challenge', challenges_path %> --> </span>
+		<span id="notice"><%= notice %></span>
+	</div>
 
 
-<%= link_to 'Edit', edit_challenge_path(@challenge) %> |
-<%= link_to 'Back', challenges_path %>
+<div class="span8">
+	
+	<div class="row-2">
+		<div class="span2">
+			<img src="<%=asset_path @challenge.topic.split[0...1].join(' ').concat('.jpg') %>" width="100px" height="100px"/>
+		</div>
+		<div class="span6">
+
+			<h5><%= @challenge.title %></h5>			  
+
+            <p><%= @challenge.tag_line %>
+              </p>
+
+            <p>Sponsor: &nbsp;<%= @challenge.sponsor %>
+              </p>
+
+          <p>Status: &nbsp;<%= @challenge.status %>
+          </p>
+
+          <br>
+
+
+
+            <div class="detail-highlights"><p>AWARD &nbsp;
+				<%= " Up to" if @challenge.awards.count > 1 %>
+				<%= @challenge.awards.max { |a, b| a.value.length == b.value.length ? a.value <=> b.value : a.value.length <=> b.value.length }.value if @challenge.awards %>
+				</p>
+            </div>
+              
+			<div class="detail-highlights"><p>DEADLINE &nbsp;
+              <%= "See Details Below" if @challenge.deadlines[0].description.length > 10 && @challenge.deadlines[0].date == nil %>
+              <%= "None" if @challenge.deadlines[0].description.length < 10 && @challenge.deadlines[0].date == nil || @challenge.deadlines.count == 0 %>
+              <%= dt = @challenge.deadlines.map {|deadline| deadline.date}.min() if @challenge.deadlines;
+               dt.strftime('%b %e, %Y') if dt %>
+				</p>
+            </div>
+
+			<div class="detail-highlights"><p id="challenge-url">WEBSITE 
+			  	<%= link_to 'Challenge Website', @challenge.url, :target => "_blank" %>
+				</p><br>
+			</div>
+			
+			<div class="detail-highlights"><p>SUMMARY</p></div>
+			<p>
+			  <%=raw @challenge.summary.gsub(/\n/, '<br>').html_safe %>
+			</p>
+			<br>
+	   <!--	<p>
+			  <b>Image url:</b>
+			<%= @challenge.image_url %>
+			</p> -->
+			<div class="detail-highlights"><p>RULES</p></div>
+			<p><%=raw @challenge.rules.gsub(/\n/, '<br>').html_safe %>
+			</p>
+			
+			<div class="detail-highlights"><p></p></div>
+			<p><%=raw @challenge.eligibility.gsub(/\n/, '<br>').html_safe %>
+			</p>
+			
+			<div class="detail-highlights"><p></p></div>
+			<p><%=raw @challenge.fee.gsub(/\n/, '<br>').html_safe %>
+			</p><br>
+
+			<div class="detail-highlights"><p>AWARD</p></div>
+			<p><%= render :partial => "challenges/awards", :object => @challenge.awards %>
+			</p><br>
+
+			<div class="detail-highlights"><p>DEADLINE</p></div>
+			<p><%= render :partial => "challenges/deadlines", :object => @challenge.deadlines %>
+			</p><br>
+
+			<div class="detail-highlights"><p>POST DATE</p></div>
+			<p><%= @challenge.post_date.strftime('%b %e, %Y') if @challenge.post_date %>
+			</p><br>			
+
+			<div class="detail-highlights"><p>CONTACT INFORMATION</p></div>
+			<p><%=raw @challenge.contact_info.gsub(/\n/, '<br>').html_safe %>
+			</p><br>
+			
+
+			<div class="detail-highlights"><p>SHARE</p></div>
+				<span class="fb-share-button">
+					<a href="#" 
+					  onclick="
+						window.open(
+						  'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent('<%= @challenge.url %>'), 
+						  'facebook-share-dialog', 
+						  'width=626,height=436'); 
+						return false;">
+					  Facebook &nbsp;
+					</a>
+				</span>
+				<a href="https://twitter.com/share" class="twitter-share-button" data-url="<%= @challenge.url %>" data-text="<%= @challenge.title %> @ChallengeFinder" data-count="none">Tweet</a>
+						<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+			
+			
+		</div>
+
+			
+	</div>
+		
+</div>

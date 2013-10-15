@@ -1,22 +1,120 @@
-<h1>Listing challenges</h1>
+<div>
+	<h1 class="page-header">// CHALLENGES</h1>
 
-<%= paginate @challenges %>
-<% @challenges.each do |challenge| %>
-	<div class="row">
-		<div class="span2">
-			<img src="<%=asset_path "challenge.png"%>" />
-			<!-- <img src="<%= challenge.image_url %>" /> -->
+	<div class="page-header" id="login">
+		<% if current_user %>
+     		<%= link_to "Edit Profile", edit_user_path(current_user.id) %>
+     		<%= link_to "LOGOUT", :logout %>
+		<% end %>  
+	</div>
+</div>
+
+<div class="top-subtext">
+	<span class="sorting-links">
+    <%= link_to "Deadline", :sort => 'deadline' %> &nbsp;|&nbsp;
+    <%= link_to "Date Posted", :sort => 'posted' %> &nbsp;|&nbsp;
+    <%= link_to "Award", :sort => 'award' %></span>
+	<span id="page-numbers"><%= paginate @challenges %></span>
+</div>
+	
+	<div class="span8">
+		<% @challenges.each do |challenge| %>
+	
+		<div class="row-2">
+				<div class="span2">
+					<img src="<%=asset_path challenge.topic.split[0...1].join(' ').concat('.jpg') %>" width="100px" height="100px"/>
+					<!-- <img src="<%= challenge.image_url %>" /> -->
+				</div>
+				<div class="span4">
+					<h5><%= link_to challenge.title, challenge %></h5>
+					<p><%=h truncate(challenge.tag_line, :length => 152, :separator => ' ') %></p>
+                    <p>Sponsor: &nbsp;<%=h truncate(challenge.sponsor, :length => 100, :separator => ' ') %></p>
+					<%= link_to 'Learn More', challenge %>			
+	
+				</div>
+				<div class="span3">
+                    <p><strong>AWARD &nbsp; </strong>
+                    <%= "Up to" if challenge.awards.count > 1 %>
+                    <%= challenge.awards.max { |a, b| a.value.length == b.value.length ? a.value <=> b.value : a.value.length <=> b.value.length }.value if challenge.awards %>
+                    </p>
+                    <p><span class="dividing-line">—————————————</span></p>
+                    <p><strong>DEADLINE &nbsp; </strong>
+
+                    <%= challenge.index_deadline %>
+
+
+                    <p><span class="dividing-line">—————————————</span></p>
+					<p><strong>POSTED &nbsp; </strong>
+                    <%= challenge.post_date.strftime('%b %e, %Y') if challenge.post_date %></p>
+			
+			<!--	<p><span class="dividing-line">—————————————</span></p>
+					
+					<div class="sm-icons">
+							<div class="fb-like" data-href="<%= url_for challenge %>" data-send="false" data-layout="button_count" data-width="30" data-show-faces="true">
+							</div>
+							<a href="https://twitter.com/share" class="twitter-share-button" data-url="<%= url_for challenge %>" data-text="<%= challenge.title %>" data-count="none">Tweet</a>
+							<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+					</div> -->	
+					
+				</div>
+
+				<p class="dot-divider">.....................................................<p>
 		</div>
-		<div class="span4">
-			<h5><%= challenge.name %></h5>
-			<p><%= challenge.description %></p>
-			<%= link_to 'Learn More', challenge %>
+		<% end %>
+	</div>
+	
+	<div class="right-column">
+		
+		<!-- Start of Filter Area -->
+		
+		<div class="span3" id="search-area">&nbsp;
+			<p>SEARCH</p>
+			
+			<div class="navbar-searchbox">
+			<%= form_tag search_challenges_path, :method => :get, :class => "navbar-search pull-right" do %>	
+			<%= text_field_tag :q, params[:q], :class => "search-query", :placeholder => "Search" %>			
+			</div>
+			<div class="search-submit-clear">
+			<%= submit_tag "SUBMIT", :class => "submit-button", :name => nil %>
+			<%= link_to "Clear Search"%>
+			</div>
+			<% end %> 
+		
+		<!--
+			&nbsp;
+			<p>FILTER</p>
+			&nbsp
+			<p>Category</p>
+			<form action="" class="dropdown-field">
+				<select name="category">
+					<option value="unselected">Show All</option>
+					<option value="category1">Things that are Yellow</option>
+					<option value="category2">Places in Africa</option>
+					<option value="category3">Words that Start with P</option>
+					<option value="category4">Daily Double!!</option>
+				</select>
+			</form>
+			<p>Post Date</p>
+			<form action="" class="dropdown-field">
+				<select name="post-dates">
+					<option value="unselected">Show All</option>
+					<option value="30days">Last 30 Days</option>
+					<option value="60days">Last 60 Days</option>
+					<option value="100days">Last 100 Days</option>
+					<option value="year">Within the Last Year</option>
+				</select>
+			</form><br>
+			 <input class="search-button" type="submit" value="SEARCH"> -->
 		</div>
+		
+		<!-- End Filter Area -->
+		
+	</div>
 		<div class="span3">
-			<p><strong>Award:</strong> <%= challenge.award %></p>
-			<p><strong>Deadline:</strong> <%= challenge.deadline %></p>
-			<p><strong>Posted:</strong> <%= challenge.post_date %></p>
-		</div>
-  </div>
-<% end %>
+      <a class="twitter-timeline" href="https://twitter.com/ChallengeFinder" data-widget-id="368234616827572226">Tweets by @ChallengeFinder</a>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    	</div>
 
+<div class="span11">
+	<span id="page-numbers"><%= paginate @challenges %></span>
+</div>

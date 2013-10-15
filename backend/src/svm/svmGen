@@ -1,0 +1,30 @@
+#!/usr/local/bin/octave -q
+
+args = argv();
+
+BASE_PATH = strcat(pwd,"/data/",args{1});
+
+featuresFile = strcat(BASE_PATH,'/features/dictionary_features_file.binsev');
+classFile = strcat(BASE_PATH,'/features/dictionary_classes_file.binsev');
+
+modelFile = strcat(BASE_PATH,'/svmModel/model.binsev');
+predFile = strcat(BASE_PATH,'/svmModel/pred.binsev');
+accuracyFile = strcat(BASE_PATH,'/svmModel/accuracy.binsev');
+pFile = strcat(BASE_PATH,'/svmModel/p.binsev');
+
+load("-v7",featuresFile,"features")
+load("-v7",classFile,"class")
+
+[model, pred, accuracy, p] = trainSVM(class, features);
+
+tic
+fprintf('\n\nSaving Dictionary Files: \n')
+save("-mat7-binary", modelFile, "model")
+fprintf('\n     Successful Save to model.binsev');
+save("-mat7-binary", predFile, "pred")
+fprintf('\n     Successful Save to pred.binsev');
+save("-mat7-binary", accuracyFile, "accuracy")
+fprintf('\n     Successful Save to accuracy.binsev');
+save("-mat7-binary", pFile, "p")
+fprintf('\n     Successful Save to p.binsev\n');
+toc
