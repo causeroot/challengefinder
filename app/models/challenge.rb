@@ -17,4 +17,5 @@ class Challenge < ActiveRecord::Base
     string :sponsor, :stored => true
     text :contact_info, :stored => true
   end
+
 end
