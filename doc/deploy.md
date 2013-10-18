@@ -5,6 +5,35 @@ Amazon Beanstalk is a [PaaS](https://en.wikipedia.org/wiki/Cloud_computing#Platf
 Please refer to the next section when prompted for authentication information while following instructions to download software here: http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/usingCLI.html
 Specifically, unzip the linked file from [here](https://aws.amazon.com/code/AWS-Elastic-Beanstalk/6752709412171743) and add this to your ~/.bash_profile
 
+``brew install aws-elasticbeanstalk ec2-api-tools rds-command-line-tools``
+
+
+    Before you can use these tools you must export some variables to your $SHELL
+    and download your X.509 certificate and private key from Amazon Web Services.
+
+    Your certificate and private key are available at:
+    http://aws-portal.amazon.com/gp/aws/developer/account/index.html?action=access-key
+
+    Download two ".pem" files, one starting with `pk-`, and one starting with `cert-`.
+    You need to put both into a folder in your home directory, `~/.ec2`.
+
+    To export the needed variables, add them to your dotfiles.
+     * On Bash, add them to `~/.bash_profile`.
+     * On Zsh, add them to `~/.zprofile` instead.
+
+    export JAVA_HOME="$(/usr/libexec/java_home)"
+    export EC2_PRIVATE_KEY="$(/bin/ls "$HOME"/.ec2/pk-*.pem | /usr/bin/head -1)"
+    export EC2_CERT="$(/bin/ls "$HOME"/.ec2/cert-*.pem | /usr/bin/head -1)"
+    export AWS_RDS_HOME="/usr/local/Cellar/rds-command-line-tools/1.14.001/libexec"
+
+    To check that your setup works properly, run the following command:
+      rds-describe-db-instances --headers
+
+    You should see a header line. If you have database instances already configured,
+    you will see a description line for each database instance.
+
+
+
 ## Authentication
 Access to the (web interface)[https://console.aws.amazon.com/console/home] is guarded by a username-password combination that is stored in (passpack)[https://www.passpack.com/online/] under the case-sensitive username "CauseRoot" and a secret password. The passpack entry is named "Amazon Web Services".
 The api tokens required for command line configuration can be accessed (here)[http://docs.aws.amazon.com/general/latest/gr/getting-aws-sec-creds.html].
