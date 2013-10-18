@@ -12,13 +12,18 @@
 json = ActiveSupport::JSON.decode(File.read('db/challenges.json'))
 
 json.each do |a|
-  Challenge.create(a, :without_protection => true)
-#  Challenge.where(a).first_or_create
+  if Challenge.find_by_title(a["title"]).nil?
+    puts "Adding " + a["title"]
+    Challenge.create(a, :without_protection => true)
+  end
 end
 
-User.create! do |u|
-  u.username = 'admin'
-  u.email = 'info@causeroot.org'
-  u.password = 'password'
-  u.password_confirmation = 'password'
+if User.find_by_username("admin").nil?
+  User.create! do |u|
+    puts "Adding admin user."
+    u.username = 'admin'
+    u.email = 'info@causeroot.org'
+    u.password = 'password'
+    u.password_confirmation = 'password'
+  end
 end
