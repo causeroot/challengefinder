@@ -2,43 +2,26 @@
 Amazon Beanstalk is a [PaaS](https://en.wikipedia.org/wiki/Cloud_computing#Platform_as_a_service_.28PaaS.29) product, similar to Heroku, that is built on top of Amazon's other [IaaS](https://en.wikipedia.org/wiki/Cloud_computing#Infrastructure_as_a_service_.28IaaS.29) services. Beanstalk provides a higher level of abstraction that is more expressive while still allowing for fine tuning under the hood. Beanstalk is comprised of a set of command line tools and a web interface that orchestrate these high level abstractions. Access to these services is guarded by authentication tokens.
 
 ## Required Software
-Please refer to the next section when prompted for authentication information while following instructions to download software here: http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/usingCLI.html
-Specifically, unzip the linked file from [here](https://aws.amazon.com/code/AWS-Elastic-Beanstalk/6752709412171743) and add this to your ~/.bash_profile
 
-``brew install aws-elasticbeanstalk ec2-api-tools rds-command-line-tools``
+### java
+Install the latest version of java from [https://www.java.com/en/download/index.jsp](https://www.java.com/en/download/index.jsp)
 
+### homebrew
+Install homebrew by running: ``ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"``
 
-    Before you can use these tools you must export some variables to your $SHELL
-    and download your X.509 certificate and private key from Amazon Web Services.
+You can find more information here: [https://github.com/mxcl/homebrew/wiki/Installation](https://github.com/mxcl/homebrew/wiki/Installation)
 
-    Your certificate and private key are available at:
-    http://aws-portal.amazon.com/gp/aws/developer/account/index.html?action=access-key
+### AWS Command Line Tools
+Run: ``brew update && brew install aws-elasticbeanstalk ec2-api-tools rds-command-line-tools``
 
-    Download two ".pem" files, one starting with `pk-`, and one starting with `cert-`.
-    You need to put both into a folder in your home directory, `~/.ec2`.
+### Authentication
+Our username for [passpack](https://www.passpack.com/online/) is *CauseRoot*. Login to retreive the password for *ec2.tar.bz2.aes256*. Then from a Terminal window execute:
 
-    To export the needed variables, add them to your dotfiles.
-     * On Bash, add them to `~/.bash_profile`.
-     * On Zsh, add them to `~/.zprofile` instead.
-
-    export JAVA_HOME="$(/usr/libexec/java_home)"
-    export EC2_PRIVATE_KEY="$(/bin/ls "$HOME"/.ec2/pk-*.pem | /usr/bin/head -1)"
-    export EC2_CERT="$(/bin/ls "$HOME"/.ec2/cert-*.pem | /usr/bin/head -1)"
-    export AWS_RDS_HOME="/usr/local/Cellar/rds-command-line-tools/1.14.001/libexec"
-
-    To check that your setup works properly, run the following command:
-      rds-describe-db-instances --headers
-
-    You should see a header line. If you have database instances already configured,
-    you will see a description line for each database instance.
-
-
-
-## Authentication
-Access to the (web interface)[https://console.aws.amazon.com/console/home] is guarded by a username-password combination that is stored in (passpack)[https://www.passpack.com/online/] under the case-sensitive username "CauseRoot" and a secret password. The passpack entry is named "Amazon Web Services".
-The api tokens required for command line configuration can be accessed (here)[http://docs.aws.amazon.com/general/latest/gr/getting-aws-sec-creds.html].
-
-Our *ELASTICBEANSTALK_URL* is https://elasticbeanstalk.us-west-1.amazonaws.com
+    cp ~/src/challengefinder/doc/ec2.tar.bz2 ~/
+    cd ~/
+    openssl enc -d -aes-256-cbc -in ec2.tar.bz2.aes256 -out ec2.tar.bz2
+    tar jxvf ec2.tar.bz2
+    ~/.ec2/update_bash_profile.sh
 
 ## After configuration ~/challengefinder/.elasticbeanstalk/config 
     bonker:challengefinder USERNAME$ cat .elasticbeanstalk/config 

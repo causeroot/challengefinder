@@ -20,5 +20,4 @@ pickle-email-*.html
 *.swp
 config/database.yml
 .idea/*
-.elasticbeanstalk/
 *.binsev
