@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130816050935) do
+ActiveRecord::Schema.define(:version => 20131018050256) do
 
   create_table "awards", :force => true do |t|
     t.string   "value"
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(:version => 20130816050935) do
     t.string   "reset_password_token"
     t.datetime "reset_password_token_expires_at"
     t.datetime "reset_password_email_sent_at"
+    t.string   "last_login_from_ip_address"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
