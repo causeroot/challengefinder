@@ -19,12 +19,18 @@ class ChallengesController < ApplicationController
   def index
     @sort = ''
     case params[:sort]
-      when 'award'
+      when 'award_d'
         @challenges = Challenge.joins(:awards).uniq.order('numeric_value DESC').page params[:page]
-      when 'posted'
+      when 'award_a'
+        @challenges = Challenge.joins(:awards).uniq.order('numeric_value ASC').page params[:page]
+      when 'posted_d'
         @challenges = Challenge.order('post_date DESC').page params[:page]
-      when 'deadline'
+      when 'posted_a'
+        @challenges = Challenge.order('post_date ASC').page params[:page]
+      when 'deadline_d'
         @challenges = Challenge.joins(:deadlines).uniq.order('date DESC').page params[:page]
+      when 'deadline_a'
+        @challenges = Challenge.joins(:deadlines).uniq.order('date ASC').page params[:page]
       else
         @challenges = Challenge.page params[:page]
     end
