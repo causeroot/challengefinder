@@ -50,13 +50,13 @@ function getSelectedText(btn) {
 
 <div class="field">
   <%= f.label :url %><br />
-  <%= f.text_field :url %><button type="button" onMouseDown="challenge_url.value = getSelectedText(this);"/>copy</button>
+  <%= f.text_field :url %>
 </div>
   
   <div class="field">
       <%= f.label :title %>
-  <%= f.text_field :title %><button type="button" onMouseDown="challenge_title.value = getSelectedText(this);"/>copy</button><br />
-	</div>
+  <%= f.text_field :title %>
+  </div>
 
     <div class="field">
       <%= f.label :status %>
@@ -64,28 +64,41 @@ function getSelectedText(btn) {
     </div>
 
     <div class="field">
+      <%= f.label :numeric_value %>
+      <%= f.text_field :numeric_value %>
+    </div>
+
+    <div class="field">
+      <%= f.label :index_deadline %>
+      <%= f.text_field :index_deadline %>
+    </div>
+
+    <div class="field">
         <%= f.label :tag_line %>
-    <%= f.text_field :tag_line %><button type="button" onMouseDown="challenge_tag_line.value = getSelectedText(this);"/>copy</button><br />
-  	</div>
+    <%= f.text_field :tag_line %>
+    </div>
 
 	<div class="field">
 	  <%= f.label :summary %><br />
-	  <%= f.text_area :summary %><button type="button" onMouseDown="challenge_summary.value = getSelectedText(this);"/>copy</button>
-	</div>
+	  <%= f.text_area :summary %>
+    </div>
 
 	<div class="field">
 	  <%= f.label :rules %><br />
-	  <%= f.text_area :rules %><button type="button" onMouseDown="challenge_rules.value = getSelectedText(this);"/>copy</button>
-	</div>
+	  <%= f.text_area :rules %>
+     </div>
     
     <div class="field">
         <%= f.label :fee %>
-    <%= f.text_field :fee %><button type="button" onMouseDown="challenge_fee.value = getSelectedText(this);"/>copy</button><br />
-  	</div>
+    <%= f.text_field :fee %>
+    </div>
 
 	<div class="field">
 	  <%= f.label :eligibility %><br />
-	  <%= f.text_area :eligibility %><button type="button" onMouseDown="challenge_eligibility.value = getSelectedText(this);"/>copy</button>
+	  <%= f.text_area :eligibility %>
+
+      <!-- <button type="button" onMouseDown="challenge_eligibility.value = getSelectedText(this);"/>copy</button>
+	  -->
 	</div>
 
 	<div class="field">
@@ -105,43 +118,43 @@ function getSelectedText(btn) {
     
 	<div class="field">
 	  <%= f.label :post_date %><br />
-	  <%= f.text_field :post_date %><button type="button" onMouseDown="challenge_sponsor.value = getSelectedText(this);"/>copy</button><br />
-	</div>
+	  <%= f.text_field :post_date %>
+    </div>
 
 	<div class="field">
 	  <%= f.label :image_url %><br />
-	  <%= f.text_field :image_url %><button type="button" onMouseDown="challenge_sponsor.value = getSelectedText(this);"/>copy</button><br />
-	</div>
+	  <%= f.text_field :image_url %>
+    </div>
 
     <div class="field">
         <%= f.label :sponsor %>
-    <%= f.text_field :sponsor %><button type="button" onMouseDown="challenge_sponsor.value = getSelectedText(this);"/>copy</button><br />
-  	</div>
+    <%= f.text_field :sponsor %>
+    </div>
 
 	<div class="field">
 	  <%= f.label :contact_info %><br />
-	  <%= f.text_area :contact_info %><button type="button" onMouseDown="challenge_contact_info.value = getSelectedText(this);"/>copy</button>
-	</div>
+	  <%= f.text_area :contact_info %>
+    </div>
 
     <div class="field">
         <%= f.label :topic %>
-    <%= f.text_area :topic %><button type="button" onMouseDown="challenge_topic.value = getSelectedText(this);"/>copy</button><br />
-  	</div>
+    <%= f.text_area :topic %>
+    </div>
     
 	<div class="field">
 	  <%= f.label :structure %><br />
-	  <%= f.text_area :structure %><button type="button" onMouseDown="challenge_structure.value = getSelectedText(this);"/>copy</button>
-	</div>
+	  <%= f.text_area :structure %>
+    </div>
 
 	<div class="field">
 	  <%= f.label :resultant %><br />
-	  <%= f.text_area :resultant %><button type="button" onMouseDown="challenge_resultant.value = getSelectedText(this);"/>copy</button>
-	</div>
+	  <%= f.text_area :resultant %>
+    </div>
 
     <div class="field">
         <%= f.label :xpath_check %>
-    <%= f.text_area :xpath_check %><button type="button" onMouseDown="challenge_xpath_check.value = getSelectedText(this);"/>copy</button><br />
-  	</div>
+    <%= f.text_area :xpath_check %>
+    </div>
 
   <div class="actions">
     <%= f.submit %>
