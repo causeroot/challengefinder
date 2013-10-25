@@ -10,7 +10,6 @@ class ChallengesController < ApplicationController
     
     respond_to do |format|
       format.html { render :action => "index" }
-      format.xml { render :xml => @challenges }
     end
   end
   	
@@ -19,19 +18,24 @@ class ChallengesController < ApplicationController
   def index
     @sort = ''
     case params[:sort]
-      when 'award'
+      when 'award_d'
         @challenges = Challenge.joins(:awards).uniq.order('numeric_value DESC').page params[:page]
-      when 'posted'
+      when 'award_a'
+        @challenges = Challenge.joins(:awards).uniq.order('numeric_value ASC').page params[:page]
+      when 'posted_d'
         @challenges = Challenge.order('post_date DESC').page params[:page]
-      when 'deadline'
+      when 'posted_a'
+        @challenges = Challenge.order('post_date ASC').page params[:page]
+      when 'deadline_d'
         @challenges = Challenge.joins(:deadlines).uniq.order('date DESC').page params[:page]
+      when 'deadline_a'
+        @challenges = Challenge.joins(:deadlines).uniq.order('date ASC').page params[:page]
       else
         @challenges = Challenge.page params[:page]
     end
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @challenges }
     end
   end
 
@@ -42,7 +46,6 @@ class ChallengesController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @challenge }
     end
   end
 
@@ -53,7 +56,6 @@ class ChallengesController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @challenge }
     end
   end
 
@@ -70,10 +72,8 @@ class ChallengesController < ApplicationController
     respond_to do |format|
       if @challenge.save
         format.html { redirect_to @challenge, notice: 'Challenge was successfully created.' }
-        format.json { render json: @challenge, status: :created, location: @challenge }
       else
         format.html { render action: "new" }
-        format.json { render json: @challenge.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -86,10 +86,8 @@ class ChallengesController < ApplicationController
     respond_to do |format|
       if @challenge.update_attributes(params[:challenge])
         format.html { redirect_to @challenge, notice: 'Challenge was successfully updated.' }
-        format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        format.json { render json: @challenge.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -102,7 +100,6 @@ class ChallengesController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to challenges_url }
-      format.json { head :no_content }
     end
   end
 end
