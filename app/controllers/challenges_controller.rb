@@ -12,26 +12,27 @@ class ChallengesController < ApplicationController
       format.html { render :action => "index" }
     end
   end
-  	
+
   # GET /challenges
   # GET /challenges.json
   def index
     @sort = ''
+    @activeChallenge = Challenge.where("status = 'active'")
     case params[:sort]
       when 'award_d'
-        @challenges = Challenge.joins(:awards).uniq.order('numeric_value DESC').page params[:page]
+        @challenges = @activeChallenge.joins(:awards).uniq.order('numeric_value DESC').page params[:page]
       when 'award_a'
-        @challenges = Challenge.joins(:awards).uniq.order('numeric_value ASC').page params[:page]
+        @challenges = @activeChallenge.joins(:awards).uniq.order('numeric_value ASC').page params[:page]
       when 'posted_d'
-        @challenges = Challenge.order('post_date DESC').page params[:page]
+        @challenges = @activeChallenge.order('post_date DESC').page params[:page]
       when 'posted_a'
-        @challenges = Challenge.order('post_date ASC').page params[:page]
+        @challenges = @activeChallenge.order('post_date ASC').page params[:page]
       when 'deadline_d'
-        @challenges = Challenge.joins(:deadlines).uniq.order('date DESC').page params[:page]
+        @challenges = @activeChallenge.joins(:deadlines).uniq.order('date DESC').page params[:page]
       when 'deadline_a'
-        @challenges = Challenge.joins(:deadlines).uniq.order('date ASC').page params[:page]
+        @challenges = @activeChallenge.joins(:deadlines).uniq.order('date ASC').page params[:page]
       else
-        @challenges = Challenge.page params[:page]
+        @challenges = @activeChallenge.page params[:page]
     end
 
     respond_to do |format|
@@ -51,6 +52,7 @@ class ChallengesController < ApplicationController
 
   # GET /challenges/new
   # GET /challenges/new.json
+
   def new
     @challenge = Challenge.new
 
