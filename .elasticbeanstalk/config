@@ -1,11 +1,11 @@
 [global]
 ApplicationName=challengefinder
-ApplicationVersionName=Sample Application
+ApplicationVersionName=git-e26898df17c6900b55bba70b1c33c47dd7d380ec-1383029420005
 DevToolsEndpoint=git.elasticbeanstalk.us-west-1.amazonaws.com
 EnvironmentName=challengefinder-develop
 EnvironmentType=SingleInstance
 InstanceProfileName=aws-elasticbeanstalk-ec2-role
-OptionSettingFile=./.elasticbeanstalk/optionsettings
+OptionSettingFile=./.elasticbeanstalk/optionsettings.challengefinder-develop
 RdsDeletionPolicy=Delete
 RdsEnabled=Yes
 RdsSourceSnapshotName=
