@@ -123,11 +123,14 @@ then from the octave command line run `make`
 
 TODO: <Luis> Fix step #3 ...
 
-TODO: <ROUX> write in steps to install pip threadinstall
+TODO: <ROUX> write in steps to install pip thread install
 *****
-easy_install pip
-pip install threadpool
-pip install requests
+easy_install pip-2.7
+pip-2.7 install --upgrade setuptools
+sudo pip-2.7 install requests
+sudo pip-2.7 install threadpool
+sudo pip-2.7 install requests --upgrade
+sudo pip-2.7 install threadpool --upgrade
 *****
 
 3. To create a new class, copy one of the existing "classFolders", rename it, and
