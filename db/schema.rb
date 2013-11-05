@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131018050256) do
+ActiveRecord::Schema.define(:version => 20131105064723) do
 
   create_table "awards", :force => true do |t|
     t.string   "value"
@@ -41,8 +41,10 @@ ActiveRecord::Schema.define(:version => 20131018050256) do
     t.string   "xpath_check"
     t.string   "status"
     t.integer  "numeric_value"
-    t.text     "index_deadline"
+    t.datetime "index_deadline"
   end
+
+  add_index "challenges", ["index_deadline"], :name => "index_challenges_on_index_deadline"
 
   create_table "deadlines", :force => true do |t|
     t.datetime "date"

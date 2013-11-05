@@ -4,7 +4,7 @@ class Challenge < ActiveRecord::Base
   accepts_nested_attributes_for :awards, :reject_if => proc { |a| a['value'].blank? and a['description'].blank? }
   accepts_nested_attributes_for :deadlines, :reject_if => proc { |a| a['date'].blank? and a['description'].blank? }
   
-  attr_accessible :url, :title, :status, :tag_line, :summary, :rules, :eligibility, :fee, :numeric_value, :index_deadline, :awards_attributes, :deadlines_attributes, :post_date, :image_url, :sponsor, :contact_info, :topic, :structure, :resultant, :xpath_check
+  attr_accessible :url, :title, :status, :tag_line, :summary, :rules, :eligibility, :fee, :numeric_value, :index_deadline, :awards_attributes, :deadlines_attributes, :post_date, :image_url, :sponsor, :contact_info, :topic, :structure, :resultant, :xpath_check, :index_deadline_str
   validates :title, :presence => true
 
   searchable do
@@ -18,4 +18,15 @@ class Challenge < ActiveRecord::Base
     text :contact_info, :stored => true
   end
 
+  def index_deadline=(i)
+    self.index_deadline = Chronic.parse(i)
+  end
+
+  def index_deadline
+    if self.index_deadline.nil?
+      return 'No Deadline'
+    else
+      self.index_deadline.to_str
+    end
+  end
 end
