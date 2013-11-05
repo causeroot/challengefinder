@@ -17,7 +17,18 @@ class ChallengesController < ApplicationController
   # GET /challenges.json
   def index
     @sort = ''
+    require 'date'
+
+    @activeChallengesTemp = Challenge
+
+    #@activeChallengesTemp.where("index_deadline = ?",'None').update_all(index_deadline: 'January 30, 2100')
+    #@activeChallengesTemp.where("index_deadline = ?",'See Details').update_all(index_deadline: 'January 30, 2099')
+
     @activeChallenge = Challenge.where("status = 'active'")
+
+    #@activeChallenges = @activeChallengesTemp.where("status = ? AND Date.parse(:index_deadline).to_date.yday < ?",'active',Date.today.yday)
+    #@activeChallenges = @activeChallengesTemp.where("status = ? AND Date.parse(index_deadline).ld > ?",'active', Date.today.ld)
+
     case params[:sort]
       when 'award_d'
         @challenges = @activeChallenge.joins(:awards).uniq.order('numeric_value DESC').page params[:page]
