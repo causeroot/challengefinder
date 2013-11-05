@@ -59,6 +59,7 @@ GEM
       xpath (~> 2.0)
     celluloid (0.15.2)
       timers (~> 1.1.0)
+    chronic (0.10.2)
     coderay (1.0.9)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -306,6 +307,7 @@ DEPENDENCIES
   brakeman
   capistrano
   capybara
+  chronic
   coffee-rails (~> 3.2.1)
   cucumber-rails
   database_cleaner
