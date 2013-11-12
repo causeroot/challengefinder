@@ -5,7 +5,11 @@ class ChallengesController < ApplicationController
   # GET /challenges/search.xml
   def search
    	@challenges = Challenge.search do
+
       keywords params[:q]
+
+      #@challenges = @activeChallenge.page params[:page]
+
     end.results
     
     respond_to do |format|
@@ -18,16 +22,11 @@ class ChallengesController < ApplicationController
   def index
     @sort = ''
     require 'date'
+    require 'Chronic'
 
-    @activeChallengesTemp = Challenge
-
-    #@activeChallengesTemp.where("index_deadline = ?",'None').update_all(index_deadline: 'January 30, 2100')
-    #@activeChallengesTemp.where("index_deadline = ?",'See Details').update_all(index_deadline: 'January 30, 2099')
-
-    @activeChallenge = Challenge.where("status = 'active'")
-
-    #@activeChallenges = @activeChallengesTemp.where("status = ? AND Date.parse(:index_deadline).to_date.yday < ?",'active',Date.today.yday)
-    #@activeChallenges = @activeChallengesTemp.where("status = ? AND Date.parse(index_deadline).ld > ?",'active', Date.today.ld)
+    # This line filters our challenges that aren't active, or the deadline
+    # has passed beyond today (excluding challenges that don't have deadlines)
+    @activeChallenge = Challenge.where("status = 'active'").where("index_deadline > ? OR index_deadline is null",Chronic.parse('today'))
 
     case params[:sort]
       when 'award_d'
