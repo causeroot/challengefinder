@@ -36,6 +36,7 @@ end
 gem 'jquery-rails'
 
 gem 'kaminari'
+gem 'chronic'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -58,6 +59,8 @@ group :development do
   gem 'guard'
   gem 'guard-cucumber'
   gem 'terminal-notifier-guard'	
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :test, :development do

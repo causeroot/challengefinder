@@ -10,6 +10,15 @@ class Admin::ChallengesController < Admin::AdminController
     end
   end
 
+  #def all_active
+  #  @challenges = ::Challenge.find(:conditions => ["status = 'active'"])
+
+  #  respond_to do |format|
+  #    format.html { render :action => "index" }
+  #  end
+  #end
+
+
   # GET /admin/challenges/1
   # GET /admin/challenges/1.json
   def show

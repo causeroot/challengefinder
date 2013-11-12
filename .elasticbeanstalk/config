@@ -1,12 +1,11 @@
 [global]
 ApplicationName=challengefinder
-ApplicationVersionName=git-589cdc94137013605bb55b30a22cff500a97482b-1382076192361
-AwsCredentialFile=/Users/ephidryn/.elasticbeanstalk/aws_credential_file
+ApplicationVersionName=Sample Application
 DevToolsEndpoint=git.elasticbeanstalk.us-west-1.amazonaws.com
 EnvironmentName=challengefinder-develop
 EnvironmentType=SingleInstance
 InstanceProfileName=aws-elasticbeanstalk-ec2-role
-OptionSettingFile=/Users/ephidryn/src/challengefinder/.elasticbeanstalk/optionsettings.challengefinder-develop
+OptionSettingFile=./.elasticbeanstalk/optionsettings.challengefinder-develop
 RdsDeletionPolicy=Delete
 RdsEnabled=Yes
 RdsSourceSnapshotName=
@@ -23,7 +22,7 @@ ApplicationVersionName=Sample Application
 EnvironmentName=challengefinder-develop
 EnvironmentType=SingleInstance
 InstanceProfileName=aws-elasticbeanstalk-ec2-role
-OptionSettingFile=/Users/ephidryn/src/challengefinder/.elasticbeanstalk/optionsettings.challengefinder-develop
+OptionSettingFile=./.elasticbeanstalk/optionsettings.challengefinder-develop
 RdsDeletionPolicy=Delete
 RdsEnabled=Yes
 RdsSourceSnapshotName=
@@ -33,8 +32,8 @@ ApplicationVersionName=git-57bcf1f2a80af6c98a2ea7e9e7832478cf6fa013-137948453233
 EnvironmentName=challengefinder-master
 EnvironmentType=SingleInstance
 InstanceProfileName=aws-elasticbeanstalk-ec2-role
-OptionSettingFile=/Users/ephidryn/src/challengefinder/.elasticbeanstalk/optionsettings.challengefinder-master
+OptionSettingFile=./.elasticbeanstalk/optionsettings.challengefinder-master
 RdsDeletionPolicy=Snapshot
 RdsEnabled=Yes
-RdsSourceSnapshotName=
+RdsSourceSnapshotName=challengefinder
 

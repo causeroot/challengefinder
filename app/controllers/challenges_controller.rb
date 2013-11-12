@@ -5,33 +5,65 @@ class ChallengesController < ApplicationController
   # GET /challenges/search.xml
   def search
    	@challenges = Challenge.search do
+
       keywords params[:q]
+
+      any_of do
+        with(:index_deadline).greater_than(Time.now)
+        with(:index_deadline, nil)
+      end
+        
+      case params[:sort]
+        when 'award_d'
+          order_by(:numeric_value, :desc)
+        when 'award_a'
+          order_by(:numeric_value, :asc)
+        when 'posted_d'
+          order_by(:post_date, :desc)
+        when 'posted_a'
+          order_by(:post_date, :asc)
+        when 'deadline_d'
+          order_by(:index_deadline, :desc)
+        when 'deadline_a'
+          order_by(:index_deadline, :desc)
+      end
+
+      #@challenges = @activeChallenge.page params[:page]
+      paginate
     end.results
     
     respond_to do |format|
       format.html { render :action => "index" }
     end
   end
-  	
+
   # GET /challenges
   # GET /challenges.json
   def index
     @sort = ''
+    require 'date'
+    require 'Chronic'
+    
+
+    # This line filters our challenges that aren't active, or the deadline
+    # has passed beyond today (excluding challenges that don't have deadlines)
+    @activeChallenge = Challenge.where("status = 'active'").where("index_deadline > ? OR index_deadline is null",Chronic.parse('today'))
+
     case params[:sort]
       when 'award_d'
-        @challenges = Challenge.joins(:awards).uniq.order('numeric_value DESC').page params[:page]
+        @challenges = @activeChallenge.order('numeric_value DESC').page params[:page]
       when 'award_a'
-        @challenges = Challenge.joins(:awards).uniq.order('numeric_value ASC').page params[:page]
+        @challenges = @activeChallenge.order('numeric_value ASC').page params[:page]
       when 'posted_d'
-        @challenges = Challenge.order('post_date DESC').page params[:page]
+        @challenges = @activeChallenge.order('post_date DESC').page params[:page]
       when 'posted_a'
-        @challenges = Challenge.order('post_date ASC').page params[:page]
+        @challenges = @activeChallenge.order('post_date ASC').page params[:page]
       when 'deadline_d'
-        @challenges = Challenge.joins(:deadlines).uniq.order('date DESC').page params[:page]
+        @challenges = @activeChallenge.order('index_deadline DESC').page params[:page]
       when 'deadline_a'
-        @challenges = Challenge.joins(:deadlines).uniq.order('date ASC').page params[:page]
+        @challenges = @activeChallenge.order('index_deadline ASC').page params[:page]
       else
-        @challenges = Challenge.page params[:page]
+        @challenges = @activeChallenge.page params[:page]
     end
 
     respond_to do |format|
@@ -51,6 +83,7 @@ class ChallengesController < ApplicationController
 
   # GET /challenges/new
   # GET /challenges/new.json
+
   def new
     @challenge = Challenge.new
 

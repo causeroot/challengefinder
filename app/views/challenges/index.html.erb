@@ -12,19 +12,21 @@
 <div class="top-subtext">
 	<span class="sorting-links">
 
-    <%= link_to "Deadline", :sort => 'deadline_d' if params[:sort] != 'deadline_d' %>
-    <%= link_to "Deadline", :sort => 'deadline_a' if params[:sort] == 'deadline_d'%> &nbsp;|&nbsp;
-    <%= link_to "Date Posted", :sort => 'posted_d' if params[:sort] != 'posted_d'%>
-    <%= link_to "Date Posted", :sort => 'posted_a' if params[:sort] == 'posted_d'%> &nbsp;|&nbsp;
-    <%= link_to "Award", :sort => 'award_d' if params[:sort] != 'award_d' %>
-    <%= link_to "Award", :sort => 'award_a' if params[:sort] == 'award_d' %>
+    <%= link_to "Deadline", :controller => controller_name, :action => action_name, :q => params[:q], :sort => 'deadline_d' if params[:sort] != 'deadline_d' %>
+    <%= link_to "Deadline", :controller => controller_name, :action => action_name, :q => params[:q], :sort => 'deadline_a' if params[:sort] == 'deadline_d'%> &nbsp;|&nbsp;
+    <%= link_to "Date Posted", :controller => controller_name, :action => action_name, :q => params[:q], :sort => 'posted_d' if params[:sort] != 'posted_d'%>
+    <%= link_to "Date Posted", :controller => controller_name, :action => action_name, :q => params[:q], :sort => 'posted_a' if params[:sort] == 'posted_d'%> &nbsp;|&nbsp;
+    <%= link_to "Award", :controller => controller_name, :action => action_name, :q => params[:q], :sort => 'award_d' if params[:sort] != 'award_d' %>
+    <%= link_to "Award", :controller => controller_name, :action => action_name, :q => params[:q], :sort => 'award_a' if params[:sort] == 'award_d' %>
+
     </span>
-	<span id="page-numbers"><%= paginate @challenges %></span>
+       <span id="page-numbers"><%= paginate @challenges%>
+       </span>
+
 </div>
-	
-	<div class="span8">
-		<% @challenges.each do |challenge| %>
-	
+
+<div class="span8">
+  <% @challenges.each do |challenge| %>
 		<div class="row-2">
 				<div class="span2">
 					<img src="<%=asset_path challenge.topic.split[0...1].join(' ').concat('.jpg') %>" width="100px" height="100px"/>
@@ -45,7 +47,7 @@
                     <p><span class="dividing-line">—————————————</span></p>
                     <p><strong>DEADLINE &nbsp; </strong>
 
-                    <%= challenge.index_deadline %>
+                    <%= challenge.index_deadline_str %>
 
 
                     <p><span class="dividing-line">—————————————</span></p>
@@ -65,7 +67,7 @@
 
 				<p class="dot-divider">.....................................................<p>
 		</div>
-		<% end %>
+      <% end %>
 	</div>
 	
 	<div class="right-column">
