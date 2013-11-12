@@ -10,6 +10,9 @@ class Challenge < ActiveRecord::Base
   searchable do
 	  string :title, :stored => true
     string :tag_line, :stored => true
+    time :index_deadline
+    time :post_date
+    integer :numeric_value
     text :summary, :stored => true
     text :rules, :stored => true
     text :eligibility, :stored => true

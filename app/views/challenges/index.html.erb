@@ -12,12 +12,12 @@
 <div class="top-subtext">
 	<span class="sorting-links">
 
-    <%= link_to "Deadline", :sort => 'deadline_d' if params[:sort] != 'deadline_d' %>
-    <%= link_to "Deadline", :sort => 'deadline_a' if params[:sort] == 'deadline_d'%> &nbsp;|&nbsp;
-    <%= link_to "Date Posted", :sort => 'posted_d' if params[:sort] != 'posted_d'%>
-    <%= link_to "Date Posted", :sort => 'posted_a' if params[:sort] == 'posted_d'%> &nbsp;|&nbsp;
-    <%= link_to "Award", :sort => 'award_d' if params[:sort] != 'award_d' %>
-    <%= link_to "Award", :sort => 'award_a' if params[:sort] == 'award_d' %>
+    <%= link_to "Deadline", :controller => controller_name, :action => action_name, :q => params[:q], :sort => 'deadline_d' if params[:sort] != 'deadline_d' %>
+    <%= link_to "Deadline", :controller => controller_name, :action => action_name, :q => params[:q], :sort => 'deadline_a' if params[:sort] == 'deadline_d'%> &nbsp;|&nbsp;
+    <%= link_to "Date Posted", :controller => controller_name, :action => action_name, :q => params[:q], :sort => 'posted_d' if params[:sort] != 'posted_d'%>
+    <%= link_to "Date Posted", :controller => controller_name, :action => action_name, :q => params[:q], :sort => 'posted_a' if params[:sort] == 'posted_d'%> &nbsp;|&nbsp;
+    <%= link_to "Award", :controller => controller_name, :action => action_name, :q => params[:q], :sort => 'award_d' if params[:sort] != 'award_d' %>
+    <%= link_to "Award", :controller => controller_name, :action => action_name, :q => params[:q], :sort => 'award_a' if params[:sort] == 'award_d' %>
 
     </span>
        <span id="page-numbers"><%= paginate @challenges%>
