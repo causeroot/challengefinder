@@ -5,7 +5,11 @@ class ChallengesController < ApplicationController
   # GET /challenges/search.xml
   def search
    	@challenges = Challenge.search do
+
       keywords params[:q]
+
+      #@challenges = @activeChallenge.page params[:page]
+
     end.results
     
     respond_to do |format|
@@ -17,7 +21,13 @@ class ChallengesController < ApplicationController
   # GET /challenges.json
   def index
     @sort = ''
-    @activeChallenge = Challenge.where("status = 'active'")
+    require 'date'
+    require 'Chronic'
+
+    # This line filters our challenges that aren't active, or the deadline
+    # has passed beyond today (excluding challenges that don't have deadlines)
+    @activeChallenge = Challenge.where("status = 'active'").where("index_deadline > ? OR index_deadline is null",Chronic.parse('today'))
+
     case params[:sort]
       when 'award_d'
         @challenges = @activeChallenge.joins(:awards).uniq.order('numeric_value DESC').page params[:page]
