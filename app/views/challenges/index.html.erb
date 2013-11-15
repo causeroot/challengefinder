@@ -82,8 +82,8 @@
 			<%= text_field_tag :q, params[:q], :class => "search-query", :placeholder => "Search" %>			
 			</div>
 			<div class="search-submit-clear">
-			<%= submit_tag "SUBMIT", :class => "submit-button", :name => nil %>
-			<%= link_to "Clear Search"%>
+			<%= submit_tag "Submit", :class => "submit-button", :name => nil %>
+			<%= link_to "Clear&nbsp;Search".html_safe %>
 			</div>
 			<% end %> 
 		
