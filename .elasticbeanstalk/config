@@ -1,6 +1,6 @@
 [global]
 ApplicationName=challengefinder
-ApplicationVersionName=git-9914c2c9175a20e8917970a80acd006063d2042e-1382665599588
+ApplicationVersionName=git-57bcf1f2a80af6c98a2ea7e9e7832478cf6fa013-1379484532333
 DevToolsEndpoint=git.elasticbeanstalk.us-west-1.amazonaws.com
 EnvironmentName=challengefinder-master
 EnvironmentType=SingleInstance
