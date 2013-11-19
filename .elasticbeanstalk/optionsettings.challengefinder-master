@@ -33,6 +33,6 @@ Notification Protocol=email
 DBDeletionPolicy=Snapshot
 DBEngine=mysql
 DBInstanceClass=db.t1.micro
-DBSnapshotIdentifier=awseb-e-swp78nzgm4-stack-snapshot-awsebrdsdatabase-g0cxvgo8vuvw
+DBSnapshotIdentifier=awseb-e-236fmidftt-stack-snapshot-awsebrdsdatabase-wvd9r1duahyb
 DBUser=ebroot
 
