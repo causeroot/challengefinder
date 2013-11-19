@@ -8,7 +8,7 @@ InstanceProfileName=aws-elasticbeanstalk-ec2-role
 OptionSettingFile=./.elasticbeanstalk/optionsettings.challengefinder-master
 RdsDeletionPolicy=Snapshot
 RdsEnabled=Yes
-RdsSourceSnapshotName=challengefinder
+RdsSourceSnapshotName=awseb-e-swp78nzgm4-stack-snapshot-awsebrdsdatabase-g0cxvgo8vuvw
 Region=us-west-1
 ServiceEndpoint=https://elasticbeanstalk.us-west-1.amazonaws.com
 SolutionStack=64bit Amazon Linux running Ruby 1.9.3
@@ -35,5 +35,5 @@ InstanceProfileName=aws-elasticbeanstalk-ec2-role
 OptionSettingFile=./.elasticbeanstalk/optionsettings.challengefinder-master
 RdsDeletionPolicy=Snapshot
 RdsEnabled=Yes
-RdsSourceSnapshotName=challengefinder
+RdsSourceSnapshotName=awseb-e-swp78nzgm4-stack-snapshot-awsebrdsdatabase-g0cxvgo8vuvw
 
