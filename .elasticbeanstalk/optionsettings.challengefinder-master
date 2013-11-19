@@ -33,6 +33,6 @@ Notification Protocol=email
 DBDeletionPolicy=Snapshot
 DBEngine=mysql
 DBInstanceClass=db.t1.micro
-DBSnapshotIdentifier=challengefinder
+DBSnapshotIdentifier=awseb-e-236fmidftt-stack-snapshot-awsebrdsdatabase-wvd9r1duahyb
 DBUser=ebroot
 
