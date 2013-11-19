@@ -63,7 +63,7 @@ class ChallengesController < ApplicationController
       when 'deadline_a'
         @challenges = @activeChallenge.order('index_deadline ASC').page params[:page]
       else
-        @challenges = @activeChallenge.page params[:page]
+        @challenges = @activeChallenge.order('post_date DESC').page params[:page]
     end
 
     respond_to do |format|
