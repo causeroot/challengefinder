@@ -4,7 +4,7 @@ MaxSize=1
 MinSize=1
 
 [aws:autoscaling:launchconfiguration]
-EC2KeyName=beanstalk
+EC2KeyName=beanstalk2
 InstanceType=t1.micro
 
 [aws:ec2:vpc]
