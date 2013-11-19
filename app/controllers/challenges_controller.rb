@@ -26,12 +26,14 @@ class ChallengesController < ApplicationController
           order_by(:index_deadline, :desc)
         when 'deadline_a'
           order_by(:index_deadline, :desc)
+        else
+          order_by(:post_date, :desc)
       end
 
-      #@challenges = @activeChallenge.page params[:page]
-      paginate
     end.results
-    
+
+    @challenges = Kaminari.paginate_array(@challenges).page(params[:page]).per(5)
+
     respond_to do |format|
       format.html { render :action => "index" }
     end
