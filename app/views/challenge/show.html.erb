@@ -17,7 +17,7 @@
   <dt><strong><%= model_class.human_attribute_name(:post_date) %>:</strong></dt>
   <dd><%= @challenge.post_date.strftime('%b %e, %Y') if @challenge.post_date %></dd>
   <dt><strong><%= model_class.human_attribute_name(:image_url) %>:</strong></dt>
-  <dd><%= @challenge.image_url %></dd>
+  <dd><%= @challenge.image_topic %></dd>
   <dt><strong><%= model_class.human_attribute_name(:rules) %>:</strong></dt>
   <dd><%= @challenge.rules %></dd>
 </dl>
