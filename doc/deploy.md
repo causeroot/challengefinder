@@ -20,7 +20,7 @@ Run: ``brew update && brew install aws-elasticbeanstalk ec2-api-tools rds-comman
 ### Authentication
 Our username for [passpack](https://www.passpack.com/online/) is *CauseRoot*. Login to retreive the password for *ec2.tar.bz2.aes256*. Then from a Terminal window execute:
 
-    cp ~/src/challengefinder/doc/ec2.tar.bz2 ~/
+    cp ~/src/challengefinder/doc/ec2.tar.bz2.aes256 ~/
     cd ~/
     openssl enc -d -aes-256-cbc -in ec2.tar.bz2.aes256 -out ec2.tar.bz2
     tar jxvf ec2.tar.bz2
