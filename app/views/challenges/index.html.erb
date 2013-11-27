@@ -29,8 +29,7 @@
   <% @challenges.each do |challenge| %>
 		<div class="row-2">
 				<div class="span2">
-					<img src="<%=asset_path challenge.topic.split[0...1].join(' ').concat('.jpg') %>" width="100px" height="100px"/>
-					<!-- <img src="<%= challenge.image_url %>" /> -->
+					<img src="<%=asset_path challenge.image_topic.concat('.jpg') %>" width="100px" height="100px"/>
 				</div>
 				<div class="span4">
 					<h5><%= link_to challenge.title, challenge %></h5>
@@ -82,8 +81,8 @@
 			<%= text_field_tag :q, params[:q], :class => "search-query", :placeholder => "Search" %>			
 			</div>
 			<div class="search-submit-clear">
-			<%= submit_tag "SUBMIT", :class => "submit-button", :name => nil %>
-			<%= link_to "Clear Search"%>
+			<%= submit_tag "Submit", :class => "submit-button", :name => nil %>
+			<%= link_to "Clear&nbsp;Search".html_safe %>
 			</div>
 			<% end %> 
 		

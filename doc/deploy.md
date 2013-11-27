@@ -4,7 +4,7 @@ Amazon Beanstalk is a [PaaS](https://en.wikipedia.org/wiki/Cloud_computing#Platf
 ## Required Software
 
 ### Xcode 5
-Login required [https://developer.apple.com/downloads/index.action](https://developer.apple.com/downloads/index.action). Make sure to install the Command Line tools.
+Login required [https://developer.apple.com/downloads/index.action](https://developer.apple.com/downloads/index.action). Make sure to install the Command Line tools from _Preferences -> Downloads_.
 
 ### java
 Install the latest version of java from [https://www.java.com/en/download/index.jsp](https://www.java.com/en/download/index.jsp)
@@ -59,4 +59,10 @@ You can see from the output above that **Environment Name:	challengefinder-devel
       master
     bonker:challengefinder ephidryn$ 
 
-This is a good area to try out changes and deploy them to a real server. To push your changes in your local git develop branch 
+*If ``eb status`` returns Environment "challengefinder-develop" is not running. then you must start it with ``eb start``.
+
+This is a good area to try out changes and deploy them to a real server. To push your changes in your local git develop branch execute: ``git aws.push``
+
+You can monitor deployment progress at <https://aws.amazon.com>
+
+When you are finished with the development environment it is a good idea to stop it to save money. This is done with ``eb stop``.

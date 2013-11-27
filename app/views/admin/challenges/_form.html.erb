@@ -137,6 +137,11 @@ function getSelectedText(btn) {
     </div>
 
     <div class="field">
+      <%= f.label :image_topic %>
+      <%= f.select(:image_topic, ['Computer_Science','Design','Math','Multifaceted','Science','Social','Technology'], {})%>
+    </div>
+
+    <div class="field">
         <%= f.label :topic %>
     <%= f.text_area :topic %>
     </div>

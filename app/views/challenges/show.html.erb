@@ -12,8 +12,8 @@
 	
 	<div class="row-2">
 		<div class="span2">
-			<img src="<%=asset_path @challenge.topic.split[0...1].join(' ').concat('.jpg') %>" width="100px" height="100px"/>
-		</div>
+          <img src="<%=asset_path challenge.image_topic.concat('.jpg') %>" width="100px" height="100px"/>
+        </div>
 		<div class="span6">
 
 			<h5><%= @challenge.title %></h5>			  
