@@ -1,4 +1,4 @@
-#!/bin/bash -ex
+#!/bin/bash -x
 # install the masked password plugin
 
 # application can have many versions
@@ -37,13 +37,30 @@ function create_config_template() {
     --options-file tools/options.json
 }
 
+function create_environments() {
+    elastic-beanstalk-describe-environments | awk '{ print $20 }' | grep cf-master-test
+    if [ $? -ne 0 ]; then
+        create_new_env cf-master-test
+    fi
+  
+    elastic-beanstalk-describe-environments | awk '{ print $20 }' | grep cf-master
+    if [ $? -ne 0 ]; then
+        create_new_env cf-master
+    fi
+  
+}
+
 function create_new_env() {
   label=$(git rev-parse HEAD)
-  elastic-beanstalk-create-application-version  --application-name challengefinder \
-    --version-label $label \
-    --auto-create \
-    --description "ChallengeFinder $(date)"
+  elastic-beanstalk-describe-application-versions --application-name challengefinder \
+    --version-label $label | grep $label
   
+  if [ $? -ne 0 ]; then 
+      elastic-beanstalk-create-application-version --application-name challengefinder \
+        --version-label $label \
+        --auto-create \
+        --description "ChallengeFinder $(date)"
+  fi
   elastic-beanstalk-create-environment --application-name challengefinder \
     --version-label $label \
     --environment-name "$1" \
@@ -51,7 +68,7 @@ function create_new_env() {
 }
 
 function deploy_to_env() {
-    git aws.push
+  git aws.push --environment "$1"
 }
 
 function test_new_env() {
@@ -74,6 +91,11 @@ function install_cmd_tools() {
     fi
 }
 
+function swap_cloudflare_cname() {
+    echo "swap_cloudflare_cname() not yet implemented"
+    exit 1
+}
+
 #create_snapshot_of_master
 
 branch=$(git branch | grep \* | awk '{ print $2 }')
@@ -81,10 +103,11 @@ new_env=cf-$branch-$(git rev-parse --short HEAD)
 
 install_cmd_tools
 
-create_new_env $new_env
+create_environments
 
-deploy_to_env $new_env
+set -e
+deploy_to_env "cf-master-test"
+test_new_env "cf-master-test"
 
-test_new_env $new_env
-
-swap_cloudflare_cname $new_env
+deploy_to_env "cf-master"
+test_new_env "cf-master"
