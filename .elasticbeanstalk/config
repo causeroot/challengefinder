@@ -2,7 +2,7 @@
 ApplicationName=challengefinder
 ApplicationVersionName=git-57bcf1f2a80af6c98a2ea7e9e7832478cf6fa013-1379484532333
 DevToolsEndpoint=git.elasticbeanstalk.us-west-1.amazonaws.com
-EnvironmentName=challengefinder-master
+EnvironmentName=cf-master
 EnvironmentType=SingleInstance
 InstanceProfileName=aws-elasticbeanstalk-ec2-role
 OptionSettingFile=./.elasticbeanstalk/optionsettings.challengefinder-master
@@ -15,7 +15,7 @@ SolutionStack=64bit Amazon Linux running Ruby 1.9.3
 
 [branches]
 develop=challengefinder-develop
-master=challengefinder-master
+master=cf-master
 
 [branch:develop]
 ApplicationVersionName=Sample Application
@@ -29,7 +29,7 @@ RdsSourceSnapshotName=
 
 [branch:master]
 ApplicationVersionName=git-57bcf1f2a80af6c98a2ea7e9e7832478cf6fa013-1379484532333
-EnvironmentName=challengefinder-master
+EnvironmentName=cf-master
 EnvironmentType=SingleInstance
 InstanceProfileName=aws-elasticbeanstalk-ec2-role
 OptionSettingFile=./.elasticbeanstalk/optionsettings.challengefinder-master
