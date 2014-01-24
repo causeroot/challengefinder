@@ -5,7 +5,6 @@
 # environments may run a single version of an application
 
 export EC2_REGION=us-west-1
-export AWS_RDS_HOME=$(pwd)/$rdsdir
 export PATH=$PATH:$AWS_RDS_HOME/bin
 export ELASTICBEANSTALK_URL="https://elasticbeanstalk.us-west-1.amazonaws.com"
 export AWS_CREDENTIAL_FILE=~/aws_credentials.txt
@@ -69,11 +68,27 @@ function create_new_env() {
 
 function deploy_to_env() {
   git aws.push --environment "$1"
+  echo -n "Waiting for environment to start..."
+  status=$(elastic-beanstalk-describe-environments | grep "$1 " | awk '{ print $23 }')
+  while [ "$status" != "Green" ]; do
+    echo "Status = $status. Waiting..."
+    status=$(elastic-beanstalk-describe-environments | grep "$1 " | awk '{ print $23 }')
+    sleep 10
+  done
 }
 
 function test_new_env() {
-    echo test_new_env not implemented
-    exit 1
+    cname=$(elastic-beanstalk-describe-environments | grep "$1 " | awk '{ print $5 }')
+    count=1
+    wget --spider -o wget.log -e robots=off --wait 1 -r -p "http://$cname"
+    rc=$?
+    while [ $rc -ne 0 -o $count -gt 18 ]; do
+        let count++
+        echo "Testing new environment $1 from $cname failed with $rc. Sleeping before retry..."
+        wget --spider -o wget.log -e robots=off --wait 1 -r -p "http://$cname"
+        rc=$?
+    done
+    cat wget.log
 }
 
 function install_cmd_tools() {
@@ -89,6 +104,7 @@ function install_cmd_tools() {
       wget -c http://s3.amazonaws.com/rds-downloads/RDSCli.zip
       unzip RDSCli.zip
     fi
+    export AWS_RDS_HOME=$(pwd)/$rdsdir
 }
 
 function swap_cloudflare_cname() {
@@ -105,9 +121,13 @@ install_cmd_tools
 
 create_environments
 
+create_snapshot_of_master
+
 set -e
 deploy_to_env "cf-master-test"
 test_new_env "cf-master-test"
 
 deploy_to_env "cf-master"
 test_new_env "cf-master"
+
+elastic-beanstalk-terminate-environment --environment-name "cf-master-test"

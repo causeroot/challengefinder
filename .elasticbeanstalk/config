@@ -15,7 +15,7 @@ SolutionStack=64bit Amazon Linux running Ruby 1.9.3
 
 [branches]
 develop=challengefinder-develop
-master=cf-master
+master=challengefinder-master
 
 [branch:develop]
 ApplicationVersionName=Sample Application

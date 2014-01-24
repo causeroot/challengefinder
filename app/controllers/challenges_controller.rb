@@ -44,7 +44,7 @@ class ChallengesController < ApplicationController
   def index
     @sort = ''
     require 'date'
-    require 'Chronic'
+    require 'chronic'
     
 
     # This line filters our challenges that aren't active, or the deadline
