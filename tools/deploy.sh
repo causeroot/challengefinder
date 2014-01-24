@@ -5,7 +5,6 @@
 # environments may run a single version of an application
 
 export EC2_REGION=us-west-1
-export PATH=$PATH:$AWS_RDS_HOME/bin
 export ELASTICBEANSTALK_URL="https://elasticbeanstalk.us-west-1.amazonaws.com"
 export AWS_CREDENTIAL_FILE=~/aws_credentials.txt
 echo "AWSAccessKeyId=$AWS_ACCESS_KEY_ID" > $AWS_CREDENTIAL_FILE
