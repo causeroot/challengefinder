@@ -5,7 +5,7 @@ DevToolsEndpoint=git.elasticbeanstalk.us-west-1.amazonaws.com
 EnvironmentName=cf-master
 EnvironmentType=SingleInstance
 InstanceProfileName=aws-elasticbeanstalk-ec2-role
-OptionSettingFile=./.elasticbeanstalk/optionsettings.challengefinder-master
+OptionSettingFile=./.elasticbeanstalk/optionsettings.cf-master
 RdsDeletionPolicy=Snapshot
 RdsEnabled=Yes
 RdsSourceSnapshotName=awseb-e-swp78nzgm4-stack-snapshot-awsebrdsdatabase-g0cxvgo8vuvw
@@ -14,15 +14,15 @@ ServiceEndpoint=https://elasticbeanstalk.us-west-1.amazonaws.com
 SolutionStack=64bit Amazon Linux running Ruby 1.9.3
 
 [branches]
-develop=challengefinder-develop
-master=challengefinder-master
+develop=cf-develop
+master=cf-master
 
 [branch:develop]
 ApplicationVersionName=Sample Application
-EnvironmentName=challengefinder-develop
+EnvironmentName=cf-develop
 EnvironmentType=SingleInstance
 InstanceProfileName=aws-elasticbeanstalk-ec2-role
-OptionSettingFile=./.elasticbeanstalk/optionsettings.challengefinder-develop
+OptionSettingFile=./.elasticbeanstalk/optionsettings.cf-develop
 RdsDeletionPolicy=Delete
 RdsEnabled=Yes
 RdsSourceSnapshotName=
@@ -32,7 +32,7 @@ ApplicationVersionName=git-57bcf1f2a80af6c98a2ea7e9e7832478cf6fa013-137948453233
 EnvironmentName=cf-master
 EnvironmentType=SingleInstance
 InstanceProfileName=aws-elasticbeanstalk-ec2-role
-OptionSettingFile=./.elasticbeanstalk/optionsettings.challengefinder-master
+OptionSettingFile=./.elasticbeanstalk/optionsettings.cf-master
 RdsDeletionPolicy=Snapshot
 RdsEnabled=Yes
 RdsSourceSnapshotName=awseb-e-swp78nzgm4-stack-snapshot-awsebrdsdatabase-g0cxvgo8vuvw
