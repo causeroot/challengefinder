@@ -22,3 +22,4 @@ config/database.yml
 .idea/*
 *.binsev
 .elasticbeanstalk/*
+.elasticbeanstalk/config

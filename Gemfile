@@ -9,7 +9,6 @@ gem 'rails', '~> 3.2.6'
 gem 'sunspot_rails', '~> 2.0.0'
 gem 'sunspot_solr', '~> 2.0.0'
 
-gem 'capistrano'
 gem 'therubyracer', :platform => :ruby
 
 gem 'sorcery'
