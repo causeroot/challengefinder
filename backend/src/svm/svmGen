@@ -17,6 +17,8 @@ load("-v7",classFile,"class")
 
 [model, pred, accuracy, p] = trainSVM(class, features);
 
+q = p+1;
+
 tic
 fprintf('\n\nSaving Dictionary Files: \n')
 save("-mat7-binary", modelFile, "model")
@@ -25,6 +27,6 @@ save("-mat7-binary", predFile, "pred")
 fprintf('\n     Successful Save to pred.binsev');
 save("-mat7-binary", accuracyFile, "accuracy")
 fprintf('\n     Successful Save to accuracy.binsev');
-save("-mat7-binary", pFile, "p")
+save("-mat7-binary", pFile, "q")
 fprintf('\n     Successful Save to p.binsev\n');
 toc

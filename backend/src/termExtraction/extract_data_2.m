@@ -10,13 +10,23 @@ tic
 
 fileID_pre = fopen(filename,'r');
 
+%while (!feof(fileID_pre))
+%    total_lines = fskipl(fileID_pre,Inf); % May want to change this from Inf to something practical
+%    total_lines = total_lines+1;
+%end
+%
+%fclose (fileID_pre);
+
+total_lines = 0;
 while (!feof(fileID_pre))
     total_lines = fskipl(fileID_pre,Inf); % May want to change this from Inf to something practical
-total_lines = total_lines+1;
+    total_lines = total_lines+1;
 end
 
-
 fclose (fileID_pre);
+
+
+
 
 fileID = fopen(filename,'r');
 

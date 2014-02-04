@@ -30,16 +30,18 @@ fprintf('(this may take a bit)\n')
 tic
 
 %%%%%%%%%%%%
-% CONSTANT HERE !!!!
-C = 0.1;
+% The last string argument tells LIBSVM to train using the options
+% -s 0, SVM classification
+% -t 0, a linear kernel, because we want a linear decision boundary
+% -c 1, a cost factor of 10 (this is up for debate/modification)
 %%%%%%%%%%%%
 
-
-model = svmtrain(class', features');
+model = svmtrain(class', features','-s 0 -t 0 -c 10');
 
 tlv = rand(size(features',1),1);
 [pred, accuracy, p] = svmpredict(tlv, features', model);
 
+% TODO: 2/2/2014 -> commented out for test. Figure out and uncomment.
 fprintf('\nTraining Accuracy: %f', mean(double(pred == class')) * 100);
 
 fprintf('\n');

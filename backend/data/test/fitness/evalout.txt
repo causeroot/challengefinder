@@ -1,0 +1,8 @@
+http://www.testg1.com 1.3479  1 
+http://www.testg2.com 1.9933  1 
+http://testb12.com -1.0605  -1 
+http://testb13.com -1.0605  -1 
+http://www.testg3.com 1.0000  1 
+http://www.testg4.com 0.9998  1 
+http://testb14.com -1.0000  -1 
+http://testb15.com -1.0603  -1 

@@ -15,8 +15,12 @@ model_w = ((model.sv_coef)'*(model.SVs))';
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % THESE ARE CONSTANTS WHICH ARE SUBJECT TO QUALITATIVE DECISION BY YONDER CODER   %
-thresh = 0.018;
-num_distinctifiers = 30;
+% thresh = 0.018;
+% num_distinctifiers = 30;
+
+% TODO: Update these values and be smarter about the whole deal (2/2/2014)
+thresh = 0.01;
+num_distinctifiers = 9;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 pos_word = '';

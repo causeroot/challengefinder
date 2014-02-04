@@ -21,6 +21,8 @@ load("-v7",dictionaryPairsFile, "dictionary_pairs")
 
 [eval_urls,pNew,accuracyNew,predNew] = classify(eval_file,model,dictionary_words, dictionary_pairs);
 
+%qNew = pNew+1;
+
 fprintf('============================ Writing Output Files ========================\n');
 save("-mat7-binary", predNewFile, "predNew")
 fprintf('\n     Successful Save to predNew.binsev');
