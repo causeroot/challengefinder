@@ -21,6 +21,8 @@ elif [ Darwin = "$(uname)" ]; then
     export JAVA_HOME=$(/usr/libexec/java_home)
 fi
 
+export PATH=AWS-ElasticBeanstalk-CLI-2.6.0/api/bin:$PATH
+
 function create_snapshot_of_master() {
   rds_instance=$(rds-describe-db-instances | grep DBINSTANCE | awk '{ print $2 }')
   echo "Creating snapshot for $rds_instance"
