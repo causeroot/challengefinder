@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash -xe
 # install the masked password plugin
 
 # application can have many versions
