@@ -40,9 +40,10 @@ function create_config_template() {
 function create_environments() {
     set +e
     elastic-beanstalk-describe-environments
-    elastic-beanstalk-describe-environments | grep "cf-master-test |"
+    elastic-beanstalk-describe-environments | grep "cf-master-test |" | Grey
     if [ $? -ne 0 ]; then
-        create_new_env cf-master-test
+        elastic-beanstalk-terminate-environment --environment-name "cf-master-test"
+        create_new_env "cf-master-test"
     fi
   
     elastic-beanstalk-describe-environments | grep "cf-master |"
