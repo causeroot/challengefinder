@@ -39,12 +39,12 @@ function create_config_template() {
 
 function create_environments() {
     elastic-beanstalk-describe-environments
-    elastic-beanstalk-describe-environments | awk '{ print $20 }' | grep cf-master-test
+    elastic-beanstalk-describe-environments | grep "cf-master-test |"
     if [ $? -ne 0 ]; then
         create_new_env cf-master-test
     fi
   
-    elastic-beanstalk-describe-environments | awk '{ print $20 }' | grep cf-master
+    elastic-beanstalk-describe-environments | grep "cf-master |"
     if [ $? -ne 0 ]; then
         create_new_env cf-master
     fi
