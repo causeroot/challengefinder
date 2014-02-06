@@ -38,6 +38,7 @@ function create_config_template() {
 }
 
 function create_environments() {
+    set +e
     elastic-beanstalk-describe-environments
     elastic-beanstalk-describe-environments | grep "cf-master-test |"
     if [ $? -ne 0 ]; then
@@ -48,7 +49,7 @@ function create_environments() {
     if [ $? -ne 0 ]; then
         create_new_env cf-master
     fi
-  
+    set -e
 }
 
 function create_new_env() {
