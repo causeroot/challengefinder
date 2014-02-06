@@ -101,7 +101,7 @@ function install_cmd_tools() {
         AWS-ElasticBeanstalk-CLI-2.6.0/AWSDevTools/Linux/AWSDevTools-RepositorySetup.sh    
     fi
     rdsdir=$(ls -d RDSCli-*)
-    if [ ! -d $rdsdir ]; then
+    if [ ! -d "$rdsdir" ]; then
       wget -c http://s3.amazonaws.com/rds-downloads/RDSCli.zip
       unzip RDSCli.zip
     fi
