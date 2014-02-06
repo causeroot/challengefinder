@@ -107,6 +107,7 @@ function install_cmd_tools() {
       export rdsdir=$(ls -d RDSCli-*)
     fi
     export AWS_RDS_HOME=$(pwd)/$rdsdir
+    export PATH=$AWS_RDS_HOME/bin:$PATH
 }
 
 function swap_cloudflare_cname() {
