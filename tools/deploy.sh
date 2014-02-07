@@ -1,4 +1,4 @@
-#!/bin/bash -xle
+#!/bin/bash -xl
 # install the masked password plugin
 
 # application can have many versions
@@ -60,7 +60,6 @@ wait_for_env() {
 }
 
 function create_environment() {
-    set +e
     state=$(elastic-beanstalk-describe-environments | grep -v Terminated | grep "$1 |")
     if [ $? -ne 0 ]; then
         create_new_env $1
@@ -86,7 +85,6 @@ function create_environment() {
         fi
       fi
     fi
-    set -e
 }
 
 function create_new_env() {
@@ -206,7 +204,6 @@ create_environment cf-master-test
 
 create_snapshot_of_master
 
-set -e
 deploy_to_env "cf-master-test"
 test_new_env "cf-master-test"
 
