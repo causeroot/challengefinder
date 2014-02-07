@@ -103,8 +103,8 @@ function create_new_env() {
   
   wait_for_env $1
 
-  elastic-beanstalk-describe-environment-resources -e $1
-  sec_group=$(elastic-beanstalk-describe-environment-resources -e $1 | grep AWSEBSecurityGroup)
+  elastic-beanstalk-describe-environment-resources --show-json -e $1
+  sec_group=$(elastic-beanstalk-describe-environment-resources --show-json -e $1 | grep AWSEBSecurityGroup)
   sec_group=$(echo $sec_group | sed 's/.*.AWSEBSecurityGroup....PhysicalResourceId....//')
   sec_group=$(echo $sec_group | sed 's/".*//')
   add_security_group_to_rds $sec_group
@@ -119,13 +119,13 @@ function add_security_group_to_rds() {
 }
 
 function terminate_environment() {
-  elastic-beanstalk-describe-environment-resources -e $1
-  sec_group=$(elastic-beanstalk-describe-environment-resources -e $1 | grep AWSEBSecurityGroup)
+  elastic-beanstalk-describe-environment-resources --show-json -e $1
+  sec_group=$(elastic-beanstalk-describe-environment-resources --show-json -e $1 | grep AWSEBSecurityGroup)
   sec_group=$(echo $sec_group | sed 's/.*.AWSEBSecurityGroup....PhysicalResourceId....//')
   sec_group=$(echo $sec_group | sed 's/".*//')
   echo $sec_group
   if [ ! "$sec_group" ]; then
-    elastic-beanstalk-describe-environment-resources -e $1
+    elastic-beanstalk-describe-environment-resources --show-json -e $1
     echo "Security group is empty."
   else
     remove_security_group_from_rds $sec_group
@@ -192,9 +192,6 @@ function swap_cloudflare_cname() {
 }
 
 #create_snapshot_of_master
-elastic-beanstalk-describe-environment-resources --show-json --environment-name cf-master-test
-exit 0
-
 
 branch=$(git branch | grep \* | awk '{ print $2 }')
 new_env=cf-$branch-$(git rev-parse --short HEAD)
