@@ -105,8 +105,16 @@ function add_security_group_to_rds() {
 }
 
 function terminate_environment() {
-  sec_group=$(elastic-beanstalk-describe-environment-resources -e $1 |grep AWSEBSecurityGroup | sed 's/.*.AWSEBSecurityGroup....PhysicalResourceId....//' | sed 's/".*//')
-  remove_security_group_from_rds $sec_group
+  sec_group=$(elastic-beanstalk-describe-environment-resources -e $1 | grep AWSEBSecurityGroup)
+  sec_group=$(echo $sec_group | sed 's/.*.AWSEBSecurityGroup....PhysicalResourceId....//')
+  sec_group=$(echo $sec_group | sed 's/".*//')
+  echo $sec_group
+  if [ ! "$sec_group" ]; then
+    elastic-beanstalk-describe-environment-resources -e $1
+    echo "Security group is empty."
+  else
+    remove_security_group_from_rds $sec_group
+  fi
   elastic-beanstalk-terminate-environment --environment-name $1
   sleep 30
   wait_minutes=10
