@@ -192,7 +192,7 @@ function swap_cloudflare_cname() {
 }
 
 #create_snapshot_of_master
-elastic-beanstalk-describe-environment-resources -e cf-master-test
+elastic-beanstalk-describe-environment-resources --help
 exit 0
 
 
