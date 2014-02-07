@@ -5,7 +5,9 @@
 # environments may run a single version of an application
 
 export EC2_REGION=us-west-1
-export ELASTICBEANSTALK_URL="https://elasticbeanstalk.us-west-1.amazonaws.com"
+export EC2_AVAILABILITY_ZONE=us-west-1a
+export ELASTICBEANSTALK_URL=https://elasticbeanstalk.us-west-1.amazonaws.com
+export EC2_URL=https://ec2.us-west-1.amazonaws.com
 export AWS_CREDENTIAL_FILE=~/aws_credentials.txt
 echo "AWSAccessKeyId=$AWS_ACCESS_KEY_ID" > $AWS_CREDENTIAL_FILE
 echo "AWSSecretKey=$AWS_SECRET_ACCESS_KEY" >> $AWS_CREDENTIAL_FILE
@@ -101,7 +103,10 @@ function create_new_env() {
   
   wait_for_env $1
 
-  sec_group=$(elastic-beanstalk-describe-environment-resources -e $1 |grep AWSEBSecurityGroup | sed 's/.*.AWSEBSecurityGroup....PhysicalResourceId....//' | sed 's/".*//')
+  elastic-beanstalk-describe-environment-resources -e $1
+  sec_group=$(elastic-beanstalk-describe-environment-resources -e $1 | grep AWSEBSecurityGroup)
+  sec_group=$(echo $sec_group | sed 's/.*.AWSEBSecurityGroup....PhysicalResourceId....//')
+  sec_group=$(echo $sec_group | sed 's/".*//')
   add_security_group_to_rds $sec_group
 }
 
