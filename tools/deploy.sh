@@ -133,7 +133,7 @@ function terminate_environment() {
   echo "Terminating $1..."
   elastic-beanstalk-terminate-environment --environment-name $1
   sleep 60
-  wait_minutes=10
+  wait_minutes=30
   elastic-beanstalk-describe-environments | grep -v Terminating | grep "$1 |"
   while [ $? -eq 0 ]; do
     if [ $wait_minutes -lt 1 ]; then
@@ -147,13 +147,18 @@ function terminate_environment() {
 }
 
 function deploy_to_env() {
+  wait_minutes=30
   git aws.push --environment $1
   echo -n "Waiting for environment to start..."
   status=$(elastic-beanstalk-describe-environments | grep -v Terminated | grep "$1 " | grep "Green")
   while [ "$status" != "Green" ]; do
+    if [ $wait_minutes -lt 1 ]; then
+      break
+    fi
+    wait_minutes=$(expr $wait_minutes - 1)
     echo "Status = $status. Waiting..."
     status=$(elastic-beanstalk-describe-environments | grep -v Terminated | grep "$1 " | grep "Green")
-    sleep 10
+    sleep 60
   done
 }
 
