@@ -45,7 +45,7 @@ wait_for_env() {
   fi
   
   elastic-beanstalk-describe-environments | grep "$1 |" | grep Green
-  if [ $? -ne 0 ]; then
+  if [ $? -ne 0 -a $wait_minutes -gt 0 ]; then
     echo "Not yet green. Waiting $wait_minutes more minutes."
     sleep 60
     wait_minutes=$(expr $wait_minutes - 1)
