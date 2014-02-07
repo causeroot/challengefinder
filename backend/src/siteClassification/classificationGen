@@ -29,19 +29,28 @@ fprintf('\n     Successful Save to accuracyNew.binsev');
 save("-mat7-binary", pNewFile, "pNew")
 fprintf('\n     Successful Save to pNew.binsev\n');
 
+urlDataOut = sortrows(horzcat(pNew,predNew,eval_urls),'descend'); 
 
 fileID = fopen(eval_output_file,'w');
-for i = 1:size(eval_urls,1)
-    fprintf(fileID,"%s",char(eval_urls(i)));
+# Old Code:
+# for i = 1:size(eval_urls,1)
+#    fprintf(fileID,"%s",char(eval_urls(i)));
+#    fprintf(fileID," ");
+#    fprintf(fileID,"%6.4f  %d",pNew(i),predNew(i));
+#    fprintf(fileID," \n");
+#end
+for i = 1:size(urlDataOut,1)
+    fprintf(fileID,"%s",char(urlDataOut(i,3)));
     fprintf(fileID," ");
-    fprintf(fileID,"%6.4f  %d",pNew(i),predNew(i));
+    fprintf(fileID,"%6.4f  %d",urlDataOut(i,1),urlDataOut(i,2));
     fprintf(fileID," \n");
 end
+
 fclose(fileID);
 
 
 fprintf('\nProcessed %s URL Classification to %s\n', char(eval_file),char(eval_output_file));
-fprintf('Number of (likely) new Challenges: %i\n', sum(predNew));
+fprintf('Number of (likely) new Challenges: %i\n', sum(predNew>0));
 fprintf('\n\n');
 fprintf('==========================================================================\n');
 fprintf('=================================== DONE!!! ==============================\n');
