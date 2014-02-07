@@ -45,27 +45,29 @@ wait_for_env() {
   fi
   
   elastic-beanstalk-describe-environments | grep "$1 |" | grep Green
-  if [ $? -ne 0 -a $wait_minutes -gt 0 ]; then
+  while [ $? -ne 0 -a $wait_minutes -gt 0 ]; do
     echo "Not yet green. Waiting $wait_minutes more minutes."
     sleep 60
     wait_minutes=$(expr $wait_minutes - 1)
     elastic-beanstalk-describe-environments | grep "$1 |" | grep Green
-  fi
+  done
 }
 
 function create_environment() {
     set +e
     state=$(elastic-beanstalk-describe-environments | grep "$1 |")
     if [ $? -ne 0 ]; then
-        elastic-beanstalk-terminate-environment --environment-name "$1"
         create_new_env "$1"
     else 
       echo "$1 environment already exists. Checking state."
-      echo $state | grep Grey
-      if [ $? -eq 0 ]; then
-        echo "$1 is in a Grey state. Waiting 3 minutes before recreating it."
-        wait_for_env $1 3
+      echo $state | grep Green
+      if [ $? -ne 0 ]; then
+        echo "$1 is in a Grey state. Waiting 1 minute before recreating it."
+        wait_for_env $1 1
         elastic-beanstalk-describe-environments | grep "$1 |" | grep Green
+        if [ $? -ne 0 ]; then
+          echo "Waited for $1 to turn green. Now attempting to terminate and recreate the environment."
+        fi
         terminate_environment $1
       fi
     fi
@@ -105,7 +107,16 @@ function add_security_group_to_rds() {
 function terminate_environment() {
   sec_group=$(elastic-beanstalk-describe-environment-resources -e $1 |grep AWSEBSecurityGroup | sed 's/.*.AWSEBSecurityGroup....PhysicalResourceId....//' | sed 's/".*//')
   remove_security_group_from_rds $sec_group
-  elastic-beanstalk-terminate-environment --environment-name "cf-master-test"
+  elastic-beanstalk-terminate-environment --environment-name $1
+  sleep 30
+  wait_minutes=10
+  elastic-beanstalk-describe-environments | grep "$1 |" | grep Terminating
+  while [ $? -ne 0 -a $wait_minutes -gt 0 ]; do
+    echo "Still terminating instance. Waiting $wait_minutes more minutes."
+    sleep 60
+    wait_minutes=$(expr $wait_minutes - 1)
+    elastic-beanstalk-describe-environments | grep "$1 |" | grep Terminating
+  done
 }
 
 function deploy_to_env() {
