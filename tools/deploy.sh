@@ -48,7 +48,10 @@ wait_for_env() {
   fi
   
   elastic-beanstalk-describe-environments | grep -v Terminated | grep "$1 |" | grep Green
-  while [ $? -ne 0 -o $wait_minutes -lt 1 ]; do
+  while [ $? -ne 0 ]; do
+    if [ $wait_minutes -lt 1 ]; then
+      break
+    fi
     echo "Not yet green. Waiting $wait_minutes more minutes."
     sleep 60
     wait_minutes=$(expr $wait_minutes - 1)
@@ -134,7 +137,10 @@ function terminate_environment() {
   sleep 60
   wait_minutes=10
   elastic-beanstalk-describe-environments | grep "$1 |" | grep Terminating
-  while [ $? -ne 0 -a $wait_minutes -gt 0 ]; do
+  while [ $? -ne 0 ]; do
+    if [ $wait_minutes -lt 1 ]; then
+      break
+    fi
     echo "Still terminating instance. Waiting $wait_minutes more minutes."
     sleep 60
     wait_minutes=$(expr $wait_minutes - 1)
