@@ -14,6 +14,7 @@ echo "AWSSecretKey=$AWS_SECRET_ACCESS_KEY" >> $AWS_CREDENTIAL_FILE
 chmod 600 $AWS_CREDENTIAL_FILE
 
 if [ Linux = "$(uname)" ]; then
+  
     python --version 2>&1 | grep 3\. && export PATH=$PATH:$(pwd)/AWS-ElasticBeanstalk-CLI-2.6.0/eb/linux/python3
     python --version 2>&1 | grep 2.7 && export PATH=$PATH:$(pwd)/AWS-ElasticBeanstalk-CLI-2.6.0/eb/linux/python2.7
     export JAVA_HOME=/usr/lib/jvm/default-java/jre
@@ -104,9 +105,8 @@ function create_new_env() {
   wait_for_env $1
 
   elastic-beanstalk-describe-environment-resources --show-json -e $1
-  sec_group=$(elastic-beanstalk-describe-environment-resources --show-json -e $1 | grep AWSEBSecurityGroup)
-  sec_group=$(echo $sec_group | sed 's/.*.AWSEBSecurityGroup....PhysicalResourceId....//')
-  sec_group=$(echo $sec_group | sed 's/".*//')
+  sec_group=$(elastic-beanstalk-describe-environment-resources --show-json -e $1)
+  sec_group=$(echo $sec_group | python -mjson.tool | grep -A1 \"AWSEBSecurityGroup\" | grep PhysicalResourceId | awk '{ print $NF }' | sed 's/\"//' | sed 's/\",//')
   add_security_group_to_rds $sec_group
 }
 
@@ -120,9 +120,8 @@ function add_security_group_to_rds() {
 
 function terminate_environment() {
   elastic-beanstalk-describe-environment-resources --show-json -e $1
-  sec_group=$(elastic-beanstalk-describe-environment-resources --show-json -e $1 | grep AWSEBSecurityGroup)
-  sec_group=$(echo $sec_group | sed 's/.*.AWSEBSecurityGroup....PhysicalResourceId....//')
-  sec_group=$(echo $sec_group | sed 's/".*//')
+  sec_group=$(elastic-beanstalk-describe-environment-resources --show-json -e $1)
+  sec_group=$(echo $sec_group | python -mjson.tool | grep -A1 \"AWSEBSecurityGroup\" | grep PhysicalResourceId | awk '{ print $NF }' | sed 's/\"//' | sed 's/\",//')
   echo $sec_group
   if [ ! "$sec_group" ]; then
     elastic-beanstalk-describe-environment-resources --show-json -e $1
@@ -169,21 +168,31 @@ function test_new_env() {
 }
 
 function install_cmd_tools() {
-    if [ ! -d AWS-ElasticBeanstalk-CLI-2.6.0 ]; then
-      wget -c https://s3.amazonaws.com/elasticbeanstalk/cli/AWS-ElasticBeanstalk-CLI-2.6.0.zip
-      unzip AWS-ElasticBeanstalk-CLI-2.6.0.zip
-    fi
-    if [ ! -d .git/AWSDevTools ]; then
-        AWS-ElasticBeanstalk-CLI-2.6.0/AWSDevTools/Linux/AWSDevTools-RepositorySetup.sh    
-    fi
-    export rdsdir=$(ls -d RDSCli-*)
-    if [ ! -d "$rdsdir" ]; then
-      wget -c http://s3.amazonaws.com/rds-downloads/RDSCli.zip
-      unzip RDSCli.zip
-    fi
-    export rdsdir=$(ls -d RDSCli-*)
-    export AWS_RDS_HOME=$(pwd)/$rdsdir
-    export PATH=$AWS_RDS_HOME/bin:$PATH
+  jshon=$(ls -d jshon-*)
+  if [ ! -d "$jshon" ]; then
+    wget http://kmkeen.com/jshon/jshon.tar.gz
+    tar zxvf jshon.tar.gz
+    cd $jshon
+    make
+    cd ..
+  fi
+  export PATH=$PATH:$(pwd)/$jshon
+  
+  if [ ! -d AWS-ElasticBeanstalk-CLI-2.6.0 ]; then
+    wget -c https://s3.amazonaws.com/elasticbeanstalk/cli/AWS-ElasticBeanstalk-CLI-2.6.0.zip
+    unzip AWS-ElasticBeanstalk-CLI-2.6.0.zip
+  fi
+  if [ ! -d .git/AWSDevTools ]; then
+      AWS-ElasticBeanstalk-CLI-2.6.0/AWSDevTools/Linux/AWSDevTools-RepositorySetup.sh    
+  fi
+  export rdsdir=$(ls -d RDSCli-*)
+  if [ ! -d "$rdsdir" ]; then
+    wget -c http://s3.amazonaws.com/rds-downloads/RDSCli.zip
+    unzip RDSCli.zip
+  fi
+  export rdsdir=$(ls -d RDSCli-*)
+  export AWS_RDS_HOME=$(pwd)/$rdsdir
+  export PATH=$AWS_RDS_HOME/bin:$PATH
 }
 
 function swap_cloudflare_cname() {
