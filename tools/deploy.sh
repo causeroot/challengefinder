@@ -168,16 +168,6 @@ function test_new_env() {
 }
 
 function install_cmd_tools() {
-  jshon=$(ls -d jshon-*)
-  if [ ! -d "$jshon" ]; then
-    wget http://kmkeen.com/jshon/jshon.tar.gz
-    tar zxvf jshon.tar.gz
-    cd $jshon
-    make
-    cd ..
-  fi
-  export PATH=$PATH:$(pwd)/$jshon
-  
   if [ ! -d AWS-ElasticBeanstalk-CLI-2.6.0 ]; then
     wget -c https://s3.amazonaws.com/elasticbeanstalk/cli/AWS-ElasticBeanstalk-CLI-2.6.0.zip
     unzip AWS-ElasticBeanstalk-CLI-2.6.0.zip
