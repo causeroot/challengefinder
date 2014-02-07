@@ -69,6 +69,15 @@ function create_environment() {
           echo "Waited for $1 to turn green. Now attempting to terminate and recreate the environment."
         fi
         terminate_environment $1
+        
+        if [ "$2" ]; then
+          depth=$(expr $depth - 1)
+        else
+          depth=3
+        fi          
+        if [ $depth -gt 0 ]; then
+          create_environment $1 $depth
+        fi
       fi
     fi
     set -e
