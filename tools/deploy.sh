@@ -47,8 +47,8 @@ wait_for_env() {
     wait_minutes=10
   fi
   
-  elastic-beanstalk-describe-environments | grep "$1 |" | grep Green
-  while [ $? -ne 0 -o $wait_minutes -gt 0 ]; do
+  elastic-beanstalk-describe-environments | grep -v Terminated | grep "$1 |" | grep Green
+  while [ $? -ne 0 -o $wait_minutes -lt 1 ]; do
     echo "Not yet green. Waiting $wait_minutes more minutes."
     sleep 60
     wait_minutes=$(expr $wait_minutes - 1)
@@ -58,7 +58,7 @@ wait_for_env() {
 
 function create_environment() {
     set +e
-    state=$(elastic-beanstalk-describe-environments | grep "$1 |")
+    state=$(elastic-beanstalk-describe-environments | grep -v Terminated | grep "$1 |")
     if [ $? -ne 0 ]; then
         create_new_env $1
     else 
@@ -145,10 +145,10 @@ function terminate_environment() {
 function deploy_to_env() {
   git aws.push --environment $1
   echo -n "Waiting for environment to start..."
-  status=$(elastic-beanstalk-describe-environments | grep "$1 " | awk '{ print $23 }')
+  status=$(elastic-beanstalk-describe-environments | grep -v Terminated | grep "$1 " | awk '{ print $23 }')
   while [ "$status" != "Green" ]; do
     echo "Status = $status. Waiting..."
-    status=$(elastic-beanstalk-describe-environments | grep "$1 " | awk '{ print $23 }')
+    status=$(elastic-beanstalk-describe-environments | grep -v Terminated | grep "$1 " | awk '{ print $23 }')
     sleep 10
   done
 }
