@@ -134,8 +134,8 @@ function terminate_environment() {
   elastic-beanstalk-terminate-environment --environment-name $1
   sleep 60
   wait_minutes=10
-  elastic-beanstalk-describe-environments | grep "$1 |" | grep Terminating
-  while [ $? -ne 0 ]; do
+  elastic-beanstalk-describe-environments | grep -v Terminating | grep "$1 |"
+  while [ $? -eq 0 ]; do
     if [ $wait_minutes -lt 1 ]; then
       break
     fi
