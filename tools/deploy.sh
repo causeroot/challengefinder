@@ -201,9 +201,7 @@ function swap_cloudflare_cname() {
 }
 
 #create_snapshot_of_master
-
-branch=$(git branch | grep \* | awk '{ print $2 }')
-new_env=cf-$branch-$(git rev-parse --short HEAD)
+new_env=cf-master-$(git rev-parse --short HEAD)
 
 install_cmd_tools
 
