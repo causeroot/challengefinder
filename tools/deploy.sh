@@ -150,14 +150,15 @@ function deploy_to_env() {
   wait_minutes=30
   git aws.push --environment $1
   echo -n "Waiting for environment to start..."
-  status=$(elastic-beanstalk-describe-environments | grep -v Terminated | grep "$1 " | grep "Green")
+  sleep 120 # give it a head start here
+  status=$(elastic-beanstalk-describe-environments | grep Ready | grep "$1 " | grep "Green")
   while [ $? != 0 ]; do
     if [ $wait_minutes -lt 1 ]; then
       break
     fi
     wait_minutes=$(expr $wait_minutes - 1)
     echo "Status = $status. Waiting..."
-    status=$(elastic-beanstalk-describe-environments | grep -v Terminated | grep "$1 " | grep "Green")
+    status=$(elastic-beanstalk-describe-environments | grep Ready | grep "$1 " | grep "Green")
     sleep 60
   done
 }
