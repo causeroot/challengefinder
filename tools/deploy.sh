@@ -59,7 +59,7 @@ function create_environment() {
     set +e
     state=$(elastic-beanstalk-describe-environments | grep "$1 |")
     if [ $? -ne 0 ]; then
-        create_new_env "$1"
+        create_new_env $1
     else 
       echo "$1 environment already exists. Checking state."
       echo $state | grep Green
@@ -192,7 +192,7 @@ function swap_cloudflare_cname() {
 }
 
 #create_snapshot_of_master
-elastic-beanstalk-describe-environment-resources -e $1
+elastic-beanstalk-describe-environment-resources -e cf-master-test
 exit 0
 
 
