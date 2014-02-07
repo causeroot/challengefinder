@@ -92,7 +92,7 @@ function create_new_env() {
   
   wait_for_env $1
 
-  sec_group=$(elastic-beanstalk-describe-environment-resources -e "$1" |grep AWSEBSecurityGroup | sed 's/.*.AWSEBSecurityGroup....PhysicalResourceId....//' | sed 's/".*//')
+  sec_group=$(elastic-beanstalk-describe-environment-resources -e $1 |grep AWSEBSecurityGroup | sed 's/.*.AWSEBSecurityGroup....PhysicalResourceId....//' | sed 's/".*//')
   add_security_group_to_rds $sec_group
 }
 
@@ -105,6 +105,7 @@ function add_security_group_to_rds() {
 }
 
 function terminate_environment() {
+  elastic-beanstalk-describe-environment-resources -e $1
   sec_group=$(elastic-beanstalk-describe-environment-resources -e $1 | grep AWSEBSecurityGroup)
   sec_group=$(echo $sec_group | sed 's/.*.AWSEBSecurityGroup....PhysicalResourceId....//')
   sec_group=$(echo $sec_group | sed 's/".*//')
@@ -115,8 +116,9 @@ function terminate_environment() {
   else
     remove_security_group_from_rds $sec_group
   fi
+  echo "Terminating $1..."
   elastic-beanstalk-terminate-environment --environment-name $1
-  sleep 30
+  sleep 60
   wait_minutes=10
   elastic-beanstalk-describe-environments | grep "$1 |" | grep Terminating
   while [ $? -ne 0 -a $wait_minutes -gt 0 ]; do
