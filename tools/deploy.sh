@@ -145,10 +145,10 @@ function terminate_environment() {
 function deploy_to_env() {
   git aws.push --environment $1
   echo -n "Waiting for environment to start..."
-  status=$(elastic-beanstalk-describe-environments | grep -v Terminated | grep "$1 " | awk '{ print $23 }')
+  status=$(elastic-beanstalk-describe-environments | grep -v Terminated | grep "$1 " | grep "Green")
   while [ "$status" != "Green" ]; do
     echo "Status = $status. Waiting..."
-    status=$(elastic-beanstalk-describe-environments | grep -v Terminated | grep "$1 " | awk '{ print $23 }')
+    status=$(elastic-beanstalk-describe-environments | grep -v Terminated | grep "$1 " | grep "Green")
     sleep 10
   done
 }
