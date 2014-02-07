@@ -192,6 +192,9 @@ function swap_cloudflare_cname() {
 }
 
 #create_snapshot_of_master
+elastic-beanstalk-describe-environment-resources -e $1
+exit 0
+
 
 branch=$(git branch | grep \* | awk '{ print $2 }')
 new_env=cf-$branch-$(git rev-parse --short HEAD)
