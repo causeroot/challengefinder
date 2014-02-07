@@ -37,21 +37,37 @@ function create_config_template() {
     --options-file tools/options.json
 }
 
-function create_environments() {
+wait_for_env() {
+  if [ "$2" ]; then
+    wait_minutes=$2
+  else
+    wait_minutes=10
+  fi
+  
+  elastic-beanstalk-describe-environments | grep "$1 |" | grep Green
+  if [ $? -ne 0 ]; then
+    echo "Not yet green. Waiting $wait_minutes more minutes."
+    sleep 60
+    wait_minutes=$(expr $wait_minutes - 1)
+    elastic-beanstalk-describe-environments | grep "$1 |" | grep Green
+  fi
+}
+
+function create_environment() {
     set +e
-    elastic-beanstalk-describe-environments | grep "cf-master-test |"
+    state=$(elastic-beanstalk-describe-environments | grep "$1 |")
     if [ $? -ne 0 ]; then
-        elastic-beanstalk-terminate-environment --environment-name "cf-master-test"
-        create_new_env "cf-master-test"
+        elastic-beanstalk-terminate-environment --environment-name "$1"
+        create_new_env "$1"
     else 
-      echo "$1 environment already exists. skipping."
-    fi
-    
-    elastic-beanstalk-describe-environments | grep "cf-master |"
-    if [ $? -ne 0 ]; then
-        create_new_env cf-master
-    else 
-      echo "$1 environment already exists. skipping."
+      echo "$1 environment already exists. Checking state."
+      echo $state | grep Grey
+      if [ $? -eq 0 ]; then
+        echo "$1 is in a Grey state. Waiting 3 minutes before recreating it."
+        wait_for_env $1 3
+        elastic-beanstalk-describe-environments | grep "$1 |" | grep Green
+        terminate_environment $1
+      fi
     fi
     set -e
 }
@@ -69,14 +85,12 @@ function create_new_env() {
   fi
   elastic-beanstalk-create-environment --application-name challengefinder \
     --version-label $label \
-    --environment-name "$1" \
+    --environment-name $1 \
     --template-name challengefinder-configuration-template
+  
+  wait_for_env $1
 
   sec_group=$(elastic-beanstalk-describe-environment-resources -e "$1" |grep AWSEBSecurityGroup | sed 's/.*.AWSEBSecurityGroup....PhysicalResourceId....//' | sed 's/".*//')
-  while [ ! "$sec_group" ]; do
-    sleep 30
-    sec_group=$(elastic-beanstalk-describe-environment-resources -e "$1" |grep AWSEBSecurityGroup | sed 's/.*.AWSEBSecurityGroup....PhysicalResourceId....//' | sed 's/".*//')
-  done
   add_security_group_to_rds $sec_group
 }
 
@@ -89,13 +103,13 @@ function add_security_group_to_rds() {
 }
 
 function terminate_environment() {
-  sec_group=$(elastic-beanstalk-describe-environment-resources -e "$1" |grep AWSEBSecurityGroup | sed 's/.*.AWSEBSecurityGroup....PhysicalResourceId....//' | sed 's/".*//')
+  sec_group=$(elastic-beanstalk-describe-environment-resources -e $1 |grep AWSEBSecurityGroup | sed 's/.*.AWSEBSecurityGroup....PhysicalResourceId....//' | sed 's/".*//')
   remove_security_group_from_rds $sec_group
   elastic-beanstalk-terminate-environment --environment-name "cf-master-test"
 }
 
 function deploy_to_env() {
-  git aws.push --environment "$1"
+  git aws.push --environment $1
   echo -n "Waiting for environment to start..."
   status=$(elastic-beanstalk-describe-environments | grep "$1 " | awk '{ print $23 }')
   while [ "$status" != "Green" ]; do
@@ -149,7 +163,8 @@ new_env=cf-$branch-$(git rev-parse --short HEAD)
 
 install_cmd_tools
 
-create_environments
+create_environment cf-master
+create_environment cf-master-test
 
 create_snapshot_of_master
 
