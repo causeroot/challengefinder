@@ -39,16 +39,19 @@ function create_config_template() {
 
 function create_environments() {
     set +e
-    elastic-beanstalk-describe-environments
-    elastic-beanstalk-describe-environments | grep "cf-master-test |" | Grey
+    elastic-beanstalk-describe-environments | grep "cf-master-test |"
     if [ $? -ne 0 ]; then
         elastic-beanstalk-terminate-environment --environment-name "cf-master-test"
         create_new_env "cf-master-test"
+    else 
+      echo "$1 environment already exists. skipping."
     fi
-  
+    
     elastic-beanstalk-describe-environments | grep "cf-master |"
     if [ $? -ne 0 ]; then
         create_new_env cf-master
+    else 
+      echo "$1 environment already exists. skipping."
     fi
     set -e
 }
@@ -68,6 +71,27 @@ function create_new_env() {
     --version-label $label \
     --environment-name "$1" \
     --template-name challengefinder-configuration-template
+
+  sec_group=$(elastic-beanstalk-describe-environment-resources -e "$1" |grep AWSEBSecurityGroup | sed 's/.*.AWSEBSecurityGroup....PhysicalResourceId....//' | sed 's/".*//')
+  while [ ! "$sec_group" ]; do
+    sleep 30
+    sec_group=$(elastic-beanstalk-describe-environment-resources -e "$1" |grep AWSEBSecurityGroup | sed 's/.*.AWSEBSecurityGroup....PhysicalResourceId....//' | sed 's/".*//')
+  done
+  add_security_group_to_rds $sec_group
+}
+
+function remove_security_group_from_rds() {
+  rds-revoke-db-security-group-ingress default --ec2-security-group-name $1 --ec2-security-group-owner-id $AWS_OWNER_ID
+}
+
+function add_security_group_to_rds() {
+  rds-authorize-db-security-group-ingress default --ec2-security-group-name $1 --ec2-security-group-owner-id $AWS_OWNER_ID
+}
+
+function terminate_environment() {
+  sec_group=$(elastic-beanstalk-describe-environment-resources -e "$1" |grep AWSEBSecurityGroup | sed 's/.*.AWSEBSecurityGroup....PhysicalResourceId....//' | sed 's/".*//')
+  remove_security_group_from_rds $sec_group
+  elastic-beanstalk-terminate-environment --environment-name "cf-master-test"
 }
 
 function deploy_to_env() {
@@ -107,8 +131,8 @@ function install_cmd_tools() {
     if [ ! -d "$rdsdir" ]; then
       wget -c http://s3.amazonaws.com/rds-downloads/RDSCli.zip
       unzip RDSCli.zip
-      export rdsdir=$(ls -d RDSCli-*)
     fi
+    export rdsdir=$(ls -d RDSCli-*)
     export AWS_RDS_HOME=$(pwd)/$rdsdir
     export PATH=$AWS_RDS_HOME/bin:$PATH
 }
@@ -136,4 +160,4 @@ test_new_env "cf-master-test"
 deploy_to_env "cf-master"
 test_new_env "cf-master"
 
-elastic-beanstalk-terminate-environment --environment-name "cf-master-test"
+terminate_environment "cf-master-test"
