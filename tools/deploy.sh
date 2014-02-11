@@ -165,12 +165,13 @@ function deploy_to_env() {
 
 function test_new_env() {
     cname=$(elastic-beanstalk-describe-environments --show-json | grep "$1 " | awk '{ print $5 }')
-    count=1
+    count=18
     wget --spider -o wget.log -e robots=off --wait 1 -r -p "http://$cname"
     rc=$?
-    while [ $rc -ne 0 -o $count -gt 18 ]; do
-        let count++
+    while [ $rc -ne 0 -o $count -lt 1 ]; do
+        count=$(expr $count - 1)
         echo "Testing new environment $1 from $cname failed with $rc. Sleeping before retry..."
+        sleep 60
         wget --spider -o wget.log -e robots=off --wait 1 -r -p "http://$cname"
         rc=$?
     done
