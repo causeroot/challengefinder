@@ -33,7 +33,7 @@ function create_snapshot_of_master() {
 }
 
 function create_config_template() {
-  elastic-beanstalk-create-configuration-template --application-name challengefinder \
+  elastic-beanstalk-create-configuration-template --show-json --application-name challengefinder \
     --template-name challengefinder-configuration-template \
     --description "Default configuration template for a challegnefinder instance." \
     --solution-stack "64bit Amazon Linux running Ruby 1.9.3" \
@@ -47,7 +47,7 @@ wait_for_env() {
     wait_minutes=10
   fi
   
-  elastic-beanstalk-describe-environments | grep -v Terminated | grep "$1 |" | grep Green
+  elastic-beanstalk-describe-environments --show-json | grep -v Terminated | grep "$1 |" | grep Green
   while [ $? -ne 0 ]; do
     if [ $wait_minutes -lt 1 ]; then
       break
@@ -55,12 +55,12 @@ wait_for_env() {
     echo "Not yet green. Waiting $wait_minutes more minutes."
     sleep 60
     wait_minutes=$(expr $wait_minutes - 1)
-    elastic-beanstalk-describe-environments | grep "$1 |" | grep Green
+    elastic-beanstalk-describe-environments --show-json | grep "$1 |" | grep Green
   done
 }
 
 function create_environment() {
-    state=$(elastic-beanstalk-describe-environments | grep -v Terminated | grep "$1 |")
+    state=$(elastic-beanstalk-describe-environments --show-json | grep -v Terminated | grep "$1 |")
     if [ $? -ne 0 ]; then
         create_new_env $1
     else 
@@ -69,7 +69,7 @@ function create_environment() {
       if [ $? -ne 0 ]; then
         echo "$1 is in a Grey state. Waiting 1 minute before recreating it."
         wait_for_env $1 1
-        elastic-beanstalk-describe-environments | grep "$1 |" | grep Green
+        elastic-beanstalk-describe-environments --show-json | grep "$1 |" | grep Green
         if [ $? -ne 0 ]; then
           echo "Waited for $1 to turn green. Now attempting to terminate and recreate the environment."
         fi
@@ -89,16 +89,16 @@ function create_environment() {
 
 function create_new_env() {
   label=$(git rev-parse HEAD)
-  elastic-beanstalk-describe-application-versions --application-name challengefinder \
+  elastic-beanstalk-describe-application-versions --show-json --application-name challengefinder \
     --version-label $label | grep $label
   
   if [ $? -ne 0 ]; then 
-      elastic-beanstalk-create-application-version --application-name challengefinder \
+      elastic-beanstalk-create-application-version --show-json --application-name challengefinder \
         --version-label $label \
         --auto-create \
         --description "ChallengeFinder $(date)"
   fi
-  elastic-beanstalk-create-environment --application-name challengefinder \
+  elastic-beanstalk-create-environment --show-json --application-name challengefinder \
     --version-label $label \
     --environment-name $1 \
     --template-name challengefinder-configuration-template
@@ -131,10 +131,10 @@ function terminate_environment() {
     remove_security_group_from_rds $sec_group
   fi
   echo "Terminating $1..."
-  elastic-beanstalk-terminate-environment --environment-name $1
+  elastic-beanstalk-terminate-environment --show-json --environment-name $1
   sleep 60
   wait_minutes=30
-  elastic-beanstalk-describe-environments | grep -v Terminating | grep "$1 |"
+  elastic-beanstalk-describe-environments --show-json | grep -v Terminating | grep "$1 |"
   while [ $? -eq 0 ]; do
     if [ $wait_minutes -lt 1 ]; then
       break
@@ -142,7 +142,7 @@ function terminate_environment() {
     echo "Still terminating instance. Waiting $wait_minutes more minutes."
     sleep 60
     wait_minutes=$(expr $wait_minutes - 1)
-    elastic-beanstalk-describe-environments | grep "$1 |" | grep Terminating
+    elastic-beanstalk-describe-environments --show-json | grep "$1 |" | grep Terminating
   done
 }
 
@@ -151,20 +151,20 @@ function deploy_to_env() {
   git aws.push --environment $1
   echo -n "Waiting for environment to start..."
   sleep 120 # give it a head start here
-  status=$(elastic-beanstalk-describe-environments | grep Ready | grep "$1 " | grep "Green")
+  status=$(elastic-beanstalk-describe-environments --show-json | grep Ready | grep "$1 " | grep "Green")
   while [ $? != 0 ]; do
     if [ $wait_minutes -lt 1 ]; then
       break
     fi
     wait_minutes=$(expr $wait_minutes - 1)
     echo "Status = $status. Waiting..."
-    status=$(elastic-beanstalk-describe-environments | grep Ready | grep "$1 " | grep "Green")
+    status=$(elastic-beanstalk-describe-environments --show-json | grep Ready | grep "$1 " | grep "Green")
     sleep 60
   done
 }
 
 function test_new_env() {
-    cname=$(elastic-beanstalk-describe-environments | grep "$1 " | awk '{ print $5 }')
+    cname=$(elastic-beanstalk-describe-environments --show-json | grep "$1 " | awk '{ print $5 }')
     count=1
     wget --spider -o wget.log -e robots=off --wait 1 -r -p "http://$cname"
     rc=$?
