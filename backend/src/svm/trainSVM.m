@@ -24,18 +24,20 @@ function [model, pred, accuracy, p] = trainSVM(class, features)
 fprintf('\n===================Training Linear SVM for Site Classification===================\n')
 fprintf('(this may take a bit)\n')
 
-
 % TODO: REMOVE OLD CODE
 %[class, dictionary_words, dictionary_pairs, features, urls] = extraction(regenModel);
 tic
 
 %%%%%%%%%%%%
-% CONSTANT HERE !!!!
-C = 0.1;
+% CONSTANTS HERE !!!!
+fprintf('\nSETTINGS:\n');
+fprintf('s -> C-SVC SVM type \n');
+fprintf('t -> sigmoid kernel\n');
+% TODO: Determine a better evaluation for the Cost & perhaps put it back in
+% fprintf('Cost = .1\n\n'); 
 %%%%%%%%%%%%
 
-
-model = svmtrain(class', features');
+model = svmtrain(class', features','-s 0 -t 3');
 
 tlv = rand(size(features',1),1);
 [pred, accuracy, p] = svmpredict(tlv, features', model);

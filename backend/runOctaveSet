@@ -27,7 +27,8 @@ eval_output_file = strcat(BASE_PATH, "/fitness/evalout.txt");
 
 [class, dictionary_words, dictionary_pairs, features, urls] = extraction(good_file,bad_file);
 
-[model, pred, accuracy, p] = trainSVM(class, features);
+
+[model, pred, accuracy, p] = trainSVM(class, features,'-s 0 -t 3');
 
 pos_word = genSearchStrings(model, dictionary_words, dictionary_pairs);
 
