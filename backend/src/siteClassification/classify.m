@@ -22,7 +22,7 @@ fprintf('\n========================== Classifying New URLs =====================
 
 tlv = rand(size(f',1),1);
 %tlv = ones(size(f',1),1);
-[pred, accuracy, p] = svmpredict(tlv, f', model)
+[pred, accuracy, p] = svmpredict(tlv, f', model);
 
 toc
 
