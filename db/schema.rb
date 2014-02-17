@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131105064723) do
+ActiveRecord::Schema.define(:version => 20131120175458) do
 
   create_table "awards", :force => true do |t|
     t.string   "value"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(:version => 20131105064723) do
     t.string   "status"
     t.integer  "numeric_value"
     t.datetime "index_deadline"
+    t.text     "image_topic"
   end
 
   add_index "challenges", ["index_deadline"], :name => "index_challenges_on_index_deadline"
