@@ -24,19 +24,21 @@ function [model, pred, accuracy, p] = trainSVM(class, features)
 fprintf('\n===================Training Linear SVM for Site Classification===================\n')
 fprintf('(this may take a bit)\n')
 
-
 % TODO: REMOVE OLD CODE
 %[class, dictionary_words, dictionary_pairs, features, urls] = extraction(regenModel);
 tic
 
 %%%%%%%%%%%%
-% The last string argument tells LIBSVM to train using the options
-% -s 0, SVM classification
-% -t 0, a linear kernel, because we want a linear decision boundary
-% -c 1, a cost factor of 10 (this is up for debate/modification)
+% CONSTANTS HERE !!!!
+fprintf('\nSETTINGS:\n');
+fprintf('s -> C-SVC SVM type \n');
+fprintf('t -> sigmoid kernel\n');
+% TODO: Determine a better evaluation for the Cost & perhaps put it back in
+% fprintf('Cost = .1\n\n'); 
 %%%%%%%%%%%%
 
-model = svmtrain(class', features','-s 0 -t 0 -c 10');
+model = svmtrain(class', features','-s 0 -t 3');
+>>>>>>> 703c930221b57266313466ee6967f720e464c52b
 
 tlv = rand(size(features',1),1);
 [pred, accuracy, p] = svmpredict(tlv, features', model);

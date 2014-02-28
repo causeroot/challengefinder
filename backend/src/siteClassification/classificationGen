@@ -7,7 +7,9 @@ BASE_PATH = strcat(pwd,"/data/",args{1});
 modelFile = strcat(BASE_PATH, "/svmModel/model.binsev");
 dictionaryWordsFile = strcat(BASE_PATH, "/urlTerms/dictionary_words_file.binsev");
 dictionaryPairsFile = strcat(BASE_PATH, "/urlTerms/dictionary_pairs_file.binsev");
-search_string_out_file = strcat(BASE_PATH, "/searchTerms/new_sstrings.txt");
+
+search_string_out_file = strcat(BASE_PATH, "/searchTerms/newSearchStrings.txt");
+
 eval_output_file = strcat(BASE_PATH, "/fitness/evalout.txt");
 
 eval_file = strcat(BASE_PATH, "/rawSiteData/newUrlList.siteWords");
@@ -29,22 +31,39 @@ fprintf('\n     Successful Save to predNew.binsev');
 save("-mat7-binary", accuracyNewFile, "accuracyNew")
 fprintf('\n     Successful Save to accuracyNew.binsev');
 save("-mat7-binary", pNewFile, "pNew")
-fprintf('\n     Successful Save to pNew.binsev\n');
+fprintf('\n     Successful Save to pNew.binsev\n\n');
 
+pNew
+eval_urls
+
+list = (1:size(pNew))';
+listOut = ones(size(pNew,1),1);
+urlOrderOut = sortrows(horzcat(pNew,predNew,list));
 
 fileID = fopen(eval_output_file,'w');
-for i = 1:size(eval_urls,1)
-    fprintf(fileID,"%s",char(eval_urls(i)));
+
+for i = size(urlOrderOut,1):0
+    fprintf(fileID,"%6.4f  %d",urlOrderOut(i,1),urlOrderOut(i,2));
     fprintf(fileID," ");
-    fprintf(fileID,"%6.4f  %d",pNew(i),predNew(i));
+    q = char(eval_urls(urlOrderOut(i,3)));
+    fprintf(fileID,"%s",q);
     fprintf(fileID," \n");
+    listOut(i) = strcat(urlOrderOut(i,1)," ",q);
 end
+
 fclose(fileID);
 
+for i = size(urlOrderOut,1):1
+    q = char(eval_urls(urlOrderOut(i,3)));
+    listOut(i) = strcat(urlOrderOut(i,1)," ",q);
+end
 
-fprintf('\nProcessed %s URL Classification to %s\n', char(eval_file),char(eval_output_file));
-fprintf('Number of (likely) new Challenges: %i\n', sum(predNew));
+listOut
+
+fprintf('\nProcessed \n%s \nURL Classification to \n%s\n', char(eval_file),char(eval_output_file));
+fprintf('\nNumber of (likely) new Challenges: %i\n', sum(predNew>0));
 fprintf('\n\n');
+
 fprintf('==========================================================================\n');
 fprintf('=================================== DONE!!! ==============================\n');
 fprintf('==========================================================================\n\n');
