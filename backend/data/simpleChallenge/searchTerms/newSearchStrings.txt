@@ -1,1 +1,1 @@
-+"challenge"+"challenge_is"+"prize"+"innovation"+"team"+"awarded"+"the_challenge"+"this_challenge"+"competition"+-"site"+"teams"+"submissions"+"million"+"receive"+"participants"
++"challenge"+"challenge_is"+"team"+"prize"+"awarded"+"innovation"+"the_challenge"

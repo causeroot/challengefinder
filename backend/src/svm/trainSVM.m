@@ -37,7 +37,10 @@ fprintf('t -> sigmoid kernel\n');
 % fprintf('Cost = .1\n\n'); 
 %%%%%%%%%%%%
 
+%model = svmtrain(class', features','-s 0 -t 3');
+
 model = svmtrain(class', features','-s 0 -t 3');
+
 
 tlv = rand(size(features',1),1);
 [pred, accuracy, p] = svmpredict(tlv, features', model);
